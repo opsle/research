@@ -5,10 +5,10 @@ checklist.
 
 ## Workstream 1: EXP-001 prerequisites and experiment
 
-1. Extend the Decision Evidence Protocol validator for deterministic reducer
-   receipts and explicit raw-output escalation.
-2. Implement the smallest Context Firewall reducer and conformance fixtures for
-   synthetic test output.
+1. Context Firewall's deterministic test-output reducer and synthetic
+   conformance corpus are now prototyped at an exact revision.
+2. Extend the Decision Evidence Protocol validator for packet-v1 receipts,
+   suppression accounting, measurements, and explicit raw-output escalation.
 3. Extend Agent Trajectory Profiler fixtures to measure visible payload, gross
    payload, escalation, and correctness-gated comparison.
 4. Freeze the EXP-001 fixture set and harness, then run baseline and reduction
@@ -50,7 +50,7 @@ conversation-local.
 
 ## Exact next execution
 
-Implement a dependency-free Context Firewall reducer plus synthetic conformance
-fixtures, emitting Decision Evidence Protocol-compatible receipts and Agent
-Trajectory Profiler-compatible payload measurements. Do not run a model/provider
-experiment in that execution.
+Extend the dependency-free Decision Evidence Protocol validator with Context
+Firewall packet-v1 receipt, suppression, measurement, and NEEDS_RAW_EVIDENCE
+conformance cases at exact revisions. Do not run a model/provider experiment in
+that execution.

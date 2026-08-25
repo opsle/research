@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_verified_at": "2026-08-25T05:14:23Z",
+  "last_verified_at": "2026-08-25T05:55:58Z",
   "experiments": [
     {
       "id": "EXP-001",
@@ -48,17 +48,31 @@
         "missing telemetry",
         "interrupted run"
       ],
-      "dataset_fixture_identity": "UNVERIFIED: task-stratified synthetic coding fixtures and immutable hashes have not yet been created.",
+      "dataset_fixture_identity": "UNVERIFIED: task-stratified experimental coding fixtures and immutable hashes have not yet been created. Context Firewall's 30 synthetic conformance fixtures are implementation evidence only, not the EXP-001 dataset.",
       "model_provider_configuration": "UNVERIFIED: no model, provider, version, reasoning effort, or sampling configuration has been selected.",
       "run_identities": [],
       "result_artifacts": [],
+      "prerequisite_progress": [
+        {
+          "repository": "context-firewall",
+          "head_sha": "dd34bd9f681314761f1ca87f339648bf611811f3",
+          "status": "COMPLETED",
+          "evidence": [
+            "https://github.com/opsle/context-firewall/blob/dd34bd9f681314761f1ca87f339648bf611811f3/src/reducer.js",
+            "https://github.com/opsle/context-firewall/blob/dd34bd9f681314761f1ca87f339648bf611811f3/tests/reducer.test.js",
+            "https://github.com/opsle/context-firewall/blob/dd34bd9f681314761f1ca87f339648bf611811f3/fixtures/corpus.js"
+          ],
+          "limitations": "Prototype conformance does not establish model correctness, benchmark readiness, or a safe context-reduction frontier."
+        }
+      ],
       "replication_status": "NOT_STARTED",
       "verdict": "PENDING",
       "blockers": [
-        "No executable Context Firewall reducer or conformance suite exists.",
-        "Fixture identities, correctness oracle, harness, and exact configurations are not frozen."
+        "Decision Evidence Protocol has not validated Context Firewall packet-v1 receipts and escalation semantics.",
+        "Agent Trajectory Profiler lacks raw/reduced payload and escalation fixtures for EXP-001.",
+        "Experimental fixture identities, correctness oracle, baseline/arm harness, exact model/provider configurations, and randomized/blinded task allocation are not frozen."
       ],
-      "next_task": "Implement the dependency-free reducer and synthetic conformance fixtures without launching a model/provider run."
+      "next_task": "Extend Decision Evidence Protocol with Context Firewall packet-v1 receipt and NEEDS_RAW_EVIDENCE conformance cases without launching a model/provider run."
     },
     {
       "id": "LEGACY-001",
