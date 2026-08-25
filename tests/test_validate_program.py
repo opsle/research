@@ -66,6 +66,46 @@ class ProgramRegistryValidationTests(unittest.TestCase):
         errors = self.errors_for(registry=registry)
         self.assertTrue(any("COMPLETE without required completion evidence" in error for error in errors))
 
+    def test_complete_requires_visible_value_evidence(self):
+        registry = copy.deepcopy(self.registry)
+        project = registry["repositories"][0]
+        project["lifecycle_stage"] = "COMPLETE"
+        project["completion_status"] = "COMPLETE"
+        project["program_state"] = "complete"
+        project["blockers"] = []
+        project["completion_evidence"] = [
+            {"gate": gate, "artifact": "https://example.invalid/evidence"}
+            for gate in COMPLETION_GATES
+            if not gate.startswith("visible_value_")
+            and gate not in {"machine_value_receipt", "operator_visible_indicator", "durable_metric_integration"}
+        ]
+        errors = self.errors_for(registry=registry)
+        self.assertTrue(any("machine_value_receipt" in error for error in errors))
+        self.assertTrue(any("operator_visible_indicator" in error for error in errors))
+
+    def test_visible_value_exception_must_be_narrow_and_justified(self):
+        registry = copy.deepcopy(self.registry)
+        project = registry["repositories"][0]
+        project["lifecycle_stage"] = "COMPLETE"
+        project["completion_status"] = "COMPLETE"
+        project["program_state"] = "complete"
+        project["blockers"] = []
+        project["completion_evidence"] = [
+            {"gate": gate, "artifact": "https://example.invalid/evidence"}
+            for gate in COMPLETION_GATES
+        ]
+        target = next(
+            item for item in project["completion_evidence"]
+            if item["gate"] == "machine_value_receipt"
+        )
+        target.update({
+            "disposition": "NOT_APPLICABLE",
+            "exception_scope": "CONVENIENCE",
+            "justification": "too hard",
+        })
+        errors = self.errors_for(registry=registry)
+        self.assertTrue(any("invalid completion exception" in error for error in errors))
+
     def test_nonexistent_dependency_fails(self):
         registry = copy.deepcopy(self.registry)
         registry["repositories"][0]["dependencies"].append("forgotten-project")

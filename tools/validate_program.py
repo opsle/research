@@ -120,6 +120,21 @@ COMPLETION_GATES = frozenset(
         "documentation_examples",
         "publication_material",
         "registry_evidence",
+        "visible_value_instrumentation",
+        "machine_value_receipt",
+        "operator_visible_indicator",
+        "durable_metric_integration",
+        "visible_value_limitations",
+    }
+)
+
+VISIBLE_VALUE_GATES = frozenset(
+    {
+        "visible_value_instrumentation",
+        "machine_value_receipt",
+        "operator_visible_indicator",
+        "durable_metric_integration",
+        "visible_value_limitations",
     }
 )
 
@@ -272,11 +287,28 @@ def validate(
             errors.append(f"{label}: COMPLETE stage and completion_status must agree")
         if complete:
             evidence = repo.get("completion_evidence", [])
-            gate_ids = {
-                item.get("gate")
-                for item in evidence
-                if isinstance(item, dict) and item.get("artifact")
-            }
+            gate_ids = set()
+            for item in evidence:
+                if not isinstance(item, dict) or not item.get("artifact"):
+                    continue
+                gate = item.get("gate")
+                disposition = item.get("disposition", "EVIDENCED")
+                if disposition == "EVIDENCED":
+                    gate_ids.add(gate)
+                    continue
+                valid_exception = (
+                    disposition == "NOT_APPLICABLE"
+                    and gate in VISIBLE_VALUE_GATES
+                    and item.get("exception_scope") == "NON_EXECUTABLE_SPECIFICATION"
+                    and isinstance(item.get("justification"), str)
+                    and len(item["justification"].strip()) >= 20
+                )
+                if valid_exception:
+                    gate_ids.add(gate)
+                else:
+                    errors.append(
+                        f"{label}: invalid completion exception for gate {gate!r}"
+                    )
             missing_gates = sorted(COMPLETION_GATES - gate_ids)
             if missing_gates:
                 errors.append(

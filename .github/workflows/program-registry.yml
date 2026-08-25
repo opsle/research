@@ -21,5 +21,11 @@ jobs:
         run: python tools/validate_program.py
       - name: Test validator
         run: python -m unittest discover -s tests -p 'test_*.py'
+      - name: Validate Prompt 005 receipts
+        run: |
+          python tools/validate_value_receipt.py \
+            program/evidence/prompt-005/context-value-receipt.json
+          python tools/validate_value_receipt.py \
+            program/evidence/prompt-005/decision-value-receipt.json
       - name: Check generated dashboard
         run: python tools/render_program_status.py --check

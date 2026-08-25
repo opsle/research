@@ -1,0 +1,579 @@
+{
+  "protocol_version": "opsle.agent-trajectory-profiler.run-record/v1",
+  "run": {
+    "id": "opsle-prompt-005-dogfood",
+    "task_classification": "implementation-and-release",
+    "work_classification": "public-repository-maintenance",
+    "repository": "opsle/research",
+    "project": "Opsle Prompt 005"
+  },
+  "mechanisms": [
+    {
+      "id": "opsle.context-firewall",
+      "name": "Context Firewall",
+      "version": "0.3.0",
+      "revision": "953c48f1cfd154d6b7ed10b51b87fe54e4df45f2",
+      "configuration_id": "sha256:d4f3db209483b7a8815d21a107b9e58ee175a2a7dc9d32b9215e3e4131b9b045",
+      "policy_id": "tap-subset-policy/v1"
+    },
+    {
+      "id": "opsle.decision-evidence-protocol",
+      "name": "Decision Evidence",
+      "version": "0.3.0",
+      "revision": "b17ae3b41cea7cb0b9e0befe43e885b5aa0e4a09",
+      "configuration_id": "sha256:d4f3db209483b7a8815d21a107b9e58ee175a2a7dc9d32b9215e3e4131b9b045",
+      "policy_id": "opsle.decision-evidence.context-firewall-value/v1"
+    }
+  ],
+  "telemetry": {
+    "raw_evidence_bytes": 3425,
+    "initial_model_visible_bytes": 13027,
+    "escalation_event_count": 1
+  },
+  "events": [
+    {
+      "id": "context-firewall-raw-escalation",
+      "type": "ESCALATION",
+      "operation_id": "prompt-005-context-test-reduction",
+      "status": "REQUIRED",
+      "evidence_refs": [
+        "context-value-receipt"
+      ]
+    }
+  ],
+  "evidence_refs": [
+    "program/evidence/prompt-005-context-firewall-tests.tap",
+    "program/evidence/prompt-005-context-packet.json",
+    "program/evidence/prompt-005-decision-validation.json"
+  ],
+  "value_receipts": [
+    {
+      "evidence": [
+        {
+          "id": "canonical_packet",
+          "kind": "JSON_POINTER",
+          "locator": "/",
+          "trust": "VERIFIED"
+        },
+        {
+          "id": "configuration",
+          "kind": "CONTENT_HASH",
+          "locator": "sha256:d4f3db209483b7a8815d21a107b9e58ee175a2a7dc9d32b9215e3e4131b9b045",
+          "trust": "VERIFIED"
+        },
+        {
+          "id": "input_bytes",
+          "kind": "CONTENT_HASH",
+          "locator": "sha256:32ff7d5ca8d2a3ecb2c3e11754a3b62720ee6a95961e0298e4c4939ddc60cc24",
+          "trust": "VERIFIED"
+        },
+        {
+          "id": "semantic_payload",
+          "kind": "CONTENT_HASH",
+          "locator": "sha256:19fef58dc441ed45666de61a68d1428f5ff6ff9ffdcf76e62da2c4e013d50435",
+          "trust": "VERIFIED"
+        },
+        {
+          "id": "raw_locator",
+          "kind": "RUN_ARTIFACT",
+          "locator": "program/evidence/prompt-005-context-firewall-tests.tap",
+          "trust": "CALLER_SUPPLIED"
+        }
+      ],
+      "limitations": [
+        "No token, cost, latency, correctness, or causal savings claim is made.",
+        "Evidence-event counts cover source transcript events, not derived packet fields.",
+        "Mechanism source revision is caller supplied and is not inspected by the deterministic reducer.",
+        "The raw evidence locator is caller supplied; external existence, immutability, and contents are not verified."
+      ],
+      "measurements": [
+        {
+          "aggregation": {
+            "method": "SUM",
+            "safe": true
+          },
+          "baseline": null,
+          "class": "EXACT",
+          "delta": null,
+          "derivation": null,
+          "direction": "NEUTRAL",
+          "evidence_refs": [
+            "input_bytes"
+          ],
+          "id": "raw_bytes",
+          "limitations": [],
+          "operator_display": false,
+          "result": 3425,
+          "source_verification": "VERIFIED",
+          "unit": "byte"
+        },
+        {
+          "aggregation": {
+            "method": "SUM",
+            "safe": true
+          },
+          "baseline": 3425,
+          "class": "EXACT",
+          "delta": 9602,
+          "derivation": null,
+          "direction": "LOWER_IS_VALUE",
+          "evidence_refs": [
+            "canonical_packet",
+            "input_bytes"
+          ],
+          "id": "initial_model_visible_bytes",
+          "limitations": [
+            "Result is the canonical evidence packet written to model-visible stdout."
+          ],
+          "operator_display": true,
+          "result": 13027,
+          "source_verification": "VERIFIED",
+          "unit": "byte"
+        },
+        {
+          "aggregation": {
+            "method": "SUM",
+            "safe": true
+          },
+          "baseline": 13027,
+          "class": "EXACT",
+          "delta": -9602,
+          "derivation": null,
+          "direction": "HIGHER_IS_VALUE",
+          "evidence_refs": [
+            "canonical_packet",
+            "input_bytes"
+          ],
+          "id": "bytes_initially_avoided",
+          "limitations": [
+            "Signed delta is raw bytes minus initially model-visible bytes; a negative delta indicates expansion."
+          ],
+          "operator_display": true,
+          "result": 3425,
+          "source_verification": "VERIFIED",
+          "unit": "byte"
+        },
+        {
+          "aggregation": {
+            "method": null,
+            "safe": false
+          },
+          "baseline": null,
+          "class": "EXACT",
+          "delta": null,
+          "derivation": null,
+          "direction": "HIGHER_IS_VALUE",
+          "evidence_refs": [
+            "canonical_packet",
+            "input_bytes"
+          ],
+          "id": "initial_reduction_ratio",
+          "limitations": [
+            "Computed as (raw bytes - initially model-visible bytes) / raw bytes.",
+            "Negative values indicate canonical packet expansion.",
+            "Ratios are not directly summable; cumulative ratios must be recomputed from byte totals."
+          ],
+          "operator_display": true,
+          "result": "-9602/3425",
+          "source_verification": "VERIFIED",
+          "unit": "ratio"
+        },
+        {
+          "aggregation": {
+            "method": "SUM",
+            "safe": true
+          },
+          "baseline": null,
+          "class": "EXACT",
+          "delta": null,
+          "derivation": null,
+          "direction": "NEUTRAL",
+          "evidence_refs": [
+            "semantic_payload"
+          ],
+          "id": "original_evidence_events",
+          "limitations": [],
+          "operator_display": false,
+          "result": 54,
+          "source_verification": "VERIFIED",
+          "unit": "event"
+        },
+        {
+          "aggregation": {
+            "method": "SUM",
+            "safe": true
+          },
+          "baseline": null,
+          "class": "EXACT",
+          "delta": null,
+          "derivation": null,
+          "direction": "NEUTRAL",
+          "evidence_refs": [
+            "semantic_payload"
+          ],
+          "id": "retained_evidence_events",
+          "limitations": [],
+          "operator_display": false,
+          "result": 52,
+          "source_verification": "VERIFIED",
+          "unit": "event"
+        },
+        {
+          "aggregation": {
+            "method": "SUM",
+            "safe": true
+          },
+          "baseline": null,
+          "class": "EXACT",
+          "delta": null,
+          "derivation": null,
+          "direction": "NEUTRAL",
+          "evidence_refs": [
+            "semantic_payload"
+          ],
+          "id": "suppressed_evidence_events",
+          "limitations": [],
+          "operator_display": false,
+          "result": 2,
+          "source_verification": "VERIFIED",
+          "unit": "event"
+        },
+        {
+          "aggregation": {
+            "method": "SUM",
+            "safe": true
+          },
+          "baseline": null,
+          "class": "EXACT",
+          "delta": null,
+          "derivation": null,
+          "direction": "PROTECTION_SIGNAL",
+          "evidence_refs": [
+            "semantic_payload"
+          ],
+          "id": "ambiguous_evidence_events",
+          "limitations": [
+            "Counts unclassified source events, including synthetic markers for malformed UTF-8."
+          ],
+          "operator_display": false,
+          "result": 52,
+          "source_verification": "VERIFIED",
+          "unit": "event"
+        },
+        {
+          "aggregation": {
+            "method": null,
+            "safe": false
+          },
+          "baseline": null,
+          "class": "EXACT",
+          "delta": null,
+          "derivation": null,
+          "direction": "NOT_APPLICABLE",
+          "evidence_refs": [
+            "configuration"
+          ],
+          "id": "payload_ceiling_bytes",
+          "limitations": [
+            "No payload ceiling was configured."
+          ],
+          "operator_display": false,
+          "result": null,
+          "source_verification": "VERIFIED",
+          "unit": "byte"
+        },
+        {
+          "aggregation": {
+            "method": null,
+            "safe": false
+          },
+          "baseline": null,
+          "class": "OBSERVED",
+          "delta": null,
+          "derivation": null,
+          "direction": "PROTECTION_SIGNAL",
+          "evidence_refs": [
+            "canonical_packet"
+          ],
+          "id": "escalation_required",
+          "limitations": [],
+          "operator_display": true,
+          "result": true,
+          "source_verification": "OBSERVED",
+          "unit": "boolean"
+        },
+        {
+          "aggregation": {
+            "method": null,
+            "safe": false
+          },
+          "baseline": null,
+          "class": "OBSERVED",
+          "delta": null,
+          "derivation": null,
+          "direction": "PROTECTION_SIGNAL",
+          "evidence_refs": [
+            "raw_locator"
+          ],
+          "id": "raw_locator_available",
+          "limitations": [
+            "Availability means a caller supplied a locator; the external artifact is not verified by the reducer."
+          ],
+          "operator_display": false,
+          "result": true,
+          "source_verification": "CALLER_SUPPLIED",
+          "unit": "boolean"
+        }
+      ],
+      "mechanism": {
+        "id": "opsle.context-firewall",
+        "name": "Context Firewall",
+        "revision": "953c48f1cfd154d6b7ed10b51b87fe54e4df45f2",
+        "version": "0.3.0"
+      },
+      "operation": {
+        "configuration_id": "sha256:d4f3db209483b7a8815d21a107b9e58ee175a2a7dc9d32b9215e3e4131b9b045",
+        "id": "prompt-005-context-test-reduction",
+        "name": "test-output-reduction",
+        "policy_id": "tap-subset-policy/v1"
+      },
+      "run": {
+        "id": "opsle-prompt-005-dogfood"
+      },
+      "schema": "opsle.value-receipt.v1"
+    },
+    {
+      "evidence": [
+        {
+          "id": "validation_result",
+          "kind": "JSON_POINTER",
+          "locator": "/",
+          "trust": "VERIFIED"
+        }
+      ],
+      "limitations": [
+        "Validation reports checks, trust, sufficiency, and rejection; it does not claim a failure was prevented.",
+        "Validation of a packet is not evidence that reduced context preserves model correctness.",
+        "Caller-supplied source material was independently matched to the packet."
+      ],
+      "measurements": [
+        {
+          "aggregation": {
+            "method": null,
+            "safe": false
+          },
+          "baseline": null,
+          "class": "OBSERVED",
+          "delta": null,
+          "derivation": null,
+          "direction": "PROTECTION_SIGNAL",
+          "evidence_refs": [
+            "validation_result"
+          ],
+          "id": "validation_performed",
+          "limitations": [],
+          "operator_display": false,
+          "result": true,
+          "source_verification": "OBSERVED",
+          "unit": "boolean"
+        },
+        {
+          "aggregation": {
+            "method": null,
+            "safe": false
+          },
+          "baseline": null,
+          "class": "OBSERVED",
+          "delta": null,
+          "derivation": null,
+          "direction": "PROTECTION_SIGNAL",
+          "evidence_refs": [
+            "validation_result"
+          ],
+          "id": "validation_classification",
+          "limitations": [],
+          "operator_display": true,
+          "result": "VALID",
+          "source_verification": "OBSERVED",
+          "unit": "state"
+        },
+        {
+          "aggregation": {
+            "method": "SUM",
+            "safe": true
+          },
+          "baseline": null,
+          "class": "EXACT",
+          "delta": null,
+          "derivation": null,
+          "direction": "NEUTRAL",
+          "evidence_refs": [
+            "validation_result"
+          ],
+          "id": "verification_claims_evaluated",
+          "limitations": [],
+          "operator_display": true,
+          "result": 7,
+          "source_verification": "VERIFIED",
+          "unit": "count"
+        },
+        {
+          "aggregation": {
+            "method": null,
+            "safe": false
+          },
+          "baseline": null,
+          "class": "OBSERVED",
+          "delta": null,
+          "derivation": null,
+          "direction": "PROTECTION_SIGNAL",
+          "evidence_refs": [
+            "validation_result"
+          ],
+          "id": "source_backed_verification",
+          "limitations": [],
+          "operator_display": true,
+          "result": true,
+          "source_verification": "OBSERVED",
+          "unit": "boolean"
+        },
+        {
+          "aggregation": {
+            "method": null,
+            "safe": false
+          },
+          "baseline": null,
+          "class": "OBSERVED",
+          "delta": null,
+          "derivation": null,
+          "direction": "PROTECTION_SIGNAL",
+          "evidence_refs": [
+            "validation_result"
+          ],
+          "id": "hash_verification_performed",
+          "limitations": [],
+          "operator_display": false,
+          "result": true,
+          "source_verification": "OBSERVED",
+          "unit": "boolean"
+        },
+        {
+          "aggregation": {
+            "method": null,
+            "safe": false
+          },
+          "baseline": null,
+          "class": "OBSERVED",
+          "delta": null,
+          "derivation": null,
+          "direction": "PROTECTION_SIGNAL",
+          "evidence_refs": [
+            "validation_result"
+          ],
+          "id": "evidence_sufficiency",
+          "limitations": [],
+          "operator_display": true,
+          "result": "NEEDS_RAW_EVIDENCE",
+          "source_verification": "OBSERVED",
+          "unit": "state"
+        },
+        {
+          "aggregation": {
+            "method": null,
+            "safe": false
+          },
+          "baseline": null,
+          "class": "OBSERVED",
+          "delta": null,
+          "derivation": null,
+          "direction": "PROTECTION_SIGNAL",
+          "evidence_refs": [
+            "validation_result"
+          ],
+          "id": "evidence_sufficient",
+          "limitations": [],
+          "operator_display": false,
+          "result": false,
+          "source_verification": "OBSERVED",
+          "unit": "boolean"
+        },
+        {
+          "aggregation": {
+            "method": null,
+            "safe": false
+          },
+          "baseline": null,
+          "class": "OBSERVED",
+          "delta": null,
+          "derivation": null,
+          "direction": "PROTECTION_SIGNAL",
+          "evidence_refs": [
+            "validation_result"
+          ],
+          "id": "tamper_detected",
+          "limitations": [],
+          "operator_display": true,
+          "result": false,
+          "source_verification": "OBSERVED",
+          "unit": "boolean"
+        },
+        {
+          "aggregation": {
+            "method": null,
+            "safe": false
+          },
+          "baseline": null,
+          "class": "OBSERVED",
+          "delta": null,
+          "derivation": null,
+          "direction": "PROTECTION_SIGNAL",
+          "evidence_refs": [
+            "validation_result"
+          ],
+          "id": "inconsistency_detected",
+          "limitations": [],
+          "operator_display": true,
+          "result": false,
+          "source_verification": "OBSERVED",
+          "unit": "boolean"
+        },
+        {
+          "aggregation": {
+            "method": null,
+            "safe": false
+          },
+          "baseline": null,
+          "class": "OBSERVED",
+          "delta": null,
+          "derivation": null,
+          "direction": "PROTECTION_SIGNAL",
+          "evidence_refs": [
+            "validation_result"
+          ],
+          "id": "raw_escalation_required",
+          "limitations": [],
+          "operator_display": true,
+          "result": true,
+          "source_verification": "OBSERVED",
+          "unit": "boolean"
+        }
+      ],
+      "mechanism": {
+        "id": "opsle.decision-evidence-protocol",
+        "name": "Decision Evidence",
+        "revision": "b17ae3b41cea7cb0b9e0befe43e885b5aa0e4a09",
+        "version": "0.3.0"
+      },
+      "operation": {
+        "configuration_id": "sha256:d4f3db209483b7a8815d21a107b9e58ee175a2a7dc9d32b9215e3e4131b9b045",
+        "id": "prompt-005-context-test-reduction",
+        "name": "context-firewall-validation",
+        "policy_id": "opsle.decision-evidence.context-firewall-value/v1"
+      },
+      "run": {
+        "id": "opsle-prompt-005-dogfood"
+      },
+      "schema": "opsle.value-receipt.v1"
+    }
+  ]
+}
