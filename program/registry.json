@@ -511,7 +511,7 @@
       "active_experiment_ids": ["LEGACY-001"],
       "blockers": ["Verified remote HEAD reconciliation is not yet mechanically fetched, and the program has no canonical measured concept experiment."],
       "next_task": "Freeze the content-addressed EXP-001 task corpus, correctness oracle, arm definitions, and offline value-receipt/trajectory harness; keep EXP-001 planned and launch no model/provider subjects.",
-      "evidence": ["https://github.com/opsle/research/pull/2", "https://github.com/opsle/research/pull/2/files", "https://github.com/opsle/research/blob/03fc907f63a16599ba12cb05eb15c542c69e5dd5/program/registry.json"],
+      "evidence": ["https://github.com/opsle/research/pull/5", "https://github.com/opsle/research/pull/5/files", "https://github.com/opsle/research/blob/03fc907f63a16599ba12cb05eb15c542c69e5dd5/program/registry.json"],
       "completion_criteria": ["Keep the 19-repository ledger and dashboard mechanically consistent.", "Retain immutable experiment evidence and lifecycle promotion proof.", "Publish program documentation without stale or unsupported claims."],
       "completion_evidence": [],
       "completion_status": "INCOMPLETE",
