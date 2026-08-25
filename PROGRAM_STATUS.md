@@ -4,7 +4,7 @@
 
 **Coverage: 19/19 expected repositories; duplicates: 0.**
 
-Last verified: `2026-08-25T05:55:58Z`. HEADs are the verified default-branch revisions, not an assumption about later changes.
+Last verified: `2026-08-25T06:38:48Z`. HEADs are the verified default-branch revisions, not an assumption about later changes.
 
 ## Portfolio totals
 
@@ -12,8 +12,8 @@ Last verified: `2026-08-25T05:55:58Z`. HEADs are the verified default-branch rev
 |---|---:|
 | `THEORY` | 12 |
 | `SPECIFIED` | 0 |
-| `PROTOTYPED` | 7 |
-| `VERIFIED` | 0 |
+| `PROTOTYPED` | 6 |
+| `VERIFIED` | 1 |
 | `BENCHMARK_READY` | 0 |
 | `EXPERIMENTED` | 0 |
 | `REPRODUCED` | 0 |
@@ -30,8 +30,8 @@ Program state totals: active 4; waiting 15; complete 0.
 | 2 | [semantic-edit-protocol](https://github.com/opsle/semantic-edit-protocol) | concept | `29caad5c0382` | `THEORY` | [none; placeholder source directory only](https://github.com/opsle/semantic-edit-protocol/blob/29caad5c03827cde17aabd71c38bc25899413a33/THEORY.md); placeholder only; no automated tests | No executable semantic operation, validator, tests, or benchmark fixtures. | Specify one JavaScript symbol-replacement operation with preconditions, rollback behavior, and conformance cases. | `agent-resource-claims`, `agent-trajectory-profiler` | waiting |
 | 3 | [durable-supervisor](https://github.com/opsle/durable-supervisor) | concept | `555ebedb992a` | `THEORY` | [none; placeholder source directory only](https://github.com/opsle/durable-supervisor/blob/555ebedb992ac74236bb7da8230b4d6b0489830b/THEORY.md); placeholder only; no automated tests | Portable ledger, scheduler, and wakeup fixtures do not yet exist. | After ledger and wakeup fixtures exist, specify the minimum reconstruction envelope and failure behavior. | `agent-state-ledger`, `agent-scheduler-runtime`, `event-driven-agent-wakeup`, `decision-evidence-protocol` | waiting |
 | 4 | [event-driven-agent-wakeup](https://github.com/opsle/event-driven-agent-wakeup) | concept | `a6209860c215` | `PROTOTYPED` | [dependency-free JavaScript state-machine prototype](https://github.com/opsle/event-driven-agent-wakeup/blob/a6209860c2151450cc28ed648bc8c2631c8db7ef/src/runtime.js); 2 of 2 automated tests passed locally at the verified HEAD | Current prototype is in-memory and has no restart or durable-store harness. | Add a deterministic persisted-event fixture covering restart, duplicate delivery, wrong-wait, and timeout cases. | `agent-state-ledger` | waiting |
-| 5 | [context-firewall](https://github.com/opsle/context-firewall) | concept | `dd34bd9f6813` | `PROTOTYPED` | [dependency-free deterministic JavaScript TAP-subset reducer, CLI, evidence receipts, payload ceilings, and synthetic conformance corpus](https://github.com/opsle/context-firewall/blob/dd34bd9f681314761f1ca87f339648bf611811f3/src/reducer.js); 33 of 33 automated tests and 30 of 30 synthetic conformance fixtures passed locally at the verified HEAD; PR #1 CI passed | Decision Evidence Protocol does not yet validate packet-v1 receipts, Agent Trajectory Profiler lacks raw/reduced payload fixtures, and EXP-001 task fixtures, correctness oracle, harness, exact model configuration, and randomized/blinded allocation remain unfrozen. | After downstream receipt validation exists, freeze content-addressed EXP-001 reducer packets and a correctness oracle without launching a provider run. | `decision-evidence-protocol`, `agent-trajectory-profiler` | active |
-| 6 | [decision-evidence-protocol](https://github.com/opsle/decision-evidence-protocol) | concept | `7050f83406a7` | `PROTOTYPED` | [dependency-free JavaScript envelope validator prototype](https://github.com/opsle/decision-evidence-protocol/blob/7050f83406a709da84e4b4770556319f767bbeaf/src/validate.js); 2 of 2 automated tests passed locally at the verified HEAD | Validator covers only a minimal envelope and has no cross-tool fixture suite. | Add reducer receipt and escalation conformance cases required by EXP-001. | — | active |
+| 5 | [context-firewall](https://github.com/opsle/context-firewall) | concept | `dd34bd9f6813` | `PROTOTYPED` | [dependency-free deterministic JavaScript TAP-subset reducer, CLI, evidence receipts, payload ceilings, and synthetic conformance corpus](https://github.com/opsle/context-firewall/blob/dd34bd9f681314761f1ca87f339648bf611811f3/src/reducer.js); 33 of 33 automated tests and 30 of 30 synthetic conformance fixtures passed locally at the verified HEAD; PR #1 CI passed | Agent Trajectory Profiler lacks raw/reduced payload fixtures, and EXP-001 task fixtures, correctness oracle, harness, exact model configuration, and randomized/blinded allocation remain unfrozen. | Freeze content-addressed EXP-001 reducer packets and a correctness oracle after Trajectory Profiler payload fixtures exist, without launching a provider run. | `decision-evidence-protocol`, `agent-trajectory-profiler` | active |
+| 6 | [decision-evidence-protocol](https://github.com/opsle/decision-evidence-protocol) | concept | `cc220abfa27a` | `VERIFIED` | [dependency-free generic envelope validator plus independent Context Firewall packet-v1 receipt/source validator, canonical CLI, and self-contained conformance suite](https://github.com/opsle/decision-evidence-protocol/blob/cc220abfa27a0bd20d80c481da09f6fe532bdabc/src/context-firewall-v1.js); 46 of 46 automated tests and 24 of 24 public-safe conformance vectors passed locally at the verified HEAD; 5 of 5 exact-revision Context Firewall interoperability cases, including tamper rejection, passed; PR #1 CI passed | Additional real tool classes, measured decision adequacy, a comparative benchmark, and independent replication are missing. | Add one second public tool-class receipt profile with independently generated conformance vectors and failure evidence before widening protocol claims. | — | active |
 | 7 | [agent-state-ledger](https://github.com/opsle/agent-state-ledger) | concept | `acab03b1ff71` | `THEORY` | [none; placeholder source directory only](https://github.com/opsle/agent-state-ledger/blob/acab03b1ff7168222552050e21e7553b07d00e7c/THEORY.md); placeholder only; no automated tests | No portable schema, implementation, projection oracle, or replay fixtures. | Specify a minimal append-only event schema and deterministic projection with contradiction fixtures. | — | waiting |
 | 8 | [agent-scheduler-runtime](https://github.com/opsle/agent-scheduler-runtime) | concept | `d97cd3c218b2` | `THEORY` | [none; placeholder source directory only](https://github.com/opsle/agent-scheduler-runtime/blob/d97cd3c218b20e0b2b0e09873f6a3d15c396b3a0/THEORY.md); placeholder only; no automated tests | Ledger and claim interfaces are not portable or executable in these repositories. | After ledger schema exists, specify deterministic readiness and lease transitions with a fake-clock harness. | `agent-resource-claims`, `agent-state-ledger` | waiting |
 | 9 | [verifiable-agent-handoff](https://github.com/opsle/verifiable-agent-handoff) | concept | `399e5cfae943` | `PROTOTYPED` | [dependency-free JavaScript HMAC manifest prototype](https://github.com/opsle/verifiable-agent-handoff/blob/399e5cfae94345affa3f087f0f6eb9e77669d33c/src/seal.js); 3 of 3 automated tests passed locally at the verified HEAD | Prototype authenticates a manifest but does not build, transport, or reconstruct artifacts. | Build a synthetic artifact round-trip harness with tamper, missing-object, and source-destruction cases. | `decision-evidence-protocol` | waiting |
@@ -48,15 +48,15 @@ Program state totals: active 4; waiting 15; complete 0.
 
 ## Highest-priority workstream
 
-EXP-001 prerequisites: validate Context Firewall receipts in Decision Evidence Protocol, then add Trajectory Profiler payload fixtures before freezing the experiment harness.
+EXP-001 prerequisites: add Agent Trajectory Profiler raw/reduced payload and escalation fixtures, then freeze content-addressed task fixtures and a correctness oracle before any experiment.
 
 `EXP-001` — **PLANNED** — How much context can an AI coding agent safely not see?
 
-Blockers: Decision Evidence Protocol has not validated Context Firewall packet-v1 receipts and escalation semantics. Agent Trajectory Profiler lacks raw/reduced payload and escalation fixtures for EXP-001. Experimental fixture identities, correctness oracle, baseline/arm harness, exact model/provider configurations, and randomized/blinded task allocation are not frozen.
+Blockers: Agent Trajectory Profiler lacks raw/reduced payload and escalation fixtures for EXP-001. Experimental fixture identities, correctness oracle, baseline/arm harness, exact model/provider configurations, and randomized/blinded task allocation are not frozen.
 
 ## Exact recommended next execution
 
-Extend the dependency-free Decision Evidence Protocol validator with Context Firewall packet-v1 receipt, suppression, measurement, and NEEDS_RAW_EVIDENCE conformance cases at exact revisions; do not run a model/provider experiment.
+Extend Agent Trajectory Profiler with deterministic Context Firewall raw/reduced payload, suppression, and NEEDS_RAW_EVIDENCE fixtures at exact revisions; target VERIFIED only if tests, fixture identities, and cross-project compatibility pass; do not run a model/provider experiment.
 
 ## Mechanical source of truth
 
