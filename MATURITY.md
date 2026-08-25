@@ -1,4 +1,9 @@
-# Maturity model
+# Legacy maturity labels
+
+The authoritative promotion model is now
+[`program/LIFECYCLE.md`](program/LIFECYCLE.md). The labels below are retained to
+interpret bootstrap documents and repository READMEs created before the program
+ledger. They must not be used for new registry promotions.
 
 Only these exact states are valid:
 

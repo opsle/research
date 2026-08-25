@@ -1,4 +1,9 @@
-# Concept registry
+# Concept overview
+
+This is the bootstrap narrative and subordinate-concept map. The authoritative
+current repository inventory and lifecycle state are in
+[`program/registry.json`](program/registry.json); the human-readable generated
+view is [`PROGRAM_STATUS.md`](PROGRAM_STATUS.md).
 
 All repositories are public, independently versioned, and part of Opsle Research. Initial SHA means the first public commit created during the 2026-08-25 bootstrap.
 
