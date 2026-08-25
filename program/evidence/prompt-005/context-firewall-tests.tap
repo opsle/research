@@ -1,0 +1,54 @@
+
+> @opsle/context-firewall@0.3.0 test
+> node --test
+
+✔ rejects an unsupported input protocol (2.822097ms)
+✔ same input and configuration produce byte-identical output (17.663163ms)
+✔ canonical output contains no generated time or random identity (0.859122ms)
+✔ packet identifies exact protocol, reducer, policy, and configuration (0.934362ms)
+✔ large all-pass output is substantially reduced with correct aggregates (4.45568ms)
+✔ a failed test retains identity, message, assertion, and location (1.076012ms)
+✔ multiple failures remain independent and ordered (0.750681ms)
+✔ pass, fail, and skipped counts are aggregated correctly (0.973373ms)
+✔ failure stack lines retain their classified evidence (0.630521ms)
+✔ stdout and stderr provenance are distinct and hashed together (1.010372ms)
+✔ ANSI is ignored for classification but retained in evidence bytes (0.425911ms)
+✔ superficial PASS, FAIL, error, and warning words do not become verdicts (0.641981ms)
+✔ runner crash and timeout evidence are explicit (0.552631ms)
+✔ unexplained nonzero exit requires raw evidence (1.362584ms)
+✔ interrupted output retains recognized evidence and escalates (0.30635ms)
+✔ malformed and ambiguous text cannot become false certainty (0.45858ms)
+✔ contradictory TAP aggregates require raw evidence (0.32531ms)
+✔ invalid UTF-8 is hash-addressed and escalated, never dropped (1.410714ms)
+✔ missing raw reference is distinct from reducer destruction (0.412102ms)
+✔ missing source identity is explicit and indeterminate (0.486271ms)
+✔ missing operation and exit identities fail closed (0.370001ms)
+✔ an exact payload boundary is honored byte for byte (10.261705ms)
+✔ payload pressure never silently truncates critical evidence (1.886184ms)
+✔ payload priority replaces warning text with an addressable reference first (1.070723ms)
+✔ a ceiling below the safe packet size fails with machine details and no packet (3.74858ms)
+✔ original and reduced byte and event measurements are exact (0.579061ms)
+✔ emits the complete opsle.value-receipt.v1 Context Firewall profile (2.989298ms)
+✔ caller-supplied mechanism revision affects only the deterministic value receipt (7.87016ms)
+✔ value receipt byte deltas, ratio, and event partition are exact (2.971567ms)
+✔ value receipt preserves expansion instead of fabricating avoided bytes (1.264334ms)
+✔ value receipt exposes reduction and the exact named operator indicator (2.607926ms)
+✔ value receipt records ambiguity, escalation, and raw-locator trust (0.565352ms)
+✔ missing raw locator and zero-byte ratio remain explicitly unavailable (0.784932ms)
+✔ payload ceiling value remains exact configuration and is never summed (0.595311ms)
+✔ duration is caller-supplied semantic evidence and no runtime latency is hashed (0.3146ms)
+✔ missing final newline has an exact event count (0.35132ms)
+✔ CLI reads JSON from stdin and emits the canonical packet (82.618654ms)
+✔ CLI writes a canonical value receipt only to an explicitly requested sidecar (91.772927ms)
+✔ CLI reports malformed JSON as a machine-readable error (68.254288ms)
+✔ CLI keeps an impossible-ceiling error off model-visible stdout (87.205685ms)
+✔ all 30 synthetic fixtures conform (24.605552ms)
+✔ conformance output is deterministic (37.418462ms)
+ℹ tests 42
+ℹ suites 0
+ℹ pass 42
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 616.341398

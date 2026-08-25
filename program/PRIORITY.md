@@ -5,20 +5,23 @@ checklist.
 
 ## Workstream 1: EXP-001 prerequisites and experiment
 
-1. Context Firewall's deterministic test-output reducer and synthetic
-   conformance corpus are now prototyped at an exact revision.
-2. Extend the Decision Evidence Protocol validator for packet-v1 receipts,
-   suppression accounting, measurements, and explicit raw-output escalation.
-3. Extend Agent Trajectory Profiler fixtures to measure visible payload, gross
-   payload, escalation, and correctness-gated comparison.
-4. Freeze the EXP-001 fixture set and harness, then run baseline and reduction
-   arms. Add Verifiable Agent Handoff only if an arm destroys or isolates the
-   source environment.
+1. Context Firewall now emits deterministic Visible Value receipts and a named
+   operator indicator while keeping its compact packet canonical.
+2. Decision Evidence now independently validates those packets and receipts and
+   emits its own validation receipt and named operator indicator.
+3. Agent Trajectory Profiler now ingests compatible receipts and produces
+   deterministic class/unit/trust-safe per-run and cumulative summaries.
+4. Freeze the EXP-001 content-addressed task corpus, deterministic correctness
+   oracle, arm definitions, and offline harness. Only after those artifacts pass
+   their gates may a separately authorized execution consider model subjects.
+   Add Verifiable Agent Handoff only if an arm destroys or isolates the source
+   environment.
 
 These three foundational projects are naturally tested together. The expected
 first major measured experiment remains EXP-001 because no repository evidence
 establishes a stronger prerequisite experiment. The experiment itself must wait
-until the reducer, fixtures, correctness oracle, and exact configuration exist.
+until the task corpus, correctness oracle, offline harness, arm definitions, and
+exact configurations exist.
 
 ## Workstream 2: durable orchestration
 
@@ -50,7 +53,9 @@ conversation-local.
 
 ## Exact next execution
 
-Extend the dependency-free Decision Evidence Protocol validator with Context
-Firewall packet-v1 receipt, suppression, measurement, and NEEDS_RAW_EVIDENCE
-conformance cases at exact revisions. Do not run a model/provider experiment in
-that execution.
+Across Research, Context Firewall, Decision Evidence Protocol, and Agent
+Trajectory Profiler, freeze the content-addressed EXP-001 task corpus,
+deterministic correctness oracle, arm definitions, and offline harness using the
+new value-receipt and trajectory infrastructure. Target `BENCHMARK_READY` only
+where every applicable lifecycle gate is evidenced. Do not run model/provider
+subjects in that execution.

@@ -12,6 +12,16 @@ Every Opsle execution must:
 8. Record blockers and unknowns instead of silently bypassing them.
 9. Identify one exact next meaningful task for every touched repository.
 10. Return a bounded outcome summary rather than raw execution transcripts.
+11. When any Opsle mechanism runs, preserve its machine-readable Visible Value
+    receipt and keep its named operator indicator outside canonical model
+    context.
+12. Include a dedicated `Opsle Value` section in the execution summary naming
+    each mechanism used, whether it ran, the exact or observed result,
+    measurement class, and useful evidence reference. Missing measurements stay
+    missing; do not fabricate zeroes or savings.
+13. Classify everyday telemetry as observational. Do not relabel an accumulated
+    production corpus as causal or `EXPERIMENTAL` evidence without the controlled
+    method required by `program/VISIBLE_VALUE_CONTRACT.md`.
 
 Run `python3 tools/validate_program.py` and
 `python3 tools/render_program_status.py --check` before committing a registry
@@ -26,3 +36,13 @@ reuse, plus separate authorization to create a repository.
 
 Operational integration, deployment, provider use, and product migration are
 separate scopes. Registry work does not authorize any of them.
+
+## Operator and model channels
+
+Operator-visible telemetry is not automatically decision-relevant model
+context. CLI mechanisms should keep canonical decision-relevant machine JSON on
+stdout and emit a single concise, stably named indicator on stderr at a
+meaningful transition or completion point. A full machine value receipt may use
+a caller-requested deterministic sidecar when embedding it would inflate compact
+model context. Display timestamps, ambient repository state, and other
+nondeterministic fields must not contaminate deterministic semantic output.

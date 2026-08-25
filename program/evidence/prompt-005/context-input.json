@@ -1,0 +1,21 @@
+{
+  "protocol_version": "opsle.context-firewall.test-run-input/v1",
+  "operation_id": "prompt-005-context-test-reduction",
+  "source": {
+    "id": "opsle/context-firewall-tests",
+    "run_id": "opsle-prompt-005-dogfood",
+    "raw_evidence_ref": "program/evidence/prompt-005-context-firewall-tests.tap"
+  },
+  "process": {
+    "exit_code": 0,
+    "duration_ms": null,
+    "interrupted": false
+  },
+  "streams": [
+    {
+      "name": "stdout",
+      "encoding": "utf8",
+      "data": "\n> @opsle/context-firewall@0.3.0 test\n> node --test\n\n✔ rejects an unsupported input protocol (2.822097ms)\n✔ same input and configuration produce byte-identical output (17.663163ms)\n✔ canonical output contains no generated time or random identity (0.859122ms)\n✔ packet identifies exact protocol, reducer, policy, and configuration (0.934362ms)\n✔ large all-pass output is substantially reduced with correct aggregates (4.45568ms)\n✔ a failed test retains identity, message, assertion, and location (1.076012ms)\n✔ multiple failures remain independent and ordered (0.750681ms)\n✔ pass, fail, and skipped counts are aggregated correctly (0.973373ms)\n✔ failure stack lines retain their classified evidence (0.630521ms)\n✔ stdout and stderr provenance are distinct and hashed together (1.010372ms)\n✔ ANSI is ignored for classification but retained in evidence bytes (0.425911ms)\n✔ superficial PASS, FAIL, error, and warning words do not become verdicts (0.641981ms)\n✔ runner crash and timeout evidence are explicit (0.552631ms)\n✔ unexplained nonzero exit requires raw evidence (1.362584ms)\n✔ interrupted output retains recognized evidence and escalates (0.30635ms)\n✔ malformed and ambiguous text cannot become false certainty (0.45858ms)\n✔ contradictory TAP aggregates require raw evidence (0.32531ms)\n✔ invalid UTF-8 is hash-addressed and escalated, never dropped (1.410714ms)\n✔ missing raw reference is distinct from reducer destruction (0.412102ms)\n✔ missing source identity is explicit and indeterminate (0.486271ms)\n✔ missing operation and exit identities fail closed (0.370001ms)\n✔ an exact payload boundary is honored byte for byte (10.261705ms)\n✔ payload pressure never silently truncates critical evidence (1.886184ms)\n✔ payload priority replaces warning text with an addressable reference first (1.070723ms)\n✔ a ceiling below the safe packet size fails with machine details and no packet (3.74858ms)\n✔ original and reduced byte and event measurements are exact (0.579061ms)\n✔ emits the complete opsle.value-receipt.v1 Context Firewall profile (2.989298ms)\n✔ caller-supplied mechanism revision affects only the deterministic value receipt (7.87016ms)\n✔ value receipt byte deltas, ratio, and event partition are exact (2.971567ms)\n✔ value receipt preserves expansion instead of fabricating avoided bytes (1.264334ms)\n✔ value receipt exposes reduction and the exact named operator indicator (2.607926ms)\n✔ value receipt records ambiguity, escalation, and raw-locator trust (0.565352ms)\n✔ missing raw locator and zero-byte ratio remain explicitly unavailable (0.784932ms)\n✔ payload ceiling value remains exact configuration and is never summed (0.595311ms)\n✔ duration is caller-supplied semantic evidence and no runtime latency is hashed (0.3146ms)\n✔ missing final newline has an exact event count (0.35132ms)\n✔ CLI reads JSON from stdin and emits the canonical packet (82.618654ms)\n✔ CLI writes a canonical value receipt only to an explicitly requested sidecar (91.772927ms)\n✔ CLI reports malformed JSON as a machine-readable error (68.254288ms)\n✔ CLI keeps an impossible-ceiling error off model-visible stdout (87.205685ms)\n✔ all 30 synthetic fixtures conform (24.605552ms)\n✔ conformance output is deterministic (37.418462ms)\nℹ tests 42\nℹ suites 0\nℹ pass 42\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 616.341398\n"
+    }
+  ]
+}

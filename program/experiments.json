@@ -48,53 +48,53 @@
         "missing telemetry",
         "interrupted run"
       ],
-      "dataset_fixture_identity": "UNVERIFIED: task-stratified experimental coding fixtures and immutable hashes have not yet been created. Context Firewall's 30 reducer fixtures and Agent Trajectory Profiler's 14 measurement fixtures are implementation/conformance evidence only, not the EXP-001 dataset.",
+      "dataset_fixture_identity": "UNVERIFIED: the content-addressed task corpus and deterministic correctness oracle have not yet been frozen. Context Firewall's 30 reducer fixtures, Decision Evidence's 24 vectors, Agent Trajectory Profiler's 14 measurement fixtures, and Prompt 005 value-receipt telemetry are implementation/conformance or observational evidence only, not the EXP-001 dataset.",
       "model_provider_configuration": "UNVERIFIED: no model, provider, version, reasoning effort, or sampling configuration has been selected.",
       "run_identities": [],
       "result_artifacts": [],
       "prerequisite_progress": [
         {
           "repository": "context-firewall",
-          "head_sha": "dd34bd9f681314761f1ca87f339648bf611811f3",
+          "head_sha": "953c48f1cfd154d6b7ed10b51b87fe54e4df45f2",
           "status": "COMPLETED",
           "evidence": [
-            "https://github.com/opsle/context-firewall/blob/dd34bd9f681314761f1ca87f339648bf611811f3/src/reducer.js",
-            "https://github.com/opsle/context-firewall/blob/dd34bd9f681314761f1ca87f339648bf611811f3/tests/reducer.test.js",
-            "https://github.com/opsle/context-firewall/blob/dd34bd9f681314761f1ca87f339648bf611811f3/fixtures/corpus.js"
+            "https://github.com/opsle/context-firewall/blob/953c48f1cfd154d6b7ed10b51b87fe54e4df45f2/src/reducer.js",
+            "https://github.com/opsle/context-firewall/blob/953c48f1cfd154d6b7ed10b51b87fe54e4df45f2/src/value-receipt.js",
+            "https://github.com/opsle/context-firewall/blob/953c48f1cfd154d6b7ed10b51b87fe54e4df45f2/fixtures/corpus.js"
           ],
-          "limitations": "Prototype conformance does not establish model correctness, benchmark readiness, or a safe context-reduction frontier."
+          "limitations": "Prototype conformance and observational Visible Value telemetry do not establish model correctness, benchmark readiness, causal benefit, or a safe context-reduction frontier."
         },
         {
           "repository": "decision-evidence-protocol",
-          "head_sha": "cc220abfa27a0bd20d80c481da09f6fe532bdabc",
+          "head_sha": "b17ae3b41cea7cb0b9e0befe43e885b5aa0e4a09",
           "status": "COMPLETED",
           "evidence": [
-            "https://github.com/opsle/decision-evidence-protocol/blob/cc220abfa27a0bd20d80c481da09f6fe532bdabc/src/context-firewall-v1.js",
-            "https://github.com/opsle/decision-evidence-protocol/blob/cc220abfa27a0bd20d80c481da09f6fe532bdabc/tests/context-firewall-v1.test.js",
-            "https://github.com/opsle/decision-evidence-protocol/blob/cc220abfa27a0bd20d80c481da09f6fe532bdabc/fixtures/context-firewall-packet-v1/vectors.json",
-            "https://github.com/opsle/decision-evidence-protocol/pull/1"
+            "https://github.com/opsle/decision-evidence-protocol/blob/b17ae3b41cea7cb0b9e0befe43e885b5aa0e4a09/src/context-firewall-v1.js",
+            "https://github.com/opsle/decision-evidence-protocol/blob/b17ae3b41cea7cb0b9e0befe43e885b5aa0e4a09/src/context-firewall-value.js",
+            "https://github.com/opsle/decision-evidence-protocol/blob/b17ae3b41cea7cb0b9e0befe43e885b5aa0e4a09/fixtures/context-firewall-packet-v1/vectors.json",
+            "https://github.com/opsle/decision-evidence-protocol/pull/2"
           ],
-          "limitations": "Receipt and source conformance establish deterministic protocol validation, not model correctness, benchmark readiness, comparative benefit, or a safe context-reduction frontier."
+          "limitations": "Receipt and source conformance plus validation telemetry establish deterministic protocol behavior, not model correctness, benchmark readiness, comparative benefit, or a safe context-reduction frontier."
         },
         {
           "repository": "agent-trajectory-profiler",
-          "head_sha": "26f8edfb1e7d06ee453760724f1889d1663a06f9",
+          "head_sha": "0a89661640721d6a39f127514b993d29bd728d47",
           "status": "COMPLETED",
           "evidence": [
-            "https://github.com/opsle/agent-trajectory-profiler/blob/26f8edfb1e7d06ee453760724f1889d1663a06f9/src/context-evidence.js",
-            "https://github.com/opsle/agent-trajectory-profiler/blob/26f8edfb1e7d06ee453760724f1889d1663a06f9/tests/context-evidence.test.js",
-            "https://github.com/opsle/agent-trajectory-profiler/blob/26f8edfb1e7d06ee453760724f1889d1663a06f9/fixtures/context-firewall-manifest.json",
-            "https://github.com/opsle/agent-trajectory-profiler/pull/1"
+            "https://github.com/opsle/agent-trajectory-profiler/blob/0a89661640721d6a39f127514b993d29bd728d47/src/context-evidence.js",
+            "https://github.com/opsle/agent-trajectory-profiler/blob/0a89661640721d6a39f127514b993d29bd728d47/src/value-summary.js",
+            "https://github.com/opsle/agent-trajectory-profiler/blob/0a89661640721d6a39f127514b993d29bd728d47/fixtures/context-firewall-manifest.json",
+            "https://github.com/opsle/agent-trajectory-profiler/pull/2"
           ],
-          "limitations": "Measurement conformance establishes deterministic byte/event and escalation accounting, not preserved model correctness, benchmark readiness, comparative benefit, or a safe context-reduction frontier."
+          "limitations": "Measurement and receipt-summary conformance establish deterministic accounting and class preservation, not preserved model correctness, benchmark readiness, comparative benefit, or a safe context-reduction frontier."
         }
       ],
       "replication_status": "NOT_STARTED",
       "verdict": "PENDING",
       "blockers": [
-        "Experimental fixture identities, correctness oracle, baseline/arm harness, exact model/provider configurations, and randomized/blinded task allocation are not frozen."
+        "The content-addressed task corpus, deterministic correctness oracle, arm definitions, offline harness, exact model/provider configurations, and randomized/blinded task allocation are not frozen."
       ],
-      "next_task": "Freeze content-addressed EXP-001 task fixtures and a deterministic correctness oracle across Context Firewall and Agent Trajectory Profiler without launching a model/provider run."
+      "next_task": "Freeze the content-addressed EXP-001 task corpus, deterministic correctness oracle, arm definitions, and offline harness using value receipts and trajectory records; do not launch model/provider subjects."
     },
     {
       "id": "LEGACY-001",

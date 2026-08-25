@@ -33,7 +33,14 @@ gate. A file's existence is not evidence that its contents satisfy a gate.
 11. known limitations;
 12. usable documentation and examples;
 13. relevant site or publication material;
-14. registry evidence tying each claim to an exact revision and artifact.
+14. registry evidence tying each claim to an exact revision and artifact;
+15. mechanism instrumentation that records whether the mechanism ran;
+16. a conforming machine-readable Visible Value receipt;
+17. a concise, stably named operator-visible indicator kept outside canonical
+    model-visible output;
+18. per-run summary integration and compatibility with durable metrics;
+19. documented Visible Value claim limits, uncertainty, and measurement-quality
+    semantics.
 
 Protocols and abstractions do not need an artificial full runtime. They may meet
 the implementation gate with an executable reference validator, conformance
@@ -42,6 +49,14 @@ suite, policy evaluator, or equivalent artifact. The repository's
 evidence must identify the executable artifact and tests. A README, theory,
 interface sketch, placeholder directory, or unmeasured prototype never qualifies
 by itself.
+
+The five Visible Value gates apply to implementations, validators, CLIs, policy
+evaluators, renderers, and other mechanisms that can meaningfully execute. A
+narrow exception is permitted only for a specification that cannot meaningfully
+execute. The completion evidence must identify each non-applicable gate, use the
+exception scope `NON_EXECUTABLE_SPECIFICATION`, provide a public artifact, and
+state a specific justification. Convenience, missing instrumentation, or a
+documentation-first implementation is not an exception.
 
 Evidence can invalidate an earlier promotion. Demotion is required when a gate is
 no longer supported. Rejected or superseded work retains its highest evidenced
