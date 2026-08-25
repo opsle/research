@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_verified_at": "2026-08-25T05:55:58Z",
+  "last_verified_at": "2026-08-25T06:38:48Z",
   "experiments": [
     {
       "id": "EXP-001",
@@ -63,16 +63,27 @@
             "https://github.com/opsle/context-firewall/blob/dd34bd9f681314761f1ca87f339648bf611811f3/fixtures/corpus.js"
           ],
           "limitations": "Prototype conformance does not establish model correctness, benchmark readiness, or a safe context-reduction frontier."
+        },
+        {
+          "repository": "decision-evidence-protocol",
+          "head_sha": "cc220abfa27a0bd20d80c481da09f6fe532bdabc",
+          "status": "COMPLETED",
+          "evidence": [
+            "https://github.com/opsle/decision-evidence-protocol/blob/cc220abfa27a0bd20d80c481da09f6fe532bdabc/src/context-firewall-v1.js",
+            "https://github.com/opsle/decision-evidence-protocol/blob/cc220abfa27a0bd20d80c481da09f6fe532bdabc/tests/context-firewall-v1.test.js",
+            "https://github.com/opsle/decision-evidence-protocol/blob/cc220abfa27a0bd20d80c481da09f6fe532bdabc/fixtures/context-firewall-packet-v1/vectors.json",
+            "https://github.com/opsle/decision-evidence-protocol/pull/1"
+          ],
+          "limitations": "Receipt and source conformance establish deterministic protocol validation, not model correctness, benchmark readiness, comparative benefit, or a safe context-reduction frontier."
         }
       ],
       "replication_status": "NOT_STARTED",
       "verdict": "PENDING",
       "blockers": [
-        "Decision Evidence Protocol has not validated Context Firewall packet-v1 receipts and escalation semantics.",
         "Agent Trajectory Profiler lacks raw/reduced payload and escalation fixtures for EXP-001.",
         "Experimental fixture identities, correctness oracle, baseline/arm harness, exact model/provider configurations, and randomized/blinded task allocation are not frozen."
       ],
-      "next_task": "Extend Decision Evidence Protocol with Context Firewall packet-v1 receipt and NEEDS_RAW_EVIDENCE conformance cases without launching a model/provider run."
+      "next_task": "Add deterministic Context Firewall raw/reduced payload, suppression, and NEEDS_RAW_EVIDENCE fixtures to Agent Trajectory Profiler without launching a model/provider run."
     },
     {
       "id": "LEGACY-001",
