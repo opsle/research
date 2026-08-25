@@ -1,0 +1,41 @@
+name: Experiment record
+description: Propose or record a falsifiable Opsle experiment
+title: "experiment: "
+labels:
+  - experiment
+body:
+  - type: textarea
+    id: hypothesis
+    attributes:
+      label: Hypothesis
+      description: State one claim that evidence could falsify.
+    validations:
+      required: true
+  - type: textarea
+    id: correctness
+    attributes:
+      label: Correctness gate
+      description: Define the result that must hold before efficiency is compared.
+    validations:
+      required: true
+  - type: textarea
+    id: baseline
+    attributes:
+      label: Baseline and treatment
+      description: Identify the baseline, treatment, fixture, and controlled variables.
+    validations:
+      required: true
+  - type: textarea
+    id: observations
+    attributes:
+      label: Observable evidence
+      description: List model, provider, versions, prompt, environment, repetitions, tool activity, results, cost or tokens when available, and confounders.
+    validations:
+      required: true
+  - type: textarea
+    id: negative
+    attributes:
+      label: Negative-result handling
+      description: Explain how failures and rejected results will be retained.
+    validations:
+      required: true
