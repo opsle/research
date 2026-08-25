@@ -48,7 +48,7 @@
         "missing telemetry",
         "interrupted run"
       ],
-      "dataset_fixture_identity": "UNVERIFIED: task-stratified experimental coding fixtures and immutable hashes have not yet been created. Context Firewall's 30 synthetic conformance fixtures are implementation evidence only, not the EXP-001 dataset.",
+      "dataset_fixture_identity": "UNVERIFIED: task-stratified experimental coding fixtures and immutable hashes have not yet been created. Context Firewall's 30 reducer fixtures and Agent Trajectory Profiler's 14 measurement fixtures are implementation/conformance evidence only, not the EXP-001 dataset.",
       "model_provider_configuration": "UNVERIFIED: no model, provider, version, reasoning effort, or sampling configuration has been selected.",
       "run_identities": [],
       "result_artifacts": [],
@@ -75,15 +75,26 @@
             "https://github.com/opsle/decision-evidence-protocol/pull/1"
           ],
           "limitations": "Receipt and source conformance establish deterministic protocol validation, not model correctness, benchmark readiness, comparative benefit, or a safe context-reduction frontier."
+        },
+        {
+          "repository": "agent-trajectory-profiler",
+          "head_sha": "26f8edfb1e7d06ee453760724f1889d1663a06f9",
+          "status": "COMPLETED",
+          "evidence": [
+            "https://github.com/opsle/agent-trajectory-profiler/blob/26f8edfb1e7d06ee453760724f1889d1663a06f9/src/context-evidence.js",
+            "https://github.com/opsle/agent-trajectory-profiler/blob/26f8edfb1e7d06ee453760724f1889d1663a06f9/tests/context-evidence.test.js",
+            "https://github.com/opsle/agent-trajectory-profiler/blob/26f8edfb1e7d06ee453760724f1889d1663a06f9/fixtures/context-firewall-manifest.json",
+            "https://github.com/opsle/agent-trajectory-profiler/pull/1"
+          ],
+          "limitations": "Measurement conformance establishes deterministic byte/event and escalation accounting, not preserved model correctness, benchmark readiness, comparative benefit, or a safe context-reduction frontier."
         }
       ],
       "replication_status": "NOT_STARTED",
       "verdict": "PENDING",
       "blockers": [
-        "Agent Trajectory Profiler lacks raw/reduced payload and escalation fixtures for EXP-001.",
         "Experimental fixture identities, correctness oracle, baseline/arm harness, exact model/provider configurations, and randomized/blinded task allocation are not frozen."
       ],
-      "next_task": "Add deterministic Context Firewall raw/reduced payload, suppression, and NEEDS_RAW_EVIDENCE fixtures to Agent Trajectory Profiler without launching a model/provider run."
+      "next_task": "Freeze content-addressed EXP-001 task fixtures and a deterministic correctness oracle across Context Firewall and Agent Trajectory Profiler without launching a model/provider run."
     },
     {
       "id": "LEGACY-001",
