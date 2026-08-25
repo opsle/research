@@ -30,13 +30,21 @@ Important mechanisms should remain understandable, falsifiable, benchmarkable, r
 
 ## Start here
 
-- [CONCEPTS.md](CONCEPTS.md) — public registry and subordinate concepts.
+- [PROGRAM_STATUS.md](PROGRAM_STATUS.md) — generated 19-repository dashboard.
+- [program/registry.json](program/registry.json) — authoritative machine-readable ledger.
+- [program/experiments.json](program/experiments.json) — canonical experiment registry.
+- [program/LIFECYCLE.md](program/LIFECYCLE.md) — evidence gates for lifecycle promotion.
+- [program/OPERATING_RULES.md](program/OPERATING_RULES.md) — mandatory execution rules.
+- [CONCEPTS.md](CONCEPTS.md) — concept overview and subordinate concepts.
 - [METHODOLOGY.md](METHODOLOGY.md) — evidence and experiment rules.
-- [MATURITY.md](MATURITY.md) — exact maturity states.
+- [MATURITY.md](MATURITY.md) — legacy bootstrap maturity labels.
 - [ARCHITECTURE.md](ARCHITECTURE.md) — cross-repository system map.
 - [OPSLE_EXTRACTION_MAP.md](OPSLE_EXTRACTION_MAP.md) — read-only source audit and provenance.
 - [OPEN_QUESTIONS.md](OPEN_QUESTIONS.md) — what remains unanswered.
 - [OPSLE_SITE_PLAN.md](OPSLE_SITE_PLAN.md) — future opsle.com content architecture.
+
+Validate ledger integrity with `python3 tools/validate_program.py`. Regenerate the
+dashboard with `python3 tools/render_program_status.py`.
 
 ## Product relationship
 

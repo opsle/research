@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "last_verified_at": "2026-08-25T05:14:23Z",
+  "experiments": [
+    {
+      "id": "EXP-001",
+      "title": "How much context can an AI coding agent safely not see?",
+      "status": "PLANNED",
+      "hypothesis": "Policy-driven reduction can remove substantial operational payload without reducing correctness when provenance and raw-evidence escalation remain available.",
+      "participating_repositories": [
+        "context-firewall",
+        "decision-evidence-protocol",
+        "agent-trajectory-profiler",
+        "verifiable-agent-handoff"
+      ],
+      "roles": {
+        "primary": "context-firewall",
+        "expected_support": [
+          "decision-evidence-protocol",
+          "agent-trajectory-profiler"
+        ],
+        "potential_support": [
+          "verifiable-agent-handoff"
+        ]
+      },
+      "baseline": "Unreduced raw tool output supplied under the same task, model, prompt, fixture, and correctness gate.",
+      "experimental_arms": [
+        "failure-only deterministic reduction",
+        "bounded aggregation with provenance",
+        "bounded aggregation with policy-triggered raw escalation"
+      ],
+      "primary_metric": "Correctness pass rate by visible-context fraction.",
+      "secondary_metrics": [
+        "input bytes and provider-recorded input tokens",
+        "suppression ratio",
+        "raw-evidence escalation rate",
+        "missing-evidence defect rate",
+        "latency, cost, and trajectory payload amplification"
+      ],
+      "correctness_gate": "Each arm must produce the fixture-defined correct repository result and pass the same deterministic tests and safety assertions before efficiency comparison.",
+      "failure_classifications": [
+        "system-under-test correctness failure",
+        "unsafe evidence omission",
+        "expected escalation",
+        "unexpected escalation",
+        "harness failure",
+        "provider or model failure",
+        "missing telemetry",
+        "interrupted run"
+      ],
+      "dataset_fixture_identity": "UNVERIFIED: task-stratified synthetic coding fixtures and immutable hashes have not yet been created.",
+      "model_provider_configuration": "UNVERIFIED: no model, provider, version, reasoning effort, or sampling configuration has been selected.",
+      "run_identities": [],
+      "result_artifacts": [],
+      "replication_status": "NOT_STARTED",
+      "verdict": "PENDING",
+      "blockers": [
+        "No executable Context Firewall reducer or conformance suite exists.",
+        "Fixture identities, correctness oracle, harness, and exact configurations are not frozen."
+      ],
+      "next_task": "Implement the dependency-free reducer and synthetic conformance fixtures without launching a model/provider run."
+    },
+    {
+      "id": "LEGACY-001",
+      "title": "Graphify plus Antigravity semantic adapter integration observation",
+      "status": "RECORDED",
+      "hypothesis": "A bounded read-only subscription-CLI adapter can add schema-valid semantic graph fragments without an API-key semantic backend.",
+      "participating_repositories": [
+        "research"
+      ],
+      "roles": {
+        "primary": "research",
+        "expected_support": [],
+        "potential_support": []
+      },
+      "baseline": "Graphify deterministic AST extraction alone.",
+      "experimental_arms": [
+        "Two bounded read-only Antigravity subscription CLI semantic passes"
+      ],
+      "primary_metric": "Schema-valid semantic nodes and edges admitted after source verification.",
+      "secondary_metrics": [
+        "provider-recorded input tokens",
+        "provider-recorded output tokens",
+        "graph health warnings"
+      ],
+      "correctness_gate": "Fragments must match the strict JSON schema and remain subordinate to direct source verification.",
+      "failure_classifications": [
+        "invalid fragment",
+        "unsupported inference",
+        "dangling extraction edge",
+        "same-endpoint collapse",
+        "provider failure"
+      ],
+      "dataset_fixture_identity": "Taslos Tasks read-only snapshot at e2b061dd4ee1404ef59b27a9a76bf97a8fbbde1c, as already documented publicly in OPSLE_EXTRACTION_MAP.md.",
+      "model_provider_configuration": "Antigravity subscription CLI; exact model identity and configuration were not recorded and remain UNVERIFIED.",
+      "run_identities": [],
+      "result_artifacts": [
+        "experiments/graphify-antigravity/README.md",
+        "OPSLE_EXTRACTION_MAP.md"
+      ],
+      "replication_status": "NOT_REPLICATED",
+      "verdict": "An integration path was observed; completeness and comparative benefit were not established.",
+      "blockers": [
+        "Exact run identities, model configuration, fixtures, and independent replication were not recorded."
+      ],
+      "next_task": "Retain as legacy evidence; do not promote a concept stage from this observation alone."
+    }
+  ]
+}
