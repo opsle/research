@@ -55,6 +55,15 @@ adapter, and a committed encrypted arm mapping without changing this offline
 freeze. It still contains zero subject runs and does not itself authorize a
 provider request.
 
+The provider-free one-block coordinator is recorded in
+[`coordinator-v1/`](coordinator-v1/). It validates one exact four-arm block,
+four separately supplied authorizations, pinned dependency revisions, subject
+visibility, deterministic result-envelope templates, and private artifact
+commitments. Its committed qualification evidence is in
+[`program/evidence/exp-001-block-coordinator/`](../../program/evidence/exp-001-block-coordinator/).
+Qualification uses non-launchable fixture authorizations and therefore neither
+authorizes nor executes a provider request.
+
 ## Provider-free verification
 
 The harness fails closed unless the three pinned public Opsle dependencies are

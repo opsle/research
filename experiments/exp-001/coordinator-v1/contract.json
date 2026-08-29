@@ -1,0 +1,43 @@
+{
+  "protocol_version": "opsle.exp001.block-coordinator-contract/v1",
+  "experiment_id": "EXP-001",
+  "status": "PROVIDER_FREE_QUALIFIED_NO_SUBJECT_RUN",
+  "preregistration_identity": "sha256:e8a0ed7a303e5f4b1f5df089046b6e2fe5ab281b60f9aaeba64ddd2fe972f8c7",
+  "subject_configuration_id": "sha256:bc46a7d72ab776db966e84d9d473efbd0a7e2028ce993eecf4a09d22577ee6cf",
+  "allocation_index_identity": "sha256:e32f0a4c94842f44b713d40e89c81ea85c98db13927834792620629a5ed95600",
+  "block_contract": {
+    "block_count": 1,
+    "subject_count": 4,
+    "required_arm_count": 4,
+    "authorization_count": 4,
+    "provider_calls": 0,
+    "experiment_results": 0
+  },
+  "authorization_contract": {
+    "live_class": "LIVE_PROVIDER_RUN",
+    "qualification_class": "PROVIDER_FREE_FIXTURE",
+    "maximum_runs_per_subject": 1,
+    "minimum_spend_ceiling_usd": 6.3,
+    "fixture_authorizations_forbidden_from_live_preflight": true,
+    "authorization_consumed_by_preflight": false
+  },
+  "private_artifacts": [
+    "block-plan.json",
+    "manifest.json",
+    "subjects/<subject-label>/prompt.md",
+    "subjects/<subject-label>/task.py",
+    "subjects/<subject-label>/evidence.txt",
+    "coordinator-evidence/<subject-label>/*",
+    "result-envelopes/<subject-label>.json",
+    "value-receipt.json"
+  ],
+  "result_envelope_state": "AWAITING_SEPARATE_PROVIDER_EXECUTION",
+  "subject_visibility": "Only prompt.md, task.py, and evidence.txt for that opaque label may enter subject context; arm identity, allocation material, authorizations, coordinator evidence, and result envelopes remain outside it.",
+  "claim_limits": [
+    "Provider-free qualification is not an EXP-001 subject run or result.",
+    "Authorization validation is not authorization consumption or provider execution.",
+    "Prepared result envelopes contain no provider response, correctness result, or experimental classification.",
+    "No token, cost, latency, correctness, or causal savings claim is made."
+  ],
+  "identity": "sha256:873d28781f9f7fed3ffabb8e95b73cdf5d88bdb5f5b04dd7189b8e55f3466a89"
+}

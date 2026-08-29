@@ -54,5 +54,7 @@ jobs:
             program/evidence/exp-001-offline-freeze/context-firewall-value-receipt.json
           python tools/validate_value_receipt.py \
             program/evidence/exp-001-offline-freeze/decision-evidence-value-receipt.json
+          python tools/validate_value_receipt.py \
+            program/evidence/exp-001-block-coordinator/value-receipt.json
       - name: Check generated dashboard
         run: python tools/render_program_status.py --check
