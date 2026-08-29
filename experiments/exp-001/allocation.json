@@ -1,0 +1,45 @@
+{
+  "protocol_version": "opsle.exp001.allocation-method/v1",
+  "experiment_id": "EXP-001",
+  "status": "METHOD_FROZEN_SEED_UNSET",
+  "unit": "one fresh subject on one task, arm, and repetition",
+  "blocking": {
+    "block_key": [
+      "task_id",
+      "model_provider_configuration_id",
+      "repetition"
+    ],
+    "requirement": "Every completed block contains each of the four arms exactly once."
+  },
+  "ordering_algorithm": {
+    "name": "SHA256_SORT_V1",
+    "input_frame": "seed UTF-8 + NUL + task_id UTF-8 + NUL + configuration_id UTF-8 + NUL + decimal repetition UTF-8 + NUL + arm_id UTF-8",
+    "order": "ascending raw SHA-256 digest bytes with arm_id as the collision tiebreaker"
+  },
+  "blinding": {
+    "subject_label_format": "EXP001-BLOCK-<opaque block id>-<position>",
+    "subject_must_not_receive": [
+      "arm id",
+      "arm mapping",
+      "allocation seed",
+      "accepted implementation",
+      "oracle source"
+    ],
+    "mapping_owner": "future provider-independent experiment coordinator"
+  },
+  "preregistration_requirements": [
+    "exact model/provider configuration identity",
+    "repetition count and stopping rule",
+    "random seed commitment published before subject launch",
+    "sealed arm mapping retained outside subject context",
+    "subject-adapter revision and environment identity"
+  ],
+  "unset_fields": {
+    "model_provider_configuration_id": null,
+    "repetition_count": null,
+    "seed_commitment": null,
+    "allocation_mapping_artifact": null,
+    "subject_adapter_revision": null
+  },
+  "identity": "sha256:6ef1e63dd51bdd967cd9ea472ebd70714bbd50a053ba1df7491f4dbe64595a57"
+}

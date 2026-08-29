@@ -1,0 +1,75 @@
+{
+  "protocol_version": "opsle.exp001.offline-freeze/v1",
+  "experiment_id": "EXP-001",
+  "status": "OFFLINE_COMPONENTS_FROZEN",
+  "question": "How much context can an AI coding agent safely not see?",
+  "hypothesis": "Policy-driven reduction can remove substantial operational payload without reducing correctness when provenance and raw-evidence escalation remain available.",
+  "correctness_gate": "Each arm must produce the fixture-defined correct repository result and pass the same deterministic oracle before efficiency comparison.",
+  "primary_metric": "Correctness pass rate by final model-visible context fraction.",
+  "secondary_metrics": [
+    "initial and final model-visible bytes",
+    "provider-recorded input tokens when later available",
+    "suppression ratio",
+    "raw-evidence escalation rate",
+    "missing-evidence defect rate",
+    "provider-recorded latency and cost when later available",
+    "trajectory payload amplification"
+  ],
+  "failure_classifications": [
+    "SYSTEM_UNDER_TEST_CORRECTNESS_FAILURE",
+    "UNSAFE_EVIDENCE_OMISSION",
+    "EXPECTED_ESCALATION",
+    "UNEXPECTED_ESCALATION",
+    "HARNESS_FAILURE",
+    "PROVIDER_OR_MODEL_FAILURE",
+    "MISSING_TELEMETRY",
+    "INTERRUPTED_RUN"
+  ],
+  "pinned_dependencies": {
+    "context-firewall": "953c48f1cfd154d6b7ed10b51b87fe54e4df45f2",
+    "decision-evidence-protocol": "b17ae3b41cea7cb0b9e0befe43e885b5aa0e4a09",
+    "agent-trajectory-profiler": "0a89661640721d6a39f127514b993d29bd728d47"
+  },
+  "artifacts": {
+    "corpus_manifest": {
+      "path": "corpus/manifest.json",
+      "sha256": "sha256:894fb85a8f2c49784abbfb5977c6b04dc85607ff52ed6ecd9075d62f31ba32dd"
+    },
+    "arm_manifest": {
+      "path": "arms.json",
+      "sha256": "sha256:b772c45c6e0c58af0ce505b69d62b78bd8ba763387630dee79ca89ccd1f13104"
+    },
+    "allocation_method": {
+      "path": "allocation.json",
+      "sha256": "sha256:598ec030e6465c946c252c114aeb0d2d58d552a924d1693a95e6b59bf61d0e86"
+    },
+    "oracle": {
+      "path": "oracle.py",
+      "sha256": "sha256:7ececd6467d0957305cd824f33964c3bcefab36d57bae1643cc01c75f4dbc81d"
+    },
+    "harness": {
+      "path": "harness.py",
+      "sha256": "sha256:4ab2188b5543aafcfffe7cc8627115e892b90d5bdcff349ad1e0cf36b1f7a122"
+    },
+    "trajectory_bridge": {
+      "path": "interop-profile.mjs",
+      "sha256": "sha256:5aed200b633c04a0ae3fc866254c977805dc7aabd1683fb207e1ccf84e37cae2"
+    }
+  },
+  "unfrozen_launch_inputs": [
+    "model/provider configuration identity",
+    "reasoning effort and sampling configuration",
+    "repetition count and stopping rule",
+    "allocation seed commitment and sealed mapping",
+    "subject adapter and environment revision"
+  ],
+  "run_count": 0,
+  "provider_model_run_count": 0,
+  "claim_limits": [
+    "Offline qualification is not an EXP-001 subject run or result.",
+    "The corpus is Python-only and supports no cross-language claim.",
+    "Byte measurements do not establish token, cost, latency, correctness, or causal savings.",
+    "No safe context-reduction frontier is established before controlled subject runs and replication."
+  ],
+  "identity": "sha256:6ac668a2fd6b4390825a7f1470f1f8cdab05a6d2d01b41d4cfd4412e93df74d8"
+}

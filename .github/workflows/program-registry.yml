@@ -17,10 +17,33 @@ jobs:
       - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
+      - name: Checkout pinned Context Firewall
+        uses: actions/checkout@v7
+        with:
+          repository: opsle/context-firewall
+          ref: 953c48f1cfd154d6b7ed10b51b87fe54e4df45f2
+          path: .deps/context-firewall
+          persist-credentials: false
+      - name: Checkout pinned Decision Evidence
+        uses: actions/checkout@v7
+        with:
+          repository: opsle/decision-evidence-protocol
+          ref: b17ae3b41cea7cb0b9e0befe43e885b5aa0e4a09
+          path: .deps/decision-evidence-protocol
+          persist-credentials: false
+      - name: Checkout pinned Trajectory Profiler
+        uses: actions/checkout@v7
+        with:
+          repository: opsle/agent-trajectory-profiler
+          ref: 0a89661640721d6a39f127514b993d29bd728d47
+          path: .deps/agent-trajectory-profiler
+          persist-credentials: false
       - name: Validate registry
         run: python tools/validate_program.py
       - name: Test validator
         run: python -m unittest discover -s tests -p 'test_*.py'
+      - name: Qualify EXP-001 offline freeze
+        run: python experiments/exp-001/harness.py verify
       - name: Validate Prompt 005 receipts
         run: |
           python tools/validate_value_receipt.py \
