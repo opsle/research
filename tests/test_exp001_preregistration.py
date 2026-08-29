@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import importlib.util
 import json
-import subprocess
 import sys
 import tempfile
 import unittest
@@ -112,43 +111,18 @@ class Exp001PreregistrationTests(unittest.TestCase):
         self.assertEqual(result["api_call_count"], 2)
         self.assertEqual(result["tool_call_count"], 1)
 
-    def test_live_path_fails_before_provider_without_exact_authorization(self):
+    def test_unbound_authorization_is_rejected(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
-            workspace = root / "workspace"
-            workspace.mkdir()
-            (workspace / "task.py").write_text("VALUE = 1\n", encoding="utf-8")
-            prompt = root / "prompt.md"
-            evidence = root / "evidence.txt"
             authorization = root / "authorization.json"
-            prompt.write_text("Set VALUE to 2.\n", encoding="utf-8")
-            evidence.write_text("Current result fails.\n", encoding="utf-8")
             authorization.write_text("{}\n", encoding="utf-8")
-            result = subprocess.run(
-                [
-                    sys.executable,
-                    str(PREREG / "subject_adapter.py"),
-                    "execute",
-                    "--workspace",
-                    str(workspace),
-                    "--prompt",
-                    str(prompt),
-                    "--evidence",
-                    str(evidence),
-                    "--authorization",
-                    str(authorization),
-                    "--subject-label",
+            with self.assertRaisesRegex(ADAPTER.SubjectAdapterError, "authorization"):
+                ADAPTER.verify_authorization(
+                    authorization,
+                    self.preregistration["identity"],
+                    self.config["subject_limits"]["maximum_spend_usd_per_subject"],
                     self.index["entries"][0]["subject_label"],
-                    "--output",
-                    str(root / "result.json"),
-                ],
-                env={"PATH": str(Path(sys.executable).parent)},
-                capture_output=True,
-                check=False,
-            )
-        self.assertEqual(result.returncode, 1)
-        error = json.loads(result.stderr)
-        self.assertIn("authorization", error["message"])
+                )
 
 
 if __name__ == "__main__":

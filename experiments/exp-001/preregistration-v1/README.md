@@ -79,9 +79,12 @@ python3 \
 ```
 
 The provider-free self-test injects a fake transport; it does not authenticate
-or call OpenAI. The live `execute` command additionally requires a
-non-repository authorization artifact bound to the preregistration identity and
-one opaque subject label, permitting exactly one run and accepting the USD 6.30
-conservative ceiling. All four label-specific authorizations for one balanced
-block must exist before its first subject launches.
+or call OpenAI. The public verification command is portable and reports whether
+the current host matches the registered subject environment. A launch-host
+preflight must add `--require-environment` and fail closed on any mismatch.
+The live `execute` command enforces that exact environment and additionally
+requires a non-repository authorization artifact bound to the preregistration
+identity and one opaque subject label, permitting exactly one run and accepting
+the USD 6.30 conservative ceiling. All four label-specific authorizations for
+one balanced block must exist before its first subject launches.
 Preregistration is not authorization for a 240-subject campaign.

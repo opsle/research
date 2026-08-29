@@ -62,7 +62,11 @@ def verify_identity(value: dict[str, Any], label: str) -> None:
         raise SubjectAdapterError(f"{label} identity mismatch")
 
 
-def verify_environment(config: dict[str, Any]) -> dict[str, Any]:
+def verify_environment(
+    config: dict[str, Any],
+    *,
+    required: bool,
+) -> dict[str, Any]:
     expected = config["subject_environment"]
     observed = {
         "machine": platform.machine(),
@@ -71,13 +75,23 @@ def verify_environment(config: dict[str, Any]) -> dict[str, Any]:
         "python_implementation": platform.python_implementation(),
         "ssl": ssl.OPENSSL_VERSION,
     }
-    for field in ("machine", "python", "python_implementation"):
-        if observed[field] != expected[field]:
+    matching = all(
+        observed[field] == expected[field]
+        for field in ("machine", "python", "python_implementation")
+    )
+    if required and not matching:
+        for field in ("machine", "python", "python_implementation"):
+            if observed[field] == expected[field]:
+                continue
             raise SubjectAdapterError(
                 f"subject environment {field} expected {expected[field]!r}, "
                 f"found {observed[field]!r}"
             )
-    return observed
+    return {
+        "matches_registered_environment": matching,
+        "observed": observed,
+        "required": required,
+    }
 
 
 def response_tools() -> list[dict[str, Any]]:
@@ -287,7 +301,7 @@ def run_subject(
     raise SubjectAdapterError("subject API-call budget exhausted")
 
 
-def verify_preregistration() -> dict[str, Any]:
+def verify_preregistration(*, require_environment: bool = False) -> dict[str, Any]:
     config = load_object(ROOT / "subject-config.json")
     preregistration = load_object(ROOT / "preregistration.json")
     index = load_object(ROOT / "allocation-index.json")
@@ -305,7 +319,7 @@ def verify_preregistration() -> dict[str, Any]:
         raise SubjectAdapterError("allocation configuration identity is not bound")
     return {
         "allocation_index_identity": index["identity"],
-        "environment": verify_environment(config),
+        "environment": verify_environment(config, required=require_environment),
         "preregistration_identity": preregistration["identity"],
         "provider_model_runs": 0,
         "subject_configuration_id": config["identity"],
@@ -391,7 +405,8 @@ def self_test(config: dict[str, Any], workspace: Path) -> dict[str, Any]:
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     subparsers = parser.add_subparsers(dest="command", required=True)
-    subparsers.add_parser("verify")
+    verify = subparsers.add_parser("verify")
+    verify.add_argument("--require-environment", action="store_true")
     test = subparsers.add_parser("self-test")
     test.add_argument("--workspace", type=Path, required=True)
     execute = subparsers.add_parser("execute")
@@ -403,13 +418,17 @@ def main(argv: list[str] | None = None) -> int:
     execute.add_argument("--output", type=Path, required=True)
     args = parser.parse_args(argv)
     try:
-        verification = verify_preregistration()
         config = load_object(ROOT / "subject-config.json")
         if args.command == "verify":
+            verification = verify_preregistration(
+                require_environment=args.require_environment
+            )
             result = verification
         elif args.command == "self-test":
+            verify_preregistration()
             result = self_test(config, args.workspace)
         else:
+            verification = verify_preregistration(require_environment=True)
             index = load_object(ROOT / "allocation-index.json")
             labels = {
                 item.get("subject_label")

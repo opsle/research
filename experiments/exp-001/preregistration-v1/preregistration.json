@@ -60,7 +60,7 @@
     },
     "subject_adapter": {
       "path": "subject_adapter.py",
-      "sha256": "sha256:66727a50fba57dc7f7fd0f7bc27d41034905f2d43c4fbbfa7587899a94095429"
+      "sha256": "sha256:1d5e5aabb893f2b3742dbfd706ab42fece49c5a93d40004dd4d3d20dde538328"
     },
     "allocation_tool": {
       "path": "allocation_tool.py",
@@ -84,5 +84,5 @@
     "The bounded Python-only corpus cannot establish a general context-safety frontier.",
     "No token, cost, latency, correctness, or causal benefit is measured before authorized subject runs."
   ],
-  "identity": "sha256:967f00ad57753d7b16b166e9b8d1021952407df08dd25e16e78b619c2c4ba847"
+  "identity": "sha256:e8a0ed7a303e5f4b1f5df089046b6e2fe5ab281b60f9aaeba64ddd2fe972f8c7"
 }
