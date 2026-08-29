@@ -206,6 +206,47 @@ class ProgramRegistryValidationTests(unittest.TestCase):
             any("verification artifact hash drifted" in error for error in errors)
         )
 
+    def test_exp001_block_coordinator_qualification_is_required(self):
+        experiments = copy.deepcopy(self.experiments)
+        del experiments["experiments"][0]["block_coordinator_qualification"]
+        errors = self.errors_for(experiments=experiments)
+        self.assertTrue(
+            any(
+                "block_coordinator_qualification must be an object" in error
+                for error in errors
+            )
+        )
+
+    def test_exp001_block_coordinator_cannot_claim_provider_runs(self):
+        experiments = copy.deepcopy(self.experiments)
+        experiments["experiments"][0]["block_coordinator_qualification"][
+            "provider_model_runs_added"
+        ] = 1
+        errors = self.errors_for(experiments=experiments)
+        self.assertTrue(
+            any("provider_model_runs_added must be 0" in error for error in errors)
+        )
+
+    def test_exp001_block_coordinator_release_cannot_drift(self):
+        experiments = copy.deepcopy(self.experiments)
+        experiments["experiments"][0]["block_coordinator_qualification"][
+            "research_release_sha"
+        ] = "0" * 40
+        errors = self.errors_for(experiments=experiments)
+        self.assertTrue(
+            any("release SHA must match research" in error for error in errors)
+        )
+
+    def test_exp001_block_coordinator_evidence_hash_cannot_drift(self):
+        experiments = copy.deepcopy(self.experiments)
+        experiments["experiments"][0]["block_coordinator_qualification"][
+            "qualification_artifact_sha256"
+        ] = "sha256:" + "0" * 64
+        errors = self.errors_for(experiments=experiments)
+        self.assertTrue(
+            any("qualification_artifact_sha256 drifted" in error for error in errors)
+        )
+
     def test_dashboard_is_current(self):
         expected = (ROOT / "PROGRAM_STATUS.md").read_text(encoding="utf-8")
         self.assertEqual(render(self.registry, self.experiments), expected)

@@ -94,15 +94,49 @@
         "verification_artifact": "program/evidence/exp-001-preregistration/verification-report.json",
         "verification_artifact_sha256": "sha256:b20a7c216e8bc87a589993eb131fdcecf81206823b51c4ddfd85c2e5ba33fc2e",
         "qualification": "PASS",
-        "lifecycle_impact": "NO_PROMOTION: launch controls are frozen and provider-free verified, but no balanced-block coordinator, authorized subject, measured correctness result, or replication exists.",
+    "lifecycle_impact": "NO_PROMOTION: launch controls are frozen and provider-free verified, but no authorized subject, measured correctness result, or replication exists.",
         "limitations": [
           "Preregistration is not provider/model authorization; all run and result ledgers remain empty.",
           "The public model identifier does not prove immutable weights because no distinct dated snapshot was listed.",
           "The allocation remains blinded only while the coordinator seed stays outside Git and every subject context.",
-          "The provider-free subject adapter and offline replay establish contract behavior, not model correctness or comparative benefit."
-        ]
-      },
-      "prerequisite_progress": [
+      "The provider-free subject adapter and offline replay establish contract behavior, not model correctness or comparative benefit."
+    ]
+  },
+  "block_coordinator_qualification": {
+    "status": "PROVIDER_FREE_QUALIFIED_NO_SUBJECT_RUN",
+    "research_release_sha": "9ee43197880c18d4e185cf7e29e02a151d22a12e",
+    "contract_identity": "sha256:873d28781f9f7fed3ffabb8e95b73cdf5d88bdb5f5b04dd7189b8e55f3466a89",
+    "coordinator_revision": "sha256:d7a2e5709fdc3b36b0fedd464bd7ccb791b067da5f327d17f7a76314f3d0af90",
+    "preregistration_identity": "sha256:e8a0ed7a303e5f4b1f5df089046b6e2fe5ab281b60f9aaeba64ddd2fe972f8c7",
+    "allocation_index_identity": "sha256:e32f0a4c94842f44b713d40e89c81ea85c98db13927834792620629a5ed95600",
+    "qualification_artifact": "program/evidence/exp-001-block-coordinator/qualification-report.json",
+    "qualification_artifact_sha256": "sha256:a274f7c1912968c8501d43f7758d8ca393ab8204e2b4c317e05b69619c1da426",
+    "value_receipt_artifact": "program/evidence/exp-001-block-coordinator/value-receipt.json",
+    "value_receipt_artifact_sha256": "sha256:9981b81f5670ee4330172c11c42fffc0ff55bf48fb6c68d8fb87a69d17d6ac92",
+    "qualification": "PASS",
+    "block_count": 1,
+    "fixture_authorization_count": 4,
+    "live_authorization_count": 0,
+    "arm_rendering_count": 8,
+    "result_envelope_count": 8,
+    "context_firewall_invocation_count": 6,
+    "decision_evidence_validation_count": 6,
+    "trajectory_profile_count": 8,
+    "subject_visible_arm_identity_count": 0,
+    "provider_model_runs_added": 0,
+    "experiment_runs_added": 0,
+    "experiment_results_added": 0,
+    "authorization_consumed": false,
+    "private_artifacts_persisted": false,
+    "lifecycle_impact": "NO_PROMOTION: one secret-backed block was prepared twice with fixture-only authorizations, but no live authorization was consumed and no provider/model subject or correctness result exists.",
+    "limitations": [
+      "Fixture-only authorizations cannot pass the live authorization-class gate and do not authorize a provider request.",
+      "Secret-backed deterministic replay proves coordinator mechanics, not model correctness or comparative benefit.",
+      "The catalogue/pricing preflight and exact live four-label authorization set remain external launch prerequisites.",
+      "No token, cost, latency, correctness, or causal savings claim is made."
+    ]
+  },
+  "prerequisite_progress": [
         {
           "repository": "context-firewall",
           "head_sha": "953c48f1cfd154d6b7ed10b51b87fe54e4df45f2",
@@ -140,8 +174,8 @@
         },
         {
           "repository": "research",
-          "head_sha": "31848c3f25ff9371055932657e8e2f8ad54cc8c7",
-          "status": "PREREGISTERED_PROVIDER_FREE",
+      "head_sha": "9ee43197880c18d4e185cf7e29e02a151d22a12e",
+      "status": "COORDINATOR_PROVIDER_FREE_QUALIFIED",
           "evidence": [
             "https://github.com/opsle/research/blob/04234a65bf36192d63f1dd173c440d45a6604d2b/experiments/exp-001/benchmark.json",
             "https://github.com/opsle/research/blob/04234a65bf36192d63f1dd173c440d45a6604d2b/experiments/exp-001/corpus/manifest.json",
@@ -149,17 +183,19 @@
             "https://github.com/opsle/research/blob/04234a65bf36192d63f1dd173c440d45a6604d2b/program/evidence/exp-001-offline-freeze/qualification-report.json",
             "https://github.com/opsle/research/pull/9",
             "https://github.com/opsle/research/blob/31848c3f25ff9371055932657e8e2f8ad54cc8c7/experiments/exp-001/preregistration-v1/preregistration.json",
-            "https://github.com/opsle/research/blob/31848c3f25ff9371055932657e8e2f8ad54cc8c7/program/evidence/exp-001-preregistration/verification-report.json",
-            "https://github.com/opsle/research/pull/11"
-          ],
-          "limitations": "The corpus, oracle, arms, allocation, launch configuration, and subject adapter are frozen and provider-free qualified; the balanced-block coordinator, provider authorization, model correctness, experimental benefit, and replication remain unverified."
+        "https://github.com/opsle/research/blob/31848c3f25ff9371055932657e8e2f8ad54cc8c7/program/evidence/exp-001-preregistration/verification-report.json",
+        "https://github.com/opsle/research/pull/11",
+        "https://github.com/opsle/research/blob/9ee43197880c18d4e185cf7e29e02a151d22a12e/experiments/exp-001/coordinator-v1/coordinator.py",
+        "https://github.com/opsle/research/blob/9ee43197880c18d4e185cf7e29e02a151d22a12e/program/evidence/exp-001-block-coordinator/qualification-report.json",
+        "https://github.com/opsle/research/pull/13"
+      ],
+      "limitations": "The corpus, oracle, arms, allocation, launch configuration, subject adapter, and one-block coordinator are frozen and provider-free qualified; live authorization, catalogue/pricing admission, model correctness, experimental benefit, and replication remain unverified."
         }
       ],
       "replication_status": "NOT_STARTED",
       "verdict": "PENDING",
       "blockers": [
-        "No provider-free balanced-block coordinator yet proves mapping decryption outside subject context, four-label authorization admission, frozen arm rendering, and complete result-envelope admission.",
-        "No machine-readable four-label budgeted authorization set exists; zero subject/provider runs are authorized or recorded.",
+    "No machine-readable four-label budgeted authorization set exists; zero subject/provider runs are authorized or recorded.",
         "No distinct dated gpt-5.6-sol snapshot was publicly listed on 2026-08-29, so immutable model weights cannot be claimed and launch requires a catalogue-drift preflight."
       ],
       "theory_reconciliation": {
@@ -167,12 +203,12 @@
         "context_firewall_definition": "The deterministic multi-adapter evidence boundary is the concept; the current TAP-subset reducer is one adapter prototype.",
         "experimental_hypothesis": "The experiment continues to test correctness under reduced model-visible context, not the definition or existence of Context Firewall.",
         "gearbox_dependency": "NONE",
-        "sequence": "The offline benchmark and launch controls are frozen and preregistered with an instantiated sealed allocation; zero model/provider subjects have run, and a provider-free balanced-block coordinator is next.",
+    "sequence": "The offline benchmark, launch controls, and one-block coordinator are frozen and provider-free qualified; zero model/provider subjects have run, and one exact live authorization set plus a catalogue/pricing preflight are next.",
         "gearbox_publication_status": "COMPLETED_INDEPENDENT_PREREQUISITE",
         "gearbox_repository_head_sha": "f3fab9f292cf4eabd7200615d444f98881f57d55",
         "model_provider_runs_added": 0
       },
-      "next_task": "Build and provider-free verify the EXP-001 one-block coordinator that decrypts one allocation block outside subject context, validates four label-specific authorizations and frozen arm renderings, and records deterministic result envelopes; do not launch a provider/model subject."
+  "next_task": "Create and provider-free validate one exact four-label LIVE_PROVIDER_RUN authorization set plus a model catalogue/pricing preflight artifact; do not launch a provider/model subject."
     },
     {
       "id": "LEGACY-001",
