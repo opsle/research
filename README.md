@@ -32,6 +32,8 @@ Important mechanisms should remain understandable, falsifiable, benchmarkable, r
 
 - [PROGRAM_STATUS.md](PROGRAM_STATUS.md) — generated 19-repository dashboard.
 - [program/registry.json](program/registry.json) — authoritative machine-readable ledger.
+- [program/THEORY_MAP.md](program/THEORY_MAP.md) — canonical conceptual topology and Gearbox boundary.
+- [program/theory-registry.json](program/theory-registry.json) — machine-readable concept classifications and dispositions.
 - [program/experiments.json](program/experiments.json) — canonical experiment registry.
 - [program/LIFECYCLE.md](program/LIFECYCLE.md) — evidence gates for lifecycle promotion.
 - [program/OPERATING_RULES.md](program/OPERATING_RULES.md) — mandatory execution rules.

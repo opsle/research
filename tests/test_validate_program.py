@@ -41,6 +41,12 @@ class ProgramRegistryValidationTests(unittest.TestCase):
         errors = self.errors_for(registry=registry)
         self.assertTrue(any("duplicate repositories" in error for error in errors))
 
+    def test_malformed_repository_name_reports_error(self):
+        registry = copy.deepcopy(self.registry)
+        registry["repositories"][0]["name"] = ["not", "a", "string"]
+        errors = self.errors_for(registry=registry)
+        self.assertTrue(any("name must be a string" in error for error in errors))
+
     def test_unexpected_lifecycle_stage_fails(self):
         registry = copy.deepcopy(self.registry)
         registry["repositories"][0]["lifecycle_stage"] = "README_DONE"
@@ -117,6 +123,20 @@ class ProgramRegistryValidationTests(unittest.TestCase):
         experiments["experiments"][0]["participating_repositories"].append("forgotten-project")
         errors = self.errors_for(experiments=experiments)
         self.assertTrue(any("references nonexistent project" in error for error in errors))
+
+    def test_malformed_experiment_id_reports_error(self):
+        experiments = copy.deepcopy(self.experiments)
+        experiments["experiments"][0]["id"] = ["EXP-001"]
+        errors = self.errors_for(experiments=experiments)
+        self.assertTrue(any("id must be a string" in error for error in errors))
+
+    def test_exp001_theory_reconciliation_is_required(self):
+        experiments = copy.deepcopy(self.experiments)
+        del experiments["experiments"][0]["theory_reconciliation"]
+        errors = self.errors_for(experiments=experiments)
+        self.assertTrue(
+            any("theory_reconciliation must be an object" in error for error in errors)
+        )
 
     def test_dashboard_is_current(self):
         expected = (ROOT / "PROGRAM_STATUS.md").read_text(encoding="utf-8")

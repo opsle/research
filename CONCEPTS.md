@@ -5,7 +5,18 @@ current repository inventory and lifecycle state are in
 [`program/registry.json`](program/registry.json); the human-readable generated
 view is [`PROGRAM_STATUS.md`](PROGRAM_STATUS.md).
 
-All repositories are public, independently versioned, and part of Opsle Research. Initial SHA means the first public commit created during the 2026-08-25 bootstrap.
+The bootstrap extraction list is not the canonical product/repository map. The
+2026-08-29 source reconciliation is in
+[`program/THEORY_MAP.md`](program/THEORY_MAP.md), with machine-readable concept
+state in [`program/theory-registry.json`](program/theory-registry.json). It
+records Agent Gearbox as a missing conceptual home, formally separates it from
+Durable Supervisor, and recommends future consolidation for several
+durable-orchestration hypotheses without executing any repository operation.
+
+All current repositories are public, independently versioned, and part of Opsle
+Research. That current versioning records provenance; it does not establish that
+every hypothesis should remain a standalone implementation repository. Initial
+SHA means the first public commit created during the 2026-08-25 bootstrap.
 
 | Repository | Maturity | Initial SHA | Implementation | Benchmark |
 |---|---:|---|---|---|
