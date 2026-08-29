@@ -134,11 +134,12 @@ EXP001_RECONCILED_HYPOTHESIS = (
 )
 
 EXP001_RECONCILED_SEQUENCE = (
-    "The provider-free offline benchmark components are frozen; separately "
-    "authorized preregistration of launch configuration and instantiated "
-    "allocation is next, and no model/provider subject is authorized."
+    "The offline benchmark and launch controls are frozen and preregistered with "
+    "an instantiated sealed allocation; zero model/provider subjects have run, "
+    "and a provider-free balanced-block coordinator is next."
 )
 
+EXP001_OFFLINE_RELEASE_SHA = "04234a65bf36192d63f1dd173c440d45a6604d2b"
 EXP001_FREEZE_IDENTITY = (
     "sha256:6ac668a2fd6b4390825a7f1470f1f8cdab05a6d2d01b41d4cfd4412e93df74d8"
 )
@@ -150,6 +151,18 @@ EXP001_ARM_IDENTITY = (
 )
 EXP001_ALLOCATION_IDENTITY = (
     "sha256:6ef1e63dd51bdd967cd9ea472ebd70714bbd50a053ba1df7491f4dbe64595a57"
+)
+EXP001_PREREGISTRATION_IDENTITY = (
+    "sha256:e8a0ed7a303e5f4b1f5df089046b6e2fe5ab281b60f9aaeba64ddd2fe972f8c7"
+)
+EXP001_SUBJECT_CONFIGURATION_ID = (
+    "sha256:bc46a7d72ab776db966e84d9d473efbd0a7e2028ce993eecf4a09d22577ee6cf"
+)
+EXP001_ALLOCATION_INDEX_IDENTITY = (
+    "sha256:e32f0a4c94842f44b713d40e89c81ea85c98db13927834792620629a5ed95600"
+)
+EXP001_SEED_COMMITMENT = (
+    "sha256:a10f7985f6fc0268ab42bc25270c3ebe434ad5655f92156ee4a5471c46a51bd3"
 )
 
 REQUIRED_REPOSITORY_FIELDS = (
@@ -568,6 +581,7 @@ def validate(
         else:
             expected_freeze_values = {
                 "status": "OFFLINE_COMPONENTS_FROZEN",
+                "research_release_sha": EXP001_OFFLINE_RELEASE_SHA,
                 "freeze_identity": EXP001_FREEZE_IDENTITY,
                 "corpus_identity": EXP001_CORPUS_IDENTITY,
                 "arm_manifest_identity": EXP001_ARM_IDENTITY,
@@ -588,11 +602,6 @@ def validate(
                     errors.append(
                         f"EXP-001 offline freeze {field} must be {expected_value!r}"
                     )
-            research_repository = repo_by_name.get("research", {})
-            if freeze.get("research_release_sha") != research_repository.get(
-                "last_verified_head_sha"
-            ):
-                errors.append("EXP-001 offline freeze release SHA must match research")
             artifact = freeze.get("qualification_artifact")
             if artifact != (
                 "program/evidence/exp-001-offline-freeze/qualification-report.json"
@@ -610,6 +619,61 @@ def validate(
             if not _string_list(freeze.get("limitations"), allow_empty=False):
                 errors.append(
                     "EXP-001 offline freeze limitations must be a nonempty string array"
+                )
+        launch = exp001.get("launch_preregistration")
+        if not isinstance(launch, dict):
+            errors.append("EXP-001 launch_preregistration must be an object")
+        else:
+            expected_launch_values = {
+                "status": "PREREGISTERED_AWAITING_EXACT_BUDGETED_LAUNCH_AUTHORIZATION",
+                "preregistration_identity": EXP001_PREREGISTRATION_IDENTITY,
+                "subject_configuration_id": EXP001_SUBJECT_CONFIGURATION_ID,
+                "allocation_index_identity": EXP001_ALLOCATION_INDEX_IDENTITY,
+                "seed_commitment": EXP001_SEED_COMMITMENT,
+                "planned_subject_count": 240,
+                "block_count": 60,
+                "subjects_per_arm": 60,
+                "repetition_count": 10,
+                "provider_model_runs_added": 0,
+                "experiment_runs_added": 0,
+                "qualification": "PASS",
+            }
+            for field, expected_value in expected_launch_values.items():
+                if launch.get(field) != expected_value:
+                    errors.append(
+                        f"EXP-001 launch preregistration {field} must be "
+                        f"{expected_value!r}"
+                    )
+            research_repository = repo_by_name.get("research", {})
+            if launch.get("research_release_sha") != research_repository.get(
+                "last_verified_head_sha"
+            ):
+                errors.append(
+                    "EXP-001 launch preregistration release SHA must match research"
+                )
+            artifact = launch.get("verification_artifact")
+            if artifact != (
+                "program/evidence/exp-001-preregistration/verification-report.json"
+            ):
+                errors.append(
+                    "EXP-001 launch preregistration verification artifact path drifted"
+                )
+            else:
+                artifact_path = ROOT / artifact
+                if not artifact_path.is_file():
+                    errors.append(
+                        "EXP-001 launch preregistration verification artifact is missing"
+                    )
+                else:
+                    artifact_digest = hashlib.sha256(artifact_path.read_bytes()).hexdigest()
+                    artifact_identity = f"sha256:{artifact_digest}"
+                    if launch.get("verification_artifact_sha256") != artifact_identity:
+                        errors.append(
+                            "EXP-001 launch preregistration verification artifact hash drifted"
+                        )
+            if not _string_list(launch.get("limitations"), allow_empty=False):
+                errors.append(
+                    "EXP-001 launch preregistration limitations must be a nonempty string array"
                 )
 
     return errors
