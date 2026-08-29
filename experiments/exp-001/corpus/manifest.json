@@ -1,0 +1,117 @@
+{
+  "protocol_version": "opsle.exp001.task-corpus/v1",
+  "experiment_id": "EXP-001",
+  "language": "Python 3 standard library",
+  "task_class": "bounded single-file implementation repair",
+  "oracle": "../oracle.py",
+  "tasks": [
+    {
+      "id": "slugify",
+      "function": "slugify",
+      "subject_visible": [
+        "tasks/slugify/prompt.md",
+        "tasks/slugify/workspace/task.py"
+      ],
+      "evaluator_only": [
+        "tasks/slugify/accepted/task.py",
+        "../oracle.py"
+      ],
+      "files": {
+        "tasks/slugify/accepted/task.py": "sha256:e915ee31c805d4afa178a1d125324d9ece7adb64a6b26759bf8263fed56e2c41",
+        "tasks/slugify/prompt.md": "sha256:a304c3b68543ec04e5fd9fdf977df3693ce53820ed906449708f6c7081b92222",
+        "tasks/slugify/workspace/task.py": "sha256:4303c35373257a05a9a03aa6adbbabeb95490c0f89307ebbb7fa53b51f5f5eb3"
+      }
+    },
+    {
+      "id": "chunked",
+      "function": "chunked",
+      "subject_visible": [
+        "tasks/chunked/prompt.md",
+        "tasks/chunked/workspace/task.py"
+      ],
+      "evaluator_only": [
+        "tasks/chunked/accepted/task.py",
+        "../oracle.py"
+      ],
+      "files": {
+        "tasks/chunked/accepted/task.py": "sha256:999bfff3daeb451aa5e8eb4e9bd46459253feb0a69c1cab89f8aa795b56a3d16",
+        "tasks/chunked/prompt.md": "sha256:817ed92db4c3d5e904d81c787f6e27eb3b3758dd9e4d5efd4bb429a5bbc9597c",
+        "tasks/chunked/workspace/task.py": "sha256:65ec9c94747e1c1a44a451a990c5c652b0f06b588c2a3766eccc94df6bd3084e"
+      }
+    },
+    {
+      "id": "merge-ranges",
+      "function": "merge_ranges",
+      "subject_visible": [
+        "tasks/merge-ranges/prompt.md",
+        "tasks/merge-ranges/workspace/task.py"
+      ],
+      "evaluator_only": [
+        "tasks/merge-ranges/accepted/task.py",
+        "../oracle.py"
+      ],
+      "files": {
+        "tasks/merge-ranges/accepted/task.py": "sha256:99f595268f1bda36f83a29adc4e96d5d1fabe4ad3d3c8574a936f52a951c98ae",
+        "tasks/merge-ranges/prompt.md": "sha256:22fb85a97212423373271054fdb379f53d2a01eb1a7728d75b1a0a0f8f543363",
+        "tasks/merge-ranges/workspace/task.py": "sha256:7e08c94ea019616fa6f6e7c7586e63fc390f1c2b9ad79f11b0d8113b5b956f04"
+      }
+    },
+    {
+      "id": "merge-headers",
+      "function": "merge_headers",
+      "subject_visible": [
+        "tasks/merge-headers/prompt.md",
+        "tasks/merge-headers/workspace/task.py"
+      ],
+      "evaluator_only": [
+        "tasks/merge-headers/accepted/task.py",
+        "../oracle.py"
+      ],
+      "files": {
+        "tasks/merge-headers/accepted/task.py": "sha256:6babf3c983973e8e92dd5c581c149e214f9fde4e3ef7609c7b1504a342ae6674",
+        "tasks/merge-headers/prompt.md": "sha256:277803fb283bc755d5ad75d61e51eb366d24a5c46c0874dd262d24bbc7645196",
+        "tasks/merge-headers/workspace/task.py": "sha256:fc1bf478f59ed506c28e31b2f6f80845ffe25bea4e3303fb656044698ed766eb"
+      }
+    },
+    {
+      "id": "backoff-delay",
+      "function": "backoff_delay",
+      "subject_visible": [
+        "tasks/backoff-delay/prompt.md",
+        "tasks/backoff-delay/workspace/task.py"
+      ],
+      "evaluator_only": [
+        "tasks/backoff-delay/accepted/task.py",
+        "../oracle.py"
+      ],
+      "files": {
+        "tasks/backoff-delay/accepted/task.py": "sha256:f8932991e4bf4be11d654e247553d4ad0d7a08431f47e56e1ce19843d3688d29",
+        "tasks/backoff-delay/prompt.md": "sha256:9bfb9f28cd2e8c94cfd44ca4c0337cc63bf8b507d994809c1176b1706be3be08",
+        "tasks/backoff-delay/workspace/task.py": "sha256:894eebf41c54554128a49994a2132175b1e0a699144b9b9a88895957305297cc"
+      }
+    },
+    {
+      "id": "parse-duration",
+      "function": "parse_duration",
+      "subject_visible": [
+        "tasks/parse-duration/prompt.md",
+        "tasks/parse-duration/workspace/task.py"
+      ],
+      "evaluator_only": [
+        "tasks/parse-duration/accepted/task.py",
+        "../oracle.py"
+      ],
+      "files": {
+        "tasks/parse-duration/accepted/task.py": "sha256:e06c08b0ad3b3d36f65da5745ab5d9d615140e7cea364bc82af21092a92a503f",
+        "tasks/parse-duration/prompt.md": "sha256:d1255fe9c0dbc0fc4d845908fd4d18e67c6c23c528d1b94975793dedbcd46bc6",
+        "tasks/parse-duration/workspace/task.py": "sha256:474bfa46b5a6247dfaa1f606b12205a860ba0c3d164dc3d3da0546b67cd7b563"
+      }
+    }
+  ],
+  "qualification_expectations": {
+    "initial_workspace": "FAILS_AT_LEAST_ONE_CASE",
+    "accepted_implementation": "PASSES_ALL_CASES"
+  },
+  "visibility_invariant": "Only subject_visible files may enter initial subject context; evaluator_only files must remain outside it.",
+  "identity": "sha256:07f8ef2810267a02b3aa03a45b7de3512f6066b03bd82c833394121825f98d60"
+}

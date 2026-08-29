@@ -1,0 +1,55 @@
+{
+  "protocol_version": "opsle.exp001.arm-manifest/v1",
+  "experiment_id": "EXP-001",
+  "adapter_scope": "Context Firewall strict flat TAP-compatible subset at the pinned revision",
+  "arms": [
+    {
+      "id": "raw-control",
+      "kind": "CONTROL",
+      "initial_evidence": "RAW_TRANSCRIPT",
+      "max_output_bytes": null,
+      "on_needs_raw_evidence": "NOT_APPLICABLE",
+      "model_visible_contract": "The exact oracle stdout and stderr bytes are initially visible."
+    },
+    {
+      "id": "failure-focused",
+      "kind": "TREATMENT",
+      "initial_evidence": "CONTEXT_FIREWALL_PACKET",
+      "max_output_bytes": null,
+      "on_needs_raw_evidence": "REQUEST_RECORDED_NOT_FULFILLED",
+      "model_visible_contract": "The deterministic packet retains failures, decision facts, provenance, and accounting while suppressing repetitive recognized success evidence."
+    },
+    {
+      "id": "bounded-provenance",
+      "kind": "TREATMENT",
+      "initial_evidence": "CONTEXT_FIREWALL_PACKET",
+      "max_output_bytes": 8192,
+      "on_needs_raw_evidence": "REQUEST_RECORDED_NOT_FULFILLED",
+      "model_visible_contract": "The deterministic packet is limited to 8,192 bytes and fails closed rather than silently truncating critical evidence."
+    },
+    {
+      "id": "bounded-escalating",
+      "kind": "TREATMENT",
+      "initial_evidence": "CONTEXT_FIREWALL_PACKET",
+      "max_output_bytes": 8192,
+      "on_needs_raw_evidence": "FULFILL_ONCE_WITH_EXACT_RAW_TRANSCRIPT",
+      "model_visible_contract": "The bounded packet is initially visible; when it declares NEEDS_RAW_EVIDENCE, the exact content-addressed raw transcript is exposed once before further action."
+    }
+  ],
+  "controlled_variables": [
+    "task identity",
+    "prompt bytes",
+    "initial workspace bytes",
+    "oracle revision and invocation",
+    "correctness gate",
+    "provider and model configuration once separately preregistered"
+  ],
+  "forbidden_substitutions": [
+    "AI-generated summary in place of a Context Firewall packet",
+    "different oracle or workspace between arms",
+    "automatic retry or provider fallback",
+    "unrecorded raw-evidence exposure",
+    "treating expected escalation as correctness failure"
+  ],
+  "identity": "sha256:7ce68d9c53232f5941140edb5e3fa2fff0ac0f5bba33bda14cdf1e09888b64f3"
+}

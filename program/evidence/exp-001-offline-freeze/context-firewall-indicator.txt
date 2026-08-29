@@ -1,0 +1,1 @@
+[Context Firewall] 6,031 B -> 1,999 B | 4,032 B initially avoided (66.85%) | escalation: no
