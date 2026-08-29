@@ -134,9 +134,22 @@ EXP001_RECONCILED_HYPOTHESIS = (
 )
 
 EXP001_RECONCILED_SEQUENCE = (
-    "The offline benchmark freeze is the immediate next execution after the "
-    "completed public Gearbox publication; no model/provider subject is "
-    "authorized by the freeze."
+    "The provider-free offline benchmark components are frozen; separately "
+    "authorized preregistration of launch configuration and instantiated "
+    "allocation is next, and no model/provider subject is authorized."
+)
+
+EXP001_FREEZE_IDENTITY = (
+    "sha256:6ac668a2fd6b4390825a7f1470f1f8cdab05a6d2d01b41d4cfd4412e93df74d8"
+)
+EXP001_CORPUS_IDENTITY = (
+    "sha256:07f8ef2810267a02b3aa03a45b7de3512f6066b03bd82c833394121825f98d60"
+)
+EXP001_ARM_IDENTITY = (
+    "sha256:7ce68d9c53232f5941140edb5e3fa2fff0ac0f5bba33bda14cdf1e09888b64f3"
+)
+EXP001_ALLOCATION_IDENTITY = (
+    "sha256:6ef1e63dd51bdd967cd9ea472ebd70714bbd50a053ba1df7491f4dbe64595a57"
 )
 
 REQUIRED_REPOSITORY_FIELDS = (
@@ -549,6 +562,55 @@ def validate(
                 "last_verified_head_sha"
             ):
                 errors.append("EXP-001 Gearbox publication SHA must match the registry")
+        freeze = exp001.get("offline_benchmark_freeze")
+        if not isinstance(freeze, dict):
+            errors.append("EXP-001 offline_benchmark_freeze must be an object")
+        else:
+            expected_freeze_values = {
+                "status": "OFFLINE_COMPONENTS_FROZEN",
+                "freeze_identity": EXP001_FREEZE_IDENTITY,
+                "corpus_identity": EXP001_CORPUS_IDENTITY,
+                "arm_manifest_identity": EXP001_ARM_IDENTITY,
+                "allocation_method_identity": EXP001_ALLOCATION_IDENTITY,
+                "qualification": "PASS",
+                "task_count": 6,
+                "oracle_case_count": 252,
+                "arm_rendering_count": 48,
+                "context_firewall_invocation_count": 36,
+                "decision_evidence_validation_count": 36,
+                "trajectory_profile_count": 48,
+                "experiment_runs_added": 0,
+                "provider_model_runs_added": 0,
+                "allocation_status": "METHOD_FROZEN_SEED_UNSET",
+            }
+            for field, expected_value in expected_freeze_values.items():
+                if freeze.get(field) != expected_value:
+                    errors.append(
+                        f"EXP-001 offline freeze {field} must be {expected_value!r}"
+                    )
+            research_repository = repo_by_name.get("research", {})
+            if freeze.get("research_release_sha") != research_repository.get(
+                "last_verified_head_sha"
+            ):
+                errors.append("EXP-001 offline freeze release SHA must match research")
+            artifact = freeze.get("qualification_artifact")
+            if artifact != (
+                "program/evidence/exp-001-offline-freeze/qualification-report.json"
+            ):
+                errors.append("EXP-001 offline freeze qualification artifact path drifted")
+            else:
+                artifact_path = ROOT / artifact
+                if not artifact_path.is_file():
+                    errors.append("EXP-001 offline freeze qualification artifact is missing")
+                else:
+                    artifact_digest = hashlib.sha256(artifact_path.read_bytes()).hexdigest()
+                    artifact_identity = f"sha256:{artifact_digest}"
+                    if freeze.get("qualification_artifact_sha256") != artifact_identity:
+                        errors.append("EXP-001 offline freeze qualification artifact hash drifted")
+            if not _string_list(freeze.get("limitations"), allow_empty=False):
+                errors.append(
+                    "EXP-001 offline freeze limitations must be a nonempty string array"
+                )
 
     return errors
 

@@ -150,6 +150,24 @@ class ProgramRegistryValidationTests(unittest.TestCase):
             any("theory_reconciliation must be an object" in error for error in errors)
         )
 
+    def test_exp001_offline_freeze_is_required(self):
+        experiments = copy.deepcopy(self.experiments)
+        del experiments["experiments"][0]["offline_benchmark_freeze"]
+        errors = self.errors_for(experiments=experiments)
+        self.assertTrue(
+            any("offline_benchmark_freeze must be an object" in error for error in errors)
+        )
+
+    def test_exp001_offline_freeze_cannot_claim_subject_runs(self):
+        experiments = copy.deepcopy(self.experiments)
+        experiments["experiments"][0]["offline_benchmark_freeze"][
+            "provider_model_runs_added"
+        ] = 1
+        errors = self.errors_for(experiments=experiments)
+        self.assertTrue(
+            any("provider_model_runs_added must be 0" in error for error in errors)
+        )
+
     def test_dashboard_is_current(self):
         expected = (ROOT / "PROGRAM_STATUS.md").read_text(encoding="utf-8")
         self.assertEqual(render(self.registry, self.experiments), expected)
