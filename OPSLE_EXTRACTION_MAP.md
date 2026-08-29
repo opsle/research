@@ -1,5 +1,12 @@
 # Opsle extraction map
 
+> Historical extraction record. The 16 candidates below preserve what was
+> isolated from the predecessor snapshot; they are not the canonical future
+> repository/product topology. See
+> [`program/THEORY_MAP.md`](program/THEORY_MAP.md) for the 2026-08-29 source
+> reconciliation, the restored Agent Gearbox definition, and recommended
+> dispositions. No repository action followed from that reconciliation.
+
 ## Read-only snapshot
 
 - Source: Taslos Tasks, active predecessor of future Opsle Tasks.

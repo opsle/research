@@ -3,6 +3,21 @@
 The portfolio is a dependency-aware set of parallel workstreams, not a serial
 checklist.
 
+## Workstream 0: canonical Gearbox home
+
+The 2026-08-29 reconciliation established that Agent Gearbox is a coherent
+primary-developer intelligence-and-context transmission capability and that no
+current repository owns its irreducible mechanism. Routing, execution
+authorization, and resource claims are supporting policies; Durable Supervisor,
+ledger, scheduler, wakeup, discovery, and recovery solve autonomous durable
+orchestration instead.
+
+The next execution should be a separately authorized, documentation/specification-
+only creation of `opsle/gearbox`. It must add the repository to the authoritative
+inventory, publish the minimal boundary in `program/THEORY_MAP.md`, and implement
+nothing. It must not consolidate, rename, transfer, archive, or delete an
+existing repository and must not run a model/provider subject.
+
 ## Workstream 1: EXP-001 prerequisites and experiment
 
 1. Context Firewall now emits deterministic Visible Value receipts and a named
@@ -53,9 +68,13 @@ conversation-local.
 
 ## Exact next execution
 
-Across Research, Context Firewall, Decision Evidence Protocol, and Agent
-Trajectory Profiler, freeze the content-addressed EXP-001 task corpus,
-deterministic correctness oracle, arm definitions, and offline harness using the
-new value-receipt and trajectory infrastructure. Target `BENCHMARK_READY` only
-where every applicable lifecycle gate is evidenced. Do not run model/provider
-subjects in that execution.
+In a separately authorized run, create and register `opsle/gearbox` as the
+twentieth repository and publish only the canonical theory, minimal normative
+request/result boundary, non-goals, dependency profiles, provenance, and
+validation updates. The new repository may enter at `THEORY` only if that gate
+is actually satisfied. Do not implement Gearbox, run providers/models, modify
+Taslos Tasks, or execute any recommended consolidation.
+
+After that bounded publication run, resume the still-valid EXP-001 offline
+benchmark freeze across Research, Context Firewall, Decision Evidence Protocol,
+and Agent Trajectory Profiler. EXP-001 has no technical dependency on Gearbox.

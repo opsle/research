@@ -1,0 +1,701 @@
+{
+  "schema_version": 1,
+  "registry_id": "opsle.theory-registry.v1",
+  "verified_at": "2026-08-29T01:35:49Z",
+  "source_repository_count": 19,
+  "current_concept_repository_count": 16,
+  "canonical_definitions": {
+    "gearbox": "Agent Gearbox lets a powerful primary developer delegate routine operations and bounded work to deterministic software or less expensive models, then receive only the compact result needed to continue.",
+    "context_firewall": "Context Firewall is a deterministic boundary that keeps operational noise out of an AI agent's context while preserving the compact evidence, provenance, and escalation path the agent needs to make correct decisions.",
+    "durable_orchestration": "Durable orchestration owns autonomous objective progress across durable state and multiple activations without requiring a continuously active primary developer."
+  },
+  "canonical_invariants": [
+    "Gearbox saves intelligence; Context Firewall saves context.",
+    "Gearbox determines where bounded work executes; Context Firewall determines what information returns.",
+    "Gearbox enhances a primary developer; durable orchestration owns progress across activations without that developer remaining continuously active.",
+    "Research-hypothesis granularity does not imply repository granularity.",
+    "Repository tracking and concept tracking are independent anti-forgetting controls."
+  ],
+  "concepts": [
+    {
+      "id": "gearbox",
+      "canonical_concept_name": "Agent Gearbox",
+      "one_sentence_definition": "Agent Gearbox lets a powerful primary developer delegate routine operations and bounded work to deterministic software or less expensive models, then receive only the compact result needed to continue.",
+      "original_problem": "A powerful primary developer spends scarce reasoning and context on deterministic operations or bounded work that cheaper software or models could perform.",
+      "primary_classification": "GEARBOX_CORE",
+      "current_repository": null,
+      "recommended_disposition": "KEEP_AS_RESEARCH",
+      "disposition_rationale": "The concept is distinct and coherent enough for a future standalone repository, but no repository operation is authorized in this reconciliation run.",
+      "disposition_gain": "A canonical public home would reunify admission, gear selection, bounded helper execution, passive waiting, compact return, budget enforcement, and cleanup.",
+      "disposition_risk": "A poorly bounded repository could absorb durable orchestration, isolation infrastructure, or every supporting policy and become a general autonomous-agent platform.",
+      "provenance_concerns": "Future creation must cite this reconciliation and preserve attribution for any policy or module migrated from an existing repository.",
+      "relationship_to_gearbox": "Canonical concept and future implementation boundary.",
+      "relationship_to_context_firewall": "Independent and complementary: Gearbox chooses the execution gear; Context Firewall adapts the evidence returned from that execution.",
+      "dependencies": [
+        "context-firewall",
+        "decision-evidence-protocol",
+        "agent-trajectory-profiler",
+        "agent-routing-policy",
+        "agent-execution-authorization"
+      ],
+      "consumers": [],
+      "current_implementation_fidelity": {
+        "status": "MISSING",
+        "assessment": "No public Opsle Gearbox repository or canonical implementation exists. Related theories are fragmented across policy repositories and private predecessor mechanisms must not be treated as the public concept."
+      },
+      "drift_status": "MISSING_CONCEPTUAL_HOME",
+      "current_name_accuracy": "Canonical name; no current repository bears it.",
+      "evidence_references": [
+        "program/THEORY_MAP.md",
+        "README.md",
+        "OPSLE_EXTRACTION_MAP.md"
+      ],
+      "confidence": "HIGH",
+      "unresolved_questions": [
+        "What is the smallest executable gear-admission contract?",
+        "Which supporting policies remain external packages versus internal profiles?",
+        "What minimum provider-session avoidance accounting can be measured without inventing counterfactual savings?"
+      ]
+    },
+    {
+      "id": "agent-trajectory-profiler",
+      "canonical_concept_name": "Agent Trajectory Profiler",
+      "one_sentence_definition": "Agent Trajectory Profiler reconstructs correctness-gated mutation, edit, revisit, and evidence-exposure measurements from observable execution artifacts.",
+      "original_problem": "Final correctness, latency, token, and cost scores hide discarded mutation, repeated editing, semantic revisits, and excess evidence exposure.",
+      "primary_classification": "INDEPENDENT_OPSLE_TOOL",
+      "current_repository": "agent-trajectory-profiler",
+      "recommended_disposition": "KEEP_STANDALONE",
+      "disposition_rationale": "The measurement mechanism is reusable across Gearbox, Context Firewall, editing research, and durable orchestration.",
+      "disposition_gain": "Independent telemetry and benchmark instrumentation remain installable and falsifiable without an orchestrator.",
+      "disposition_risk": "Generic Visible Value validation and aggregation may continue to expand beyond trajectory profiling unless protocol ownership is clarified.",
+      "provenance_concerns": "Retain the initial metric implementation, later Context Firewall adapter, and Visible Value aggregation commits as distinct evidence scopes.",
+      "relationship_to_gearbox": "External telemetry consumer for gear choice, helper execution, passive wait, provider-session, cleanup, and result measurements; it never selects or runs a gear.",
+      "relationship_to_context_firewall": "Consumes validated packet, suppression, and escalation observations to measure initial and final model-visible evidence; it is not a Context Firewall dependency.",
+      "dependencies": [
+        "decision-evidence-protocol"
+      ],
+      "consumers": [
+        "gearbox",
+        "semantic-edit-protocol"
+      ],
+      "current_implementation_fidelity": {
+        "status": "SCOPED_VERIFIED",
+        "assessment": "The executable metrics, Context Firewall adapter, run records, and value summaries are verified at the recorded revision; predictive value, causal efficiency, and generic protocol ownership are unproven."
+      },
+      "drift_status": "SCOPE_EXPANDED",
+      "current_name_accuracy": "Accurate for the original metrics; generic Visible Value aggregation is a broader responsibility.",
+      "evidence_references": [
+        "https://github.com/opsle/agent-trajectory-profiler/blob/0a89661640721d6a39f127514b993d29bd728d47/README.md",
+        "https://github.com/opsle/agent-trajectory-profiler/blob/0a89661640721d6a39f127514b993d29bd728d47/src/metrics.js",
+        "https://github.com/opsle/agent-trajectory-profiler/blob/0a89661640721d6a39f127514b993d29bd728d47/src/value-summary.js"
+      ],
+      "confidence": "HIGH",
+      "unresolved_questions": [
+        "Should generic Visible Value receipt validation remain in this repository?",
+        "Which metrics predict useful agent outcomes across models and tasks?",
+        "How should semantic-region ground truth be established?"
+      ]
+    },
+    {
+      "id": "semantic-edit-protocol",
+      "canonical_concept_name": "Semantic Edit Protocol",
+      "one_sentence_definition": "Semantic Edit Protocol applies bounded structural edits under explicit semantic-region and hash preconditions with atomic rollback and concise receipts.",
+      "original_problem": "Whole-file transport and repeated text patches can inflate payloads, overwrite concurrent work, and mutate stale structure.",
+      "primary_classification": "INDEPENDENT_OPSLE_TOOL",
+      "current_repository": "semantic-edit-protocol",
+      "recommended_disposition": "KEEP_STANDALONE",
+      "disposition_rationale": "A bounded semantic editing primitive has independent use outside Gearbox and any autonomous orchestrator.",
+      "disposition_gain": "Language adapters and edit semantics can be benchmarked against patch and whole-file baselines as one focused tool.",
+      "disposition_risk": "Repository overhead may not be justified if no portable operation schema or adapter emerges.",
+      "provenance_concerns": "Preserve the extraction commit and negative benchmark evidence if the language-independent boundary fails.",
+      "relationship_to_gearbox": "A possible deterministic execution tool selected by Gearbox, not a Gearbox core module.",
+      "relationship_to_context_firewall": "Independent; a Context Firewall adapter may compact edit diagnostics or receipts without defining edit semantics.",
+      "dependencies": [
+        "agent-resource-claims",
+        "agent-trajectory-profiler"
+      ],
+      "consumers": [
+        "gearbox"
+      ],
+      "current_implementation_fidelity": {
+        "status": "THEORY_ONLY",
+        "assessment": "The theory matches the original problem, but the generic specification does not define a concrete operation and no adapter, validator, fixture, or automated test exists."
+      },
+      "drift_status": "ALIGNED_THEORY_ONLY",
+      "current_name_accuracy": "Accurate.",
+      "evidence_references": [
+        "https://github.com/opsle/semantic-edit-protocol/blob/29caad5c03827cde17aabd71c38bc25899413a33/README.md",
+        "https://github.com/opsle/semantic-edit-protocol/blob/29caad5c03827cde17aabd71c38bc25899413a33/SPEC.md"
+      ],
+      "confidence": "HIGH",
+      "unresolved_questions": [
+        "What is the first concrete operation and language adapter?",
+        "Can anchors, transactions, and rollback be made portable?",
+        "Does the protocol outperform ordinary patching under equal correctness gates?"
+      ]
+    },
+    {
+      "id": "durable-supervisor",
+      "canonical_concept_name": "Durable Supervisor",
+      "one_sentence_definition": "Durable Supervisor owns autonomous objective progress, reconstructs durable state, and resumes decision-making across activations while a non-reasoning runner handles lifecycle mechanics.",
+      "original_problem": "Long-horizon autonomous work loses state across interruptions and wastes cognition on waiting, lifecycle mechanics, and reconstruction.",
+      "primary_classification": "DURABLE_ORCHESTRATION",
+      "current_repository": "durable-supervisor",
+      "recommended_disposition": "KEEP_AS_RESEARCH",
+      "disposition_rationale": "The autonomous cross-activation hypothesis is distinct from Gearbox, but the installable boundary and family packaging are not yet proven.",
+      "disposition_gain": "The separate research home prevents durable objective ownership and reconstruction from being conflated with bounded primary-developer delegation.",
+      "disposition_risk": "Remaining an umbrella research repository may defer decisions about ledger, scheduler, and wakeup module ownership.",
+      "provenance_concerns": "Retain the extraction commit and explicitly attribute any future consolidation of ledger, scheduler, wakeup, discovery, or recovery research.",
+      "relationship_to_gearbox": "Formally separate: it may operate across activations without a continuously active primary developer; Gearbox remains subordinate to one primary developer's bounded call.",
+      "relationship_to_context_firewall": "May consume compact evidence packets from child or runner activity, but Context Firewall provides no persistence, scheduling, or objective ownership.",
+      "dependencies": [
+        "agent-state-ledger",
+        "agent-scheduler-runtime",
+        "event-driven-agent-wakeup",
+        "decision-evidence-protocol"
+      ],
+      "consumers": [],
+      "current_implementation_fidelity": {
+        "status": "THEORY_ONLY",
+        "assessment": "The theory is coherent, but no ledger, runner, reconstruction envelope, fixture, or automated test exists. Shared fresh-child and passive-wait language caused external conflation with Gearbox."
+      },
+      "drift_status": "BOUNDARY_CONFLATION",
+      "current_name_accuracy": "Accurate when durable objective ownership and cross-activation reconstruction remain explicit.",
+      "evidence_references": [
+        "https://github.com/opsle/durable-supervisor/blob/555ebedb992ac74236bb7da8230b4d6b0489830b/README.md",
+        "https://github.com/opsle/durable-supervisor/blob/555ebedb992ac74236bb7da8230b4d6b0489830b/ARCHITECTURE.md"
+      ],
+      "confidence": "HIGH",
+      "unresolved_questions": [
+        "What is the minimum durable reconstruction envelope?",
+        "Which family mechanisms should share one implementation repository?",
+        "Can correctness match a continuously active supervisor under restart and duplicate-event faults?"
+      ]
+    },
+    {
+      "id": "event-driven-agent-wakeup",
+      "canonical_concept_name": "Event-Driven Agent Wakeup",
+      "one_sentence_definition": "Event-Driven Agent Wakeup durably registers a wait, suspends model activity, and reactivates an orchestrator exactly once on a decision-relevant event.",
+      "original_problem": "Polling and waiting were implemented as repeated model turns even though they are runtime concerns.",
+      "primary_classification": "DURABLE_ORCHESTRATION",
+      "current_repository": "event-driven-agent-wakeup",
+      "recommended_disposition": "CONSOLIDATE_WITH_OTHER",
+      "disposition_rationale": "Durable wait registration, event delivery, scheduling, and reconstruction share one state boundary with the Durable Supervisor family.",
+      "disposition_gain": "One durable event and scheduling contract avoids duplicate persistence and wakeup semantics.",
+      "disposition_risk": "Independent polling-versus-wakeup benchmarks and reusable adapters could become less visible.",
+      "provenance_concerns": "Preserve the repository commit, two prototype tests, lifecycle record, citations, and a future redirect before consolidation.",
+      "relationship_to_gearbox": "Not Gearbox's passive wait: Gearbox blocks synchronously at the OS or transport layer inside one bounded call; this concept persists a wait and reactivates an orchestrator.",
+      "relationship_to_context_firewall": "May use adapters for event/process chatter, but wake identity, timeout, failure, approval, and loss signals are unsafe to hide.",
+      "dependencies": [
+        "agent-state-ledger",
+        "agent-scheduler-runtime"
+      ],
+      "consumers": [
+        "durable-supervisor"
+      ],
+      "current_implementation_fidelity": {
+        "status": "NARROW_PROTOTYPE",
+        "assessment": "The eight-line in-memory transition function exercises duplicate and wrong-wait behavior only; it does not implement durable registration, restart recovery, event delivery, or timeouts."
+      },
+      "drift_status": "PROTOTYPE_SCOPE_OVERSTATED",
+      "current_name_accuracy": "Accurate for the theory; the current implementation is not durable.",
+      "evidence_references": [
+        "https://github.com/opsle/event-driven-agent-wakeup/blob/a6209860c2151450cc28ed648bc8c2631c8db7ef/README.md",
+        "https://github.com/opsle/event-driven-agent-wakeup/blob/a6209860c2151450cc28ed648bc8c2631c8db7ef/src/runtime.js",
+        "https://github.com/opsle/event-driven-agent-wakeup/blob/a6209860c2151450cc28ed648bc8c2631c8db7ef/tests/runtime.test.js"
+      ],
+      "confidence": "MEDIUM_HIGH",
+      "unresolved_questions": [
+        "Who owns timeout production and late-event retention?",
+        "What proves exactly-once decision activation across restart?",
+        "Do reusable wait adapters justify independent packaging?"
+      ]
+    },
+    {
+      "id": "context-firewall",
+      "canonical_concept_name": "Context Firewall",
+      "one_sentence_definition": "Context Firewall is a deterministic boundary that keeps operational noise out of an AI agent's context while preserving the compact evidence, provenance, and escalation path the agent needs to make correct decisions.",
+      "original_problem": "Tool and process output became model-visible merely because it was emitted, consuming context with operational noise.",
+      "primary_classification": "INDEPENDENT_OPSLE_TOOL",
+      "current_repository": "context-firewall",
+      "recommended_disposition": "KEEP_STANDALONE",
+      "disposition_rationale": "Deterministic evidence adaptation is independently useful across agents, Gearbox, CI, operations, and orchestrators.",
+      "disposition_gain": "Adapter policies, packet conformance, and raw-evidence escalation can evolve without being coupled to an executor.",
+      "disposition_risk": "The mature TAP-subset adapter may be mistaken for the complete multi-adapter concept or its lifecycle stage may be overgeneralized.",
+      "provenance_concerns": "Preserve TAP reducer, Visible Value, conformance, and EXP-001 evidence as adapter-specific evidence rather than rewriting them as proof of the whole concept.",
+      "relationship_to_gearbox": "Independent complement: it adapts deterministic-tool or helper evidence after Gearbox chooses and executes a gear.",
+      "relationship_to_context_firewall": "Canonical home.",
+      "dependencies": [],
+      "consumers": [
+        "gearbox",
+        "decision-evidence-protocol",
+        "agent-trajectory-profiler",
+        "durable-supervisor"
+      ],
+      "intended_adapter_families": [
+        "tests",
+        "lint",
+        "typecheck",
+        "git",
+        "build_compiler",
+        "process_service",
+        "helper_agent_result"
+      ],
+      "current_implementation_fidelity": {
+        "status": "ADAPTER_PROTOTYPED",
+        "assessment": "The strict TAP-compatible reducer faithfully implements one deterministic adapter and packet profile. Other adapter families and the safe correctness frontier do not exist."
+      },
+      "drift_status": "PARTIAL_ADAPTER_SCOPE",
+      "current_name_accuracy": "Accurate for the concept; implementation maturity must remain adapter-scoped.",
+      "evidence_references": [
+        "https://github.com/opsle/context-firewall/blob/953c48f1cfd154d6b7ed10b51b87fe54e4df45f2/README.md",
+        "https://github.com/opsle/context-firewall/blob/953c48f1cfd154d6b7ed10b51b87fe54e4df45f2/SPEC.md",
+        "https://github.com/opsle/context-firewall/blob/953c48f1cfd154d6b7ed10b51b87fe54e4df45f2/src/reducer.js"
+      ],
+      "confidence": "HIGH",
+      "unresolved_questions": [
+        "What common adapter interface preserves tool-specific safety?",
+        "How are raw artifact availability and hash validity independently proven?",
+        "Where is the experimentally safe reduction frontier by task and adapter family?"
+      ]
+    },
+    {
+      "id": "decision-evidence-protocol",
+      "canonical_concept_name": "Decision Evidence Protocol",
+      "one_sentence_definition": "Decision Evidence Protocol defines small versioned vendor-neutral envelopes for decision facts, verification, uncertainty, provenance, artifacts, and explicit raw-evidence escalation.",
+      "original_problem": "Agents repeatedly parsed provider-specific prose and tool chatter to recover the same small set of decision facts.",
+      "primary_classification": "CROSS_CUTTING_PROTOCOL",
+      "current_repository": "decision-evidence-protocol",
+      "recommended_disposition": "KEEP_AS_PROTOCOL",
+      "disposition_rationale": "Evidence representation and conformance are reusable across Gearbox, Context Firewall, handoff, and orchestration.",
+      "disposition_gain": "Independent protocol validation prevents producers from self-certifying their own compact evidence.",
+      "disposition_risk": "The Context Firewall-specific validator and duplicated Visible Value semantics may dominate or distort the generic protocol.",
+      "provenance_concerns": "Keep generic-envelope, Context Firewall profile, and Visible Value validation evidence scoped to their exact commits and conformance vectors.",
+      "relationship_to_gearbox": "External result and evidence protocol; Gearbox owns admission and helper lifecycle, while this protocol defines and validates the compact facts returned.",
+      "relationship_to_context_firewall": "Context Firewall produces reduced packets; Decision Evidence independently validates their structure, hashes, source-derived claims, and sufficiency without becoming a reducer.",
+      "dependencies": [],
+      "consumers": [
+        "gearbox",
+        "context-firewall",
+        "agent-trajectory-profiler",
+        "verifiable-agent-handoff",
+        "durable-supervisor",
+        "agent-recovery-policy"
+      ],
+      "current_implementation_fidelity": {
+        "status": "PROFILE_VERIFIED",
+        "assessment": "The Context Firewall packet/value profiles and generic value receipt validator are verified; the broader multi-tool decision envelope remains a minimal prototype."
+      },
+      "drift_status": "PROFILE_DOMINATES_CORE",
+      "current_name_accuracy": "Accurate, with maturity scoped to implemented profiles.",
+      "evidence_references": [
+        "https://github.com/opsle/decision-evidence-protocol/blob/b17ae3b41cea7cb0b9e0befe43e885b5aa0e4a09/README.md",
+        "https://github.com/opsle/decision-evidence-protocol/blob/b17ae3b41cea7cb0b9e0befe43e885b5aa0e4a09/src/context-firewall-v1.js",
+        "https://github.com/opsle/decision-evidence-protocol/blob/b17ae3b41cea7cb0b9e0befe43e885b5aa0e4a09/src/validate.js"
+      ],
+      "confidence": "HIGH",
+      "unresolved_questions": [
+        "What is the canonical generic envelope independent of one producer profile?",
+        "Should Decision Evidence be the sole normative Visible Value validator?",
+        "Which tool-class profiles demonstrate adequate decision coverage?"
+      ]
+    },
+    {
+      "id": "agent-state-ledger",
+      "canonical_concept_name": "Agent State Ledger",
+      "one_sentence_definition": "Agent State Ledger records immutable orchestration facts and derives a deterministic stale-aware projection of current work, evidence, authority, contradictions, and uncertainty.",
+      "original_problem": "Conversation history could not reliably reconstruct what autonomous work was done, verified, failed, authorized, uncertain, or next after interruption.",
+      "primary_classification": "DURABLE_ORCHESTRATION",
+      "current_repository": "agent-state-ledger",
+      "recommended_disposition": "CONSOLIDATE_WITH_OTHER",
+      "disposition_rationale": "The ledger is the authoritative history and projection module of the Durable Supervisor family, not a second independent state owner.",
+      "disposition_gain": "One durable state contract prevents supervisor, scheduler, discovery, and recovery from maintaining competing histories.",
+      "disposition_risk": "Potential reuse as a generic audit/projection library may be obscured.",
+      "provenance_concerns": "Preserve the current repository, extraction commit, benchmark theory, and future negative evidence through an attributable module and redirect.",
+      "relationship_to_gearbox": "Normally unnecessary for one bounded Gearbox call; absorbing it would pull Gearbox toward persistent supervision.",
+      "relationship_to_context_firewall": "May record packet hashes, raw locators, and escalation facts, but compact packets are not a replacement for authoritative history.",
+      "dependencies": [
+        "decision-evidence-protocol"
+      ],
+      "consumers": [
+        "durable-supervisor",
+        "event-driven-agent-wakeup",
+        "agent-scheduler-runtime",
+        "agent-discovery-control",
+        "agent-recovery-policy"
+      ],
+      "current_implementation_fidelity": {
+        "status": "THEORY_ONLY",
+        "assessment": "The theory is coherent, but the generic specification defines no event schema, projection contract, contradiction rules, fixture, implementation, or test."
+      },
+      "drift_status": "OVER_EXTRACTED_REPOSITORY_BOUNDARY",
+      "current_name_accuracy": "Accurate, though the mechanism is not intrinsically agent-specific.",
+      "evidence_references": [
+        "https://github.com/opsle/agent-state-ledger/blob/acab03b1ff7168222552050e21e7553b07d00e7c/README.md",
+        "https://github.com/opsle/agent-state-ledger/blob/acab03b1ff7168222552050e21e7553b07d00e7c/SPEC.md"
+      ],
+      "confidence": "MEDIUM_HIGH",
+      "unresolved_questions": [
+        "Do non-orchestration consumers justify independent packaging?",
+        "What event and projection schemas preserve contradictions and uncertainty?",
+        "What compaction is safe without losing reconstructability?"
+      ]
+    },
+    {
+      "id": "agent-scheduler-runtime",
+      "canonical_concept_name": "Agent Scheduler Runtime",
+      "one_sentence_definition": "Agent Scheduler Runtime performs deterministic readiness, queue, time, cancellation, pause, and bounded-concurrency transitions over durable execution identities.",
+      "original_problem": "Queues, dependency readiness, retry timing, timeouts, and schedules were mechanical decisions left inside model loops.",
+      "primary_classification": "DURABLE_ORCHESTRATION",
+      "current_repository": "agent-scheduler-runtime",
+      "recommended_disposition": "CONSOLIDATE_WITH_OTHER",
+      "disposition_rationale": "Scheduling is the deterministic runtime module of Durable Supervisor and shares persistence and event boundaries with the ledger and wakeup mechanism.",
+      "disposition_gain": "One orchestration family can own readiness, time, pause, durable event, and reconstruction semantics without duplicating state.",
+      "disposition_risk": "Independent scheduler reuse may be lost and the Durable Supervisor family could become too monolithic.",
+      "provenance_concerns": "Retain the existing theory and benchmark plan as a named module with attributable history if folded.",
+      "relationship_to_gearbox": "Not Gearbox core: a bounded Gearbox call does not require queues, schedules, Global Pause, autonomous retries, or restart recovery.",
+      "relationship_to_context_firewall": "May expose scheduler and process evidence through adapters, but Context Firewall cannot decide readiness or mutate schedules.",
+      "dependencies": [
+        "agent-state-ledger",
+        "agent-resource-claims"
+      ],
+      "consumers": [
+        "durable-supervisor",
+        "event-driven-agent-wakeup",
+        "controlled-agent-acceptance"
+      ],
+      "current_implementation_fidelity": {
+        "status": "THEORY_ONLY",
+        "assessment": "No queue state machine, store, fake clock, pause contract, fixture, implementation, or automated test exists; the initial theory also overlaps claims, recovery, and routing."
+      },
+      "drift_status": "OVER_BROAD_INITIAL_SCOPE",
+      "current_name_accuracy": "Accurate if claims, routing, and recovery remain external.",
+      "evidence_references": [
+        "https://github.com/opsle/agent-scheduler-runtime/blob/d97cd3c218b20e0b2b0e09873f6a3d15c396b3a0/README.md",
+        "https://github.com/opsle/agent-scheduler-runtime/blob/d97cd3c218b20e0b2b0e09873f6a3d15c396b3a0/THEORY.md"
+      ],
+      "confidence": "HIGH",
+      "unresolved_questions": [
+        "What exact transitions belong to scheduler versus claims and recovery?",
+        "Who owns timeout and provider-availability events?",
+        "Can the scheduler remain a reusable module inside a consolidated repository?"
+      ]
+    },
+    {
+      "id": "verifiable-agent-handoff",
+      "canonical_concept_name": "Verifiable Agent Handoff",
+      "one_sentence_definition": "Verifiable Agent Handoff seals exact source, result, artifact, and authority identities before source cleanup so a fresh verifier can reconstruct and validate without fallback.",
+      "original_problem": "A verifier could not establish an executor's exact result when evidence remained only in the executor's mutable or disposable environment.",
+      "primary_classification": "CROSS_CUTTING_PROTOCOL",
+      "current_repository": "verifiable-agent-handoff",
+      "recommended_disposition": "KEEP_AS_PROTOCOL",
+      "disposition_rationale": "The durable result-transfer and independent-verification boundary is reusable across Gearbox, durable orchestration, CI, and isolation systems.",
+      "disposition_gain": "Artifact identity, publication-before-destruction, and reconstruction semantics remain independently conformable.",
+      "disposition_risk": "Another evidence envelope may duplicate Decision Evidence unless layering is explicit.",
+      "provenance_concerns": "Preserve the result-loss failure narrative and scope the current HMAC prototype to manifest authentication rather than claiming full handoff.",
+      "relationship_to_gearbox": "Optional external protocol when a bounded helper's source environment will be destroyed; not gear selection, admission, or lifecycle ownership.",
+      "relationship_to_context_firewall": "Handoff preserves exact durable artifacts; Context Firewall decides which verified facts enter model context and must escalate rather than hide required handoff evidence.",
+      "dependencies": [
+        "decision-evidence-protocol"
+      ],
+      "consumers": [
+        "gearbox",
+        "ephemeral-agent-workers",
+        "controlled-agent-acceptance"
+      ],
+      "current_implementation_fidelity": {
+        "status": "SUBCOMPONENT_PROTOTYPED",
+        "assessment": "The HMAC manifest prototype validates required bindings and a caller-supplied destruction assertion; it does not publish, transport, prove destruction, reconstruct, or independently verify artifacts."
+      },
+      "drift_status": "PROTOTYPE_SCOPE_OVERSTATED",
+      "current_name_accuracy": "Accurate for the theory; current code is a seal subcomponent.",
+      "evidence_references": [
+        "https://github.com/opsle/verifiable-agent-handoff/blob/399e5cfae94345affa3f087f0f6eb9e77669d33c/README.md",
+        "https://github.com/opsle/verifiable-agent-handoff/blob/399e5cfae94345affa3f087f0f6eb9e77669d33c/src/seal.js",
+        "OPSLE_EXTRACTION_MAP.md"
+      ],
+      "confidence": "HIGH",
+      "unresolved_questions": [
+        "How does the handoff profile layer over Decision Evidence?",
+        "What independently proves source destruction and publication durability?",
+        "Which non-Git artifact formats are supported?"
+      ]
+    },
+    {
+      "id": "agent-routing-policy",
+      "canonical_concept_name": "Agent Routing Policy",
+      "one_sentence_definition": "Agent Routing Policy filters and selects a purpose-bound model, provider, profile, or executor route under exact capability, access, availability, independence, and budget constraints with a durable reason.",
+      "original_problem": "Opaque routing violated provider budgets, access boundaries, exact model or profile constraints, and reviewer independence.",
+      "primary_classification": "GEARBOX_SUPPORTING_POLICY",
+      "current_repository": "agent-routing-policy",
+      "recommended_disposition": "FUTURE_GEARBOX_POLICY",
+      "disposition_rationale": "Gearbox needs bounded model, effort, and provider route selection after deterministic-versus-cognitive admission, while broader review and recovery routing must remain explicit extensions.",
+      "disposition_gain": "A versioned Gearbox-facing selection policy would replace ad hoc model and cost choice.",
+      "disposition_risk": "Absorption could erase reviewer-independence or autonomous routing research and accidentally authorize fallback retries.",
+      "provenance_concerns": "Migrate only the Gearbox-facing route profile; retain the original general routing theory, commit, and later experiments with attribution.",
+      "relationship_to_gearbox": "Supporting policy: Gearbox first admits deterministic versus cognitive work; routing then selects one allowed cognitive route and never autonomously retries or falls back.",
+      "relationship_to_context_firewall": "May consume compact availability or performance evidence, but incomplete or uncertain packets must make selection fail closed.",
+      "dependencies": [
+        "decision-evidence-protocol"
+      ],
+      "consumers": [
+        "gearbox",
+        "agent-recovery-policy",
+        "controlled-agent-acceptance"
+      ],
+      "current_implementation_fidelity": {
+        "status": "THEORY_ONLY",
+        "assessment": "The initial theory mixes gear/model selection, provider routing, authorization inputs, reviewer independence, and fallback eligibility; no evaluator or normative precedence exists."
+      },
+      "drift_status": "MIXED_DECISION_OWNERSHIP",
+      "current_name_accuracy": "Accurate for broad routing; not a substitute name for Gearbox.",
+      "evidence_references": [
+        "https://github.com/opsle/agent-routing-policy/blob/43fc2a72d2c8494b2dcdca7b5a209de61d8fe2d8/README.md",
+        "https://github.com/opsle/agent-routing-policy/blob/43fc2a72d2c8494b2dcdca7b5a209de61d8fe2d8/THEORY.md"
+      ],
+      "confidence": "MEDIUM_HIGH",
+      "unresolved_questions": [
+        "Where exactly does gear selection stop and route selection begin?",
+        "Who owns fallback eligibility and reviewer routing?",
+        "What deterministic precedence applies to price, quality, access, and availability?"
+      ]
+    },
+    {
+      "id": "agent-resource-claims",
+      "canonical_concept_name": "Agent Resource Claims",
+      "one_sentence_definition": "Agent Resource Claims establishes current concurrent ownership through canonical resource identities, atomic shared or exclusive claim sets, expiring leases, and fencing tokens.",
+      "original_problem": "A process could remain alive after losing authority, while independent locks could deadlock or admit partially conflicting work.",
+      "primary_classification": "GEARBOX_SUPPORTING_POLICY",
+      "current_repository": "agent-resource-claims",
+      "recommended_disposition": "KEEP_AS_RESEARCH",
+      "disposition_rationale": "The policy can support Gearbox writes, durable orchestration, semantic editing, and isolation, but a portable state machine and independent packaging value are not yet proven.",
+      "disposition_gain": "Research remains broadly reusable and avoids prematurely coupling lease and fence semantics to Gearbox.",
+      "disposition_risk": "Repository granularity and overlap with scheduler and authorization remain unresolved.",
+      "provenance_concerns": "Preserve the fenced-claim failure narrative and original extraction before any later module migration.",
+      "relationship_to_gearbox": "Optional policy for bounded shared-resource or write authority; unnecessary when a Gearbox task touches no shared mutable resource.",
+      "relationship_to_context_firewall": "Claim observations may be compacted, but fence mismatch, expiry, and takeover evidence are unsafe to hide and reduction never grants authority.",
+      "dependencies": [],
+      "consumers": [
+        "semantic-edit-protocol",
+        "agent-scheduler-runtime",
+        "agent-execution-authorization",
+        "ephemeral-agent-workers"
+      ],
+      "current_implementation_fidelity": {
+        "status": "THEORY_ONLY",
+        "assessment": "The useful invariants are present, but no catalog schema, conflict lattice, lease state machine, store adapter, concurrency fixture, or automated test exists."
+      },
+      "drift_status": "BOUNDARY_OVERLAP",
+      "current_name_accuracy": "Substantially accurate; the mechanism is generic concurrency authority rather than intrinsically agent-specific.",
+      "evidence_references": [
+        "https://github.com/opsle/agent-resource-claims/blob/dfe0fbc90c67ce5ef4256354bb62f1d511b1304c/README.md",
+        "https://github.com/opsle/agent-resource-claims/blob/dfe0fbc90c67ce5ef4256354bb62f1d511b1304c/THEORY.md",
+        "OPSLE_EXTRACTION_MAP.md"
+      ],
+      "confidence": "MEDIUM",
+      "unresolved_questions": [
+        "Does a portable resource identity and conflict lattice justify a standalone package?",
+        "Which time, fairness, and takeover semantics are required?",
+        "Where does resource authority stop and execution authorization begin?"
+      ]
+    },
+    {
+      "id": "agent-discovery-control",
+      "canonical_concept_name": "Agent Discovery Control",
+      "one_sentence_definition": "Agent Discovery Control admits, merges, ignores, or escalates provenance-bearing discovered-work proposals under similarity, depth, existing-work, and storm-budget constraints.",
+      "original_problem": "Autonomous discovery created duplicate proposals, recursive work trees, and churn for already-satisfied work.",
+      "primary_classification": "DURABLE_ORCHESTRATION",
+      "current_repository": "agent-discovery-control",
+      "recommended_disposition": "CONSOLIDATE_WITH_OTHER",
+      "disposition_rationale": "Autonomous discovered-work admission depends on the Durable Supervisor family's objective graph, ledger, and shared budgets.",
+      "disposition_gain": "One durable proposal and convergence model avoids a standalone shell with duplicate state.",
+      "disposition_risk": "Independent admission-policy research and non-agent issue-triage reuse could become less visible.",
+      "provenance_concerns": "Preserve the repository commit, benchmark plan, extraction citation, and future fixtures through an attributable module and redirect.",
+      "relationship_to_gearbox": "Outside Gearbox: canonical Gearbox starts from an explicit primary-developer task and must not create recursive autonomous work.",
+      "relationship_to_context_firewall": "May receive compact proposal evidence, but Context Firewall cannot decide semantic duplication or replace proposal provenance.",
+      "dependencies": [
+        "agent-state-ledger",
+        "decision-evidence-protocol"
+      ],
+      "consumers": [
+        "durable-supervisor"
+      ],
+      "current_implementation_fidelity": {
+        "status": "THEORY_ONLY",
+        "assessment": "The theory is coherent, but the generic spec does not define proposal dispositions, similarity evidence, budgets, convergence, or already-satisfied proofs; no implementation exists."
+      },
+      "drift_status": "OVER_EXTRACTED_REPOSITORY_BOUNDARY",
+      "current_name_accuracy": "Accurate for an orchestration admission policy, not a standalone agent product.",
+      "evidence_references": [
+        "https://github.com/opsle/agent-discovery-control/blob/926547dd9fd713990b1d6f1f2e650aa6c0883564/README.md",
+        "https://github.com/opsle/agent-discovery-control/blob/926547dd9fd713990b1d6f1f2e650aa6c0883564/THEORY.md"
+      ],
+      "confidence": "HIGH",
+      "unresolved_questions": [
+        "What semantic duplicate oracle is safe?",
+        "How do storm budgets scale with objective complexity?",
+        "Does a reusable admission library exist independently of a supervisor?"
+      ]
+    },
+    {
+      "id": "agent-execution-authorization",
+      "canonical_concept_name": "Agent Execution Authorization",
+      "one_sentence_definition": "Agent Execution Authorization validates capability-style grants that bind immutable source authority and current execution authority to one exact task, target, purpose, resource, route, and expiry.",
+      "original_problem": "Machine actors received broad or caller-asserted authority instead of server-derived grants bound to exact work and current state.",
+      "primary_classification": "GEARBOX_SUPPORTING_POLICY",
+      "current_repository": "agent-execution-authorization",
+      "recommended_disposition": "FUTURE_GEARBOX_POLICY",
+      "disposition_rationale": "Gearbox must fail closed before deterministic or cognitive execution, while the grant contract should remain reusable by durable orchestration and isolation infrastructure.",
+      "disposition_gain": "Gearbox obtains an exact authority envelope instead of ad hoc caller assertions.",
+      "disposition_risk": "Narrow absorption could discard cross-orchestrator composition or duplicate claim, routing, and handoff state.",
+      "provenance_concerns": "Preserve a separately versioned grant schema and conformance history, plus the immutable-source/current-continuation failure narrative.",
+      "relationship_to_gearbox": "Supporting policy that supplies and validates authority; Gearbox owns applying the result to its requested gear, context, model, budget, and task.",
+      "relationship_to_context_firewall": "Independent: reduced or redacted evidence is never authorization; a firewall may compact an authorization receipt only after authoritative validation.",
+      "dependencies": [
+        "agent-resource-claims",
+        "decision-evidence-protocol",
+        "verifiable-agent-handoff"
+      ],
+      "consumers": [
+        "gearbox",
+        "ephemeral-agent-workers",
+        "controlled-agent-acceptance"
+      ],
+      "current_implementation_fidelity": {
+        "status": "THEORY_ONLY",
+        "assessment": "The source/current authority distinction is preserved, but no portable grant, issuance, revocation, replay, composition, validator, or conformance suite exists."
+      },
+      "drift_status": "BOUNDARY_OVERLAP",
+      "current_name_accuracy": "Accurate.",
+      "evidence_references": [
+        "https://github.com/opsle/agent-execution-authorization/blob/8fb02e943c83fae121c63185d2f0d0dde8c4260a/README.md",
+        "https://github.com/opsle/agent-execution-authorization/blob/8fb02e943c83fae121c63185d2f0d0dde8c4260a/THEORY.md",
+        "OPSLE_EXTRACTION_MAP.md"
+      ],
+      "confidence": "HIGH",
+      "unresolved_questions": [
+        "What is the portable grant schema and revocation oracle?",
+        "Are claims and routes embedded or content-addressed references?",
+        "How are source and continuation authority composed without replay?"
+      ]
+    },
+    {
+      "id": "controlled-agent-acceptance",
+      "canonical_concept_name": "Controlled Agent Acceptance",
+      "one_sentence_definition": "Controlled Agent Acceptance is an experiment-control method for one-shot real-agent runs under an immutable manifest, literal budgets, fail-closed activation, restoration, evidence retention, and residue reconciliation.",
+      "original_problem": "Real-agent acceptance could exceed provider budgets, target the wrong revision, conflict with active work, leave reusable authority, fail to restore pause state, or leave residue.",
+      "primary_classification": "RESEARCH_ONLY_HYPOTHESIS",
+      "current_repository": "controlled-agent-acceptance",
+      "recommended_disposition": "KEEP_AS_RESEARCH",
+      "disposition_rationale": "This is a provider-independent acceptance methodology for testing autonomous systems, not a production runtime primitive or Gearbox component.",
+      "disposition_gain": "Harness and system-under-test verdicts, first-failure behavior, budgets, and restoration remain independently testable.",
+      "disposition_risk": "A separate repository may be excessive if the eventual controller belongs beside each system under test.",
+      "provenance_concerns": "Retain predecessor run citations and future immutable manifests without promoting private operational evidence into generalized proof.",
+      "relationship_to_gearbox": "May later test one-shot Gearbox budget and cleanup behavior, but does not define or implement Gearbox.",
+      "relationship_to_context_firewall": "Can use adapters for captured logs; preflight defects, first failures, budget use, restoration failures, residue, and dual verdicts are unsafe to hide.",
+      "dependencies": [
+        "agent-execution-authorization",
+        "agent-routing-policy",
+        "agent-scheduler-runtime",
+        "verifiable-agent-handoff"
+      ],
+      "consumers": [],
+      "current_implementation_fidelity": {
+        "status": "THEORY_ONLY",
+        "assessment": "The theory is coherent, but no manifest schema, state machine, CAS semantics, restoration protocol, residue model, controller, fixture, or test exists."
+      },
+      "drift_status": "REPOSITORY_BOUNDARY_OVERSTATED",
+      "current_name_accuracy": "Accurate for a methodology or harness.",
+      "evidence_references": [
+        "https://github.com/opsle/controlled-agent-acceptance/blob/2d652adf56e53953327d09b1ba9c4a9c3445f052/README.md",
+        "https://github.com/opsle/controlled-agent-acceptance/blob/2d652adf56e53953327d09b1ba9c4a9c3445f052/ARCHITECTURE.md"
+      ],
+      "confidence": "MEDIUM_HIGH",
+      "unresolved_questions": [
+        "Which manifest and interruption semantics generalize beyond the predecessor?",
+        "Where should the eventual harness implementation live?",
+        "How are non-reusable grants and residue proved across runtimes?"
+      ]
+    },
+    {
+      "id": "agent-recovery-policy",
+      "canonical_concept_name": "Agent Recovery Policy",
+      "one_sentence_definition": "Agent Recovery Policy permits bounded recovery only when typed failure evidence shows that another authorized attempt can add information or change conditions, otherwise converging to a terminal or human-input state.",
+      "original_problem": "Retries, consultations, fallbacks, and verification failures bypassed shared budgets or repeated the same failure indefinitely.",
+      "primary_classification": "DURABLE_ORCHESTRATION",
+      "current_repository": "agent-recovery-policy",
+      "recommended_disposition": "CONSOLIDATE_WITH_OTHER",
+      "disposition_rationale": "Recovery permission depends on the Durable Supervisor family's attempt ledger, global budgets, scheduling, and terminal-state model.",
+      "disposition_gain": "One authoritative attempt and budget model prevents recovery paths from bypassing orchestration limits.",
+      "disposition_risk": "Independent deterministic failure-policy testing and reuse could become less visible.",
+      "provenance_concerns": "Retain extraction history, failure narratives, benchmark plan, and future policy fixtures as an attributable module.",
+      "relationship_to_gearbox": "Outside canonical Gearbox: a Gearbox run returns one failed or indeterminate result and does not autonomously retry, consult, route, or fall back.",
+      "relationship_to_context_firewall": "May consume typed failure packets, but incomplete, truncated, hash-invalid, or unavailable raw evidence must terminate or escalate rather than authorize recovery.",
+      "dependencies": [
+        "agent-state-ledger",
+        "agent-routing-policy",
+        "decision-evidence-protocol"
+      ],
+      "consumers": [
+        "durable-supervisor"
+      ],
+      "current_implementation_fidelity": {
+        "status": "THEORY_ONLY",
+        "assessment": "No failure taxonomy, attempt ledger, information-gain rule, budget transition, evaluator, fixture, or automated test exists; alternate-route ownership overlaps routing."
+      },
+      "drift_status": "BOUNDARY_OVERLAP",
+      "current_name_accuracy": "Accurate, with routing and scheduling boundaries made explicit.",
+      "evidence_references": [
+        "https://github.com/opsle/agent-recovery-policy/blob/1b733a111e26e0a409fee3b96f627048531daefe/README.md",
+        "https://github.com/opsle/agent-recovery-policy/blob/1b733a111e26e0a409fee3b96f627048531daefe/THEORY.md"
+      ],
+      "confidence": "HIGH",
+      "unresolved_questions": [
+        "What portable failure taxonomy and information-gain rule are adequate?",
+        "Does recovery choose an alternate-route class while routing chooses the exact route?",
+        "Which retry timing decisions belong to the scheduler?"
+      ]
+    },
+    {
+      "id": "ephemeral-agent-workers",
+      "canonical_concept_name": "Ephemeral Agent Workers",
+      "one_sentence_definition": "Ephemeral Agent Workers provides restricted-broker execution in disposable bounded environments with scoped resources, sealed result capture, termination, destruction, and independent destruction verification.",
+      "original_problem": "Autonomous execution exposed host mounts, production secrets, broad network access, lingering processes, and ambiguous cleanup.",
+      "primary_classification": "EXECUTION_ISOLATION_INFRASTRUCTURE",
+      "current_repository": "ephemeral-agent-workers",
+      "recommended_disposition": "KEEP_STANDALONE",
+      "disposition_rationale": "Isolation, containment, worker lifecycle, and destruction proof have independent use for Gearbox, durable orchestration, CI, and other untrusted workloads.",
+      "disposition_gain": "A separate threat model, broker contract, portability layer, and containment harness can mature independently.",
+      "disposition_risk": "The implementation may duplicate authorization, claims, or handoff schemas unless those remain explicit external contracts.",
+      "provenance_concerns": "Preserve the Incus-derived predecessor evidence while keeping Incus an optional adapter and not copying private infrastructure.",
+      "relationship_to_gearbox": "Optional external executor for bounded cognitive helpers; deterministic local gears need not use it, and it never selects a gear.",
+      "relationship_to_context_firewall": "May expose helper logs and results through adapters, but Context Firewall proves neither containment, result sealing, nor destruction.",
+      "dependencies": [
+        "agent-execution-authorization",
+        "agent-resource-claims",
+        "verifiable-agent-handoff"
+      ],
+      "consumers": [
+        "gearbox",
+        "durable-supervisor"
+      ],
+      "current_implementation_fidelity": {
+        "status": "THEORY_ONLY",
+        "assessment": "No portable broker or worker adapter, resource profile, threat model, containment harness, destruction receipt, fixture, or test exists."
+      },
+      "drift_status": "ALIGNED_THEORY_ONLY",
+      "current_name_accuracy": "Reasonably accurate, though the isolation primitive is not inherently agent-specific.",
+      "evidence_references": [
+        "https://github.com/opsle/ephemeral-agent-workers/blob/ad96fcfdfac06d340b5e96d369634980cee78ef4/README.md",
+        "https://github.com/opsle/ephemeral-agent-workers/blob/ad96fcfdfac06d340b5e96d369634980cee78ef4/ARCHITECTURE.md",
+        "OPSLE_EXTRACTION_MAP.md"
+      ],
+      "confidence": "HIGH",
+      "unresolved_questions": [
+        "What portable isolation and destruction-proof contracts work across technologies?",
+        "What kernel and broker threat model is in scope?",
+        "How much result sealing belongs solely to Verifiable Handoff?"
+      ]
+    }
+  ]
+}
