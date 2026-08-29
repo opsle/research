@@ -48,6 +48,13 @@ effort, sampling configuration, or repetition count is selected here. Those
 items require a later preregistration and separate authorization. Until then,
 no subject launch is valid and the lifecycle remains below `BENCHMARK_READY`.
 
+The later append-only launch preregistration is recorded in
+[`preregistration-v1/`](preregistration-v1/). It binds one provider/model
+configuration, fixed repetitions and stopping rules, a provider-free subject
+adapter, and a committed encrypted arm mapping without changing this offline
+freeze. It still contains zero subject runs and does not itself authorize a
+provider request.
+
 ## Provider-free verification
 
 The harness fails closed unless the three pinned public Opsle dependencies are

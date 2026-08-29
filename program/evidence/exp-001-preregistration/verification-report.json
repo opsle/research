@@ -1,0 +1,81 @@
+{
+  "protocol_version": "opsle.exp001.preregistration-verification/v1",
+  "experiment_id": "EXP-001",
+  "verified_at": "2026-08-29T14:38:49Z",
+  "classification": "PROVIDER_FREE_PREREGISTRATION_VERIFICATION",
+  "qualification": "PASS",
+  "preregistration_identity": "sha256:e8a0ed7a303e5f4b1f5df089046b6e2fe5ab281b60f9aaeba64ddd2fe972f8c7",
+  "subject_configuration_id": "sha256:bc46a7d72ab776db966e84d9d473efbd0a7e2028ce993eecf4a09d22577ee6cf",
+  "allocation": {
+    "allocation_index_identity": "sha256:e32f0a4c94842f44b713d40e89c81ea85c98db13927834792620629a5ed95600",
+    "mapping_identity": "sha256:1e5f16043ba2313626eb53e4b0022b6e6a4db2320981ff42ba9cfe47fc1d5eb4",
+    "sealed_mapping_sha256": "sha256:a0746116d251e6e68404a4a6472d91fc7332ec2083204d1350971234116e8f66",
+    "seed_commitment_verified": true,
+    "mapping_verified_with_seed": true,
+    "block_count": 60,
+    "subject_count": 240,
+    "arm_counts": {
+      "raw-control": 60,
+      "failure-focused": 60,
+      "bounded-provenance": 60,
+      "bounded-escalating": 60
+    }
+  },
+  "subject_adapter": {
+    "environment_verified": true,
+    "provider_free_fake_transport_api_calls": 2,
+    "provider_free_fake_transport_function_calls": 1,
+    "live_path_rejected_unbound_authorization": true,
+    "automatic_retries": 0,
+    "provider_fallbacks": 0,
+    "provider_model_runs": 0
+  },
+  "offline_freeze_replay": {
+    "qualification": "PASS",
+    "freeze_identity": "sha256:6ac668a2fd6b4390825a7f1470f1f8cdab05a6d2d01b41d4cfd4412e93df74d8",
+    "task_count": 6,
+    "oracle_invocation_count": 12,
+    "arm_rendering_count": 48,
+    "provider_model_run_count": 0
+  },
+  "opsle_value": {
+    "context_firewall": {
+      "actual_implementation_exercised": true,
+      "invocation_count": 36,
+      "measurement_class": "EXACT",
+      "visible_result": "Thirty-six strict-TAP reductions completed inside the offline qualification replay."
+    },
+    "decision_evidence_protocol": {
+      "actual_implementation_exercised": true,
+      "validation_count": 36,
+      "measurement_class": "OBSERVED",
+      "visible_result": "Thirty-six source-backed Context Firewall packet validations completed."
+    },
+    "agent_trajectory_profiler": {
+      "actual_implementation_exercised": true,
+      "profile_count": 48,
+      "measurement_class": "EXACT",
+      "visible_result": "Forty-eight arm evidence trajectories produced valid profiles."
+    },
+    "visible_value": {
+      "actual_contract_exercised": true,
+      "measurement_class": "EXACT_AND_OBSERVED",
+      "visible_result": "The replay preserved Context Firewall and Decision Evidence receipts plus Agent Trajectory Profiler measurements; no counterfactual token or cost saving was claimed."
+    }
+  },
+  "operator_visible_indicators": [
+    "[EXP-001 Offline Freeze] 6 tasks | 48 provider-free arm renderings | PASS"
+  ],
+  "native_codex_children": {
+    "used": false,
+    "count": 0
+  },
+  "experiment_runs_added": 0,
+  "provider_model_runs_added": 0,
+  "limitations": [
+    "The subject adapter used an injected fake transport; no OpenAI request or authentication occurred.",
+    "No distinct dated GPT-5.6 Sol snapshot was listed in official documentation, so the public model identifier does not prove immutable underlying weights.",
+    "The coordinator seed remains outside this evidence and every subject context.",
+    "Provider-free replay does not measure model correctness, tokens, cost, latency, causal benefit, or a safe context-reduction frontier."
+  ]
+}
