@@ -29,16 +29,20 @@ remained unchanged; zero model/provider subjects ran.
 4. Completed through public research PR #9: six content-addressed tasks, the
    deterministic correctness oracle, raw plus three Context Firewall arm
    contracts, the balanced/blinded allocation method, and the provider-free
-   exact-revision harness are frozen and qualified. The seed, instantiated arm
-   mapping, model/provider configuration, repetition rule, and subject adapter
-   intentionally remain unset. Add Verifiable Agent Handoff only if a future arm
-   destroys or isolates the source environment.
+   exact-revision harness are frozen and qualified.
+5. Completed through public research PR #11: the exact OpenAI Responses subject
+   configuration, medium reasoning effort, no-retry adapter, 10-repetition fixed
+   sample, 240-label blinded index, 60-block encrypted mapping, seed commitment,
+   stopping rules, and provider-free verification are preregistered. The
+   coordinator seed remains outside Git and subject context. Zero model/provider
+   subjects ran. Add Verifiable Agent Handoff only if a future arm destroys or
+   isolates the source environment.
 
 These three foundational projects are naturally tested together. The expected
 first major measured experiment remains EXP-001 because no repository evidence
 establishes a stronger prerequisite experiment. The experiment itself must wait
-until the remaining launch configuration and instantiated allocation are
-preregistered under separate provider/model authority.
+until a provider-free balanced-block coordinator is verified and four exact,
+label-bound budget authorizations exist under separate provider/model authority.
 
 ## Workstream 2: durable orchestration
 
@@ -70,8 +74,8 @@ conversation-local.
 
 ## Exact next execution
 
-In `opsle/research`, preregister one exact EXP-001 model/provider/version/effort/
-sampling configuration, repetition count and stopping rule, allocation seed
-commitment and sealed arm mapping, and subject adapter/environment revision.
-Do not launch model/provider subjects in that execution unless separately
-authorized. EXP-001 has no technical dependency on Gearbox.
+In `opsle/research`, build and provider-free verify the EXP-001 one-block
+coordinator. It must decrypt one balanced allocation block outside subject
+context, validate four label-specific authorizations and frozen arm renderings,
+and record deterministic result envelopes. Do not launch a provider/model
+subject. EXP-001 has no technical dependency on Gearbox.

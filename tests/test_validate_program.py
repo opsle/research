@@ -168,6 +168,44 @@ class ProgramRegistryValidationTests(unittest.TestCase):
             any("provider_model_runs_added must be 0" in error for error in errors)
         )
 
+    def test_exp001_launch_preregistration_is_required(self):
+        experiments = copy.deepcopy(self.experiments)
+        del experiments["experiments"][0]["launch_preregistration"]
+        errors = self.errors_for(experiments=experiments)
+        self.assertTrue(
+            any("launch_preregistration must be an object" in error for error in errors)
+        )
+
+    def test_exp001_launch_preregistration_cannot_claim_subject_runs(self):
+        experiments = copy.deepcopy(self.experiments)
+        experiments["experiments"][0]["launch_preregistration"][
+            "provider_model_runs_added"
+        ] = 1
+        errors = self.errors_for(experiments=experiments)
+        self.assertTrue(
+            any("provider_model_runs_added must be 0" in error for error in errors)
+        )
+
+    def test_exp001_subject_configuration_identity_cannot_drift(self):
+        experiments = copy.deepcopy(self.experiments)
+        experiments["experiments"][0]["launch_preregistration"][
+            "subject_configuration_id"
+        ] = "sha256:" + "0" * 64
+        errors = self.errors_for(experiments=experiments)
+        self.assertTrue(
+            any("subject_configuration_id must be" in error for error in errors)
+        )
+
+    def test_exp001_launch_verification_hash_cannot_drift(self):
+        experiments = copy.deepcopy(self.experiments)
+        experiments["experiments"][0]["launch_preregistration"][
+            "verification_artifact_sha256"
+        ] = "sha256:" + "0" * 64
+        errors = self.errors_for(experiments=experiments)
+        self.assertTrue(
+            any("verification artifact hash drifted" in error for error in errors)
+        )
+
     def test_dashboard_is_current(self):
         expected = (ROOT / "PROGRAM_STATUS.md").read_text(encoding="utf-8")
         self.assertEqual(render(self.registry, self.experiments), expected)

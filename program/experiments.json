@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_verified_at": "2026-08-29T11:24:05Z",
+  "last_verified_at": "2026-08-29T14:49:44Z",
   "experiments": [
     {
       "id": "EXP-001",
@@ -49,7 +49,7 @@
         "interrupted run"
       ],
       "dataset_fixture_identity": "FROZEN_OFFLINE: six public-safe Python repair tasks, evaluator-only accepted implementations, and the deterministic strict-TAP oracle are bound by corpus identity sha256:07f8ef2810267a02b3aa03a45b7de3512f6066b03bd82c833394121825f98d60 within freeze identity sha256:6ac668a2fd6b4390825a7f1470f1f8cdab05a6d2d01b41d4cfd4412e93df74d8 at opsle/research main 04234a65bf36192d63f1dd173c440d45a6604d2b. These are benchmark prerequisites, not experiment results.",
-      "model_provider_configuration": "UNVERIFIED: no model, provider, version, reasoning effort, or sampling configuration has been selected.",
+      "model_provider_configuration": "PREREGISTERED: OpenAI Responses API /v1/responses with public model identifier gpt-5.6-sol, medium reasoning effort, default service tier, no temperature/top_p/seed overrides, store=false, stream=false, parallel_tool_calls=false, and no automatic retry, fallback, or resume. Subject configuration identity: sha256:bc46a7d72ab776db966e84d9d473efbd0a7e2028ce993eecf4a09d22577ee6cf. No distinct dated model snapshot was publicly listed on 2026-08-29, so launch requires a catalogue-drift preflight and the identifier does not prove immutable weights.",
       "run_identities": [],
       "result_artifacts": [],
       "offline_benchmark_freeze": {
@@ -76,6 +76,30 @@
           "The corpus is Python-only and supports no cross-language claim.",
           "Offline qualification does not establish preserved model correctness, token or cost savings, causal benefit, or a safe context-reduction frontier.",
           "No provider/model configuration, repetition count, seed commitment, sealed arm mapping, or subject adapter is registered."
+        ]
+      },
+      "launch_preregistration": {
+        "status": "PREREGISTERED_AWAITING_EXACT_BUDGETED_LAUNCH_AUTHORIZATION",
+        "research_release_sha": "31848c3f25ff9371055932657e8e2f8ad54cc8c7",
+        "preregistration_identity": "sha256:e8a0ed7a303e5f4b1f5df089046b6e2fe5ab281b60f9aaeba64ddd2fe972f8c7",
+        "subject_configuration_id": "sha256:bc46a7d72ab776db966e84d9d473efbd0a7e2028ce993eecf4a09d22577ee6cf",
+        "allocation_index_identity": "sha256:e32f0a4c94842f44b713d40e89c81ea85c98db13927834792620629a5ed95600",
+        "seed_commitment": "sha256:a10f7985f6fc0268ab42bc25270c3ebe434ad5655f92156ee4a5471c46a51bd3",
+        "planned_subject_count": 240,
+        "block_count": 60,
+        "subjects_per_arm": 60,
+        "repetition_count": 10,
+        "provider_model_runs_added": 0,
+        "experiment_runs_added": 0,
+        "verification_artifact": "program/evidence/exp-001-preregistration/verification-report.json",
+        "verification_artifact_sha256": "sha256:b20a7c216e8bc87a589993eb131fdcecf81206823b51c4ddfd85c2e5ba33fc2e",
+        "qualification": "PASS",
+        "lifecycle_impact": "NO_PROMOTION: launch controls are frozen and provider-free verified, but no balanced-block coordinator, authorized subject, measured correctness result, or replication exists.",
+        "limitations": [
+          "Preregistration is not provider/model authorization; all run and result ledgers remain empty.",
+          "The public model identifier does not prove immutable weights because no distinct dated snapshot was listed.",
+          "The allocation remains blinded only while the coordinator seed stays outside Git and every subject context.",
+          "The provider-free subject adapter and offline replay establish contract behavior, not model correctness or comparative benefit."
         ]
       },
       "prerequisite_progress": [
@@ -116,34 +140,39 @@
         },
         {
           "repository": "research",
-          "head_sha": "04234a65bf36192d63f1dd173c440d45a6604d2b",
-          "status": "COMPLETED_OFFLINE",
+          "head_sha": "31848c3f25ff9371055932657e8e2f8ad54cc8c7",
+          "status": "PREREGISTERED_PROVIDER_FREE",
           "evidence": [
             "https://github.com/opsle/research/blob/04234a65bf36192d63f1dd173c440d45a6604d2b/experiments/exp-001/benchmark.json",
             "https://github.com/opsle/research/blob/04234a65bf36192d63f1dd173c440d45a6604d2b/experiments/exp-001/corpus/manifest.json",
             "https://github.com/opsle/research/blob/04234a65bf36192d63f1dd173c440d45a6604d2b/experiments/exp-001/harness.py",
             "https://github.com/opsle/research/blob/04234a65bf36192d63f1dd173c440d45a6604d2b/program/evidence/exp-001-offline-freeze/qualification-report.json",
-            "https://github.com/opsle/research/pull/9"
+            "https://github.com/opsle/research/pull/9",
+            "https://github.com/opsle/research/blob/31848c3f25ff9371055932657e8e2f8ad54cc8c7/experiments/exp-001/preregistration-v1/preregistration.json",
+            "https://github.com/opsle/research/blob/31848c3f25ff9371055932657e8e2f8ad54cc8c7/program/evidence/exp-001-preregistration/verification-report.json",
+            "https://github.com/opsle/research/pull/11"
           ],
-          "limitations": "The corpus, oracle, arms, allocation method, and provider-free harness are frozen and qualified; launch configuration, allocation seed/mapping, subject adapter, model correctness, experimental benefit, and replication remain unverified."
+          "limitations": "The corpus, oracle, arms, allocation, launch configuration, and subject adapter are frozen and provider-free qualified; the balanced-block coordinator, provider authorization, model correctness, experimental benefit, and replication remain unverified."
         }
       ],
       "replication_status": "NOT_STARTED",
       "verdict": "PENDING",
       "blockers": [
-        "The exact model/provider/version/effort/sampling configuration, repetition count and stopping rule, allocation seed commitment and sealed mapping, and subject adapter/environment identity are not preregistered; no subject run is authorized."
+        "No provider-free balanced-block coordinator yet proves mapping decryption outside subject context, four-label authorization admission, frozen arm rendering, and complete result-envelope admission.",
+        "No machine-readable four-label budgeted authorization set exists; zero subject/provider runs are authorized or recorded.",
+        "No distinct dated gpt-5.6-sol snapshot was publicly listed on 2026-08-29, so immutable model weights cannot be claimed and launch requires a catalogue-drift preflight."
       ],
       "theory_reconciliation": {
         "verified_at": "2026-08-29T11:24:05Z",
         "context_firewall_definition": "The deterministic multi-adapter evidence boundary is the concept; the current TAP-subset reducer is one adapter prototype.",
         "experimental_hypothesis": "The experiment continues to test correctness under reduced model-visible context, not the definition or existence of Context Firewall.",
         "gearbox_dependency": "NONE",
-        "sequence": "The provider-free offline benchmark components are frozen; separately authorized preregistration of launch configuration and instantiated allocation is next, and no model/provider subject is authorized.",
+        "sequence": "The offline benchmark and launch controls are frozen and preregistered with an instantiated sealed allocation; zero model/provider subjects have run, and a provider-free balanced-block coordinator is next.",
         "gearbox_publication_status": "COMPLETED_INDEPENDENT_PREREQUISITE",
         "gearbox_repository_head_sha": "f3fab9f292cf4eabd7200615d444f98881f57d55",
         "model_provider_runs_added": 0
       },
-      "next_task": "Preregister one exact model/provider configuration, repetition and stopping rules, an allocation seed commitment with sealed mapping, and the subject adapter/environment identity; do not launch subjects without separate authorization."
+      "next_task": "Build and provider-free verify the EXP-001 one-block coordinator that decrypts one allocation block outside subject context, validates four label-specific authorizations and frozen arm renderings, and records deterministic result envelopes; do not launch a provider/model subject."
     },
     {
       "id": "LEGACY-001",
