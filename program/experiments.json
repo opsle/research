@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_verified_at": "2026-08-29T02:53:08Z",
+  "last_verified_at": "2026-08-29T11:24:05Z",
   "experiments": [
     {
       "id": "EXP-001",
@@ -25,9 +25,9 @@
       },
       "baseline": "Unreduced raw tool output supplied under the same task, model, prompt, fixture, and correctness gate.",
       "experimental_arms": [
-        "failure-only deterministic reduction",
-        "bounded aggregation with provenance",
-        "bounded aggregation with policy-triggered raw escalation"
+        "failure-focused deterministic Context Firewall packet without a payload ceiling",
+        "bounded 8,192-byte Context Firewall packet with provenance and an unfulfilled raw request",
+        "bounded 8,192-byte Context Firewall packet with exact raw exposure when policy requires escalation"
       ],
       "primary_metric": "Correctness pass rate by visible-context fraction.",
       "secondary_metrics": [
@@ -48,10 +48,36 @@
         "missing telemetry",
         "interrupted run"
       ],
-      "dataset_fixture_identity": "UNVERIFIED: the content-addressed task corpus and deterministic correctness oracle have not yet been frozen. Context Firewall's 30 reducer fixtures, Decision Evidence's 24 vectors, Agent Trajectory Profiler's 14 measurement fixtures, and Prompt 005 value-receipt telemetry are implementation/conformance or observational evidence only, not the EXP-001 dataset.",
+      "dataset_fixture_identity": "FROZEN_OFFLINE: six public-safe Python repair tasks, evaluator-only accepted implementations, and the deterministic strict-TAP oracle are bound by corpus identity sha256:07f8ef2810267a02b3aa03a45b7de3512f6066b03bd82c833394121825f98d60 within freeze identity sha256:6ac668a2fd6b4390825a7f1470f1f8cdab05a6d2d01b41d4cfd4412e93df74d8 at opsle/research main 04234a65bf36192d63f1dd173c440d45a6604d2b. These are benchmark prerequisites, not experiment results.",
       "model_provider_configuration": "UNVERIFIED: no model, provider, version, reasoning effort, or sampling configuration has been selected.",
       "run_identities": [],
       "result_artifacts": [],
+      "offline_benchmark_freeze": {
+        "status": "OFFLINE_COMPONENTS_FROZEN",
+        "research_release_sha": "04234a65bf36192d63f1dd173c440d45a6604d2b",
+        "freeze_identity": "sha256:6ac668a2fd6b4390825a7f1470f1f8cdab05a6d2d01b41d4cfd4412e93df74d8",
+        "corpus_identity": "sha256:07f8ef2810267a02b3aa03a45b7de3512f6066b03bd82c833394121825f98d60",
+        "arm_manifest_identity": "sha256:7ce68d9c53232f5941140edb5e3fa2fff0ac0f5bba33bda14cdf1e09888b64f3",
+        "allocation_method_identity": "sha256:6ef1e63dd51bdd967cd9ea472ebd70714bbd50a053ba1df7491f4dbe64595a57",
+        "qualification_artifact": "program/evidence/exp-001-offline-freeze/qualification-report.json",
+        "qualification_artifact_sha256": "sha256:fe3ce2d215cdd1eebb24185f78a68d54ab717437c30a0a8cf96baf3f4b6ad076",
+        "qualification": "PASS",
+        "task_count": 6,
+        "oracle_case_count": 252,
+        "arm_rendering_count": 48,
+        "context_firewall_invocation_count": 36,
+        "decision_evidence_validation_count": 36,
+        "trajectory_profile_count": 48,
+        "experiment_runs_added": 0,
+        "provider_model_runs_added": 0,
+        "allocation_status": "METHOD_FROZEN_SEED_UNSET",
+        "lifecycle_impact": "NO_PROMOTION: offline components are frozen, but launch configuration and instantiated allocation remain unreproducible.",
+        "limitations": [
+          "The corpus is Python-only and supports no cross-language claim.",
+          "Offline qualification does not establish preserved model correctness, token or cost savings, causal benefit, or a safe context-reduction frontier.",
+          "No provider/model configuration, repetition count, seed commitment, sealed arm mapping, or subject adapter is registered."
+        ]
+      },
       "prerequisite_progress": [
         {
           "repository": "context-firewall",
@@ -87,24 +113,37 @@
             "https://github.com/opsle/agent-trajectory-profiler/pull/2"
           ],
           "limitations": "Measurement and receipt-summary conformance establish deterministic accounting and class preservation, not preserved model correctness, benchmark readiness, comparative benefit, or a safe context-reduction frontier."
+        },
+        {
+          "repository": "research",
+          "head_sha": "04234a65bf36192d63f1dd173c440d45a6604d2b",
+          "status": "COMPLETED_OFFLINE",
+          "evidence": [
+            "https://github.com/opsle/research/blob/04234a65bf36192d63f1dd173c440d45a6604d2b/experiments/exp-001/benchmark.json",
+            "https://github.com/opsle/research/blob/04234a65bf36192d63f1dd173c440d45a6604d2b/experiments/exp-001/corpus/manifest.json",
+            "https://github.com/opsle/research/blob/04234a65bf36192d63f1dd173c440d45a6604d2b/experiments/exp-001/harness.py",
+            "https://github.com/opsle/research/blob/04234a65bf36192d63f1dd173c440d45a6604d2b/program/evidence/exp-001-offline-freeze/qualification-report.json",
+            "https://github.com/opsle/research/pull/9"
+          ],
+          "limitations": "The corpus, oracle, arms, allocation method, and provider-free harness are frozen and qualified; launch configuration, allocation seed/mapping, subject adapter, model correctness, experimental benefit, and replication remain unverified."
         }
       ],
       "replication_status": "NOT_STARTED",
       "verdict": "PENDING",
       "blockers": [
-        "The content-addressed task corpus, deterministic correctness oracle, arm definitions, offline harness, exact model/provider configurations, and randomized/blinded task allocation are not frozen."
+        "The exact model/provider/version/effort/sampling configuration, repetition count and stopping rule, allocation seed commitment and sealed mapping, and subject adapter/environment identity are not preregistered; no subject run is authorized."
       ],
       "theory_reconciliation": {
-        "verified_at": "2026-08-29T02:53:08Z",
+        "verified_at": "2026-08-29T11:24:05Z",
         "context_firewall_definition": "The deterministic multi-adapter evidence boundary is the concept; the current TAP-subset reducer is one adapter prototype.",
         "experimental_hypothesis": "The experiment continues to test correctness under reduced model-visible context, not the definition or existence of Context Firewall.",
         "gearbox_dependency": "NONE",
-        "sequence": "The offline benchmark freeze is the immediate next execution after the completed public Gearbox publication; no model/provider subject is authorized by the freeze.",
+        "sequence": "The provider-free offline benchmark components are frozen; separately authorized preregistration of launch configuration and instantiated allocation is next, and no model/provider subject is authorized.",
         "gearbox_publication_status": "COMPLETED_INDEPENDENT_PREREQUISITE",
         "gearbox_repository_head_sha": "f3fab9f292cf4eabd7200615d444f98881f57d55",
         "model_provider_runs_added": 0
       },
-      "next_task": "Freeze the content-addressed EXP-001 task corpus, deterministic correctness oracle, arm definitions, and offline harness using value receipts and trajectory records; do not launch model/provider subjects."
+      "next_task": "Preregister one exact model/provider configuration, repetition and stopping rules, an allocation seed commitment with sealed mapping, and the subject adapter/environment identity; do not launch subjects without separate authorization."
     },
     {
       "id": "LEGACY-001",

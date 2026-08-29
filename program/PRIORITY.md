@@ -26,17 +26,19 @@ remained unchanged; zero model/provider subjects ran.
    emits its own validation receipt and named operator indicator.
 3. Agent Trajectory Profiler now ingests compatible receipts and produces
    deterministic class/unit/trust-safe per-run and cumulative summaries.
-4. Freeze the EXP-001 content-addressed task corpus, deterministic correctness
-   oracle, arm definitions, and offline harness. Only after those artifacts pass
-   their gates may a separately authorized execution consider model subjects.
-   Add Verifiable Agent Handoff only if an arm destroys or isolates the source
-   environment.
+4. Completed through public research PR #9: six content-addressed tasks, the
+   deterministic correctness oracle, raw plus three Context Firewall arm
+   contracts, the balanced/blinded allocation method, and the provider-free
+   exact-revision harness are frozen and qualified. The seed, instantiated arm
+   mapping, model/provider configuration, repetition rule, and subject adapter
+   intentionally remain unset. Add Verifiable Agent Handoff only if a future arm
+   destroys or isolates the source environment.
 
 These three foundational projects are naturally tested together. The expected
 first major measured experiment remains EXP-001 because no repository evidence
 establishes a stronger prerequisite experiment. The experiment itself must wait
-until the task corpus, correctness oracle, offline harness, arm definitions, and
-exact configurations exist.
+until the remaining launch configuration and instantiated allocation are
+preregistered under separate provider/model authority.
 
 ## Workstream 2: durable orchestration
 
@@ -68,9 +70,8 @@ conversation-local.
 
 ## Exact next execution
 
-Resume the still-valid EXP-001 offline benchmark freeze in `opsle/research`:
-define and content-address the task corpus, deterministic correctness oracle,
-experimental arms, failure classifications, and provider-free harness. Context
-Firewall remains primary, with Decision Evidence Protocol and Agent Trajectory
-Profiler as expected support. Do not launch model/provider subjects. EXP-001 has
-no technical dependency on Gearbox.
+In `opsle/research`, preregister one exact EXP-001 model/provider/version/effort/
+sampling configuration, repetition count and stopping rule, allocation seed
+commitment and sealed arm mapping, and subject adapter/environment revision.
+Do not launch model/provider subjects in that execution unless separately
+authorized. EXP-001 has no technical dependency on Gearbox.

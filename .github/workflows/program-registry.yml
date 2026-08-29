@@ -44,11 +44,15 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_*.py'
       - name: Qualify EXP-001 offline freeze
         run: python experiments/exp-001/harness.py verify
-      - name: Validate Prompt 005 receipts
+      - name: Validate captured value receipts
         run: |
           python tools/validate_value_receipt.py \
             program/evidence/prompt-005/context-value-receipt.json
           python tools/validate_value_receipt.py \
             program/evidence/prompt-005/decision-value-receipt.json
+          python tools/validate_value_receipt.py \
+            program/evidence/exp-001-offline-freeze/context-firewall-value-receipt.json
+          python tools/validate_value_receipt.py \
+            program/evidence/exp-001-offline-freeze/decision-evidence-value-receipt.json
       - name: Check generated dashboard
         run: python tools/render_program_status.py --check
