@@ -9,9 +9,9 @@ The bootstrap extraction list is not the canonical product/repository map. The
 2026-08-29 source reconciliation is in
 [`program/THEORY_MAP.md`](program/THEORY_MAP.md), with machine-readable concept
 state in [`program/theory-registry.json`](program/theory-registry.json). It
-records Agent Gearbox as a missing conceptual home, formally separates it from
+records Agent Gearbox in its restored public home, formally separates it from
 Durable Supervisor, and recommends future consolidation for several
-durable-orchestration hypotheses without executing any repository operation.
+durable-orchestration hypotheses without executing those dispositions.
 
 All current repositories are public, independently versioned, and part of Opsle
 Research. That current versioning records provenance; it does not establish that
@@ -20,6 +20,7 @@ SHA means the first public commit created during the 2026-08-25 bootstrap.
 
 | Repository | Maturity | Initial SHA | Implementation | Benchmark |
 |---|---:|---|---|---|
+| [gearbox](https://github.com/opsle/gearbox) | PROTOTYPE | `4d2a7cf902b52f099638b02a4fdec34fd5705a75` | provider-free bounded execution core | one deterministic dogfood fixture and plan; no comparative result |
 | [agent-trajectory-profiler](https://github.com/opsle/agent-trajectory-profiler) | PROTOTYPE | `ce2fd532731d9bf5a0b7a271289bfdcc404f57c1` | sanitized dependency-free prototype | plan and fixtures only; no measured result |
 | [semantic-edit-protocol](https://github.com/opsle/semantic-edit-protocol) | THEORY | `29caad5c03827cde17aabd71c38bc25899413a33` | theory/specification only | plan and fixtures only; no measured result |
 | [durable-supervisor](https://github.com/opsle/durable-supervisor) | THEORY | `555ebedb992ac74236bb7da8230b4d6b0489830b` | theory/specification only | plan and fixtures only; no measured result |

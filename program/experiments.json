@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_verified_at": "2026-08-29T01:35:49Z",
+  "last_verified_at": "2026-08-29T02:53:08Z",
   "experiments": [
     {
       "id": "EXP-001",
@@ -95,11 +95,13 @@
         "The content-addressed task corpus, deterministic correctness oracle, arm definitions, offline harness, exact model/provider configurations, and randomized/blinded task allocation are not frozen."
       ],
       "theory_reconciliation": {
-        "verified_at": "2026-08-29T01:35:49Z",
+        "verified_at": "2026-08-29T02:53:08Z",
         "context_firewall_definition": "The deterministic multi-adapter evidence boundary is the concept; the current TAP-subset reducer is one adapter prototype.",
         "experimental_hypothesis": "The experiment continues to test correctness under reduced model-visible context, not the definition or existence of Context Firewall.",
         "gearbox_dependency": "NONE",
-        "sequence": "The offline benchmark freeze remains valid and resumes after the separately recommended documentation-only Gearbox publication run.",
+        "sequence": "The offline benchmark freeze is the immediate next execution after the completed public Gearbox publication; no model/provider subject is authorized by the freeze.",
+        "gearbox_publication_status": "COMPLETED_INDEPENDENT_PREREQUISITE",
+        "gearbox_repository_head_sha": "f3fab9f292cf4eabd7200615d444f98881f57d55",
         "model_provider_runs_added": 0
       },
       "next_task": "Freeze the content-addressed EXP-001 task corpus, deterministic correctness oracle, arm definitions, and offline harness using value receipts and trajectory records; do not launch model/provider subjects."

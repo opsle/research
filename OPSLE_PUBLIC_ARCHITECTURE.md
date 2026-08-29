@@ -18,7 +18,7 @@ github.com/opsle
 │
 ├── research
 ├── concept repositories
-├── gearbox          ← RECOMMENDED FUTURE repository; not created
+├── gearbox          ← CURRENT public narrow prototype
 ├── site
 └── tasks            ← FUTURE migration, not current
        │
@@ -26,7 +26,9 @@ github.com/opsle
 tasks.opsle.com      ← FUTURE canonical host, not current
 ```
 
-The active repository remains `sneakocom/taslos-tasks`; the active path remains `apps/taslos-tasks`. Neither depends on public research.
+The active repository remains `sneakocom/taslos-tasks`; the active path remains
+`apps/taslos-tasks`. Gearbox provenance points to that source, but the active
+product does not depend on the public research runtime.
 
 Opsle Research → independent primitives/experiments → future integration where supported → Opsle Tasks → working integrated reference implementation. The product should prove ideas together, not be their only home.
 

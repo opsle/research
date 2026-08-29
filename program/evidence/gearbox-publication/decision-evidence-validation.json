@@ -1,0 +1,21 @@
+{
+  "schema": "opsle.gearbox-publication.decision-evidence-validation.v1",
+  "input": {
+    "locator": "https://github.com/opsle/gearbox/blob/f3fab9f292cf4eabd7200615d444f98881f57d55/evidence/release-001/value-receipt.json",
+    "sha256": "114cf24a4b3cf256c545fe477393bce49c22fef92475934c8230499b7da57bed"
+  },
+  "validator": {
+    "repository": "opsle/decision-evidence-protocol",
+    "revision": "b17ae3b41cea7cb0b9e0befe43e885b5aa0e4a09",
+    "entrypoint": "src/value-receipt-v1.js#validateValueReceipt"
+  },
+  "result": {
+    "valid": true,
+    "violation_count": 0,
+    "violations": []
+  },
+  "measurement_classes": {
+    "valid": "OBSERVED",
+    "violation_count": "EXACT"
+  }
+}

@@ -5,7 +5,19 @@
 > repository/product topology. See
 > [`program/THEORY_MAP.md`](program/THEORY_MAP.md) for the 2026-08-29 source
 > reconciliation, the restored Agent Gearbox definition, and recommended
-> dispositions. No repository action followed from that reconciliation.
+> dispositions. No repository action occurred inside that reconciliation run;
+> the subsequent separately authorized Gearbox extraction is recorded below.
+
+## Subsequent Gearbox extraction
+
+On 2026-08-29, the canonical portable Gearbox core was adapted into public
+`opsle/gearbox` from Taslos Tasks revision
+`7734caf208366a0515cf4d78efc17a86363f2238`. Public PR #1 records an AGPL
+provider-free core, tests, provenance, and release evidence. It excludes product
+state, credentials, private evidence, host paths, services, provider
+configuration, and Durable Supervisor machinery. Taslos Tasks remained
+unchanged. This later extraction does not alter the historical 2026-08-25
+candidate snapshot below.
 
 ## Read-only snapshot
 
