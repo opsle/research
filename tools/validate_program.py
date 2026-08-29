@@ -134,12 +134,14 @@ EXP001_RECONCILED_HYPOTHESIS = (
 )
 
 EXP001_RECONCILED_SEQUENCE = (
-    "The offline benchmark and launch controls are frozen and preregistered with "
-    "an instantiated sealed allocation; zero model/provider subjects have run, "
-    "and a provider-free balanced-block coordinator is next."
+    "The offline benchmark, launch controls, and one-block coordinator are frozen "
+    "and provider-free qualified; zero model/provider subjects have run, and one "
+    "exact live authorization set plus a catalogue/pricing preflight are next."
 )
 
 EXP001_OFFLINE_RELEASE_SHA = "04234a65bf36192d63f1dd173c440d45a6604d2b"
+EXP001_PREREGISTRATION_RELEASE_SHA = "31848c3f25ff9371055932657e8e2f8ad54cc8c7"
+EXP001_COORDINATOR_RELEASE_SHA = "9ee43197880c18d4e185cf7e29e02a151d22a12e"
 EXP001_FREEZE_IDENTITY = (
     "sha256:6ac668a2fd6b4390825a7f1470f1f8cdab05a6d2d01b41d4cfd4412e93df74d8"
 )
@@ -163,6 +165,12 @@ EXP001_ALLOCATION_INDEX_IDENTITY = (
 )
 EXP001_SEED_COMMITMENT = (
     "sha256:a10f7985f6fc0268ab42bc25270c3ebe434ad5655f92156ee4a5471c46a51bd3"
+)
+EXP001_COORDINATOR_CONTRACT_IDENTITY = (
+    "sha256:873d28781f9f7fed3ffabb8e95b73cdf5d88bdb5f5b04dd7189b8e55f3466a89"
+)
+EXP001_COORDINATOR_REVISION = (
+    "sha256:d7a2e5709fdc3b36b0fedd464bd7ccb791b067da5f327d17f7a76314f3d0af90"
 )
 
 REQUIRED_REPOSITORY_FIELDS = (
@@ -644,12 +652,12 @@ def validate(
                         f"EXP-001 launch preregistration {field} must be "
                         f"{expected_value!r}"
                     )
-            research_repository = repo_by_name.get("research", {})
-            if launch.get("research_release_sha") != research_repository.get(
-                "last_verified_head_sha"
+            if (
+                launch.get("research_release_sha")
+                != EXP001_PREREGISTRATION_RELEASE_SHA
             ):
                 errors.append(
-                    "EXP-001 launch preregistration release SHA must match research"
+                    "EXP-001 launch preregistration release SHA drifted"
                 )
             artifact = launch.get("verification_artifact")
             if artifact != (
@@ -674,6 +682,80 @@ def validate(
             if not _string_list(launch.get("limitations"), allow_empty=False):
                 errors.append(
                     "EXP-001 launch preregistration limitations must be a nonempty string array"
+                )
+        coordinator = exp001.get("block_coordinator_qualification")
+        if not isinstance(coordinator, dict):
+            errors.append("EXP-001 block_coordinator_qualification must be an object")
+        else:
+            expected_coordinator_values = {
+                "status": "PROVIDER_FREE_QUALIFIED_NO_SUBJECT_RUN",
+                "research_release_sha": EXP001_COORDINATOR_RELEASE_SHA,
+                "contract_identity": EXP001_COORDINATOR_CONTRACT_IDENTITY,
+                "coordinator_revision": EXP001_COORDINATOR_REVISION,
+                "preregistration_identity": EXP001_PREREGISTRATION_IDENTITY,
+                "allocation_index_identity": EXP001_ALLOCATION_INDEX_IDENTITY,
+                "qualification": "PASS",
+                "block_count": 1,
+                "fixture_authorization_count": 4,
+                "live_authorization_count": 0,
+                "arm_rendering_count": 8,
+                "result_envelope_count": 8,
+                "context_firewall_invocation_count": 6,
+                "decision_evidence_validation_count": 6,
+                "trajectory_profile_count": 8,
+                "subject_visible_arm_identity_count": 0,
+                "provider_model_runs_added": 0,
+                "experiment_runs_added": 0,
+                "experiment_results_added": 0,
+                "authorization_consumed": False,
+                "private_artifacts_persisted": False,
+            }
+            for field, expected_value in expected_coordinator_values.items():
+                if coordinator.get(field) != expected_value:
+                    errors.append(
+                        f"EXP-001 block coordinator {field} must be "
+                        f"{expected_value!r}"
+                    )
+            research_repository = repo_by_name.get("research", {})
+            if coordinator.get("research_release_sha") != research_repository.get(
+                "last_verified_head_sha"
+            ):
+                errors.append(
+                    "EXP-001 block coordinator release SHA must match research"
+                )
+            artifacts = (
+                (
+                    "qualification_artifact",
+                    "qualification_artifact_sha256",
+                    "program/evidence/exp-001-block-coordinator/qualification-report.json",
+                ),
+                (
+                    "value_receipt_artifact",
+                    "value_receipt_artifact_sha256",
+                    "program/evidence/exp-001-block-coordinator/value-receipt.json",
+                ),
+            )
+            for path_field, hash_field, expected_path in artifacts:
+                artifact = coordinator.get(path_field)
+                if artifact != expected_path:
+                    errors.append(
+                        f"EXP-001 block coordinator {path_field} path drifted"
+                    )
+                    continue
+                artifact_path = ROOT / artifact
+                if not artifact_path.is_file():
+                    errors.append(
+                        f"EXP-001 block coordinator {path_field} is missing"
+                    )
+                    continue
+                artifact_digest = hashlib.sha256(artifact_path.read_bytes()).hexdigest()
+                if coordinator.get(hash_field) != f"sha256:{artifact_digest}":
+                    errors.append(
+                        f"EXP-001 block coordinator {hash_field} drifted"
+                    )
+            if not _string_list(coordinator.get("limitations"), allow_empty=False):
+                errors.append(
+                    "EXP-001 block coordinator limitations must be a nonempty string array"
                 )
 
     return errors

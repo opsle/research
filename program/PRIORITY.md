@@ -37,12 +37,20 @@ remained unchanged; zero model/provider subjects ran.
    coordinator seed remains outside Git and subject context. Zero model/provider
    subjects ran. Add Verifiable Agent Handoff only if a future arm destroys or
    isolates the source environment.
+6. Completed through public research PR #13: the provider-free one-block
+   coordinator unseals one mapping outside subject context, validates an exact
+   four-label authorization set, renders all four arms, prepares empty result
+   envelopes, retains private artifacts outside model context, and returns only
+   seed-keyed commitments and exact counts. Secret-backed deterministic replay
+   used fixture-only authorizations, proved zero canonical arm identifiers in
+   subject-visible artifacts, and ran zero provider/model subjects.
 
 These three foundational projects are naturally tested together. The expected
 first major measured experiment remains EXP-001 because no repository evidence
-establishes a stronger prerequisite experiment. The experiment itself must wait
-until a provider-free balanced-block coordinator is verified and four exact,
-label-bound budget authorizations exist under separate provider/model authority.
+establishes a stronger prerequisite experiment. The coordinator prerequisite is
+now qualified. The experiment itself must still wait for four exact label-bound
+budget authorizations and a current catalogue/pricing preflight under separate
+provider/model authority.
 
 ## Workstream 2: durable orchestration
 
@@ -74,8 +82,7 @@ conversation-local.
 
 ## Exact next execution
 
-In `opsle/research`, build and provider-free verify the EXP-001 one-block
-coordinator. It must decrypt one balanced allocation block outside subject
-context, validate four label-specific authorizations and frozen arm renderings,
-and record deterministic result envelopes. Do not launch a provider/model
+In `opsle/research`, create and provider-free validate one exact four-label
+`LIVE_PROVIDER_RUN` authorization set plus a current model catalogue/pricing
+preflight artifact. Do not consume authorization or launch a provider/model
 subject. EXP-001 has no technical dependency on Gearbox.

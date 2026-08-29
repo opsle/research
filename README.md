@@ -35,8 +35,9 @@ Important mechanisms should remain understandable, falsifiable, benchmarkable, r
 - [program/THEORY_MAP.md](program/THEORY_MAP.md) — canonical conceptual topology and Gearbox boundary.
 - [program/theory-registry.json](program/theory-registry.json) — machine-readable concept classifications and dispositions.
 - [program/experiments.json](program/experiments.json) — canonical experiment registry.
-- [experiments/exp-001/](experiments/exp-001/) — frozen provider-free EXP-001 benchmark and launch preregistration with zero subject/model runs.
+- [experiments/exp-001/](experiments/exp-001/) — frozen provider-free EXP-001 benchmark, launch preregistration, and one-block coordinator with zero subject/model runs.
 - [program/evidence/exp-001-preregistration/](program/evidence/exp-001-preregistration/) — provider-free allocation, adapter, interoperability, and Visible Value verification.
+- [program/evidence/exp-001-block-coordinator/](program/evidence/exp-001-block-coordinator/) — secret-backed deterministic coordinator qualification with fixture-only authorization and zero experiment results.
 - [program/LIFECYCLE.md](program/LIFECYCLE.md) — evidence gates for lifecycle promotion.
 - [program/OPERATING_RULES.md](program/OPERATING_RULES.md) — mandatory execution rules.
 - [CONCEPTS.md](CONCEPTS.md) — concept overview and subordinate concepts.
