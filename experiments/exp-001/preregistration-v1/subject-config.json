@@ -1,0 +1,85 @@
+{
+  "protocol_version": "opsle.exp001.subject-configuration/v1",
+  "experiment_id": "EXP-001",
+  "status": "PREREGISTERED_NO_PROVIDER_RUN",
+  "selection_rationale": "The flagship OpenAI model is selected to reduce capability-floor confounding in the first correctness-first Context Firewall experiment; medium reasoning is the documented balanced starting point.",
+  "model_provider_configuration": {
+    "provider": "OpenAI API",
+    "provider_id": "openai",
+    "wire_api": "Responses API",
+    "endpoint": "https://api.openai.com/v1/responses",
+    "authentication": "OPENAI_API_KEY supplied only to the adapter process at launch; never supplied to subject tools or committed artifacts",
+    "model_id": "gpt-5.6-sol",
+    "model_version": "gpt-5.6-sol",
+    "model_version_limit": "The official catalogue listed no distinct dated GPT-5.6 Sol snapshot on 2026-08-29. This is the exact public model identifier available, not proof of immutable weights; catalogue drift requires a preregistration amendment before launch.",
+    "reasoning_effort": "medium",
+    "reasoning_mode": "standard by omission",
+    "reasoning_context": "all_turns",
+    "sampling_configuration": {
+      "temperature": "OMITTED_PROVIDER_DEFAULT",
+      "top_p": "OMITTED_PROVIDER_DEFAULT",
+      "seed": "UNSUPPORTED_NOT_SUPPLIED"
+    },
+    "service_tier": "default",
+    "store": false,
+    "stream": false,
+    "parallel_tool_calls": false,
+    "truncation": "disabled",
+    "automatic_http_retries": 0,
+    "automatic_stream_retries": 0,
+    "provider_fallbacks": 0,
+    "session_resume": false
+  },
+  "subject_limits": {
+    "max_api_calls": 6,
+    "max_function_calls": 8,
+    "max_output_tokens_per_response": 4096,
+    "request_timeout_seconds": 180,
+    "wall_clock_seconds": 900,
+    "max_writable_file_bytes": 16384,
+    "max_request_body_bytes": 240000,
+    "frozen_input_price_usd_per_million_tokens": 4.0,
+    "frozen_output_price_usd_per_million_tokens": 20.0,
+    "maximum_spend_usd_per_subject": 6.3,
+    "cost_bound_derivation": "At most six request bodies of 240,000 bytes each are admitted; using bytes as a conservative input-token ceiling gives 1,440,000 input tokens. Six responses of 4,096 tokens give 24,576 output tokens. At the frozen 2026-08-29 prices, the conservative ceiling is USD 6.25152, rounded up to USD 6.30. A launch-time pricing increase or long-context price multiplier fails closed."
+  },
+  "subject_tool_contract": {
+    "allowed_tools": [
+      "read_file(task.py)",
+      "write_file(task.py)"
+    ],
+    "network_tools": false,
+    "shell": false,
+    "web_search": false,
+    "mcp": false,
+    "plugins": false,
+    "skills": false,
+    "subagents": false,
+    "additional_filesystem_context": false,
+    "evaluator_access": false
+  },
+  "subject_environment": {
+    "platform": "Linux-6.8.0-136-generic-x86_64-with-glibc2.39",
+    "machine": "x86_64",
+    "python": "3.14.7",
+    "python_implementation": "CPython",
+    "ssl": "OpenSSL 3.6.3 9 Jun 2026",
+    "adapter_dependencies": "Python standard library only",
+    "locale": "C.UTF-8",
+    "timezone": "UTC"
+  },
+  "provider_response_admission": {
+    "required_status": "completed",
+    "required_model_echo": "gpt-5.6-sol",
+    "usage_required": true,
+    "missing_or_mismatched_telemetry": "FAIL_CLOSED_AND_STOP_EXPERIMENT",
+    "incomplete_response": "FAIL_CLOSED_NO_RETRY",
+    "transport_failure": "FAIL_CLOSED_NO_RETRY"
+  },
+  "official_documentation": [
+    "https://developers.openai.com/api/docs/models/gpt-5.6-sol",
+    "https://developers.openai.com/api/docs/guides/latest-model",
+    "https://developers.openai.com/api/reference/cli/resources/responses/methods/create"
+  ],
+  "identity": "sha256:bc46a7d72ab776db966e84d9d473efbd0a7e2028ce993eecf4a09d22577ee6cf"
+}

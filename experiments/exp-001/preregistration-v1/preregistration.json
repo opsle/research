@@ -1,0 +1,88 @@
+{
+  "protocol_version": "opsle.exp001.preregistration/v1",
+  "experiment_id": "EXP-001",
+  "registered_on": "2026-08-29",
+  "status": "PREREGISTERED_AWAITING_EXACT_BUDGETED_LAUNCH_AUTHORIZATION",
+  "offline_freeze_identity": "sha256:6ac668a2fd6b4390825a7f1470f1f8cdab05a6d2d01b41d4cfd4412e93df74d8",
+  "subject_configuration_id": "sha256:bc46a7d72ab776db966e84d9d473efbd0a7e2028ce993eecf4a09d22577ee6cf",
+  "allocation": {
+    "method_identity": "sha256:6ef1e63dd51bdd967cd9ea472ebd70714bbd50a053ba1df7491f4dbe64595a57",
+    "status": "INSTANTIATED_MAPPING_SEALED",
+    "seed_commitment": "sha256:a10f7985f6fc0268ab42bc25270c3ebe434ad5655f92156ee4a5471c46a51bd3",
+    "index_identity": "sha256:e32f0a4c94842f44b713d40e89c81ea85c98db13927834792620629a5ed95600",
+    "mapping_identity": "sha256:1e5f16043ba2313626eb53e4b0022b6e6a4db2320981ff42ba9cfe47fc1d5eb4",
+    "mapping_plaintext_sha256": "sha256:682eff386ae87af62b95574d762f8e8ec8742a17f1c19e93a95bf436de07b2fd",
+    "sealed_mapping_sha256": "sha256:a0746116d251e6e68404a4a6472d91fc7332ec2083204d1350971234116e8f66",
+    "mapping_owner": "human experiment coordinator",
+    "seed_storage": "Outside the public repository and outside every subject context; reveal only after the experiment is frozen or for an authorized coordinator launch.",
+    "block_count": 60,
+    "subject_count": 240,
+    "subjects_per_arm": 60
+  },
+  "repetition_and_stopping": {
+    "repetitions_per_task_arm": 10,
+    "task_count": 6,
+    "arm_count": 4,
+    "planned_subject_count": 240,
+    "fixed_sample": true,
+    "interim_efficacy_or_futility_stopping": false,
+    "valid_correctness_failure_stops_experiment": false,
+    "immediate_stop_conditions": [
+      "subject receives evaluator-only material, an arm identity, allocation seed, or sealed mapping",
+      "subject adapter, model echo, configuration identity, environment identity, or frozen artifact differs",
+      "provider or transport failure, incomplete response, automatic retry, fallback, or session resume",
+      "missing provider usage, tool event, final artifact, oracle result, or classification telemetry",
+      "authorization or monetary ceiling cannot be proven before a provider request",
+      "an interrupted or partially completed block"
+    ],
+    "replacement_rule": "No automatic replacement. Any immediate-stop condition halts the experiment; resumption or replacement requires a versioned preregistration amendment before another provider request.",
+    "completion_rule": "Complete only after all 60 balanced task-by-repetition blocks contain one valid fresh subject in each arm and every result has the same deterministic correctness gate."
+  },
+  "analysis_plan": {
+    "primary_estimand": "Correctness pass rate for each arm and the paired correctness difference between each treatment and raw-control across task-by-repetition blocks.",
+    "primary_tests": "Three two-sided exact McNemar comparisons against raw-control with Holm family-wise correction at alpha 0.05.",
+    "intervals": "Two-sided 95% Wilson intervals for per-arm correctness and task-stratified bootstrap intervals for paired treatment-minus-control differences, with the bootstrap seed published in the result record.",
+    "context_relation": "Report correctness by initial and final model-visible byte fraction; provider-recorded input tokens are secondary and must not replace byte provenance.",
+    "missing_data": "No imputation. A missing or invalid subject halts the experiment and remains visibly classified; it cannot be silently discarded or replaced.",
+    "sample_size_limit": "Sixty subjects per arm is a bounded first experiment, not a universal safety proof; at a 50 percent rate its unstratified 95 percent interval remains approximately plus or minus 12.5 percentage points."
+  },
+  "launch_authorization_contract": {
+    "required_external_artifact": "A non-repository authorization JSON bound to this preregistration identity and one opaque subject label, permitting exactly one provider run and accepting at least the USD 6.30 conservative maximum_spend_usd.",
+    "batch_policy": "Four label-specific one-run authorization artifacts and a provider-free coordinator preflight must exist before the first subject in a balanced block launches; completing preregistration does not authorize 240 provider calls.",
+    "provider_credential": "OPENAI_API_KEY is injected only at process launch and is never written to results or exposed to subject tools.",
+    "catalogue_preflight": "Before every provider run, verify that gpt-5.6-sol remains the documented exact public identifier and that no dated snapshot or incompatible parameter change requires an amendment.",
+    "current_authorization_state": "NO_MACHINE_READABLE_BUDGETED_AUTHORIZATION_ARTIFACT"
+  },
+  "artifacts": {
+    "subject_configuration": {
+      "path": "subject-config.json",
+      "sha256": "sha256:10f3ca256afeb0a305fc6dd888832ece0b24fbcc37e032625ab48a9d630c3a69"
+    },
+    "subject_adapter": {
+      "path": "subject_adapter.py",
+      "sha256": "sha256:66727a50fba57dc7f7fd0f7bc27d41034905f2d43c4fbbfa7587899a94095429"
+    },
+    "allocation_tool": {
+      "path": "allocation_tool.py",
+      "sha256": "sha256:bb7c3b46add6e9569fe56959f09bd8279a2a28903a47462957fe5c14aec192c7"
+    },
+    "allocation_index": {
+      "path": "allocation-index.json",
+      "sha256": "sha256:22feaabcc0805efc3d41892eee40c79accf5bf23800cba2dc45ab64e187692b8"
+    },
+    "sealed_mapping": {
+      "path": "allocation-mapping.enc",
+      "sha256": "sha256:a0746116d251e6e68404a4a6472d91fc7332ec2083204d1350971234116e8f66"
+    }
+  },
+  "provider_model_runs_added": 0,
+  "experiment_results_added": 0,
+  "claim_limits": [
+    "Preregistration and provider-free adapter tests are not EXP-001 model results.",
+    "The public model identifier does not prove immutable underlying weights because no distinct dated snapshot was listed.",
+    "The encrypted mapping protects subject blinding only while the coordinator seed remains outside subject context.",
+    "The bounded Python-only corpus cannot establish a general context-safety frontier.",
+    "No token, cost, latency, correctness, or causal benefit is measured before authorized subject runs."
+  ],
+  "identity": "sha256:967f00ad57753d7b16b166e9b8d1021952407df08dd25e16e78b619c2c4ba847"
+}
