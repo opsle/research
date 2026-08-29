@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import copy
+import re
 import sys
 import unittest
 from pathlib import Path
@@ -40,11 +41,11 @@ class TheoryRegistryValidationTests(unittest.TestCase):
         self.assertTrue(any("duplicate current concept repository mappings" in error for error in errors))
         self.assertTrue(any("missing current concept repository mappings" in error for error in errors))
 
-    def test_gearbox_cannot_claim_a_current_repository(self):
+    def test_gearbox_must_claim_its_current_repository(self):
         theory = copy.deepcopy(self.theory)
-        theory["concepts"][0]["current_repository"] = "durable-supervisor"
+        theory["concepts"][0]["current_repository"] = None
         errors = self.errors_for(theory=theory)
-        self.assertTrue(any("Gearbox must not claim a current repository" in error for error in errors))
+        self.assertTrue(any("Gearbox must claim the current gearbox repository" in error for error in errors))
 
     def test_unknown_classification_fails(self):
         theory = copy.deepcopy(self.theory)
@@ -89,7 +90,25 @@ class TheoryRegistryValidationTests(unittest.TestCase):
         del registry["theory_reconciliation"]["gearbox_repository_status"]
         errors = self.errors_for(registry=registry)
         self.assertTrue(
-            any("recommended but not created" in error for error in errors)
+            any("created and prototyped" in error for error in errors)
+        )
+
+    def test_gearbox_publication_head_must_match_registry(self):
+        registry = copy.deepcopy(self.registry)
+        registry["gearbox_publication"]["final_main_sha"] = "0" * 40
+        errors = self.errors_for(registry=registry)
+        self.assertTrue(
+            any("publication SHA must match repository HEAD" in error for error in errors)
+        )
+
+    def test_existing_repository_lifecycle_changes_are_forbidden(self):
+        registry = copy.deepcopy(self.registry)
+        registry["theory_reconciliation"][
+            "existing_repository_lifecycle_changes_executed"
+        ] = True
+        errors = self.errors_for(registry=registry)
+        self.assertTrue(
+            any("no existing-repository lifecycle changes" in error for error in errors)
         )
 
     def test_theory_map_classification_drift_fails(self):
@@ -101,9 +120,11 @@ class TheoryRegistryValidationTests(unittest.TestCase):
         self.assertTrue(any("THEORY_MAP classification drift for context-firewall" in error for error in errors))
 
     def test_theory_map_hash_drift_fails(self):
-        drifted = self.theory_map.replace(
-            "24438865b947451801bbf2b9d456fd21ba57e759ae92505fc5a3587b5e86c51d",
+        drifted = re.sub(
+            r"(?<=Theory registry canonical SHA-256:\n`)[0-9a-f]{64}",
             "0" * 64,
+            self.theory_map,
+            count=1,
         )
         errors = self.errors_for(theory_map=drifted)
         self.assertTrue(any("THEORY_MAP canonical theory-registry hash is stale" in error for error in errors))

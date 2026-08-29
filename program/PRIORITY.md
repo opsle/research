@@ -12,11 +12,11 @@ authorization, and resource claims are supporting policies; Durable Supervisor,
 ledger, scheduler, wakeup, discovery, and recovery solve autonomous durable
 orchestration instead.
 
-The next execution should be a separately authorized, documentation/specification-
-only creation of `opsle/gearbox`. It must add the repository to the authoritative
-inventory, publish the minimal boundary in `program/THEORY_MAP.md`, and implement
-nothing. It must not consolidate, rename, transfer, archive, or delete an
-existing repository and must not run a model/provider subject.
+Completed on 2026-08-29 through public `opsle/gearbox` PR #1. The repository now
+contains a narrow provider-free prototype, exact Taslos source provenance,
+provider-free tests, and revision-bound release evidence. No existing repository
+was consolidated, renamed, transferred, archived, or deleted; Taslos Tasks
+remained unchanged; zero model/provider subjects ran.
 
 ## Workstream 1: EXP-001 prerequisites and experiment
 
@@ -68,13 +68,9 @@ conversation-local.
 
 ## Exact next execution
 
-In a separately authorized run, create and register `opsle/gearbox` as the
-twentieth repository and publish only the canonical theory, minimal normative
-request/result boundary, non-goals, dependency profiles, provenance, and
-validation updates. The new repository may enter at `THEORY` only if that gate
-is actually satisfied. Do not implement Gearbox, run providers/models, modify
-Taslos Tasks, or execute any recommended consolidation.
-
-After that bounded publication run, resume the still-valid EXP-001 offline
-benchmark freeze across Research, Context Firewall, Decision Evidence Protocol,
-and Agent Trajectory Profiler. EXP-001 has no technical dependency on Gearbox.
+Resume the still-valid EXP-001 offline benchmark freeze in `opsle/research`:
+define and content-address the task corpus, deterministic correctness oracle,
+experimental arms, failure classifications, and provider-free harness. Context
+Firewall remains primary, with Decision Evidence Protocol and Agent Trajectory
+Profiler as expected support. Do not launch model/provider subjects. EXP-001 has
+no technical dependency on Gearbox.

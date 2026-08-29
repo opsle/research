@@ -107,7 +107,7 @@ def render(registry: dict, experiments: dict) -> str:
             "",
             "## Theory reconciliation",
             "",
-            f"Concept coverage: {len(theory['concepts'])} canonical concepts; {len(current_concepts)} current concept repositories mapped exactly once; Agent Gearbox has no current repository.",
+            f"Concept coverage: {len(theory['concepts'])} canonical concepts; {len(current_concepts)} current concept repositories mapped exactly once; Agent Gearbox maps to opsle/gearbox.",
             "",
             "Canonical map: `program/THEORY_MAP.md`. Machine registry: `program/theory-registry.json`.",
             "",

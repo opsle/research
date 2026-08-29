@@ -1,29 +1,33 @@
 # Canonical Opsle theory map
 
-Status: authoritative conceptual reconciliation for the 2026-08-29 source
-portfolio. Repository operations remain recommendations only.
+Status: authoritative conceptual reconciliation plus the 2026-08-29 public
+Gearbox extraction. Consolidation and disposition operations remain
+recommendations only.
 
 Machine source: [`theory-registry.json`](theory-registry.json).
 
 Theory registry canonical SHA-256:
-`24438865b947451801bbf2b9d456fd21ba57e759ae92505fc5a3587b5e86c51d`.
+`67b7529c195b501a810a3689f2074b1ed893541a15016ea4a8be83cb34437491`.
 
-This map corrects an extraction-boundary error. The 16 concept repositories were
-useful hypotheses isolated from one production system, but hypothesis
-granularity was treated as repository and product granularity. The resulting
-cross-repository diagram then placed almost every concept in one autonomous
-supervisor pipeline. Agent Gearbox had no canonical home, and shared words such
+This map corrects an extraction-boundary error. The original 16 concept
+repositories were useful hypotheses isolated from one production system, but
+hypothesis granularity was treated as repository and product granularity. The
+resulting cross-repository diagram then placed almost every concept in one autonomous
+supervisor pipeline. Agent Gearbox initially had no canonical home, and shared words such
 as *bounded child*, *delegation*, and *waiting without inference* allowed its
 primary-developer transmission theory to be conflated with Durable Supervisor.
 
-No lifecycle stage changes in this reconciliation. Existing evidence remains
-attached to the exact implementation or profile it actually exercises.
+The separately authorized Gearbox extraction created one public repository and
+assigned its new, evidence-backed implementation `PROTOTYPED`. No existing
+repository was promoted, demoted, consolidated, renamed, archived, or deleted.
+Existing evidence remains attached to the exact implementation or profile it
+actually exercises.
 
 ## Canonical topology
 
 ```text
 OPSLE
-├── Agent Gearbox                          future standalone concept home
+├── Agent Gearbox                          public narrow prototype
 │   ├── deterministic-versus-cognitive admission
 │   ├── gear and model/effort selection
 │   ├── content-addressed bounded context
@@ -105,7 +109,7 @@ gearbox_run(
 10. Emit exact or observed Visible Value telemetry without inventing token,
     cost, latency, or causal savings.
 
-### Minimal future package boundary
+### Current minimal package boundary
 
 ```text
 src/
@@ -122,7 +126,9 @@ src/
 └── telemetry/       Visible Value and trajectory emission hooks
 ```
 
-This is a conceptual package map, not an implementation plan.
+The public reference core currently implements these responsibilities in a
+small Python package rather than one module per diagram node. The diagram is a
+responsibility map, not a requirement to split packages or repositories.
 
 ### External dependencies and profiles
 
@@ -157,7 +163,7 @@ Gearbox must not absorb:
 
 ### Visible Value contract
 
-A future Gearbox run should expose, when directly observed:
+A Gearbox run should expose, when directly observed:
 
 - requested, admitted, and executed gear;
 - deterministic operation identity or helper model/effort identity;
@@ -252,13 +258,14 @@ the adapter families below exist.
 | Processes/services | command/unit identity, exit/signal, health state, revision, bounded recent error facts | crash loops, unhealthy identity/revision, permission failures, timeouts, resource exhaustion, cleanup residue | uncertain process identity, log gap, unexpected truncation, health/workload disagreement, missing start/end evidence | retain bounded journal/process artifacts with cursor/time window, command/revision identity, and hashes |
 | Helper-agent results | task/context/authority/budget/model identity, terminal status, changed artifacts, verification, limitations, cleanup | any failure, uncertainty, unauthorized access, budget breach, incomplete verification, residue, hidden retry/fallback | malformed result contract, context mismatch, missing raw transcript/artifact, provider identity uncertainty, truncated result, helper not terminated | retain raw transcript/logs outside primary context, content-addressed result artifacts, request/response hashes, and cleanup receipt |
 
-## Sixteen repository classifications
+## Seventeen repository classifications
 
 The classification is conceptual. The disposition is a future recommendation,
 not an executed repository action.
 
 | Repository | Primary classification | Recommended disposition | Confidence | One-sentence rationale |
 |---|---|---|---|---|
+| `gearbox` | `GEARBOX_CORE` | `KEEP_STANDALONE` | `HIGH` | One bounded primary-developer transmission operation now has a narrow public home without absorbing durable orchestration or external policies and protocols. |
 | `agent-trajectory-profiler` | `INDEPENDENT_OPSLE_TOOL` | `KEEP_STANDALONE` | `HIGH` | Reusable correctness-gated telemetry is external to both Gearbox and durable orchestration, although generic Visible Value scope needs ownership cleanup. |
 | `semantic-edit-protocol` | `INDEPENDENT_OPSLE_TOOL` | `KEEP_STANDALONE` | `HIGH` | Bounded structural editing is independently useful and can be selected as a deterministic Gearbox tool without becoming Gearbox core. |
 | `durable-supervisor` | `DURABLE_ORCHESTRATION` | `KEEP_AS_RESEARCH` | `HIGH` | Durable objective ownership and reconstruction form a distinct autonomous-orchestration hypothesis whose package boundary remains unproven. |
@@ -347,26 +354,29 @@ profile, but it must not evolve into a competing reduction policy. Profiler must
 not become the normative owner of every receipt protocol merely because it
 aggregates them.
 
-## Missing conceptual homes
+## Restored home and remaining gaps
 
-No current concept repository coherently owns these Gearbox-core concepts:
+`opsle/gearbox` now coherently owns deterministic task admission, requested-gear
+validation before model/provider routing, content-addressed staged helper
+context, exact model and reasoning-effort profiles, one injected bounded helper
+transport, OS-level blocking wait, compact result and failure contracts,
+literal command/provider/context/output/time budgets, termination checks, raw
+artifact accounting, and directly observed provider-session counts.
 
-- deterministic task admission;
-- gear selection before model/provider routing;
-- bounded cognitive helper execution;
-- content-addressed allowed-context manifests;
-- model and reasoning-effort selection as one bounded gear profile;
-- OS/transport-layer blocking without primary-model polling;
-- compact helper result and failure contracts;
-- literal helper/provider session, tool, time, and output budgets;
-- helper termination and residue reconciliation;
-- provider-session avoidance accounting bounded to directly observed facts.
-
-These concepts belong together because they implement one primary-developer
-transmission operation. They do not justify nine additional repositories.
+The portable core deliberately leaves production helper isolation, provider
+routing, general execution authorization, Context Firewall adapters, Decision
+Evidence conformance, and trajectory aggregation outside its ownership. A
+production helper transport and controlled provider-session/correctness/context
+comparison remain implementation and evidence gaps. No concept now lacks a
+machine-recorded home, and these responsibilities do not justify additional
+repositories.
 
 ## Implementation fidelity and lifecycle scope
 
+- Agent Gearbox is prototyped for its provider-free public core: deterministic
+  execution and injected-helper contract paths are runnable and tested, while
+  no production helper transport, Context Firewall integration, comparative
+  benchmark, or model/provider subject exists.
 - Agent Trajectory Profiler is verified for its implemented metrics, Context
   Firewall profile, run records, and Visible Value summaries; predictive or
   causal benefit remains unmeasured.
@@ -411,10 +421,10 @@ remain unfrozen. `EXP-001` stays `PLANNED` with zero run identities and zero
 result artifacts.
 
 The offline benchmark-freeze work remains technically correct and needs no
-experiment redesign. It should resume after one bounded program-priority run
-formally publishes the missing canonical Gearbox home; EXP-001 has no technical
-dependency on Gearbox and no provider/model subject is authorized by either
-step.
+experiment redesign. The independent public Gearbox publication is complete,
+so the provider-free EXP-001 freeze is now the immediate next execution.
+EXP-001 has no technical dependency on Gearbox, and no provider/model subject is
+authorized by the freeze.
 
 ## Public Opsle and Taslos Tasks boundary
 
@@ -440,9 +450,14 @@ private Taslos Tasks remains the canonical implementation
 public concepts are repeatedly rediscovered after production coupling
 ```
 
-No code extraction from Taslos Tasks is part of this reconciliation. Future
-adoption requires public contracts, independent evidence, explicit versioned
-adapters, and separately authorized product migration.
+The separately authorized 2026-08-29 extraction adapted the canonical portable
+Gearbox core into a public AGPL repository from Taslos Tasks revision
+`7734caf208366a0515cf4d78efc17a86363f2238`. The public provenance file records
+the exact source and introduction commits. It copied no credentials, private
+evidence, host paths, provider configuration, services, databases, product
+state, or Durable Supervisor machinery, and the source repository remained
+unchanged. Future product adoption still requires public contracts, independent
+evidence, explicit versioned adapters, and separate authorization.
 
 ## Future consolidation and provenance policy
 
@@ -467,7 +482,6 @@ Minimum requirements:
 
 ## Repository anti-forgetting invariant
 
-The authoritative program registry continues to track exactly 19 repositories:
-16 concept repositories, `research`, `site`, and `.github`. Agent Gearbox is one
-machine-recorded concept with `current_repository: null`; it is not a twentieth
-repository in this run. Concept tracking does not replace repository tracking.
+The authoritative program registry tracks exactly 20 repositories: 17 concept
+repositories, `research`, `site`, and `.github`. Agent Gearbox is mapped exactly
+once to `opsle/gearbox`. Concept tracking does not replace repository tracking.

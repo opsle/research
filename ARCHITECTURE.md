@@ -8,7 +8,7 @@ The authoritative conceptual topology is
                          PRIMARY DEVELOPER
                                 |
                                 v
-                         FUTURE GEARBOX
+                         AGENT GEARBOX
                     chooses WHERE work executes
                      /          |            \
         deterministic tool  bounded helper  optional isolated worker
@@ -31,9 +31,10 @@ The authoritative conceptual topology is
                          PRIMARY DEVELOPER
 ```
 
-Gearbox is not currently a repository or implementation. Context Firewall,
-Decision Evidence Protocol, Agent Trajectory Profiler, Verifiable Agent Handoff,
-and Ephemeral Agent Workers remain external, independently reusable mechanisms.
+Gearbox is a public narrow prototype with deterministic execution and an
+injected bounded-helper transport contract. Context Firewall, Decision Evidence
+Protocol, Agent Trajectory Profiler, Verifiable Agent Handoff, and Ephemeral
+Agent Workers remain external, independently reusable mechanisms.
 
 Durable orchestration is a separate family:
 

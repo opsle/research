@@ -30,7 +30,7 @@ Important mechanisms should remain understandable, falsifiable, benchmarkable, r
 
 ## Start here
 
-- [PROGRAM_STATUS.md](PROGRAM_STATUS.md) — generated 19-repository dashboard.
+- [PROGRAM_STATUS.md](PROGRAM_STATUS.md) — generated 20-repository dashboard.
 - [program/registry.json](program/registry.json) — authoritative machine-readable ledger.
 - [program/THEORY_MAP.md](program/THEORY_MAP.md) — canonical conceptual topology and Gearbox boundary.
 - [program/theory-registry.json](program/theory-registry.json) — machine-readable concept classifications and dispositions.
@@ -52,7 +52,8 @@ dashboard with `python3 tools/render_program_status.py`.
 
 Opsle Tasks is the future public name of the integrated reference implementation currently under active development as Taslos Tasks. Its repository transfer, runtime rename, publication, and hosting migration are intentionally deferred.
 
-There is no dependency edge from the active Taslos Tasks system to these repositories.
+The public Gearbox core was adapted with exact provenance from Taslos Tasks, but
+the active product has no runtime dependency edge on the public repositories.
 
 ## Integrity
 
@@ -60,4 +61,5 @@ Hypotheses are not facts. Feasibility in one application does not prove general 
 
 ## License
 
-Apache-2.0. No active-product code was copied, so no known licensing conflict requires a deviation.
+This research control plane is Apache-2.0. The separately released Gearbox
+repository preserves the predecessor's AGPL-3.0-only license and provenance.

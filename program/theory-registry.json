@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_id": "opsle.theory-registry.v1",
-  "verified_at": "2026-08-29T01:35:49Z",
-  "source_repository_count": 19,
-  "current_concept_repository_count": 16,
+  "verified_at": "2026-08-29T02:53:08Z",
+  "source_repository_count": 20,
+  "current_concept_repository_count": 17,
   "canonical_definitions": {
     "gearbox": "Agent Gearbox lets a powerful primary developer delegate routine operations and bounded work to deterministic software or less expensive models, then receive only the compact result needed to continue.",
     "context_firewall": "Context Firewall is a deterministic boundary that keeps operational noise out of an AI agent's context while preserving the compact evidence, provenance, and escalation path the agent needs to make correct decisions.",
@@ -23,13 +23,13 @@
       "one_sentence_definition": "Agent Gearbox lets a powerful primary developer delegate routine operations and bounded work to deterministic software or less expensive models, then receive only the compact result needed to continue.",
       "original_problem": "A powerful primary developer spends scarce reasoning and context on deterministic operations or bounded work that cheaper software or models could perform.",
       "primary_classification": "GEARBOX_CORE",
-      "current_repository": null,
-      "recommended_disposition": "KEEP_AS_RESEARCH",
-      "disposition_rationale": "The concept is distinct and coherent enough for a future standalone repository, but no repository operation is authorized in this reconciliation run.",
-      "disposition_gain": "A canonical public home would reunify admission, gear selection, bounded helper execution, passive waiting, compact return, budget enforcement, and cleanup.",
+      "current_repository": "gearbox",
+      "recommended_disposition": "KEEP_STANDALONE",
+      "disposition_rationale": "The released repository now owns one coherent primary-developer transmission boundary while keeping Context Firewall, evidence protocols, routing, authorization, and isolation external.",
+      "disposition_gain": "The public home reunifies admission, gear selection, bounded helper execution, passive waiting, compact return, budget enforcement, cleanup, and exact provenance.",
       "disposition_risk": "A poorly bounded repository could absorb durable orchestration, isolation infrastructure, or every supporting policy and become a general autonomous-agent platform.",
-      "provenance_concerns": "Future creation must cite this reconciliation and preserve attribution for any policy or module migrated from an existing repository.",
-      "relationship_to_gearbox": "Canonical concept and future implementation boundary.",
+      "provenance_concerns": "The public AGPL repository records the exact Taslos Tasks source and introduction revisions; future migrations must preserve that attribution and must not silently absorb other Opsle repositories or their lifecycle evidence.",
+      "relationship_to_gearbox": "Canonical concept and current public implementation boundary.",
       "relationship_to_context_firewall": "Independent and complementary: Gearbox chooses the execution gear; Context Firewall adapts the evidence returned from that execution.",
       "dependencies": [
         "context-firewall",
@@ -40,21 +40,25 @@
       ],
       "consumers": [],
       "current_implementation_fidelity": {
-        "status": "MISSING",
-        "assessment": "No public Opsle Gearbox repository or canonical implementation exists. Related theories are fragmented across policy repositories and private predecessor mechanisms must not be treated as the public concept."
+        "status": "NARROW_PROTOTYPE",
+        "assessment": "The public provider-free core implements strict request and policy admission, exact deterministic execution, content-addressed staged helper context, one injected helper transport, blocking wait, literal budgets, raw-artifact locators, compact results, termination checks, and Visible Value receipts. No production provider transport, Context Firewall integration, comparative benchmark, or autonomous orchestration exists."
       },
-      "drift_status": "MISSING_CONCEPTUAL_HOME",
-      "current_name_accuracy": "Canonical name; no current repository bears it.",
+      "drift_status": "RESTORED_PUBLIC_HOME",
+      "current_name_accuracy": "Canonical name and repository boundary now match the restored primary-developer theory.",
       "evidence_references": [
         "program/THEORY_MAP.md",
-        "README.md",
-        "OPSLE_EXTRACTION_MAP.md"
+        "https://github.com/opsle/gearbox/blob/f3fab9f292cf4eabd7200615d444f98881f57d55/THEORY.md",
+        "https://github.com/opsle/gearbox/blob/f3fab9f292cf4eabd7200615d444f98881f57d55/SPEC.md",
+        "https://github.com/opsle/gearbox/blob/f3fab9f292cf4eabd7200615d444f98881f57d55/src/opsle_gearbox/core.py",
+        "https://github.com/opsle/gearbox/blob/f3fab9f292cf4eabd7200615d444f98881f57d55/evidence/release-001/verification.json",
+        "program/evidence/gearbox-publication/README.md",
+        "https://github.com/opsle/gearbox/pull/1"
       ],
       "confidence": "HIGH",
       "unresolved_questions": [
-        "What is the smallest executable gear-admission contract?",
-        "Which supporting policies remain external packages versus internal profiles?",
-        "What minimum provider-session avoidance accounting can be measured without inventing counterfactual savings?"
+        "Which production helper transport can independently prove filesystem, credential, network, provider, and termination bounds?",
+        "Which external routing and authorization profiles should receive formal Gearbox adapters without moving their ownership into this repository?",
+        "What comparative provider-session, correctness, and primary-context effects survive a controlled benchmark without inventing counterfactual savings?"
       ]
     },
     {

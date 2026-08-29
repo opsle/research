@@ -36,6 +36,7 @@ EXPECTED_REPOSITORIES = (
     "controlled-agent-acceptance",
     "agent-recovery-policy",
     "ephemeral-agent-workers",
+    "gearbox",
     "research",
     "site",
     ".github",
@@ -133,8 +134,9 @@ EXP001_RECONCILED_HYPOTHESIS = (
 )
 
 EXP001_RECONCILED_SEQUENCE = (
-    "The offline benchmark freeze remains valid and resumes after the separately "
-    "recommended documentation-only Gearbox publication run."
+    "The offline benchmark freeze is the immediate next execution after the "
+    "completed public Gearbox publication; no model/provider subject is "
+    "authorized by the freeze."
 )
 
 REQUIRED_REPOSITORY_FIELDS = (
@@ -294,7 +296,9 @@ def validate(
             f"expected {len(EXPECTED_REPOSITORIES)} repositories, found {len(repositories)}"
         )
     if registry.get("authoritative_repository_count") != len(EXPECTED_REPOSITORIES):
-        errors.append("authoritative_repository_count must be 19")
+        errors.append(
+            f"authoritative_repository_count must be {len(EXPECTED_REPOSITORIES)}"
+        )
     if duplicates:
         errors.append(f"duplicate repositories: {', '.join(duplicates)}")
     if missing:
@@ -535,6 +539,16 @@ def validate(
                 errors.append("EXP-001 reconciliation sequence drifted")
             if reconciliation.get("model_provider_runs_added") != 0:
                 errors.append("EXP-001 reconciliation must record zero model/provider runs")
+            if (
+                reconciliation.get("gearbox_publication_status")
+                != "COMPLETED_INDEPENDENT_PREREQUISITE"
+            ):
+                errors.append("EXP-001 must record the completed independent Gearbox publication")
+            gearbox_repository = repo_by_name.get("gearbox", {})
+            if reconciliation.get("gearbox_repository_head_sha") != gearbox_repository.get(
+                "last_verified_head_sha"
+            ):
+                errors.append("EXP-001 Gearbox publication SHA must match the registry")
 
     return errors
 
@@ -567,9 +581,11 @@ def validate_theory(
     if theory.get("schema_version") != 1:
         errors.append("theory.schema_version must be 1")
     if theory.get("source_repository_count") != len(EXPECTED_REPOSITORIES):
-        errors.append("theory.source_repository_count must remain 19")
-    if theory.get("current_concept_repository_count") != 16:
-        errors.append("theory.current_concept_repository_count must remain 16")
+        errors.append(
+            f"theory.source_repository_count must be {len(EXPECTED_REPOSITORIES)}"
+        )
+    if theory.get("current_concept_repository_count") != 17:
+        errors.append("theory.current_concept_repository_count must be 17")
     if not _valid_timestamp(theory.get("verified_at")):
         errors.append("theory.verified_at must be an ISO-8601 UTC timestamp")
 
@@ -597,7 +613,7 @@ def validate_theory(
     if len(concepts) != 17:
         errors.append(f"expected 17 theory concepts, found {len(concepts)}")
 
-    current_concept_repositories = set(EXPECTED_REPOSITORIES[:16])
+    current_concept_repositories = set(EXPECTED_REPOSITORIES[:17])
     current_mappings: list[str] = []
     concept_ids = set(ids)
     concept_by_id = {
@@ -687,15 +703,15 @@ def validate_theory(
         errors.append(f"duplicate current concept repository mappings: {', '.join(duplicate_mappings)}")
     if missing_mappings:
         errors.append(f"missing current concept repository mappings: {', '.join(missing_mappings)}")
-    if len(current_mappings) != 16:
-        errors.append(f"expected 16 current concept repository mappings, found {len(current_mappings)}")
+    if len(current_mappings) != 17:
+        errors.append(f"expected 17 current concept repository mappings, found {len(current_mappings)}")
 
     gearbox = concept_by_id.get("gearbox")
     if gearbox is None:
         errors.append("theory concept gearbox is required")
     else:
-        if gearbox.get("current_repository") is not None:
-            errors.append("Gearbox must not claim a current repository in this reconciliation")
+        if gearbox.get("current_repository") != "gearbox":
+            errors.append("Gearbox must claim the current gearbox repository")
         if gearbox.get("primary_classification") != "GEARBOX_CORE":
             errors.append("Gearbox primary classification must be GEARBOX_CORE")
         if gearbox.get("one_sentence_definition") != CANONICAL_GEARBOX_DEFINITION:
@@ -724,8 +740,8 @@ def validate_theory(
         for item in repositories
         if isinstance(item, dict) and isinstance(item.get("name"), str)
     }
-    if "gearbox" in repo_names:
-        errors.append("the 19-repository registry must not contain gearbox in this run")
+    if "gearbox" not in repo_names:
+        errors.append("the 20-repository registry must contain gearbox")
     if registry.get("theory_registry") != "program/theory-registry.json":
         errors.append("registry.theory_registry path is invalid")
     if registry.get("theory_map") != "program/THEORY_MAP.md":
@@ -738,18 +754,72 @@ def validate_theory(
         errors.append("registry Gearbox reconciliation definition drifted")
     if reconciliation.get("canonical_context_firewall_definition") != CANONICAL_CONTEXT_FIREWALL_DEFINITION:
         errors.append("registry Context Firewall reconciliation definition drifted")
-    if reconciliation.get("status") != "RECORDED":
-        errors.append("registry theory reconciliation status must be RECORDED")
+    if reconciliation.get("status") != "IMPLEMENTED_HOME_REGISTERED":
+        errors.append(
+            "registry theory reconciliation status must record the implemented home"
+        )
     if not _valid_timestamp(reconciliation.get("verified_at")):
         errors.append("registry theory reconciliation verified_at must be an ISO-8601 UTC timestamp")
     if reconciliation.get("gearbox_vs_durable_supervisor") != GEARBOX_VS_DURABLE_SUPERVISOR:
         errors.append("registry Gearbox versus Durable Supervisor distinction drifted")
-    if reconciliation.get("gearbox_repository_status") != "RECOMMENDED_NOT_CREATED":
-        errors.append("registry must record Gearbox as recommended but not created")
-    if reconciliation.get("repository_topology_operations_executed") is not False:
-        errors.append("registry must record no repository topology operations in this run")
-    if reconciliation.get("lifecycle_changes_executed") is not False:
-        errors.append("registry must record no lifecycle changes in this run")
+    if reconciliation.get("gearbox_repository_status") != "CREATED_PROTOTYPED":
+        errors.append("registry must record Gearbox as created and prototyped")
+    if reconciliation.get("repository_topology_operations_executed") is not True:
+        errors.append("registry must record the authorized Gearbox repository creation")
+    if reconciliation.get("lifecycle_changes_executed") is not True:
+        errors.append("registry must record the evidence-backed Gearbox lifecycle assignment")
+    if reconciliation.get("existing_repository_lifecycle_changes_executed") is not False:
+        errors.append("registry must record no existing-repository lifecycle changes")
+    if reconciliation.get("existing_repository_dispositions_executed") is not False:
+        errors.append("registry must record no executed existing-repository dispositions")
+    if reconciliation.get("model_provider_runs_added") != 0:
+        errors.append("registry must record zero model/provider runs for Gearbox publication")
+    if reconciliation.get("taslos_tasks_source_modified") is not False:
+        errors.append("registry must record Taslos Tasks as unmodified")
+
+    publication = registry.get("gearbox_publication")
+    if not isinstance(publication, dict):
+        errors.append("registry.gearbox_publication must be an object")
+    else:
+        gearbox_repository = next(
+            (
+                item
+                for item in repositories
+                if isinstance(item, dict) and item.get("name") == "gearbox"
+            ),
+            {},
+        )
+        if publication.get("status") != "RELEASED":
+            errors.append("registry Gearbox publication status must be RELEASED")
+        if publication.get("repository") != "gearbox":
+            errors.append("registry Gearbox publication repository must be gearbox")
+        if publication.get("github_url") != "https://github.com/opsle/gearbox":
+            errors.append("registry Gearbox publication URL is invalid")
+        if publication.get("pull_request") != "https://github.com/opsle/gearbox/pull/1":
+            errors.append("registry Gearbox publication PR is invalid")
+        if publication.get("ci_status") != "SUCCESS":
+            errors.append("registry Gearbox publication CI must be successful")
+        if not _nonempty_string(publication.get("ci_run")):
+            errors.append("registry Gearbox publication CI run is required")
+        if publication.get("final_main_sha") != gearbox_repository.get(
+            "last_verified_head_sha"
+        ):
+            errors.append("registry Gearbox publication SHA must match repository HEAD")
+        if gearbox_repository.get("lifecycle_stage") != "PROTOTYPED":
+            errors.append("registered Gearbox lifecycle stage must be PROTOTYPED")
+        for field in ("final_main_sha", "implementation_revision", "source_revision"):
+            if not isinstance(publication.get(field), str) or not SHA_RE.fullmatch(
+                publication[field]
+            ):
+                errors.append(f"registry Gearbox publication {field} must be a Git SHA")
+        if publication.get("source_repository") != "sneakocom/taslos-tasks":
+            errors.append("registry Gearbox publication source repository is invalid")
+        if publication.get("source_modified") is not False:
+            errors.append("registry Gearbox publication must record an unchanged source")
+        if publication.get("provider_model_runs") != 0:
+            errors.append("registry Gearbox publication must record zero provider/model runs")
+        if publication.get("repository_consolidations") != 0:
+            errors.append("registry Gearbox publication must record zero consolidations")
 
     expected_hash = _canonical_json_sha256(theory)
     hash_match = re.search(

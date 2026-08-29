@@ -1,0 +1,26 @@
+{
+  "schema": "opsle.gearbox-publication.trajectory-summary.v1",
+  "input": {
+    "locator": "https://github.com/opsle/gearbox/blob/f3fab9f292cf4eabd7200615d444f98881f57d55/evidence/release-001/value-receipt.json",
+    "sha256": "114cf24a4b3cf256c545fe477393bce49c22fef92475934c8230499b7da57bed"
+  },
+  "profiler": {
+    "repository": "opsle/agent-trajectory-profiler",
+    "revision": "0a89661640721d6a39f127514b993d29bd728d47",
+    "entrypoint": "src/value-summary.js#summarizeRunRecord"
+  },
+  "result": {
+    "valid": true,
+    "violation_count": 0,
+    "receipt_count": 1,
+    "measurement_count": 7,
+    "operator_display_measurement_count": 3,
+    "safe_aggregate_count": 5,
+    "summary_identity": "sha256:89e7405721884486d85f91849f437f54ec2319cff880561ac524bcff86b67e0a",
+    "operator_indicator": "[Trajectory Profiler] run ga587483b4894867066c18309 | 1 receipt ingested | 3 visible measurements | 5 safe aggregates"
+  },
+  "measurement_classes": {
+    "valid": "OBSERVED",
+    "counts": "EXACT"
+  }
+}
