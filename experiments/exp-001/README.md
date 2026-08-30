@@ -64,6 +64,13 @@ commitments. Its committed qualification evidence is in
 Qualification uses non-launchable fixture authorizations and therefore neither
 authorizes nor executes a provider request.
 
+The unreleased provider-free live admission preparation is recorded in
+[`live-preflight-v1/`](live-preflight-v1/). Its public evidence is in
+[`program/evidence/exp-001-live-preflight/`](../../program/evidence/exp-001-live-preflight/).
+The actual exact four-label `LIVE_PROVIDER_RUN` set remains external to Git and
+outside every subject context. It is validated but unconsumed; this preparation
+does not authorize lifecycle advancement or launch a subject.
+
 ## Provider-free verification
 
 The harness fails closed unless the three pinned public Opsle dependencies are

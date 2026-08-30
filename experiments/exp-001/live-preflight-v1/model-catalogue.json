@@ -1,0 +1,79 @@
+{
+  "protocol_version": "opsle.exp001.model-catalogue/v1",
+  "experiment_id": "EXP-001",
+  "purpose": "Current provider-free catalogue preflight for the exact preregistered EXP-001 live block configuration; this artifact does not authorize or launch any provider/model subject.",
+  "retrieved_at": "2026-08-30T18:49:10Z",
+  "catalogue_scope": "Only the exact preregistered candidate is eligible. Any provider or model substitution requires a versioned preregistration amendment and is outside this catalogue.",
+  "eligible_candidates": [
+    {
+      "provider": "OpenAI API",
+      "provider_id": "openai",
+      "model_id": "gpt-5.6-sol",
+      "model_family": "GPT-5.6",
+      "wire_api": "Responses API",
+      "endpoint": "https://api.openai.com/v1/responses",
+      "availability": "DOCUMENTED_API_MODEL_ACCOUNT_ACCESS_UNVERIFIED",
+      "availability_detail": "The official model page documents gpt-5.6-sol on v1/responses and lists API rate tiers. This provider-free task did not query account-specific entitlement.",
+      "pricing_basis": "USD_PER_1M_TEXT_TOKENS_STANDARD_SHORT_CONTEXT",
+      "input_price_usd": 4.0,
+      "cached_input_price_usd": 0.4,
+      "cache_write_price_usd": 5.0,
+      "output_price_usd": 20.0,
+      "long_context_input_price_usd": 8.0,
+      "long_context_cached_input_price_usd": 0.8,
+      "long_context_cache_write_price_usd": 10.0,
+      "long_context_output_price_usd": 30.0,
+      "long_context_threshold_input_tokens": 272000,
+      "context_window_tokens": 1050000,
+      "max_output_tokens": 128000,
+      "subscription_api_distinction": "Direct API usage pricing; ChatGPT or Codex subscription access is not used and does not authorize this experiment.",
+      "snapshot_id": null,
+      "pricing_status": "AUTHORITATIVELY_DOCUMENTED_FOR_DIRECT_API_STANDARD_TIER",
+      "pricing_promotion": "Official documentation states promotional pricing is available at least through 2026-11-21; a fresh launch-time check remains mandatory.",
+      "sources": [
+        {
+          "publisher": "OpenAI",
+          "title": "GPT-5.6 Sol Model",
+          "url": "https://developers.openai.com/api/docs/models/gpt-5.6-sol",
+          "retrieved_at": "2026-08-30T18:49:10Z",
+          "supports": [
+            "exact model identifier",
+            "model family",
+            "Responses API availability",
+            "context and output limits",
+            "short-context prices",
+            "long-context threshold",
+            "snapshot listing"
+          ]
+        },
+        {
+          "publisher": "OpenAI",
+          "title": "OpenAI API Pricing",
+          "url": "https://developers.openai.com/api/docs/pricing",
+          "retrieved_at": "2026-08-30T18:49:10Z",
+          "supports": [
+            "standard short-context token prices",
+            "standard long-context token prices",
+            "cached-input and cache-write prices",
+            "promotional pricing horizon"
+          ]
+        }
+      ],
+      "uncertainty_or_unavailable_fields": [
+        {
+          "field": "account_specific_api_entitlement",
+          "value": null,
+          "status": "UNRESOLVED_ZERO_PROVIDER_CALL_POLICY"
+        },
+        {
+          "field": "distinct_dated_snapshot_id",
+          "value": null,
+          "status": "UNAVAILABLE_OFFICIAL_PAGE_LISTS_ONLY_PUBLIC_MODEL_ID"
+        }
+      ]
+    }
+  ],
+  "authorization_effect": "NONE",
+  "provider_model_launch_count": 0,
+  "identity": "sha256:334a48850dacf3d9ad5d5c9088287fecc78925e64e10f974cb63575b74592b3c"
+}

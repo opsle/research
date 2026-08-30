@@ -82,7 +82,7 @@ conversation-local.
 
 ## Exact next execution
 
-In `opsle/research`, create and provider-free validate one exact four-label
-`LIVE_PROVIDER_RUN` authorization set plus a current model catalogue/pricing
-preflight artifact. Do not consume authorization or launch a provider/model
-subject. EXP-001 has no technical dependency on Gearbox.
+In `opsle/research`, independently review and release the provider-free exact
+four-label `LIVE_PROVIDER_RUN` authorization set and current model
+catalogue/pricing preflight branch. Do not consume authorization or launch a
+provider/model subject. EXP-001 has no technical dependency on Gearbox.
