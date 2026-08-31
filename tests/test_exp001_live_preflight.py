@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import copy
 import importlib.util
 import json
 import sys
@@ -76,6 +77,47 @@ class Exp001LivePreflightTests(unittest.TestCase):
         self.assertFalse(pricing["price_drift_from_frozen_configuration"])
         self.assertFalse(pricing["account_access_verified"])
         self.assertEqual(pricing["provider_call_count"], 0)
+
+    def test_pricing_drift_is_computed_and_rejected(self):
+        catalogue = PREFLIGHT.load_json(PREFLIGHT.CATALOGUE_PATH)
+        configuration = PREFLIGHT.load_json(
+            PREFLIGHT.PREREG_ROOT / "subject-config.json"
+        )
+        candidate = catalogue["eligible_candidates"][0]
+        self.assertFalse(
+            PREFLIGHT.price_drift_from_frozen_configuration(
+                candidate,
+                configuration,
+            )
+        )
+        for field, value in (
+            ("input_price_usd", 100.0),
+            ("output_price_usd", 100.0),
+        ):
+            with self.subTest(field=field):
+                changed = copy.deepcopy(catalogue)
+                changed["eligible_candidates"][0][field] = value
+                changed["identity"] = PREFLIGHT.object_identity(changed)
+                self.assertTrue(
+                    PREFLIGHT.price_drift_from_frozen_configuration(
+                        changed["eligible_candidates"][0],
+                        configuration,
+                    )
+                )
+                with self.assertRaisesRegex(
+                    PREFLIGHT.PreflightError,
+                    "price drifted from frozen subject configuration",
+                ):
+                    PREFLIGHT.pricing_preflight(changed)
+
+        changed_cached = copy.deepcopy(catalogue)
+        changed_cached["eligible_candidates"][0]["cached_input_price_usd"] = 100.0
+        changed_cached["identity"] = PREFLIGHT.object_identity(changed_cached)
+        with self.assertRaisesRegex(
+            PREFLIGHT.PreflightError,
+            "drifted from current documentation",
+        ):
+            PREFLIGHT.pricing_preflight(changed_cached)
 
     def test_exact_four_live_labels_validate_unconsumed(self):
         with tempfile.TemporaryDirectory() as temporary:
@@ -165,6 +207,7 @@ class Exp001LivePreflightTests(unittest.TestCase):
                 catalogue_path=PREFLIGHT.CATALOGUE_PATH,
                 validated_at=self.validated_at,
             )
+            self.assertEqual(set(evidence), set(PREFLIGHT.PUBLIC_EVIDENCE_NAMES))
             public = b"".join(evidence.values())
             self.assertFalse(any(label in public for label in labels))
             self.assertFalse(any(arm_id in public for arm_id in arm_ids))
@@ -175,6 +218,44 @@ class Exp001LivePreflightTests(unittest.TestCase):
             )
             self.assertEqual(report["private_mapping_access_count"], 0)
             self.assertEqual(report["raw_evidence_access_count"], 0)
+
+    def test_public_evidence_privacy_assertion_covers_every_output(self):
+        clean = {
+            name: PREFLIGHT.canonical_bytes({"public": name})
+            for name in PREFLIGHT.PUBLIC_EVIDENCE_NAMES
+        }
+        sentinel = "synthetic-private-sentinel"
+        PREFLIGHT.assert_public_evidence_privacy(
+            clean,
+            forbidden_values=(sentinel,),
+        )
+        for name in PREFLIGHT.PUBLIC_EVIDENCE_NAMES:
+            with self.subTest(output=name, leak="field"):
+                leaked_field = dict(clean)
+                leaked_field[name] = PREFLIGHT.canonical_bytes(
+                    {"subject_label": "synthetic-subject"}
+                )
+                with self.assertRaisesRegex(
+                    PREFLIGHT.PreflightError,
+                    "leaks private set detail",
+                ):
+                    PREFLIGHT.assert_public_evidence_privacy(
+                        leaked_field,
+                        forbidden_values=(sentinel,),
+                    )
+            with self.subTest(output=name, leak="value"):
+                leaked_value = dict(clean)
+                leaked_value[name] = PREFLIGHT.canonical_bytes(
+                    {"public_note": sentinel}
+                )
+                with self.assertRaisesRegex(
+                    PREFLIGHT.PreflightError,
+                    "leaks private set detail",
+                ):
+                    PREFLIGHT.assert_public_evidence_privacy(
+                        leaked_value,
+                        forbidden_values=(sentinel,),
+                    )
 
     def test_receipt_is_valid_and_claims_only_provider_free_counts(self):
         with tempfile.TemporaryDirectory() as temporary:
