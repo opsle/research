@@ -82,12 +82,14 @@ conversation-local.
 
 ## Workstream 6: affected verification
 
-Affected Verification is independently prototyped for normalized synthetic
-evidence and remains outside Gearbox. Its next evidence gate is not another
-selector implementation: freeze one real public repository's full-verification
-baseline, complete catalog, native-selector adapter output, and relevance oracle,
-then run only in `OBSERVE`/`SHADOW` without replacing authoritative CI. Correctness
-and relevant selection misses precede workload reduction.
+Affected Verification is independently verified for its narrow planner and the
+AV-EXP-001 Zustand/Vitest shadow calibration, and remains outside Gearbox. Both
+AV arms selected 8/8 oracle-relevant checks in the frozen ten-scenario corpus;
+the native tests-only arm selected 6/8 and omitted relevant lint and typecheck.
+This is one-ecosystem calibration evidence, not general safety or bounded trust.
+Its exact next execution is a preregistered second public-repository shadow
+calibration in a different ecosystem with a meaningful native selector and the
+same full-catalog oracle discipline.
 
 ## Exact next execution
 

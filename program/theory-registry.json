@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "registry_id": "opsle.theory-registry.v1",
-  "verified_at": "2026-08-31T01:29:54Z",
+  "verified_at": "2026-08-31T02:59:01Z",
   "source_repository_count": 21,
   "current_concept_repository_count": 18,
   "canonical_definitions": {
@@ -714,7 +714,7 @@
       "disposition_rationale": "Verification sufficiency, catalogs, risk policy, fail-closed escalation, and skip arguments are independently reusable by humans, agents, CI, Gearbox, and other developer tooling without belonging to an execution engine.",
       "disposition_gain": "A standalone evidence-composition boundary can reuse native affected selectors while remaining verification-class-neutral and independently benchmarkable.",
       "disposition_risk": "The project could duplicate mature test-impact systems, overclaim global minimality or safety, or drift into a CI scheduler unless adapters, claim ceilings, and execution boundaries remain explicit.",
-      "provenance_concerns": "The initial public prototype was created directly in opsle/affected-verification; preserve PR #1, exact revision 12076522c9b82501794d816f1fcc0b7775fad6e1, source-linked prior-art analysis, and synthetic-only evidence without retroactively claiming novelty or real-project safety.",
+      "provenance_concerns": "The initial public prototype was created directly in opsle/affected-verification; preserve PR #1 at revision 12076522c9b82501794d816f1fcc0b7775fad6e1, the AV-EXP-001 preregistration at 0544362d7659093b7f0b4f89ee8f68023fd269c3, PR #2 and final revision 641aee9d29a89e2a8819f00817ccee8e5d234dcb, source-linked prior art, and the one-repository synthetic-corpus claim boundary without retroactively claiming novelty or general safety.",
       "relationship_to_gearbox": "Independent provider: Gearbox may request a minimum defensible verification plan and choose execution gears, but it does not own the verification theory, catalog, policy, or implementation.",
       "relationship_to_context_firewall": "Complementary and sequential: Affected Verification decides what checks should execute; Context Firewall decides what check results should enter model context after execution.",
       "dependencies": [],
@@ -724,22 +724,23 @@
         "agent-trajectory-profiler"
       ],
       "current_implementation_fidelity": {
-        "status": "NARROW_PROTOTYPE",
-        "assessment": "The public dependency-free Node.js core validates normalized evidence/catalog/policy input, computes reverse impact, selects and explains checks, fails closed on uncertainty, emits canonical plans and Visible Value receipts, and classifies fixture-level shadow misses. It has no production adapter, check execution, real-repository benchmark, or trusted selective-verification evidence."
+        "status": "VERIFIED_NARROW_PROTOTYPE",
+        "assessment": "The public dependency-free Node.js core validates normalized evidence/catalog/policy input, computes reverse impact, selects and explains checks, fails closed on uncertainty, emits canonical plans and Visible Value receipts, and validates identity-bound SHADOW results. AV-EXP-001 adds one benchmark-only Zustand/Vitest adapter and a frozen full-catalog oracle: both AV arms selected all 8 relevant checks observed across ten scenarios, while the uncertainty case forced full verification. It has no production adapter, independent qualifying replication, or trusted selective-verification class."
       },
       "drift_status": "NEW_ALIGNED_PUBLIC_HOME",
       "current_name_accuracy": "Accurate for the implemented verification-planning boundary and explicitly broader than affected-test selection.",
       "evidence_references": [
-        "https://github.com/opsle/affected-verification/blob/12076522c9b82501794d816f1fcc0b7775fad6e1/SPEC.md",
-        "https://github.com/opsle/affected-verification/blob/12076522c9b82501794d816f1fcc0b7775fad6e1/PRIOR_ART.md",
-        "https://github.com/opsle/affected-verification/blob/12076522c9b82501794d816f1fcc0b7775fad6e1/src/planner.js",
-        "https://github.com/opsle/affected-verification/blob/12076522c9b82501794d816f1fcc0b7775fad6e1/tests/planner.test.js",
-        "https://github.com/opsle/affected-verification/pull/1"
+        "https://github.com/opsle/affected-verification/blob/641aee9d29a89e2a8819f00817ccee8e5d234dcb/SPEC.md",
+        "https://github.com/opsle/affected-verification/blob/641aee9d29a89e2a8819f00817ccee8e5d234dcb/PRIOR_ART.md",
+        "https://github.com/opsle/affected-verification/blob/0544362d7659093b7f0b4f89ee8f68023fd269c3/benchmark/av-exp-001/preregistration-v1/preregistration.json",
+        "https://github.com/opsle/affected-verification/blob/641aee9d29a89e2a8819f00817ccee8e5d234dcb/benchmark/av-exp-001/REPORT.md",
+        "https://github.com/opsle/affected-verification/blob/641aee9d29a89e2a8819f00817ccee8e5d234dcb/benchmark/av-exp-001/results-v2/summary.json",
+        "https://github.com/opsle/affected-verification/pull/2"
       ],
       "confidence": "HIGH",
       "unresolved_questions": [
-        "Which real public repository has a complete enough verification catalog and full-run oracle for the first shadow comparison?",
-        "Which native selector should be the first evidence adapter without duplicating its impact logic?",
+        "Does the zero-observed-miss result persist in a second public repository and different ecosystem?",
+        "Which benchmark-only evidence adapter is valuable enough to harden into a production-quality adapter?",
         "Which evidence-based promotion criteria justify TRUSTED_BOUNDED authority for a narrowly defined change class?"
       ]
     }
