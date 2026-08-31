@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_verified_at": "2026-08-31T02:59:01Z",
+  "last_verified_at": "2026-08-31T12:52:33Z",
   "experiments": [
     {
       "id": "EXP-001",
@@ -342,6 +342,119 @@
       ],
       "lifecycle_impact": "PROMOTE_TO_VERIFIED_ONLY: the narrow scoped correctness and safety claims pass meaningful automated and revision-bound benchmark checks, but this run is explicitly capped below BENCHMARK_READY and does not authorize trusted execution.",
       "next_task": "Preregister and run a second public-repository shadow calibration in a different ecosystem with a meaningful native selector and the same full-catalog oracle discipline."
+    },
+    {
+      "id": "AV-EXP-002",
+      "title": "Cross-Ecosystem Minimum Defensible Verification Shadow Calibration",
+      "status": "RECORDED",
+      "hypothesis": "On a pinned Python repository with an established ecosystem affected-test selector, Affected Verification preserves every oracle-relevant frozen catalog check while proposing less than FULL and broadening when evidence is incomplete.",
+      "participating_repositories": [
+        "affected-verification",
+        "research"
+      ],
+      "roles": {
+        "primary": "affected-verification",
+        "expected_support": [
+          "research"
+        ],
+        "potential_support": []
+      },
+      "baseline": "The complete frozen 2,024-check Click verification catalog at 36baa15ff831b939a22bc527cd76ce653ef6f66d, containing 2,016 pytest nodes and eight non-test checks, executed for every scenario and authoritative over all selector predictions.",
+      "experimental_arms": [
+        "FULL frozen verification catalog",
+        "ECOSYSTEM_SELECTOR using pytest-testmon 2.2.0 under its test-selection contract",
+        "AV_CORE with normalized Git, Python import graph, pytest catalog, verification catalog, and policy evidence",
+        "AV_WITH_SELECTOR_EVIDENCE with pytest-testmon output as an additional normalized evidence source"
+      ],
+      "primary_metric": "Selection misses reported individually against checks whose full-catalog outcome changed because of a frozen scenario.",
+      "secondary_metrics": [
+        "relevant-check recall and scenario-level misses",
+        "exact selected and skipped pytest nodes, test files, and non-test checks by compatible class",
+        "uncertainty broadening and full-verification escalation",
+        "observed wall-clock telemetry without a causal time-saved claim",
+        "static-graph versus runtime selector compensation",
+        "normalized comparison to AV-EXP-001 without aggregating incompatible units"
+      ],
+      "correctness_gate": "Every frozen catalog check runs for every scenario after selector and AV proposals are frozen; FULL remains authoritative, and a miss is any omitted oracle-relevant failing check.",
+      "failure_classifications": [
+        "outside selector contract",
+        "dependency evidence miss",
+        "verification-class omission",
+        "policy omission",
+        "adapter defect",
+        "planner defect",
+        "oracle or harness defect",
+        "unresolved",
+        "conservative broadening",
+        "insufficient evidence"
+      ],
+      "dataset_fixture_identity": "Click 36baa15ff831b939a22bc527cd76ce653ef6f66d; preregistration commit f8a183c460535f3352fad2fb4990b0c54818d623; catalog sha256:28ed20abf60e7c785052308298dc6ed647b7a20a737513e8fb3c76aa62d9094c; corpus sha256:d5bc43405a5ab0ac34feef6d5fd5df111eace7f1a355400f963f8a7d4399640b; eleven frozen scenarios and patches.",
+      "model_provider_configuration": "NONE: no model/provider benchmark subject or external provider workload was used; one interactive Codex session used native shell and patch facilities without child agents.",
+      "run_identities": [
+        "sha256:5b3f99bfbebd3a0d061651d66adfb5a6aaef899475c6267cb20e4040e6ed5768"
+      ],
+      "result_artifacts": [
+        "https://github.com/opsle/affected-verification/blob/3ff41688dded6e96e65da7cc44fe2608cf86d073/benchmark/av-exp-002/REPORT.md",
+        "https://github.com/opsle/affected-verification/blob/3ff41688dded6e96e65da7cc44fe2608cf86d073/benchmark/av-exp-002/results-v1/summary.json",
+        "https://github.com/opsle/affected-verification/blob/3ff41688dded6e96e65da7cc44fe2608cf86d073/benchmark/av-exp-002/results-v1/cross-experiment.json",
+        "https://github.com/opsle/affected-verification/blob/3ff41688dded6e96e65da7cc44fe2608cf86d073/benchmark/av-exp-002/results-v1/evidence-manifest.json"
+      ],
+      "target": {
+        "repository": "https://github.com/pallets/click.git",
+        "sha": "36baa15ff831b939a22bc527cd76ce653ef6f66d",
+        "license": "BSD-3-Clause"
+      },
+      "preregistration": {
+        "commit_sha": "f8a183c460535f3352fad2fb4990b0c54818d623",
+        "identity": "sha256:93743e15caee647de1807ee27d35518cd9520394983803e1b93a58e9a2841db6",
+        "amendment_count": 5,
+        "comparative_outcomes_observed_before_commit": false
+      },
+      "benchmark_result": {
+        "affected_verification_main_sha": "3ff41688dded6e96e65da7cc44fe2608cf86d073",
+        "results_commit_sha": "5d126e0ae17557065b55ab84a46f6a3577a49989",
+        "summary_identity": "sha256:5b3f99bfbebd3a0d061651d66adfb5a6aaef899475c6267cb20e4040e6ed5768",
+        "evidence_bundle_identity": "sha256:435d8e5356ed6868edfc1747523ff75d1b327389bf14cc2675e867e45f4de705",
+        "cross_experiment_identity": "sha256:6ac2695ee80c9cb711e756846dad4c7138a3177c11d733456636259c36948da0",
+        "selector_baseline_identity": "sha256:9a3eb5630a868869179585210e9e6034e0c16039d97874921a09f63ef61aafd8",
+        "scenario_count": 11,
+        "synthetic_fault_count": 7,
+        "synthetic_benign_change_count": 1,
+        "uncertainty_scenario_count": 3,
+        "relevant_check_count": 87,
+        "ecosystem_selector_selected_relevant_check_count": 77,
+        "ecosystem_selector_missed_relevant_check_count": 10,
+        "ecosystem_selector_scenario_miss_count": 7,
+        "av_core_selected_relevant_check_count": 86,
+        "av_core_missed_relevant_check_count": 1,
+        "av_core_scenario_miss_count": 1,
+        "av_core_full_broadening_count": 6,
+        "av_with_selector_selected_relevant_check_count": 86,
+        "av_with_selector_missed_relevant_check_count": 1,
+        "av_with_selector_scenario_miss_count": 1,
+        "av_with_selector_full_broadening_count": 5,
+        "av_miss": {
+          "scenario_id": "AV2-006",
+          "check_id": "pytest:tests/test_imports.py::test_light_imports",
+          "classification": "PLANNER_OR_ADAPTER_MISS",
+          "finding": "A subprocess instrumented runtime imports through the public click package; the static Python graph declared completeness and pytest-testmon also omitted the relevant node."
+        }
+      },
+      "major_findings": [
+        "Catalog, policy escalation, explicit uncertainty, skip evidence, FULL fallback, shadow classification, and Visible Value generalized without changing the core plan schema.",
+        "Python dependency evidence, pytest node identity, conftest coupling, selector database lifecycle, and dynamic or subprocess imports required material ecosystem-specific logic.",
+        "Runtime selector evidence compensated for static dynamic-plugin uncertainty in AV2-009 but could not repair AV2-006 because the selector also omitted the relevant runtime-import test.",
+        "Both deliberately degraded cases denied aggressive skipping and required FULL."
+      ],
+      "replication_status": "SAME_HOST_RELEASE_AND_BUNDLE_VERIFICATION_ONLY",
+      "verdict": "FAIL for the safety hypothesis: AV_CORE and AV_WITH_SELECTOR_EVIDENCE each selected 86/87 oracle-relevant checks and omitted the same runtime/subprocess import test in AV2-006. The controlled shadow calibration itself completed and FULL exposed the miss.",
+      "blockers": [
+        "The AV2-006 runtime/subprocess import miss invalidates a positive targeted-sufficiency claim for the frozen corpus.",
+        "The Python and pytest-testmon adapters are benchmark-only and no historical real-change replay or independent qualifying replication exists.",
+        "Affected Verification remains OBSERVE/SHADOW; no TRUSTED_BOUNDED class is authorized."
+      ],
+      "lifecycle_impact": "REMAIN_VERIFIED: the run adds revision-bound falsification evidence and failure modes, but the observed selection miss and explicit run cap do not establish BENCHMARK_READY or EXPERIMENTED lifecycle promotion for the repository.",
+      "next_task": "Preregister and execute a selection-miss repair for AV2-006 that represents runtime/subprocess import uncertainty without changing the preserved AV-EXP-002 result."
     },
     {
       "id": "LEGACY-001",
