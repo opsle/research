@@ -1,0 +1,191 @@
+{
+  "evidence": [
+    {
+      "id": "verification_plan",
+      "kind": "CONTENT_HASH",
+      "locator": "sha256:649b47f0ac224c347d41c0b28b02131a329802961532df4bc6d9e6273001433d",
+      "trust": "VERIFIED"
+    }
+  ],
+  "extensions": {
+    "impact_uncertainty": "NONE",
+    "selected_by_type": {
+      "api-contract": 1,
+      "lint": 2,
+      "other": 1,
+      "schema": 1,
+      "security": 1,
+      "snapshot": 1,
+      "unit-test": 2
+    },
+    "sufficiency": "SUFFICIENT_BROADENED"
+  },
+  "limitations": [
+    "No time, token, cost, correctness, or causal savings claim is made.",
+    "Counts describe the configured catalog and declared test executions, not observed execution.",
+    "A skipped check count is value only within the plan sufficiency and uncertainty classification."
+  ],
+  "measurements": [
+    {
+      "aggregation": {
+        "method": "SUM",
+        "safe": true
+      },
+      "baseline": null,
+      "class": "EXACT",
+      "delta": null,
+      "derivation": null,
+      "direction": "NEUTRAL",
+      "evidence_refs": [
+        "verification_plan"
+      ],
+      "id": "checks_available",
+      "limitations": [],
+      "operator_display": false,
+      "result": 12,
+      "source_verification": "VERIFIED",
+      "unit": "count"
+    },
+    {
+      "aggregation": {
+        "method": "SUM",
+        "safe": true
+      },
+      "baseline": null,
+      "class": "EXACT",
+      "delta": null,
+      "derivation": null,
+      "direction": "LOWER_IS_VALUE",
+      "evidence_refs": [
+        "verification_plan"
+      ],
+      "id": "checks_selected",
+      "limitations": [],
+      "operator_display": true,
+      "result": 9,
+      "source_verification": "VERIFIED",
+      "unit": "count"
+    },
+    {
+      "aggregation": {
+        "method": "SUM",
+        "safe": true
+      },
+      "baseline": null,
+      "class": "EXACT",
+      "delta": null,
+      "derivation": null,
+      "direction": "HIGHER_IS_VALUE",
+      "evidence_refs": [
+        "verification_plan"
+      ],
+      "id": "checks_skipped",
+      "limitations": [],
+      "operator_display": true,
+      "result": 3,
+      "source_verification": "VERIFIED",
+      "unit": "count"
+    },
+    {
+      "aggregation": {
+        "method": "SUM",
+        "safe": true
+      },
+      "baseline": null,
+      "class": "EXACT",
+      "delta": null,
+      "derivation": null,
+      "direction": "NEUTRAL",
+      "evidence_refs": [
+        "verification_plan"
+      ],
+      "id": "test_executions_available",
+      "limitations": [],
+      "operator_display": false,
+      "result": 170,
+      "source_verification": "VERIFIED",
+      "unit": "count"
+    },
+    {
+      "aggregation": {
+        "method": "SUM",
+        "safe": true
+      },
+      "baseline": null,
+      "class": "EXACT",
+      "delta": null,
+      "derivation": null,
+      "direction": "LOWER_IS_VALUE",
+      "evidence_refs": [
+        "verification_plan"
+      ],
+      "id": "test_executions_selected",
+      "limitations": [],
+      "operator_display": true,
+      "result": 49,
+      "source_verification": "VERIFIED",
+      "unit": "count"
+    },
+    {
+      "aggregation": {
+        "method": "SUM",
+        "safe": true
+      },
+      "baseline": null,
+      "class": "EXACT",
+      "delta": null,
+      "derivation": null,
+      "direction": "HIGHER_IS_VALUE",
+      "evidence_refs": [
+        "verification_plan"
+      ],
+      "id": "test_executions_skipped",
+      "limitations": [],
+      "operator_display": true,
+      "result": 121,
+      "source_verification": "VERIFIED",
+      "unit": "count"
+    },
+    {
+      "aggregation": {
+        "method": null,
+        "safe": false
+      },
+      "baseline": null,
+      "class": "EXACT",
+      "delta": null,
+      "derivation": null,
+      "direction": "HIGHER_IS_VALUE",
+      "evidence_refs": [
+        "verification_plan"
+      ],
+      "id": "test_execution_reduction",
+      "limitations": [
+        "Computed only across catalog entries measured in test executions; unlike verification types are not combined."
+      ],
+      "operator_display": true,
+      "result": "121/170",
+      "source_verification": "VERIFIED",
+      "unit": "ratio"
+    }
+  ],
+  "mechanism": {
+    "id": "opsle.affected-verification",
+    "name": "Affected Verification",
+    "revision": null,
+    "version": "0.1.0"
+  },
+  "operation": {
+    "configuration_id": "manual-catalog:research-exp001-readiness-v1",
+    "id": "sha256:649b47f0ac224c347d41c0b28b02131a329802961532df4bc6d9e6273001433d",
+    "name": "verification-planning",
+    "policy_id": "manual-policy:research-exp001-readiness-v1"
+  },
+  "run": {
+    "id": null,
+    "repository": null,
+    "task_classification": null,
+    "work_classification": "DETERMINISTIC_VERIFICATION_PLANNING"
+  },
+  "schema": "opsle.value-receipt.v1"
+}

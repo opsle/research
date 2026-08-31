@@ -1,0 +1,13 @@
+{
+  "protocol_version": "opsle.exp001.model-identity-evidence/v1",
+  "experiment_id": "EXP-001",
+  "requested_model_id": "gpt-5.6-sol",
+  "requested_identity_class": "PUBLIC_MODEL_ID_WITHOUT_DOCUMENTED_IMMUTABILITY",
+  "immutable_provider_snapshot_id": null,
+  "documentation_snapshot_identity": "sha256:9db99dfec2cb50d105665b29a986ce810446e9f0e933691f05a31282b9e6dcad",
+  "prelaunch_status": "BLOCKED_NO_IMMUTABLE_PROVIDER_SNAPSHOT",
+  "runtime_identity": null,
+  "limitation": "The runtime Responses model field can be captured only after an authorized subject request and cannot convert an undated identifier into a preregistered immutable provider snapshot.",
+  "provider_model_subject_count": 0,
+  "identity": "sha256:0ea6538d915fc78d711e2a337b5f23afca694e6993044478b1cfe5c4c0a6480c"
+}

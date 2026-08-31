@@ -1,0 +1,514 @@
+{
+  "affected_components": [
+    {
+      "direct": true,
+      "id": "ci-policy",
+      "via_dependencies": []
+    },
+    {
+      "direct": true,
+      "id": "dashboard",
+      "via_dependencies": []
+    },
+    {
+      "direct": true,
+      "id": "documentation",
+      "via_dependencies": []
+    },
+    {
+      "direct": true,
+      "id": "documentation-snapshot",
+      "via_dependencies": []
+    },
+    {
+      "direct": true,
+      "id": "program-ledger",
+      "via_dependencies": []
+    },
+    {
+      "direct": true,
+      "id": "program-validator",
+      "via_dependencies": []
+    },
+    {
+      "direct": true,
+      "id": "program-validator-tests",
+      "via_dependencies": []
+    },
+    {
+      "direct": true,
+      "id": "readiness-contract",
+      "via_dependencies": []
+    },
+    {
+      "direct": true,
+      "id": "readiness-evidence",
+      "via_dependencies": []
+    },
+    {
+      "direct": true,
+      "id": "readiness-tests",
+      "via_dependencies": []
+    },
+    {
+      "direct": true,
+      "id": "readiness-validator",
+      "via_dependencies": []
+    }
+  ],
+  "argument": {
+    "claim": "Smallest set justified by the normalized evidence model and configured policy; no global mathematical minimality claim.",
+    "every_skip_explained": true,
+    "unknown_is_safe_to_skip": false
+  },
+  "change": {
+    "base_revision": "9b9b5ca0fffdbf18713da7ffd339f8fe8f77818c",
+    "changed_paths": [
+      ".github/workflows/program-registry.yml",
+      "PROGRAM_STATUS.md",
+      "experiments/exp-001/README.md",
+      "experiments/exp-001/readiness-v1/README.md",
+      "experiments/exp-001/readiness-v1/contract.json",
+      "experiments/exp-001/readiness-v1/documentation-snapshot.json",
+      "experiments/exp-001/readiness-v1/fixtures/entitlement-unverified.json",
+      "experiments/exp-001/readiness-v1/fixtures/model-identity-blocked.json",
+      "experiments/exp-001/readiness-v1/readiness.py",
+      "program/PRIORITY.md",
+      "program/evidence/exp-001-readiness/README.md",
+      "program/evidence/exp-001-readiness/affected-verification-plan.json",
+      "program/evidence/exp-001-readiness/affected-verification-value-receipt.json",
+      "program/evidence/exp-001-readiness/qualification-report.json",
+      "program/evidence/exp-001-readiness/value-receipt.json",
+      "program/experiments.json",
+      "program/registry.json",
+      "tests/test_exp001_readiness.py",
+      "tests/test_validate_program.py",
+      "tools/validate_program.py"
+    ],
+    "changed_regions": [],
+    "identity": "sha256:4e83e2f590992892e0ca3e35893eca8d4222203ed42523427153f590857761ca",
+    "target_revision": "worktree-exp001-entitlement-model-identity"
+  },
+  "escalation": {
+    "reasons": [
+      {
+        "escalation": "BROADEN",
+        "rule_id": "program-control"
+      },
+      {
+        "escalation": "BROADEN",
+        "rule_id": "security-boundary"
+      },
+      {
+        "escalation": "BROADEN",
+        "rule_id": "workflow-change"
+      }
+    ],
+    "state": "BROADENED"
+  },
+  "plan_identity": "sha256:649b47f0ac224c347d41c0b28b02131a329802961532df4bc6d9e6273001433d",
+  "provenance": {
+    "evidence_identity": "manual-diff-inspection:exp001-readiness-v1",
+    "input_hash": "sha256:86ab493d50c8af08a39a6264064f6af8ad6939ff139bc4ea5c93fb9861ccfe85",
+    "policy_identity": "manual-policy:research-exp001-readiness-v1",
+    "policy_version": "1",
+    "providers": [
+      {
+        "id": "manual-diff-inspection",
+        "identity": "git-diff:9b9b5ca-to-worktree",
+        "kind": "MANUAL_NORMALIZED_EVIDENCE",
+        "version": "1"
+      }
+    ],
+    "verification_catalog_identity": "manual-catalog:research-exp001-readiness-v1"
+  },
+  "risk": {
+    "classification": "POLICY_BROADENED",
+    "matched_policy_rules": [
+      "program-control",
+      "security-boundary",
+      "workflow-change"
+    ],
+    "tags": [
+      "ci-policy",
+      "documentation",
+      "evidence",
+      "experiment-contract",
+      "fixture",
+      "generated",
+      "program-control",
+      "security-boundary",
+      "test-only",
+      "validator",
+      "visible-value"
+    ]
+  },
+  "schema": "opsle.affected-verification.plan.v1",
+  "selected_checks": [
+    {
+      "command": "python3 tools/render_program_status.py --check",
+      "id": "dashboard.check",
+      "reasons": [
+        {
+          "code": "SCOPE_INTERSECTS_AFFECTED_COMPONENT",
+          "detail": "Check scope intersects: dashboard, program-ledger",
+          "evidence_refs": [
+            "impact-evidence",
+            "verification-catalog"
+          ]
+        },
+        {
+          "code": "REQUIRED_BY_POLICY",
+          "detail": "Policy rule program-control requires one of this check's tags",
+          "evidence_refs": [
+            "policy-rule:program-control",
+            "verification-catalog"
+          ]
+        }
+      ],
+      "scope": {
+        "components": [
+          "dashboard",
+          "program-ledger"
+        ]
+      },
+      "tags": [
+        "dashboard"
+      ],
+      "test_executions": 0,
+      "type": "snapshot"
+    },
+    {
+      "command": "git diff --check",
+      "id": "git.diff-check",
+      "reasons": [
+        {
+          "code": "SCOPE_INTERSECTS_AFFECTED_COMPONENT",
+          "detail": "Check scope intersects: *",
+          "evidence_refs": [
+            "impact-evidence",
+            "verification-catalog"
+          ]
+        }
+      ],
+      "scope": {
+        "components": [
+          "*"
+        ]
+      },
+      "tags": [
+        "repository"
+      ],
+      "test_executions": 0,
+      "type": "other"
+    },
+    {
+      "command": "python3 -m unittest tests.test_validate_program",
+      "id": "program.unit",
+      "reasons": [
+        {
+          "code": "SCOPE_INTERSECTS_AFFECTED_COMPONENT",
+          "detail": "Check scope intersects: dashboard, program-ledger, program-validator, program-validator-tests",
+          "evidence_refs": [
+            "impact-evidence",
+            "verification-catalog"
+          ]
+        },
+        {
+          "code": "REQUIRED_BY_POLICY",
+          "detail": "Policy rule program-control requires one of this check's tags",
+          "evidence_refs": [
+            "policy-rule:program-control",
+            "verification-catalog"
+          ]
+        }
+      ],
+      "scope": {
+        "components": [
+          "dashboard",
+          "program-ledger",
+          "program-validator",
+          "program-validator-tests"
+        ]
+      },
+      "tags": [
+        "program-control"
+      ],
+      "test_executions": 32,
+      "type": "unit-test"
+    },
+    {
+      "command": "ruff check experiments/exp-001/readiness-v1/readiness.py tests/test_exp001_readiness.py && ruff check --select E9,F63,F7,F82 tests/test_validate_program.py tools/validate_program.py",
+      "id": "python.ruff",
+      "reasons": [
+        {
+          "code": "SCOPE_INTERSECTS_AFFECTED_COMPONENT",
+          "detail": "Check scope intersects: program-validator, program-validator-tests, readiness-tests, readiness-validator",
+          "evidence_refs": [
+            "impact-evidence",
+            "verification-catalog"
+          ]
+        }
+      ],
+      "scope": {
+        "components": [
+          "program-validator",
+          "program-validator-tests",
+          "readiness-tests",
+          "readiness-validator"
+        ]
+      },
+      "tags": [
+        "python"
+      ],
+      "test_executions": 0,
+      "type": "lint"
+    },
+    {
+      "command": "python3 tools/validate_value_receipt.py program/evidence/exp-001-readiness/value-receipt.json",
+      "id": "readiness.receipt",
+      "reasons": [
+        {
+          "code": "SCOPE_INTERSECTS_AFFECTED_COMPONENT",
+          "detail": "Check scope intersects: ci-policy, readiness-evidence",
+          "evidence_refs": [
+            "impact-evidence",
+            "verification-catalog"
+          ]
+        }
+      ],
+      "scope": {
+        "components": [
+          "ci-policy",
+          "readiness-evidence"
+        ]
+      },
+      "tags": [
+        "visible-value"
+      ],
+      "test_executions": 0,
+      "type": "api-contract"
+    },
+    {
+      "command": "python3 -m unittest tests.test_exp001_readiness",
+      "id": "readiness.unit",
+      "reasons": [
+        {
+          "code": "SCOPE_INTERSECTS_AFFECTED_COMPONENT",
+          "detail": "Check scope intersects: documentation-snapshot, readiness-contract, readiness-evidence, readiness-tests, readiness-validator",
+          "evidence_refs": [
+            "impact-evidence",
+            "verification-catalog"
+          ]
+        },
+        {
+          "code": "REQUIRED_BY_POLICY",
+          "detail": "Policy rule security-boundary requires one of this check's tags",
+          "evidence_refs": [
+            "policy-rule:security-boundary",
+            "verification-catalog"
+          ]
+        }
+      ],
+      "scope": {
+        "components": [
+          "documentation-snapshot",
+          "readiness-contract",
+          "readiness-evidence",
+          "readiness-tests",
+          "readiness-validator"
+        ]
+      },
+      "tags": [
+        "readiness",
+        "security"
+      ],
+      "test_executions": 17,
+      "type": "unit-test"
+    },
+    {
+      "command": "python3 tools/validate_program.py",
+      "id": "registry.validate",
+      "reasons": [
+        {
+          "code": "SCOPE_INTERSECTS_AFFECTED_COMPONENT",
+          "detail": "Check scope intersects: program-ledger, program-validator",
+          "evidence_refs": [
+            "impact-evidence",
+            "verification-catalog"
+          ]
+        },
+        {
+          "code": "REQUIRED_BY_POLICY",
+          "detail": "Policy rule program-control requires one of this check's tags",
+          "evidence_refs": [
+            "policy-rule:program-control",
+            "verification-catalog"
+          ]
+        }
+      ],
+      "scope": {
+        "components": [
+          "program-ledger",
+          "program-validator"
+        ]
+      },
+      "tags": [
+        "program-control"
+      ],
+      "test_executions": 0,
+      "type": "schema"
+    },
+    {
+      "command": "gitleaks git --no-banner --redact --log-opts 9b9b5ca..HEAD",
+      "id": "security.gitleaks",
+      "reasons": [
+        {
+          "code": "SCOPE_INTERSECTS_AFFECTED_COMPONENT",
+          "detail": "Check scope intersects: ci-policy, program-ledger, readiness-contract, readiness-evidence, readiness-tests, readiness-validator",
+          "evidence_refs": [
+            "impact-evidence",
+            "verification-catalog"
+          ]
+        },
+        {
+          "code": "REQUIRED_BY_POLICY",
+          "detail": "Policy rule security-boundary requires one of this check's tags",
+          "evidence_refs": [
+            "policy-rule:security-boundary",
+            "verification-catalog"
+          ]
+        }
+      ],
+      "scope": {
+        "components": [
+          "ci-policy",
+          "program-ledger",
+          "readiness-contract",
+          "readiness-evidence",
+          "readiness-tests",
+          "readiness-validator"
+        ]
+      },
+      "tags": [
+        "security"
+      ],
+      "test_executions": 0,
+      "type": "security"
+    },
+    {
+      "command": "actionlint .github/workflows/program-registry.yml",
+      "id": "workflow.actionlint",
+      "reasons": [
+        {
+          "code": "SCOPE_INTERSECTS_AFFECTED_COMPONENT",
+          "detail": "Check scope intersects: ci-policy",
+          "evidence_refs": [
+            "impact-evidence",
+            "verification-catalog"
+          ]
+        },
+        {
+          "code": "REQUIRED_BY_POLICY",
+          "detail": "Policy rule workflow-change requires one of this check's tags",
+          "evidence_refs": [
+            "policy-rule:workflow-change",
+            "verification-catalog"
+          ]
+        }
+      ],
+      "scope": {
+        "components": [
+          "ci-policy"
+        ]
+      },
+      "tags": [
+        "ci"
+      ],
+      "test_executions": 0,
+      "type": "lint"
+    }
+  ],
+  "skipped_checks": [
+    {
+      "command": "python3 -m unittest discover -s tests -p test_*.py",
+      "id": "full.unittest",
+      "reasons": [
+        {
+          "code": "OUTSIDE_TRANSITIVE_IMPACT_SET",
+          "detail": "Check scope does not intersect the direct or reverse-dependent impact set and no matched policy requires it",
+          "evidence_refs": [
+            "impact-evidence",
+            "verification-catalog",
+            "verification-policy"
+          ]
+        }
+      ],
+      "scope": {
+        "components": [
+          "unrelated-repository-tests"
+        ]
+      },
+      "tags": [
+        "policy-broader-ci"
+      ],
+      "test_executions": 110,
+      "type": "integration-test"
+    },
+    {
+      "command": "python3 -m unittest tests.test_exp001_live_preflight",
+      "id": "live-preflight.unit",
+      "reasons": [
+        {
+          "code": "OUTSIDE_TRANSITIVE_IMPACT_SET",
+          "detail": "Check scope does not intersect the direct or reverse-dependent impact set and no matched policy requires it",
+          "evidence_refs": [
+            "impact-evidence",
+            "verification-catalog",
+            "verification-policy"
+          ]
+        }
+      ],
+      "scope": {
+        "components": [
+          "live-preflight"
+        ]
+      },
+      "tags": [
+        "existing-live-preflight"
+      ],
+      "test_executions": 11,
+      "type": "unit-test"
+    },
+    {
+      "command": "python3 experiments/exp-001/harness.py verify",
+      "id": "offline.harness",
+      "reasons": [
+        {
+          "code": "OUTSIDE_TRANSITIVE_IMPACT_SET",
+          "detail": "Check scope does not intersect the direct or reverse-dependent impact set and no matched policy requires it",
+          "evidence_refs": [
+            "impact-evidence",
+            "verification-catalog",
+            "verification-policy"
+          ]
+        }
+      ],
+      "scope": {
+        "components": [
+          "offline-benchmark"
+        ]
+      },
+      "tags": [
+        "policy-broader-ci"
+      ],
+      "test_executions": 0,
+      "type": "integration-test"
+    }
+  ],
+  "sufficiency": "SUFFICIENT_BROADENED",
+  "uncertainty": {
+    "reasons": [],
+    "state": "NONE"
+  }
+}

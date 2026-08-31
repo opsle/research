@@ -1,0 +1,153 @@
+{
+  "schema": "opsle.value-receipt.v1",
+  "mechanism": {
+    "id": "opsle.exp001-readiness",
+    "name": "EXP-001 Entitlement and Model Identity Readiness",
+    "version": "1.0.0",
+    "revision": "sha256:17e7e90179761147d1da0b2ca21a01d0e2a2383fb202638a51792c0ad9324d4e"
+  },
+  "run": {
+    "id": "exp001-readiness-provider-free-2026-08-31",
+    "repository": "opsle/research",
+    "task_classification": "EXP-001_PROVIDER_FREE_READINESS",
+    "work_classification": "DETERMINISTIC_VALIDATION"
+  },
+  "operation": {
+    "id": "exp001-readiness-provider-free-2026-08-31",
+    "name": "qualify-entitlement-and-model-identity",
+    "configuration_id": "sha256:9db99dfec2cb50d105665b29a986ce810446e9f0e933691f05a31282b9e6dcad",
+    "policy_id": "sha256:17e7e90179761147d1da0b2ca21a01d0e2a2383fb202638a51792c0ad9324d4e"
+  },
+  "measurements": [
+    {
+      "id": "readiness_blocker_count",
+      "baseline": null,
+      "result": 2,
+      "delta": null,
+      "unit": "count",
+      "direction": "PROTECTION_SIGNAL",
+      "class": "EXACT",
+      "source_verification": "VERIFIED",
+      "evidence_refs": ["qualification"],
+      "operator_display": true,
+      "aggregation": {"safe": true, "method": "SUM"},
+      "derivation": null,
+      "limitations": ["A blocker count is not a count of failures prevented."]
+    },
+    {
+      "id": "provider_model_subject_count",
+      "baseline": null,
+      "result": 0,
+      "delta": null,
+      "unit": "count",
+      "direction": "PROTECTION_SIGNAL",
+      "class": "EXACT",
+      "source_verification": "VERIFIED",
+      "evidence_refs": ["qualification"],
+      "operator_display": true,
+      "aggregation": {"safe": true, "method": "SUM"},
+      "derivation": null,
+      "limitations": []
+    },
+    {
+      "id": "authenticated_provider_probe_count",
+      "baseline": null,
+      "result": 0,
+      "delta": null,
+      "unit": "count",
+      "direction": "PROTECTION_SIGNAL",
+      "class": "EXACT",
+      "source_verification": "VERIFIED",
+      "evidence_refs": ["qualification"],
+      "operator_display": true,
+      "aggregation": {"safe": true, "method": "SUM"},
+      "derivation": null,
+      "limitations": []
+    },
+    {
+      "id": "authorization_consumption_count",
+      "baseline": null,
+      "result": 0,
+      "delta": null,
+      "unit": "count",
+      "direction": "PROTECTION_SIGNAL",
+      "class": "EXACT",
+      "source_verification": "VERIFIED",
+      "evidence_refs": ["qualification"],
+      "operator_display": true,
+      "aggregation": {"safe": true, "method": "SUM"},
+      "derivation": null,
+      "limitations": []
+    },
+    {
+      "id": "experiment_run_count",
+      "baseline": null,
+      "result": 0,
+      "delta": null,
+      "unit": "count",
+      "direction": "PROTECTION_SIGNAL",
+      "class": "EXACT",
+      "source_verification": "VERIFIED",
+      "evidence_refs": ["qualification"],
+      "operator_display": true,
+      "aggregation": {"safe": true, "method": "SUM"},
+      "derivation": null,
+      "limitations": []
+    },
+    {
+      "id": "experiment_result_count",
+      "baseline": null,
+      "result": 0,
+      "delta": null,
+      "unit": "count",
+      "direction": "PROTECTION_SIGNAL",
+      "class": "EXACT",
+      "source_verification": "VERIFIED",
+      "evidence_refs": ["qualification"],
+      "operator_display": true,
+      "aggregation": {"safe": true, "method": "SUM"},
+      "derivation": null,
+      "limitations": []
+    },
+    {
+      "id": "result_envelope_count",
+      "baseline": null,
+      "result": 0,
+      "delta": null,
+      "unit": "count",
+      "direction": "PROTECTION_SIGNAL",
+      "class": "EXACT",
+      "source_verification": "VERIFIED",
+      "evidence_refs": ["qualification"],
+      "operator_display": true,
+      "aggregation": {"safe": true, "method": "SUM"},
+      "derivation": null,
+      "limitations": []
+    }
+  ],
+  "evidence": [
+    {
+      "id": "contract",
+      "kind": "CONTENT_HASH",
+      "locator": "sha256:17e7e90179761147d1da0b2ca21a01d0e2a2383fb202638a51792c0ad9324d4e",
+      "trust": "VERIFIED"
+    },
+    {
+      "id": "documentation",
+      "kind": "CONTENT_HASH",
+      "locator": "sha256:9db99dfec2cb50d105665b29a986ce810446e9f0e933691f05a31282b9e6dcad",
+      "trust": "VERIFIED"
+    },
+    {
+      "id": "qualification",
+      "kind": "RUN_ARTIFACT",
+      "locator": "sha256:339adee43e0b9141cec63fef112c627a7566ad25a091a5ccca35b8ecf1f18605",
+      "trust": "VERIFIED"
+    }
+  ],
+  "limitations": [
+    "Provider-free qualification establishes contract behavior, not account entitlement or model immutability.",
+    "Zero safety counters are scoped to this execution and do not measure avoided failures.",
+    "No token, cost, latency, correctness, savings, or causal-benefit claim is made."
+  ]
+}

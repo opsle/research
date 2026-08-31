@@ -1,0 +1,129 @@
+{
+  "protocol_version": "opsle.exp001.entitlement-evidence/v1",
+  "experiment_id": "EXP-001",
+  "provider_id": "openai",
+  "organization_id": "org_synthetic",
+  "project_id": "proj_synthetic",
+  "credential_id": "key_synthetic",
+  "credential_identity_method": "PROVIDER_RETURNED_NON_SECRET_ID",
+  "model_id": "gpt-5.6-sol",
+  "wire_api": "Responses API",
+  "endpoint": "/v1/responses",
+  "probed_at": "2026-08-31T02:10:00Z",
+  "fresh_until": "2026-08-31T02:15:00Z",
+  "provider_documented_invocation_equivalence": false,
+  "invocation_equivalence_source": null,
+  "checks": [
+    {
+      "mechanism": "project_status",
+      "method": "GET",
+      "request_path_template": "/organization/projects/{project_id}",
+      "authentication_class": "organization_admin_key",
+      "response_status": 200,
+      "relevant_response_fields": {
+        "id": "proj_synthetic",
+        "status": "active"
+      },
+      "sanitized_response_sha256": "sha256:c21970c80a81db6ee7d9952906e8236bf6da2263e9ed52e12dcaf6f21f863eb1",
+      "causes_inference": false,
+      "model_token_charges": false,
+      "mutates_provider_state": false,
+      "outcome": "ALLOW"
+    },
+    {
+      "mechanism": "credential_project_binding",
+      "method": "GET",
+      "request_path_template": "/organization/projects/{project_id}/api_keys/{credential_id}",
+      "authentication_class": "organization_admin_key",
+      "response_status": 200,
+      "relevant_response_fields": {
+        "id": "key_synthetic",
+        "object": "organization.project.api_key",
+        "owner_project_access": "active",
+        "project_id": "proj_synthetic"
+      },
+      "sanitized_response_sha256": "sha256:5d0423d964d160d38df5a8d8d41e3fca6c5e3f2f76c4a3129c2fc88e25705d1b",
+      "causes_inference": false,
+      "model_token_charges": false,
+      "mutates_provider_state": false,
+      "outcome": "ALLOW"
+    },
+    {
+      "mechanism": "project_model_permissions",
+      "method": "GET",
+      "request_path_template": "/organization/projects/{project_id}/model_permissions",
+      "authentication_class": "organization_admin_key",
+      "response_status": 200,
+      "relevant_response_fields": {
+        "mode": "allow_list",
+        "model_ids": [
+          "gpt-5.6-sol"
+        ],
+        "object": "project.model_permissions"
+      },
+      "sanitized_response_sha256": "sha256:64c8595a43816c5b4ccb90eceaa2f5a20dafae29c81d75bd9f21a8f5d188bcbe",
+      "causes_inference": false,
+      "model_token_charges": false,
+      "mutates_provider_state": false,
+      "outcome": "ALLOW"
+    },
+    {
+      "mechanism": "model_list",
+      "method": "GET",
+      "request_path_template": "/models",
+      "authentication_class": "execution_credential",
+      "response_status": 200,
+      "relevant_response_fields": {
+        "complete_pagination": true,
+        "model_ids": [
+          "gpt-5.6-sol"
+        ]
+      },
+      "sanitized_response_sha256": "sha256:82d6d0d1ff0348fd6f110d1f32d8fa90d7fff15c9290a2d139cee866d6d4307e",
+      "causes_inference": false,
+      "model_token_charges": false,
+      "mutates_provider_state": false,
+      "outcome": "ALLOW"
+    },
+    {
+      "mechanism": "model_retrieve",
+      "method": "GET",
+      "request_path_template": "/models/gpt-5.6-sol",
+      "authentication_class": "execution_credential",
+      "response_status": 200,
+      "relevant_response_fields": {
+        "id": "gpt-5.6-sol",
+        "object": "model",
+        "owned_by": "openai"
+      },
+      "sanitized_response_sha256": "sha256:8fc0c319f15478740ce0c2508d166a9d66e3e53b8ae958b9015e21b27600e30b",
+      "causes_inference": false,
+      "model_token_charges": false,
+      "mutates_provider_state": false,
+      "outcome": "ALLOW"
+    },
+    {
+      "mechanism": "project_rate_limits",
+      "method": "GET",
+      "request_path_template": "/organization/projects/{project_id}/rate_limits",
+      "authentication_class": "organization_admin_key",
+      "response_status": 200,
+      "relevant_response_fields": {
+        "model": "gpt-5.6-sol",
+        "max_requests_per_1_minute": 500,
+        "max_tokens_per_1_minute": 500000
+      },
+      "sanitized_response_sha256": "sha256:9e64a3c0d3785eb7b9c4b69559d12650f3f7be2a45a1939685a9603f86163990",
+      "causes_inference": false,
+      "model_token_charges": false,
+      "mutates_provider_state": false,
+      "outcome": "ALLOW"
+    }
+  ],
+  "classification": "UNVERIFIED",
+  "classification_basis": "Every synthetic discovery and project-policy check is positive, but current official documentation does not state that any non-inference response guarantees /v1/responses invocation entitlement.",
+  "provider_model_subject_count": 0,
+  "authenticated_provider_probe_count": 0,
+  "authorization_consumption_count": 0,
+  "identity": "sha256:c5959b057d3079f106b1e9ee6e54262541f99489745d677b66a5439e403649b3"
+}
