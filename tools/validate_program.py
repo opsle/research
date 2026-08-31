@@ -37,6 +37,7 @@ EXPECTED_REPOSITORIES = (
     "agent-recovery-policy",
     "ephemeral-agent-workers",
     "gearbox",
+    "affected-verification",
     "research",
     "site",
     ".github",
@@ -883,8 +884,8 @@ def validate_theory(
         errors.append(
             f"theory.source_repository_count must be {len(EXPECTED_REPOSITORIES)}"
         )
-    if theory.get("current_concept_repository_count") != 17:
-        errors.append("theory.current_concept_repository_count must be 17")
+    if theory.get("current_concept_repository_count") != 18:
+        errors.append("theory.current_concept_repository_count must be 18")
     if not _valid_timestamp(theory.get("verified_at")):
         errors.append("theory.verified_at must be an ISO-8601 UTC timestamp")
 
@@ -909,10 +910,10 @@ def validate_theory(
     duplicate_ids = sorted(item for item, count in Counter(ids).items() if count > 1)
     if duplicate_ids:
         errors.append(f"duplicate theory concept IDs: {', '.join(duplicate_ids)}")
-    if len(concepts) != 17:
-        errors.append(f"expected 17 theory concepts, found {len(concepts)}")
+    if len(concepts) != 18:
+        errors.append(f"expected 18 theory concepts, found {len(concepts)}")
 
-    current_concept_repositories = set(EXPECTED_REPOSITORIES[:17])
+    current_concept_repositories = set(EXPECTED_REPOSITORIES[:18])
     current_mappings: list[str] = []
     concept_ids = set(ids)
     concept_by_id = {
@@ -1002,8 +1003,8 @@ def validate_theory(
         errors.append(f"duplicate current concept repository mappings: {', '.join(duplicate_mappings)}")
     if missing_mappings:
         errors.append(f"missing current concept repository mappings: {', '.join(missing_mappings)}")
-    if len(current_mappings) != 17:
-        errors.append(f"expected 17 current concept repository mappings, found {len(current_mappings)}")
+    if len(current_mappings) != 18:
+        errors.append(f"expected 18 current concept repository mappings, found {len(current_mappings)}")
 
     gearbox = concept_by_id.get("gearbox")
     if gearbox is None:
@@ -1040,7 +1041,9 @@ def validate_theory(
         if isinstance(item, dict) and isinstance(item.get("name"), str)
     }
     if "gearbox" not in repo_names:
-        errors.append("the 20-repository registry must contain gearbox")
+        errors.append("the authoritative repository registry must contain gearbox")
+    if "affected-verification" not in repo_names:
+        errors.append("the authoritative repository registry must contain affected-verification")
     if registry.get("theory_registry") != "program/theory-registry.json":
         errors.append("registry.theory_registry path is invalid")
     if registry.get("theory_map") != "program/THEORY_MAP.md":

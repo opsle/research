@@ -1,20 +1,22 @@
 {
   "schema_version": 1,
   "registry_id": "opsle.theory-registry.v1",
-  "verified_at": "2026-08-29T02:53:08Z",
-  "source_repository_count": 20,
-  "current_concept_repository_count": 17,
+  "verified_at": "2026-08-31T01:29:54Z",
+  "source_repository_count": 21,
+  "current_concept_repository_count": 18,
   "canonical_definitions": {
     "gearbox": "Agent Gearbox lets a powerful primary developer delegate routine operations and bounded work to deterministic software or less expensive models, then receive only the compact result needed to continue.",
     "context_firewall": "Context Firewall is a deterministic boundary that keeps operational noise out of an AI agent's context while preserving the compact evidence, provenance, and escalation path the agent needs to make correct decisions.",
-    "durable_orchestration": "Durable orchestration owns autonomous objective progress across durable state and multiple activations without requiring a continuously active primary developer."
+    "durable_orchestration": "Durable orchestration owns autonomous objective progress across durable state and multiple activations without requiring a continuously active primary developer.",
+    "affected_verification": "Affected Verification deterministically selects the smallest verification workload whose sufficiency can be defended from the available change-impact, dependency, coverage, policy, and risk evidence."
   },
   "canonical_invariants": [
     "Gearbox saves intelligence; Context Firewall saves context.",
     "Gearbox determines where bounded work executes; Context Firewall determines what information returns.",
     "Gearbox enhances a primary developer; durable orchestration owns progress across activations without that developer remaining continuously active.",
     "Research-hypothesis granularity does not imply repository granularity.",
-    "Repository tracking and concept tracking are independent anti-forgetting controls."
+    "Repository tracking and concept tracking are independent anti-forgetting controls.",
+    "Affected Verification decides what verification should execute; Context Firewall decides what resulting evidence enters model context."
   ],
   "concepts": [
     {
@@ -699,6 +701,46 @@
         "What portable isolation and destruction-proof contracts work across technologies?",
         "What kernel and broker threat model is in scope?",
         "How much result sealing belongs solely to Verifiable Handoff?"
+      ]
+    },
+    {
+      "id": "affected-verification",
+      "canonical_concept_name": "Affected Verification",
+      "one_sentence_definition": "Affected Verification deterministically selects the smallest verification workload whose sufficiency can be defended from the available change-impact, dependency, coverage, policy, and risk evidence.",
+      "original_problem": "Existing affected-test and affected-target selectors do not by themselves establish which heterogeneous verification evidence is sufficient to accept a change, why every omitted check is irrelevant, or when uncertainty and policy must broaden the workload.",
+      "primary_classification": "INDEPENDENT_OPSLE_TOOL",
+      "current_repository": "affected-verification",
+      "recommended_disposition": "KEEP_STANDALONE",
+      "disposition_rationale": "Verification sufficiency, catalogs, risk policy, fail-closed escalation, and skip arguments are independently reusable by humans, agents, CI, Gearbox, and other developer tooling without belonging to an execution engine.",
+      "disposition_gain": "A standalone evidence-composition boundary can reuse native affected selectors while remaining verification-class-neutral and independently benchmarkable.",
+      "disposition_risk": "The project could duplicate mature test-impact systems, overclaim global minimality or safety, or drift into a CI scheduler unless adapters, claim ceilings, and execution boundaries remain explicit.",
+      "provenance_concerns": "The initial public prototype was created directly in opsle/affected-verification; preserve PR #1, exact revision 12076522c9b82501794d816f1fcc0b7775fad6e1, source-linked prior-art analysis, and synthetic-only evidence without retroactively claiming novelty or real-project safety.",
+      "relationship_to_gearbox": "Independent provider: Gearbox may request a minimum defensible verification plan and choose execution gears, but it does not own the verification theory, catalog, policy, or implementation.",
+      "relationship_to_context_firewall": "Complementary and sequential: Affected Verification decides what checks should execute; Context Firewall decides what check results should enter model context after execution.",
+      "dependencies": [],
+      "consumers": [
+        "gearbox",
+        "decision-evidence-protocol",
+        "agent-trajectory-profiler"
+      ],
+      "current_implementation_fidelity": {
+        "status": "NARROW_PROTOTYPE",
+        "assessment": "The public dependency-free Node.js core validates normalized evidence/catalog/policy input, computes reverse impact, selects and explains checks, fails closed on uncertainty, emits canonical plans and Visible Value receipts, and classifies fixture-level shadow misses. It has no production adapter, check execution, real-repository benchmark, or trusted selective-verification evidence."
+      },
+      "drift_status": "NEW_ALIGNED_PUBLIC_HOME",
+      "current_name_accuracy": "Accurate for the implemented verification-planning boundary and explicitly broader than affected-test selection.",
+      "evidence_references": [
+        "https://github.com/opsle/affected-verification/blob/12076522c9b82501794d816f1fcc0b7775fad6e1/SPEC.md",
+        "https://github.com/opsle/affected-verification/blob/12076522c9b82501794d816f1fcc0b7775fad6e1/PRIOR_ART.md",
+        "https://github.com/opsle/affected-verification/blob/12076522c9b82501794d816f1fcc0b7775fad6e1/src/planner.js",
+        "https://github.com/opsle/affected-verification/blob/12076522c9b82501794d816f1fcc0b7775fad6e1/tests/planner.test.js",
+        "https://github.com/opsle/affected-verification/pull/1"
+      ],
+      "confidence": "HIGH",
+      "unresolved_questions": [
+        "Which real public repository has a complete enough verification catalog and full-run oracle for the first shadow comparison?",
+        "Which native selector should be the first evidence adapter without duplicating its impact logic?",
+        "Which evidence-based promotion criteria justify TRUSTED_BOUNDED authority for a narrowly defined change class?"
       ]
     }
   ]

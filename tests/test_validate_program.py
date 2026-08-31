@@ -29,8 +29,8 @@ class ProgramRegistryValidationTests(unittest.TestCase):
     def test_authoritative_registries_are_valid(self):
         self.assertEqual(self.errors_for(), [])
 
-    def test_gearbox_is_the_twentieth_repository(self):
-        self.assertEqual(len(self.registry["repositories"]), 20)
+    def test_affected_verification_is_the_twenty_first_repository(self):
+        self.assertEqual(len(self.registry["repositories"]), 21)
         gearbox = next(
             item for item in self.registry["repositories"]
             if item["name"] == "gearbox"
@@ -39,6 +39,15 @@ class ProgramRegistryValidationTests(unittest.TestCase):
         self.assertEqual(
             gearbox["last_verified_head_sha"],
             self.registry["gearbox_publication"]["final_main_sha"],
+        )
+        affected = next(
+            item for item in self.registry["repositories"]
+            if item["name"] == "affected-verification"
+        )
+        self.assertEqual(affected["lifecycle_stage"], "PROTOTYPED")
+        self.assertEqual(
+            affected["last_verified_head_sha"],
+            "12076522c9b82501794d816f1fcc0b7775fad6e1",
         )
 
     def test_missing_expected_repository_fails(self):

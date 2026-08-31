@@ -54,6 +54,9 @@ for a primary developer and returns one terminal result.
 
 Supporting boundaries:
 
+- Affected Verification independently decides which verification checks are
+  defensible for a change; humans, CI, or Gearbox may execute the plan, and
+  Context Firewall may subsequently reduce the resulting evidence.
 - Gearbox admits deterministic versus cognitive work; Routing Policy selects an
   eligible cognitive route after admission.
 - Resource Claims establishes current concurrent ownership; Execution
