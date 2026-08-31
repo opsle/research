@@ -7,7 +7,7 @@ Consolidation and disposition operations remain recommendations only.
 Machine source: [`theory-registry.json`](theory-registry.json).
 
 Theory registry canonical SHA-256:
-`d3a5f6e03f28d0ae8911763e6cb15c1a3f7306559f1801a2647219563159cb79`.
+`7cdc866ada723f24fd16af005bb54b9a60873e0623effb70df691a7a58fcdc47`.
 
 This map corrects an extraction-boundary error. The original 16 concept
 repositories were useful hypotheses isolated from one production system, but
@@ -408,11 +408,13 @@ repositories.
 - Verifiable Agent Handoff is prototyped only for HMAC manifest binding and
   caller-supplied destruction state; publication, transport, destruction proof,
   reconstruction, and independent verification are not implemented.
-- Affected Verification is prototyped for normalized synthetic evidence,
-  deterministic catalog/policy planning, fail-closed escalation, skip reasons,
-  Visible Value receipts, and fixture-level shadow classification. No production
-  adapter, check execution, real-repository benchmark, or trusted selective
-  verification class exists.
+- Affected Verification is verified for its narrow deterministic planner and
+  the revision-bound AV-EXP-001 Zustand/Vitest shadow calibration. Its frozen
+  corpus observed 8/8 relevant checks selected by both AV arms, including
+  conservative full broadening under incomplete impact evidence. The result is
+  still one repository, one ecosystem, and mostly synthetic change/fault
+  shapes; no production adapter, independent qualifying replication, or trusted
+  selective-verification class exists.
 - The remaining theory repositories contain coherent falsifiable narratives,
   but their `SPEC.md` files are generic templates and their source/tests are
   placeholders. Their current lifecycle remains `THEORY`.

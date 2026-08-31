@@ -44,10 +44,25 @@ class ProgramRegistryValidationTests(unittest.TestCase):
             item for item in self.registry["repositories"]
             if item["name"] == "affected-verification"
         )
-        self.assertEqual(affected["lifecycle_stage"], "PROTOTYPED")
+        self.assertEqual(affected["lifecycle_stage"], "VERIFIED")
         self.assertEqual(
             affected["last_verified_head_sha"],
-            "12076522c9b82501794d816f1fcc0b7775fad6e1",
+            "641aee9d29a89e2a8819f00817ccee8e5d234dcb",
+        )
+        self.assertEqual(affected["active_experiment_ids"], ["AV-EXP-001"])
+
+        experiment = next(
+            item for item in self.experiments["experiments"]
+            if item["id"] == "AV-EXP-001"
+        )
+        self.assertEqual(experiment["status"], "RECORDED")
+        self.assertEqual(
+            experiment["benchmark_result"]["summary_identity"],
+            "sha256:68b8582a9ce7b86bfa5431d89d2dea07f8c34b88d1d0350bab25c99fa5b236df",
+        )
+        self.assertEqual(
+            experiment["benchmark_result"]["av_core_missed_relevant_check_count"],
+            0,
         )
 
     def test_missing_expected_repository_fails(self):

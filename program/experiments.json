@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_verified_at": "2026-08-30T18:49:10Z",
+  "last_verified_at": "2026-08-31T02:59:01Z",
   "experiments": [
     {
       "id": "EXP-001",
@@ -248,6 +248,100 @@
         "model_provider_runs_added": 0
       },
   "next_task": "Independently review and release the provider-free live-authorization preflight branch; do not consume authorization or launch a provider/model subject."
+    },
+    {
+      "id": "AV-EXP-001",
+      "title": "Minimum Defensible Verification — Real Repository Shadow Calibration",
+      "status": "RECORDED",
+      "hypothesis": "On one pinned real public repository, Affected Verification can propose less than the full verification workload while selecting every check that the frozen full-catalog oracle demonstrates was relevant.",
+      "participating_repositories": [
+        "affected-verification",
+        "research"
+      ],
+      "roles": {
+        "primary": "affected-verification",
+        "expected_support": [
+          "research"
+        ],
+        "potential_support": []
+      },
+      "baseline": "The complete frozen 17-check Zustand verification catalog at b57db4f86ef179285da216eeb291266da82c361c, executed for every scenario and authoritative over all selector predictions.",
+      "experimental_arms": [
+        "FULL frozen verification catalog",
+        "NATIVE Vitest 4.1.10 related selector",
+        "AV_CORE with normalized Git, catalog, source-graph, and policy evidence",
+        "AV_WITH_NATIVE_EVIDENCE with native output as one normalized evidence source"
+      ],
+      "primary_metric": "Selection misses reported individually against checks whose full-catalog outcome changed because of a frozen scenario.",
+      "secondary_metrics": [
+        "relevant-check recall and scenario-level misses",
+        "exact selected and skipped test files, test executions, and non-test checks as separate units",
+        "uncertainty broadening and full-verification escalation",
+        "observed wall-clock telemetry without a causal time-saved claim",
+        "native-versus-AV selection differences"
+      ],
+      "correctness_gate": "Every frozen catalog check runs for every scenario; selector predictions never accept a scenario, and a miss is any omitted oracle-relevant failing check.",
+      "failure_classifications": [
+        "selection miss",
+        "selected relevant failure",
+        "irrelevant full-catalog failure",
+        "incomplete or indeterminate full run",
+        "baseline instability",
+        "harness defect requiring a versioned amendment",
+        "evidence or identity drift",
+        "conservative broadening",
+        "insufficient evidence"
+      ],
+      "dataset_fixture_identity": "Zustand b57db4f86ef179285da216eeb291266da82c361c; preregistration commit 0544362d7659093b7f0b4f89ee8f68023fd269c3; catalog sha256:8c5b224deaa7077690341248a18a2155310e2b16072e1607a9b4cd546e3a0914; ten scenario identities and patches frozen in the preregistration.",
+      "model_provider_configuration": "NONE: no model/provider benchmark subject or external provider workload was used.",
+      "run_identities": [
+        "sha256:68b8582a9ce7b86bfa5431d89d2dea07f8c34b88d1d0350bab25c99fa5b236df"
+      ],
+      "result_artifacts": [
+        "https://github.com/opsle/affected-verification/blob/641aee9d29a89e2a8819f00817ccee8e5d234dcb/benchmark/av-exp-001/REPORT.md",
+        "https://github.com/opsle/affected-verification/blob/641aee9d29a89e2a8819f00817ccee8e5d234dcb/benchmark/av-exp-001/results-v2/summary.json",
+        "https://github.com/opsle/affected-verification/blob/641aee9d29a89e2a8819f00817ccee8e5d234dcb/benchmark/av-exp-001/results-v2/analysis.json",
+        "https://github.com/opsle/affected-verification/blob/641aee9d29a89e2a8819f00817ccee8e5d234dcb/benchmark/av-exp-001/results-v2/evidence-manifest.json"
+      ],
+      "target": {
+        "repository": "https://github.com/pmndrs/zustand.git",
+        "sha": "b57db4f86ef179285da216eeb291266da82c361c",
+        "license": "MIT"
+      },
+      "preregistration": {
+        "commit_sha": "0544362d7659093b7f0b4f89ee8f68023fd269c3",
+        "amendment_count": 3,
+        "comparative_outcomes_observed_before_commit": false
+      },
+      "benchmark_result": {
+        "affected_verification_main_sha": "641aee9d29a89e2a8819f00817ccee8e5d234dcb",
+        "results_commit_sha": "97f0301c28e9840e18c5aa35a6cbf95b95f7c6cf",
+        "summary_identity": "sha256:68b8582a9ce7b86bfa5431d89d2dea07f8c34b88d1d0350bab25c99fa5b236df",
+        "analysis_identity": "sha256:c431d8849edce79d6121a290f49288ed2710e406600d8b66d3588e6b82c73a1d",
+        "evidence_bundle_identity": "sha256:1e176b7a40b5f16451797d87784f560f932b686f2fe261731526709331ff1172",
+        "native_selector_identity": "sha256:f9f8f41244923a6daa6f86b0818889c955b6b26362432b76ae4ee361f10171d6",
+        "scenario_count": 10,
+        "synthetic_fault_count": 6,
+        "synthetic_benign_change_shape_count": 4,
+        "relevant_check_count": 8,
+        "native_selected_relevant_check_count": 6,
+        "native_missed_relevant_check_count": 2,
+        "av_core_selected_relevant_check_count": 8,
+        "av_core_missed_relevant_check_count": 0,
+        "av_with_native_selected_relevant_check_count": 8,
+        "av_with_native_missed_relevant_check_count": 0,
+        "av_full_escalation_count": 3
+      },
+      "replication_status": "SAME_HOST_DETERMINISTIC_REPLAY_ONLY",
+      "verdict": "PASS for completing the preregistered shadow calibration: no AV selection miss was observed in the frozen corpus. This does not establish general safety, correctness equivalence, causal savings, or bounded trust.",
+      "blockers": [
+        "Only one repository and one TypeScript/Vitest ecosystem were calibrated.",
+        "The corpus uses six synthetic faults and four synthetic benign change shapes rather than a historical real-change replay.",
+        "The adapter is benchmark-only and no independent qualifying replication exists.",
+        "Affected Verification remains OBSERVE/SHADOW; no TRUSTED_BOUNDED class is authorized."
+      ],
+      "lifecycle_impact": "PROMOTE_TO_VERIFIED_ONLY: the narrow scoped correctness and safety claims pass meaningful automated and revision-bound benchmark checks, but this run is explicitly capped below BENCHMARK_READY and does not authorize trusted execution.",
+      "next_task": "Preregister and run a second public-repository shadow calibration in a different ecosystem with a meaningful native selector and the same full-catalog oracle discipline."
     },
     {
       "id": "LEGACY-001",
