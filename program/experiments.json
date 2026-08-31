@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_verified_at": "2026-08-29T14:49:44Z",
+  "last_verified_at": "2026-08-30T18:49:10Z",
   "experiments": [
     {
       "id": "EXP-001",
@@ -136,6 +136,44 @@
       "No token, cost, latency, correctness, or causal savings claim is made."
     ]
   },
+  "live_authorization_preflight": {
+    "status": "PROVIDER_FREE_VALIDATED_UNRELEASED",
+    "implementation_base_sha": "9056b35703d94d85055868ed6778d7d79804485d",
+    "authorization_set_id": "exp001-live-authset-03703f1af7db48c4eab9fe33b8f55073",
+    "authorization_set_identity": "sha256:8259f5b664235e5914ad4a53966a1155f8f90ad2014dc704f50ea394af32d0ec",
+    "authorization_class": "LIVE_PROVIDER_RUN",
+    "live_authorization_label_count": 4,
+    "authorization_validation_count": 13,
+    "model_catalogue_identity": "sha256:334a48850dacf3d9ad5d5c9088287fecc78925e64e10f974cb63575b74592b3c",
+    "pricing_preflight_identity": "sha256:a19e793c2c2453d949687f614bee65be84b9abfa6218ea25c5302af7608a38db",
+    "model_catalogue_artifact": "program/evidence/exp-001-live-preflight/model-catalogue.json",
+    "model_catalogue_artifact_sha256": "sha256:5f7d2f26c70fedd67d71f9146da87d0181700ecb0d73a11f6db9c969644de05f",
+    "pricing_preflight_artifact": "program/evidence/exp-001-live-preflight/pricing-preflight.json",
+    "pricing_preflight_artifact_sha256": "sha256:070cc44476e26b23a7c8bfa1d94a5c64ed9e62b6dbe81c0d1ce52a136b89cc6f",
+    "qualification_artifact": "program/evidence/exp-001-live-preflight/qualification-report.json",
+    "qualification_artifact_sha256": "sha256:bb2c6df8e6dcd3293af9034be58e159503ba2e083d30ef98eeb45922e4f9588f",
+    "value_receipt_artifact": "program/evidence/exp-001-live-preflight/value-receipt.json",
+    "value_receipt_artifact_sha256": "sha256:0d5d00262a660fc09590dc9a427435aefe7bdf5eebe917abe91b2587a8e0167d",
+    "qualification": "PASS",
+    "deterministic_replay_count": 2,
+    "deterministic_payloads_byte_identical": true,
+    "fixture_rejected_from_live_gate": true,
+    "subject_rendering_count": 0,
+    "subject_visible_canonical_arm_identifier_count": 0,
+    "provider_model_runs_added": 0,
+    "authorization_consumptions_added": 0,
+    "experiment_runs_added": 0,
+    "experiment_results_added": 0,
+    "result_envelopes_added": 0,
+    "lifecycle_status": "PLANNED",
+    "lifecycle_impact": "NONE_NO_ADVANCEMENT: the external live set and current pricing preflight are provider-free validated but unconsumed and unreleased; no subject, run, or result exists.",
+    "limitations": [
+      "The external authorization set remains outside Git and every subject context.",
+      "Account-specific model access is unverified because no provider call was made.",
+      "No distinct dated gpt-5.6-sol snapshot is documented, so immutable weights cannot be claimed.",
+      "No token, cost, latency, correctness, savings, or causal-benefit claim is made."
+    ]
+  },
   "prerequisite_progress": [
         {
           "repository": "context-firewall",
@@ -195,20 +233,21 @@
       "replication_status": "NOT_STARTED",
       "verdict": "PENDING",
       "blockers": [
-    "No machine-readable four-label budgeted authorization set exists; zero subject/provider runs are authorized or recorded.",
-        "No distinct dated gpt-5.6-sol snapshot was publicly listed on 2026-08-29, so immutable model weights cannot be claimed and launch requires a catalogue-drift preflight."
+        "The validated live authorization set remains unconsumed; separate execution authority is required before any provider/model subject launch.",
+        "Account-specific API entitlement remains unverified under the zero-provider-call policy and requires a fresh fail-closed launch-time catalogue check.",
+        "No distinct dated gpt-5.6-sol snapshot was publicly listed on 2026-08-30, so immutable model weights cannot be claimed."
       ],
       "theory_reconciliation": {
         "verified_at": "2026-08-29T11:24:05Z",
         "context_firewall_definition": "The deterministic multi-adapter evidence boundary is the concept; the current TAP-subset reducer is one adapter prototype.",
         "experimental_hypothesis": "The experiment continues to test correctness under reduced model-visible context, not the definition or existence of Context Firewall.",
         "gearbox_dependency": "NONE",
-    "sequence": "The offline benchmark, launch controls, and one-block coordinator are frozen and provider-free qualified; zero model/provider subjects have run, and one exact live authorization set plus a catalogue/pricing preflight are next.",
+    "sequence": "The offline benchmark, launch controls, one-block coordinator, exact live authorization set, and current catalogue/pricing preflight are provider-free validated; zero authorizations are consumed and zero model/provider subjects or experiment runs/results exist.",
         "gearbox_publication_status": "COMPLETED_INDEPENDENT_PREREQUISITE",
         "gearbox_repository_head_sha": "f3fab9f292cf4eabd7200615d444f98881f57d55",
         "model_provider_runs_added": 0
       },
-  "next_task": "Create and provider-free validate one exact four-label LIVE_PROVIDER_RUN authorization set plus a model catalogue/pricing preflight artifact; do not launch a provider/model subject."
+  "next_task": "Independently review and release the provider-free live-authorization preflight branch; do not consume authorization or launch a provider/model subject."
     },
     {
       "id": "LEGACY-001",

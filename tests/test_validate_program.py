@@ -247,6 +247,67 @@ class ProgramRegistryValidationTests(unittest.TestCase):
             any("qualification_artifact_sha256 drifted" in error for error in errors)
         )
 
+    def test_exp001_live_preflight_is_required(self):
+        experiments = copy.deepcopy(self.experiments)
+        del experiments["experiments"][0]["live_authorization_preflight"]
+        errors = self.errors_for(experiments=experiments)
+        self.assertTrue(
+            any(
+                "live_authorization_preflight must be an object" in error
+                for error in errors
+            )
+        )
+
+    def test_exp001_live_preflight_cannot_claim_consumption_or_runs(self):
+        fields = (
+            "provider_model_runs_added",
+            "authorization_consumptions_added",
+            "experiment_runs_added",
+            "experiment_results_added",
+            "result_envelopes_added",
+        )
+        for field in fields:
+            with self.subTest(field=field):
+                experiments = copy.deepcopy(self.experiments)
+                experiments["experiments"][0]["live_authorization_preflight"][
+                    field
+                ] = 1
+                errors = self.errors_for(experiments=experiments)
+                self.assertTrue(
+                    any(f"{field} must be 0" in error for error in errors)
+                )
+
+    def test_exp001_live_preflight_evidence_hash_cannot_drift(self):
+        fields = (
+            "model_catalogue_artifact_sha256",
+            "pricing_preflight_artifact_sha256",
+            "qualification_artifact_sha256",
+            "value_receipt_artifact_sha256",
+        )
+        for field in fields:
+            with self.subTest(field=field):
+                experiments = copy.deepcopy(self.experiments)
+                experiments["experiments"][0]["live_authorization_preflight"][
+                    field
+                ] = "sha256:" + "0" * 64
+                errors = self.errors_for(experiments=experiments)
+                self.assertTrue(any(f"{field} drifted" in error for error in errors))
+
+    def test_exp001_live_preflight_must_remain_planned_and_unrendered(self):
+        fields = (
+            ("lifecycle_status", "EXPERIMENTED"),
+            ("subject_rendering_count", 1),
+            ("subject_visible_canonical_arm_identifier_count", 1),
+        )
+        for field, value in fields:
+            with self.subTest(field=field):
+                experiments = copy.deepcopy(self.experiments)
+                experiments["experiments"][0]["live_authorization_preflight"][
+                    field
+                ] = value
+                errors = self.errors_for(experiments=experiments)
+                self.assertTrue(any(f"live preflight {field}" in error for error in errors))
+
     def test_dashboard_is_current(self):
         expected = (ROOT / "PROGRAM_STATUS.md").read_text(encoding="utf-8")
         self.assertEqual(render(self.registry, self.experiments), expected)

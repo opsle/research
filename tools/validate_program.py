@@ -134,9 +134,10 @@ EXP001_RECONCILED_HYPOTHESIS = (
 )
 
 EXP001_RECONCILED_SEQUENCE = (
-    "The offline benchmark, launch controls, and one-block coordinator are frozen "
-    "and provider-free qualified; zero model/provider subjects have run, and one "
-    "exact live authorization set plus a catalogue/pricing preflight are next."
+    "The offline benchmark, launch controls, one-block coordinator, exact live "
+    "authorization set, and current catalogue/pricing preflight are provider-free "
+    "validated; zero authorizations are consumed and zero model/provider subjects "
+    "or experiment runs/results exist."
 )
 
 EXP001_OFFLINE_RELEASE_SHA = "04234a65bf36192d63f1dd173c440d45a6604d2b"
@@ -171,6 +172,19 @@ EXP001_COORDINATOR_CONTRACT_IDENTITY = (
 )
 EXP001_COORDINATOR_REVISION = (
     "sha256:d7a2e5709fdc3b36b0fedd464bd7ccb791b067da5f327d17f7a76314f3d0af90"
+)
+EXP001_LIVE_PREFLIGHT_BASE_SHA = "9056b35703d94d85055868ed6778d7d79804485d"
+EXP001_LIVE_AUTHORIZATION_SET_ID = (
+    "exp001-live-authset-03703f1af7db48c4eab9fe33b8f55073"
+)
+EXP001_LIVE_AUTHORIZATION_SET_IDENTITY = (
+    "sha256:8259f5b664235e5914ad4a53966a1155f8f90ad2014dc704f50ea394af32d0ec"
+)
+EXP001_MODEL_CATALOGUE_IDENTITY = (
+    "sha256:334a48850dacf3d9ad5d5c9088287fecc78925e64e10f974cb63575b74592b3c"
+)
+EXP001_PRICING_PREFLIGHT_IDENTITY = (
+    "sha256:a19e793c2c2453d949687f614bee65be84b9abfa6218ea25c5302af7608a38db"
 )
 
 REQUIRED_REPOSITORY_FIELDS = (
@@ -756,6 +770,83 @@ def validate(
             if not _string_list(coordinator.get("limitations"), allow_empty=False):
                 errors.append(
                     "EXP-001 block coordinator limitations must be a nonempty string array"
+                )
+        live_preflight = exp001.get("live_authorization_preflight")
+        if not isinstance(live_preflight, dict):
+            errors.append("EXP-001 live_authorization_preflight must be an object")
+        else:
+            expected_live_preflight_values = {
+                "status": "PROVIDER_FREE_VALIDATED_UNRELEASED",
+                "implementation_base_sha": EXP001_LIVE_PREFLIGHT_BASE_SHA,
+                "authorization_set_id": EXP001_LIVE_AUTHORIZATION_SET_ID,
+                "authorization_set_identity": (
+                    EXP001_LIVE_AUTHORIZATION_SET_IDENTITY
+                ),
+                "authorization_class": "LIVE_PROVIDER_RUN",
+                "live_authorization_label_count": 4,
+                "authorization_validation_count": 13,
+                "model_catalogue_identity": EXP001_MODEL_CATALOGUE_IDENTITY,
+                "pricing_preflight_identity": EXP001_PRICING_PREFLIGHT_IDENTITY,
+                "qualification": "PASS",
+                "deterministic_replay_count": 2,
+                "deterministic_payloads_byte_identical": True,
+                "fixture_rejected_from_live_gate": True,
+                "subject_rendering_count": 0,
+                "subject_visible_canonical_arm_identifier_count": 0,
+                "provider_model_runs_added": 0,
+                "authorization_consumptions_added": 0,
+                "experiment_runs_added": 0,
+                "experiment_results_added": 0,
+                "result_envelopes_added": 0,
+                "lifecycle_status": "PLANNED",
+            }
+            for field, expected_value in expected_live_preflight_values.items():
+                if live_preflight.get(field) != expected_value:
+                    errors.append(
+                        f"EXP-001 live preflight {field} must be "
+                        f"{expected_value!r}"
+                    )
+            artifacts = (
+                (
+                    "model_catalogue_artifact",
+                    "model_catalogue_artifact_sha256",
+                    "program/evidence/exp-001-live-preflight/model-catalogue.json",
+                ),
+                (
+                    "pricing_preflight_artifact",
+                    "pricing_preflight_artifact_sha256",
+                    "program/evidence/exp-001-live-preflight/pricing-preflight.json",
+                ),
+                (
+                    "qualification_artifact",
+                    "qualification_artifact_sha256",
+                    "program/evidence/exp-001-live-preflight/qualification-report.json",
+                ),
+                (
+                    "value_receipt_artifact",
+                    "value_receipt_artifact_sha256",
+                    "program/evidence/exp-001-live-preflight/value-receipt.json",
+                ),
+            )
+            for path_field, hash_field, expected_path in artifacts:
+                artifact = live_preflight.get(path_field)
+                if artifact != expected_path:
+                    errors.append(
+                        f"EXP-001 live preflight {path_field} path drifted"
+                    )
+                    continue
+                artifact_path = ROOT / artifact
+                if not artifact_path.is_file():
+                    errors.append(
+                        f"EXP-001 live preflight {path_field} is missing"
+                    )
+                    continue
+                artifact_digest = hashlib.sha256(artifact_path.read_bytes()).hexdigest()
+                if live_preflight.get(hash_field) != f"sha256:{artifact_digest}":
+                    errors.append(f"EXP-001 live preflight {hash_field} drifted")
+            if not _string_list(live_preflight.get("limitations"), allow_empty=False):
+                errors.append(
+                    "EXP-001 live preflight limitations must be a nonempty string array"
                 )
 
     return errors
