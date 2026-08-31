@@ -49,7 +49,7 @@
         "interrupted run"
       ],
       "dataset_fixture_identity": "FROZEN_OFFLINE: six public-safe Python repair tasks, evaluator-only accepted implementations, and the deterministic strict-TAP oracle are bound by corpus identity sha256:07f8ef2810267a02b3aa03a45b7de3512f6066b03bd82c833394121825f98d60 within freeze identity sha256:6ac668a2fd6b4390825a7f1470f1f8cdab05a6d2d01b41d4cfd4412e93df74d8 at opsle/research main 04234a65bf36192d63f1dd173c440d45a6604d2b. These are benchmark prerequisites, not experiment results.",
-      "model_provider_configuration": "PREREGISTERED: OpenAI Responses API /v1/responses with public model identifier gpt-5.6-sol, medium reasoning effort, default service tier, no temperature/top_p/seed overrides, store=false, stream=false, parallel_tool_calls=false, and no automatic retry, fallback, or resume. Subject configuration identity: sha256:bc46a7d72ab776db966e84d9d473efbd0a7e2028ce993eecf4a09d22577ee6cf. No distinct dated model snapshot was publicly listed on 2026-08-29, so launch requires a catalogue-drift preflight and the identifier does not prove immutable weights.",
+      "model_provider_configuration": "PREREGISTERED: OpenAI Responses API /v1/responses with public model identifier gpt-5.6-sol, medium reasoning effort, default service tier, no temperature/top_p/seed overrides, store=false, stream=false, parallel_tool_calls=false, and no automatic retry, fallback, or resume. Subject configuration identity: sha256:bc46a7d72ab776db966e84d9d473efbd0a7e2028ce993eecf4a09d22577ee6cf. Provider-free readiness policy now requires an exact immutable provider snapshot and a versioned preregistration amendment; the current undated identifier is insufficient.",
       "run_identities": [],
       "result_artifacts": [],
       "offline_benchmark_freeze": {
@@ -137,7 +137,8 @@
     ]
   },
   "live_authorization_preflight": {
-    "status": "PROVIDER_FREE_VALIDATED_UNRELEASED",
+        "status": "PROVIDER_FREE_VALIDATED_RELEASED",
+        "research_release_sha": "9b9b5ca0fffdbf18713da7ffd339f8fe8f77818c",
     "implementation_base_sha": "9056b35703d94d85055868ed6778d7d79804485d",
     "authorization_set_id": "exp001-live-authset-03703f1af7db48c4eab9fe33b8f55073",
     "authorization_set_identity": "sha256:8259f5b664235e5914ad4a53966a1155f8f90ad2014dc704f50ea394af32d0ec",
@@ -166,7 +167,7 @@
     "experiment_results_added": 0,
     "result_envelopes_added": 0,
     "lifecycle_status": "PLANNED",
-    "lifecycle_impact": "NONE_NO_ADVANCEMENT: the external live set and current pricing preflight are provider-free validated but unconsumed and unreleased; no subject, run, or result exists.",
+        "lifecycle_impact": "NONE_NO_ADVANCEMENT: the external live set and current pricing preflight are provider-free validated and released but unconsumed; no subject, run, or result exists.",
     "limitations": [
       "The external authorization set remains outside Git and every subject context.",
       "Account-specific model access is unverified because no provider call was made.",
@@ -174,7 +175,39 @@
       "No token, cost, latency, correctness, savings, or causal-benefit claim is made."
     ]
   },
-  "prerequisite_progress": [
+      "readiness_resolution": {
+        "status": "PROVIDER_FREE_RESOLVED_BLOCKED",
+        "contract_identity": "sha256:17e7e90179761147d1da0b2ca21a01d0e2a2383fb202638a51792c0ad9324d4e",
+        "documentation_snapshot_identity": "sha256:9db99dfec2cb50d105665b29a986ce810446e9f0e933691f05a31282b9e6dcad",
+        "documentation_normalized_evidence_sha256": "sha256:5bc678367ba4f1218759ce11d680c4371787c05e7ea553c5f74356f154a17256",
+        "qualification_identity": "sha256:339adee43e0b9141cec63fef112c627a7566ad25a091a5ccca35b8ecf1f18605",
+        "entitlement_classification": "UNVERIFIED",
+        "model_identity_status": "BLOCKED_NO_IMMUTABLE_PROVIDER_SNAPSHOT",
+        "entitlement_freshness_seconds": 300,
+        "documentation_freshness_seconds": 86400,
+        "contract_artifact": "experiments/exp-001/readiness-v1/contract.json",
+        "contract_artifact_sha256": "sha256:df31077c078d3462c9c69d0ced383cba441a85a283bf62f87ea73452f893831b",
+        "documentation_artifact": "experiments/exp-001/readiness-v1/documentation-snapshot.json",
+        "documentation_artifact_sha256": "sha256:51b73ef01c3240eff44a5991e6d17820722c6086956a1f24d3bb90464e110b09",
+        "qualification_artifact": "program/evidence/exp-001-readiness/qualification-report.json",
+        "qualification_artifact_sha256": "sha256:8118f2a38c03fbb4e7fb8aa4a3544e33392848578357648968536d9f501f39c8",
+        "value_receipt_artifact": "program/evidence/exp-001-readiness/value-receipt.json",
+        "value_receipt_artifact_sha256": "sha256:25597985a03eb01af4c64d477ca6c4c78c3235a554c5af2a3a8b83b21c82f5d6",
+        "provider_model_subjects_added": 0,
+        "authenticated_provider_probes_added": 0,
+        "authorization_consumptions_added": 0,
+        "experiment_runs_added": 0,
+        "experiment_results_added": 0,
+        "result_envelopes_added": 0,
+        "lifecycle_status": "PLANNED",
+        "limitations": [
+          "Current official documentation exposes model, project-policy, credential, and rate-limit metadata but does not state that positive non-inference discovery guarantees Responses invocation entitlement.",
+          "No distinct immutable dated gpt-5.6-sol snapshot or Responses runtime provider-revision field is documented.",
+          "The documentation snapshot proves only what official public pages stated at retrieval time; it does not prove account entitlement or immutable model implementation.",
+          "No token, cost, latency, correctness, savings, or causal-benefit claim is made."
+        ]
+      },
+      "prerequisite_progress": [
         {
           "repository": "context-firewall",
           "head_sha": "953c48f1cfd154d6b7ed10b51b87fe54e4df45f2",
@@ -234,8 +267,8 @@
       "verdict": "PENDING",
       "blockers": [
         "The validated live authorization set remains unconsumed; separate execution authority is required before any provider/model subject launch.",
-        "Account-specific API entitlement remains unverified under the zero-provider-call policy and requires a fresh fail-closed launch-time catalogue check.",
-        "No distinct dated gpt-5.6-sol snapshot was publicly listed on 2026-08-30, so immutable model weights cannot be claimed."
+        "Account-specific Responses entitlement remains UNVERIFIED because current official documentation does not make any non-inference metadata response invocation-equivalent.",
+        "No distinct immutable dated gpt-5.6-sol snapshot is documented; the strict model-identity policy blocks launch until a versioned preregistration amendment can name one."
       ],
       "theory_reconciliation": {
         "verified_at": "2026-08-29T11:24:05Z",
@@ -247,7 +280,7 @@
         "gearbox_repository_head_sha": "f3fab9f292cf4eabd7200615d444f98881f57d55",
         "model_provider_runs_added": 0
       },
-  "next_task": "Independently review and release the provider-free live-authorization preflight branch; do not consume authorization or launch a provider/model subject."
+      "next_task": "Fresh independent review of the provider-free entitlement and model-identity readiness PR; do not merge or launch EXP-001 during that review."
     },
     {
       "id": "LEGACY-001",

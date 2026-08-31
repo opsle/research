@@ -175,6 +175,7 @@ EXP001_COORDINATOR_REVISION = (
     "sha256:d7a2e5709fdc3b36b0fedd464bd7ccb791b067da5f327d17f7a76314f3d0af90"
 )
 EXP001_LIVE_PREFLIGHT_BASE_SHA = "9056b35703d94d85055868ed6778d7d79804485d"
+EXP001_LIVE_PREFLIGHT_RELEASE_SHA = "9b9b5ca0fffdbf18713da7ffd339f8fe8f77818c"
 EXP001_LIVE_AUTHORIZATION_SET_ID = (
     "exp001-live-authset-03703f1af7db48c4eab9fe33b8f55073"
 )
@@ -186,6 +187,18 @@ EXP001_MODEL_CATALOGUE_IDENTITY = (
 )
 EXP001_PRICING_PREFLIGHT_IDENTITY = (
     "sha256:a19e793c2c2453d949687f614bee65be84b9abfa6218ea25c5302af7608a38db"
+)
+EXP001_READINESS_CONTRACT_IDENTITY = (
+    "sha256:17e7e90179761147d1da0b2ca21a01d0e2a2383fb202638a51792c0ad9324d4e"
+)
+EXP001_DOCUMENTATION_SNAPSHOT_IDENTITY = (
+    "sha256:9db99dfec2cb50d105665b29a986ce810446e9f0e933691f05a31282b9e6dcad"
+)
+EXP001_DOCUMENTATION_EVIDENCE_SHA256 = (
+    "sha256:5bc678367ba4f1218759ce11d680c4371787c05e7ea553c5f74356f154a17256"
+)
+EXP001_READINESS_QUALIFICATION_IDENTITY = (
+    "sha256:339adee43e0b9141cec63fef112c627a7566ad25a091a5ccca35b8ecf1f18605"
 )
 
 REQUIRED_REPOSITORY_FIELDS = (
@@ -731,12 +744,9 @@ def validate(
                         f"EXP-001 block coordinator {field} must be "
                         f"{expected_value!r}"
                     )
-            research_repository = repo_by_name.get("research", {})
-            if coordinator.get("research_release_sha") != research_repository.get(
-                "last_verified_head_sha"
-            ):
+            if coordinator.get("research_release_sha") != EXP001_COORDINATOR_RELEASE_SHA:
                 errors.append(
-                    "EXP-001 block coordinator release SHA must match research"
+                    "EXP-001 block coordinator release SHA drifted"
                 )
             artifacts = (
                 (
@@ -777,7 +787,8 @@ def validate(
             errors.append("EXP-001 live_authorization_preflight must be an object")
         else:
             expected_live_preflight_values = {
-                "status": "PROVIDER_FREE_VALIDATED_UNRELEASED",
+                "status": "PROVIDER_FREE_VALIDATED_RELEASED",
+                "research_release_sha": EXP001_LIVE_PREFLIGHT_RELEASE_SHA,
                 "implementation_base_sha": EXP001_LIVE_PREFLIGHT_BASE_SHA,
                 "authorization_set_id": EXP001_LIVE_AUTHORIZATION_SET_ID,
                 "authorization_set_identity": (
@@ -848,6 +859,79 @@ def validate(
             if not _string_list(live_preflight.get("limitations"), allow_empty=False):
                 errors.append(
                     "EXP-001 live preflight limitations must be a nonempty string array"
+                )
+        readiness = exp001.get("readiness_resolution")
+        if not isinstance(readiness, dict):
+            errors.append("EXP-001 readiness_resolution must be an object")
+        else:
+            expected_readiness_values = {
+                "status": "PROVIDER_FREE_RESOLVED_BLOCKED",
+                "contract_identity": EXP001_READINESS_CONTRACT_IDENTITY,
+                "documentation_snapshot_identity": (
+                    EXP001_DOCUMENTATION_SNAPSHOT_IDENTITY
+                ),
+                "documentation_normalized_evidence_sha256": (
+                    EXP001_DOCUMENTATION_EVIDENCE_SHA256
+                ),
+                "qualification_identity": (
+                    EXP001_READINESS_QUALIFICATION_IDENTITY
+                ),
+                "entitlement_classification": "UNVERIFIED",
+                "model_identity_status": (
+                    "BLOCKED_NO_IMMUTABLE_PROVIDER_SNAPSHOT"
+                ),
+                "entitlement_freshness_seconds": 300,
+                "documentation_freshness_seconds": 86400,
+                "provider_model_subjects_added": 0,
+                "authenticated_provider_probes_added": 0,
+                "authorization_consumptions_added": 0,
+                "experiment_runs_added": 0,
+                "experiment_results_added": 0,
+                "result_envelopes_added": 0,
+                "lifecycle_status": "PLANNED",
+            }
+            for field, expected_value in expected_readiness_values.items():
+                if readiness.get(field) != expected_value:
+                    errors.append(
+                        f"EXP-001 readiness {field} must be {expected_value!r}"
+                    )
+            artifacts = (
+                (
+                    "contract_artifact",
+                    "contract_artifact_sha256",
+                    "experiments/exp-001/readiness-v1/contract.json",
+                ),
+                (
+                    "documentation_artifact",
+                    "documentation_artifact_sha256",
+                    "experiments/exp-001/readiness-v1/documentation-snapshot.json",
+                ),
+                (
+                    "qualification_artifact",
+                    "qualification_artifact_sha256",
+                    "program/evidence/exp-001-readiness/qualification-report.json",
+                ),
+                (
+                    "value_receipt_artifact",
+                    "value_receipt_artifact_sha256",
+                    "program/evidence/exp-001-readiness/value-receipt.json",
+                ),
+            )
+            for path_field, hash_field, expected_path in artifacts:
+                artifact = readiness.get(path_field)
+                if artifact != expected_path:
+                    errors.append(f"EXP-001 readiness {path_field} path drifted")
+                    continue
+                artifact_path = ROOT / artifact
+                if not artifact_path.is_file():
+                    errors.append(f"EXP-001 readiness {path_field} is missing")
+                    continue
+                artifact_digest = hashlib.sha256(artifact_path.read_bytes()).hexdigest()
+                if readiness.get(hash_field) != f"sha256:{artifact_digest}":
+                    errors.append(f"EXP-001 readiness {hash_field} drifted")
+            if not _string_list(readiness.get("limitations"), allow_empty=False):
+                errors.append(
+                    "EXP-001 readiness limitations must be a nonempty string array"
                 )
 
     return errors

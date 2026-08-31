@@ -44,13 +44,23 @@ remained unchanged; zero model/provider subjects ran.
    seed-keyed commitments and exact counts. Secret-backed deterministic replay
    used fixture-only authorizations, proved zero canonical arm identifiers in
    subject-visible artifacts, and ran zero provider/model subjects.
+7. Completed through merged public research PRs #15 and #16: one external exact
+   four-label `LIVE_PROVIDER_RUN` authorization set and current
+   `gpt-5.6-sol` catalogue/pricing evidence were provider-free validated and
+   privacy/pricing hardened. The set remains unconsumed; zero authenticated
+   provider probes or model/provider subjects ran.
+8. Current provider-free readiness work defines the exact entitlement and model
+   identity contracts. Current official OpenAI metadata cannot prove
+   invocation-equivalent account entitlement, and no distinct immutable dated
+   `gpt-5.6-sol` snapshot is published. Both are fail-closed blockers.
 
 These three foundational projects are naturally tested together. The expected
 first major measured experiment remains EXP-001 because no repository evidence
-establishes a stronger prerequisite experiment. The coordinator prerequisite is
-now qualified. The experiment itself must still wait for four exact label-bound
-budget authorizations and a current catalogue/pricing preflight under separate
-provider/model authority.
+establishes a stronger prerequisite experiment. The coordinator and live-
+authorization prerequisites are qualified. The experiment itself must still
+wait for provable account-specific Responses entitlement, an immutable provider
+snapshot and corresponding preregistration amendment, and separate
+provider/model execution authority.
 
 ## Workstream 2: durable orchestration
 
@@ -91,7 +101,7 @@ and relevant selection misses precede workload reduction.
 
 ## Exact next execution
 
-In `opsle/research`, independently review and release the provider-free exact
-four-label `LIVE_PROVIDER_RUN` authorization set and current model
-catalogue/pricing preflight branch. Do not consume authorization or launch a
-provider/model subject. EXP-001 has no technical dependency on Gearbox.
+In `opsle/research`, perform a fresh independent review of the provider-free
+EXP-001 entitlement and model-identity readiness PR. Do not merge it during that
+review, consume authorization, send an authenticated provider probe, or launch
+a provider/model subject. EXP-001 has no technical dependency on Gearbox.

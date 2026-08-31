@@ -1,0 +1,93 @@
+{
+  "protocol_version": "opsle.exp001.provider-documentation-snapshot/v1",
+  "experiment_id": "EXP-001",
+  "retrieved_at": "2026-08-31T02:10:00Z",
+  "retrieval_method": "Manual extraction of minimum relevant public facts from fetched official OpenAI documentation pages; no authenticated provider request and no wholesale page copy.",
+  "sources": [
+    {
+      "title": "GPT-5.6 Sol Model",
+      "url": "https://developers.openai.com/api/docs/models/gpt-5.6-sol",
+      "supports": [
+        "model ID and alias relationship",
+        "Responses API compatibility",
+        "context and output limits",
+        "pricing",
+        "published snapshot table"
+      ]
+    },
+    {
+      "title": "Retrieve model",
+      "url": "https://developers.openai.com/api/reference/typescript/resources/models/methods/retrieve",
+      "supports": [
+        "non-inference model metadata response fields",
+        "owner and permissioning-oriented retrieval description"
+      ]
+    },
+    {
+      "title": "Retrieve project model permissions",
+      "url": "https://developers.openai.com/api/reference/python/resources/admin/subresources/organization/subresources/projects/subresources/model_permissions/methods/retrieve",
+      "supports": [
+        "project allow-list or deny-list policy fields"
+      ]
+    },
+    {
+      "title": "List project rate limits",
+      "url": "https://developers.openai.com/api/reference/ruby/resources/admin/subresources/organization/subresources/projects/subresources/rate_limits/methods/list_rate_limits",
+      "supports": [
+        "model-specific project rate-limit response fields"
+      ]
+    },
+    {
+      "title": "Projects",
+      "url": "https://developers.openai.com/api/reference/typescript/resources/admin/subresources/organization/subresources/projects",
+      "supports": [
+        "provider-returned project, key, service-account, and access identifiers"
+      ]
+    },
+    {
+      "title": "Create a model response",
+      "url": "https://developers.openai.com/api/reference/cli/resources/responses/methods/create",
+      "supports": [
+        "Responses output model field"
+      ]
+    }
+  ],
+  "normalized_facts": {
+    "provider_id": "openai",
+    "model_id": "gpt-5.6-sol",
+    "marketing_name": "GPT-5.6 Sol",
+    "family_alias": "gpt-5.6",
+    "family_alias_routes_to": "gpt-5.6-sol",
+    "wire_api": "Responses API",
+    "endpoint": "/v1/responses",
+    "context_window_tokens": 1050000,
+    "max_output_tokens": 128000,
+    "input_price_usd_per_million_tokens": 4.0,
+    "cached_input_price_usd_per_million_tokens": 0.4,
+    "output_price_usd_per_million_tokens": 20.0,
+    "published_snapshot_ids": [],
+    "snapshot_table_displayed_values": [
+      "gpt-5.6-sol",
+      "gpt-5.6-sol",
+      "gpt-5.6-sol"
+    ],
+    "distinct_immutable_snapshot_id": null,
+    "responses_runtime_model_field_documented": true,
+    "responses_runtime_provider_revision_field_documented": false,
+    "responses_system_fingerprint_documented": false,
+    "chat_completions_system_fingerprint_status": "DEPRECATED_NOT_RESPONSES_IDENTITY",
+    "project_model_permissions_documented": true,
+    "project_rate_limits_documented": true,
+    "model_list_and_retrieve_documented": true,
+    "provider_documented_invocation_equivalence": false
+  },
+  "normalized_evidence_sha256": "sha256:5bc678367ba4f1218759ce11d680c4371787c05e7ea553c5f74356f154a17256",
+  "limitations": [
+    "This bundle proves only the normalized public documentation facts captured at retrieval time.",
+    "It does not prove account entitlement, future availability, immutable model implementation, or runtime identity.",
+    "The repeated undated model ID in the snapshot table is not treated as a distinct immutable snapshot without an explicit provider immutability statement."
+  ],
+  "authenticated_provider_probe_count": 0,
+  "provider_model_subject_count": 0,
+  "identity": "sha256:9db99dfec2cb50d105665b29a986ce810446e9f0e933691f05a31282b9e6dcad"
+}

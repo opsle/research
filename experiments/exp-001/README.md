@@ -64,12 +64,21 @@ commitments. Its committed qualification evidence is in
 Qualification uses non-launchable fixture authorizations and therefore neither
 authorizes nor executes a provider request.
 
-The unreleased provider-free live admission preparation is recorded in
+The released provider-free live admission preparation is recorded in
 [`live-preflight-v1/`](live-preflight-v1/). Its public evidence is in
 [`program/evidence/exp-001-live-preflight/`](../../program/evidence/exp-001-live-preflight/).
 The actual exact four-label `LIVE_PROVIDER_RUN` set remains external to Git and
 outside every subject context. It is validated but unconsumed; this preparation
 does not authorize lifecycle advancement or launch a subject.
+
+The provider-free entitlement and model-identity contract is recorded in
+[`readiness-v1/`](readiness-v1/). It defines a sanitized future non-inference
+probe, a 300-second entitlement freshness rule, a strict immutable-provider-
+snapshot requirement, alias-drift protection, runtime identity admission, and
+pre-consumption launch ordering. Current official documentation does not make
+positive metadata invocation-equivalent and publishes no distinct immutable
+dated `gpt-5.6-sol` snapshot, so readiness is `BLOCKED` and EXP-001 remains
+`PLANNED`.
 
 ## Provider-free verification
 

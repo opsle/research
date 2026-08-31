@@ -243,7 +243,7 @@ class ProgramRegistryValidationTests(unittest.TestCase):
         ] = "0" * 40
         errors = self.errors_for(experiments=experiments)
         self.assertTrue(
-            any("release SHA must match research" in error for error in errors)
+            any("block coordinator release SHA drifted" in error for error in errors)
         )
 
     def test_exp001_block_coordinator_evidence_hash_cannot_drift(self):
@@ -316,6 +316,50 @@ class ProgramRegistryValidationTests(unittest.TestCase):
                 ] = value
                 errors = self.errors_for(experiments=experiments)
                 self.assertTrue(any(f"live preflight {field}" in error for error in errors))
+
+    def test_exp001_readiness_resolution_is_required(self):
+        experiments = copy.deepcopy(self.experiments)
+        del experiments["experiments"][0]["readiness_resolution"]
+        errors = self.errors_for(experiments=experiments)
+        self.assertTrue(
+            any("readiness_resolution must be an object" in error for error in errors)
+        )
+
+    def test_exp001_readiness_remains_blocked_and_provider_free(self):
+        fields = (
+            ("status", "PASS"),
+            ("entitlement_classification", "ENTITLED"),
+            ("model_identity_status", "PASS"),
+            ("provider_model_subjects_added", 1),
+            ("authenticated_provider_probes_added", 1),
+            ("authorization_consumptions_added", 1),
+            ("experiment_runs_added", 1),
+            ("experiment_results_added", 1),
+            ("result_envelopes_added", 1),
+            ("lifecycle_status", "EXPERIMENTED"),
+        )
+        for field, value in fields:
+            with self.subTest(field=field):
+                experiments = copy.deepcopy(self.experiments)
+                experiments["experiments"][0]["readiness_resolution"][field] = value
+                errors = self.errors_for(experiments=experiments)
+                self.assertTrue(any(f"readiness {field}" in error for error in errors))
+
+    def test_exp001_readiness_evidence_hash_cannot_drift(self):
+        fields = (
+            "contract_artifact_sha256",
+            "documentation_artifact_sha256",
+            "qualification_artifact_sha256",
+            "value_receipt_artifact_sha256",
+        )
+        for field in fields:
+            with self.subTest(field=field):
+                experiments = copy.deepcopy(self.experiments)
+                experiments["experiments"][0]["readiness_resolution"][field] = (
+                    "sha256:" + "0" * 64
+                )
+                errors = self.errors_for(experiments=experiments)
+                self.assertTrue(any(f"readiness {field} drifted" in error for error in errors))
 
     def test_dashboard_is_current(self):
         expected = (ROOT / "PROGRAM_STATUS.md").read_text(encoding="utf-8")
