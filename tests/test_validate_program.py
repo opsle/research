@@ -47,9 +47,12 @@ class ProgramRegistryValidationTests(unittest.TestCase):
         self.assertEqual(affected["lifecycle_stage"], "VERIFIED")
         self.assertEqual(
             affected["last_verified_head_sha"],
-            "641aee9d29a89e2a8819f00817ccee8e5d234dcb",
+            "3ff41688dded6e96e65da7cc44fe2608cf86d073",
         )
-        self.assertEqual(affected["active_experiment_ids"], ["AV-EXP-001"])
+        self.assertEqual(
+            affected["active_experiment_ids"],
+            ["AV-EXP-001", "AV-EXP-002"],
+        )
 
         experiment = next(
             item for item in self.experiments["experiments"]
@@ -63,6 +66,24 @@ class ProgramRegistryValidationTests(unittest.TestCase):
         self.assertEqual(
             experiment["benchmark_result"]["av_core_missed_relevant_check_count"],
             0,
+        )
+
+        experiment = next(
+            item for item in self.experiments["experiments"]
+            if item["id"] == "AV-EXP-002"
+        )
+        self.assertEqual(experiment["status"], "RECORDED")
+        self.assertEqual(
+            experiment["benchmark_result"]["summary_identity"],
+            "sha256:5b3f99bfbebd3a0d061651d66adfb5a6aaef899475c6267cb20e4040e6ed5768",
+        )
+        self.assertEqual(
+            experiment["benchmark_result"]["av_core_missed_relevant_check_count"],
+            1,
+        )
+        self.assertEqual(
+            experiment["benchmark_result"]["av_miss"]["check_id"],
+            "pytest:tests/test_imports.py::test_light_imports",
         )
 
     def test_missing_expected_repository_fails(self):
