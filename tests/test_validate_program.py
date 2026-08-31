@@ -47,11 +47,11 @@ class ProgramRegistryValidationTests(unittest.TestCase):
         self.assertEqual(affected["lifecycle_stage"], "VERIFIED")
         self.assertEqual(
             affected["last_verified_head_sha"],
-            "3ff41688dded6e96e65da7cc44fe2608cf86d073",
+            "97f490a67337552fee25757266f3dc034660dca0",
         )
         self.assertEqual(
             affected["active_experiment_ids"],
-            ["AV-EXP-001", "AV-EXP-002"],
+            ["AV-EXP-001", "AV-EXP-002", "AV-EXP-003"],
         )
 
         experiment = next(
@@ -85,6 +85,35 @@ class ProgramRegistryValidationTests(unittest.TestCase):
             experiment["benchmark_result"]["av_miss"]["check_id"],
             "pytest:tests/test_imports.py::test_light_imports",
         )
+        self.assertIn("FAIL", experiment["verdict"])
+
+        experiment = next(
+            item for item in self.experiments["experiments"]
+            if item["id"] == "AV-EXP-003"
+        )
+        self.assertEqual(experiment["status"], "RECORDED")
+        self.assertEqual(
+            experiment["benchmark_result"]["affected_verification_main_sha"],
+            "97f490a67337552fee25757266f3dc034660dca0",
+        )
+        self.assertEqual(
+            experiment["benchmark_result"]["known_replay"]["historical_outcome"],
+            "MISS",
+        )
+        self.assertEqual(
+            experiment["benchmark_result"]["known_replay"]["repaired_outcome"],
+            "SELECTED",
+        )
+        self.assertEqual(
+            experiment["benchmark_result"]["av_exp_002_av_core_new_misses"],
+            0,
+        )
+        self.assertEqual(
+            experiment["benchmark_result"]["av_exp_002_av_core_additional_test_executions"],
+            6,
+        )
+        self.assertEqual(experiment["lifecycle_impact"].split(":", 1)[0], "REMAIN_VERIFIED")
+        self.assertTrue(any("OBSERVE/SHADOW" in item for item in experiment["blockers"]))
 
     def test_missing_expected_repository_fails(self):
         registry = copy.deepcopy(self.registry)
