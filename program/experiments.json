@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_verified_at": "2026-08-31T12:52:33Z",
+  "last_verified_at": "2026-08-31T16:17:40Z",
   "experiments": [
     {
       "id": "EXP-001",
@@ -455,6 +455,115 @@
       ],
       "lifecycle_impact": "REMAIN_VERIFIED: the run adds revision-bound falsification evidence and failure modes, but the observed selection miss and explicit run cap do not establish BENCHMARK_READY or EXPERIMENTED lifecycle promotion for the repository.",
       "next_task": "Preregister and execute a selection-miss repair for AV2-006 that represents runtime/subprocess import uncertainty without changing the preserved AV-EXP-002 result."
+    },
+    {
+      "id": "AV-EXP-003",
+      "title": "Opaque Dependency Boundary Repair",
+      "status": "RECORDED",
+      "hypothesis": "Affected Verification may skip a check only when available evidence defends completeness for every declared dependency mechanism capable of connecting the change to that check; an unmodeled, incomplete, unknown, or opaque boundary forces selection of that check unless identified evidence closes it.",
+      "participating_repositories": [
+        "affected-verification",
+        "research"
+      ],
+      "roles": {
+        "primary": "affected-verification",
+        "expected_support": [
+          "research"
+        ],
+        "potential_support": []
+      },
+      "baseline": "The permanently preserved AV-EXP-002 FAIL and exact frozen AV2-006 Click scenario, plus frozen AV-EXP-001/002 selector/full-oracle evidence and ten preregistered generalized repair cases.",
+      "experimental_arms": [
+        "historical AV-EXP-001 and AV-EXP-002 AV selections preserved as the pre-repair baseline",
+        "Affected Verification plan v2 with check-level dependency completeness and deterministic boundary evidence",
+        "FULL frozen oracle for every repair case and preserved complete FULL evidence for every prior-corpus replay"
+      ],
+      "primary_metric": "Zero repaired selection misses, including selection of the exact known AV2-006 check for a generalized dependency-completeness reason.",
+      "secondary_metrics": [
+        "prior and repaired test checks or executions selected in compatible exact units",
+        "additional verification introduced by dependency-safety policy",
+        "tests still skipped, scenarios remaining targeted, scenarios broadened, and FULL escalations",
+        "check-level boundary provenance and forced-selection explanations",
+        "non-test check differences by class"
+      ],
+      "correctness_gate": "FULL remains authoritative in SHADOW; every adversarial catalog is completely executed, every frozen prior relevant set is replayed, and any newly missed relevant check fails the experiment.",
+      "failure_classifications": [
+        "known regression remains omitted",
+        "new regression miss",
+        "target-specific special case",
+        "malformed or unsupported boundary evidence accepted",
+        "incomplete full oracle",
+        "unmeasured or hidden precision cost",
+        "historical result mutation",
+        "unsafe trust promotion"
+      ],
+      "dataset_fixture_identity": "Affected Verification final 97f490a67337552fee25757266f3dc034660dca0; AV-EXP-003 preregistration 7aa4d13e42d6a547973d7f2a6b330821145cedc2; Click 36baa15ff831b939a22bc527cd76ce653ef6f66d; result sha256:03b2f7d6a380c84f6a1749531067cf8b87404c879f42380de8f07cce48251519; regression matrix sha256:7260c2d3476a6e78323e75d36c54c8409ea4cb18fa3a8f9a76b5533e1df08615.",
+      "model_provider_configuration": "NONE: one interactive Codex session used native shell, patch, Git, and Graphify facilities; no Codex children, external model/provider workloads, or production systems were used.",
+      "run_identities": [
+        "sha256:03b2f7d6a380c84f6a1749531067cf8b87404c879f42380de8f07cce48251519",
+        "sha256:7260c2d3476a6e78323e75d36c54c8409ea4cb18fa3a8f9a76b5533e1df08615"
+      ],
+      "result_artifacts": [
+        "https://github.com/opsle/affected-verification/blob/97f490a67337552fee25757266f3dc034660dca0/benchmark/av-exp-003/REPORT.md",
+        "https://github.com/opsle/affected-verification/blob/97f490a67337552fee25757266f3dc034660dca0/benchmark/av-exp-003/results-v1/summary.json",
+        "https://github.com/opsle/affected-verification/blob/97f490a67337552fee25757266f3dc034660dca0/benchmark/av-exp-003/results-v1/repair-regression-matrix.json",
+        "https://github.com/opsle/affected-verification/blob/97f490a67337552fee25757266f3dc034660dca0/benchmark/av-exp-003/results-v1/boundary-evidence.json",
+        "https://github.com/opsle/affected-verification/blob/3ff41688dded6e96e65da7cc44fe2608cf86d073/benchmark/av-exp-002/REPORT.md"
+      ],
+      "target": {
+        "repository": "https://github.com/pallets/click.git",
+        "sha": "36baa15ff831b939a22bc527cd76ce653ef6f66d",
+        "license": "BSD-3-Clause"
+      },
+      "preregistration": {
+        "commit_sha": "7aa4d13e42d6a547973d7f2a6b330821145cedc2",
+        "known_failure_outcome_disclosed": true,
+        "repaired_outcomes_observed_before_commit": false
+      },
+      "benchmark_result": {
+        "affected_verification_main_sha": "97f490a67337552fee25757266f3dc034660dca0",
+        "result_identity": "sha256:03b2f7d6a380c84f6a1749531067cf8b87404c879f42380de8f07cce48251519",
+        "regression_matrix_identity": "sha256:7260c2d3476a6e78323e75d36c54c8409ea4cb18fa3a8f9a76b5533e1df08615",
+        "evidence_manifest_identity": "sha256:932292a4f47372cab963db85772bb3d6c1e4fa536edd7b99f9686b72afd7e93c",
+        "known_replay": {
+          "scenario_id": "AV2-006",
+          "check_id": "pytest:tests/test_imports.py::test_light_imports",
+          "historical_outcome": "MISS",
+          "repaired_outcome": "SELECTED",
+          "additional_test_executions_per_av_arm": 1
+        },
+        "adversarial_scenario_count": 10,
+        "adversarial_repaired_miss_count": 0,
+        "adversarial_prior_tests_selected": 10,
+        "adversarial_repaired_tests_selected": 17,
+        "adversarial_additional_tests_due_to_repair": 7,
+        "adversarial_tests_still_skipped": 13,
+        "adversarial_targeted_scenarios_retained": 10,
+        "adversarial_broadened_scenarios": 7,
+        "adversarial_full_escalations": 0,
+        "av_exp_001_new_misses": 0,
+        "av_exp_001_additional_test_executions": 0,
+        "av_exp_002_av_core_new_misses": 0,
+        "av_exp_002_av_core_additional_test_executions": 6,
+        "av_exp_002_with_selector_new_misses": 0,
+        "av_exp_002_with_selector_additional_test_executions": 7,
+        "non_test_check_differences": 0
+      },
+      "major_findings": [
+        "Evidence-source agreement and evidence completeness are independent; static and native selector omission cannot prove irrelevance across an unmodeled boundary.",
+        "Check-local fail-closed selection repaired the known replay without global FULL broadening; all ten repair scenarios remained targeted.",
+        "The bounded Python inspector found two open subprocess/child-interpreter checks among 2,016 Click pytest checks and retained provenance without claiming it closes those boundaries.",
+        "AV-EXP-002 remains a permanent FAIL and no trust promotion follows from repairing its known miss."
+      ],
+      "replication_status": "SAME_HOST_DETERMINISTIC_REPLAY_ONLY",
+      "verdict": "PASS only for the preregistered defect-repair claim: the known AV2-006 check is selected, ten generalized cases have zero misses, no frozen prior AV-relevant check becomes newly missed, and exact precision cost is measured. This does not solve dynamic dependencies, prove general safety, or authorize trusted execution.",
+      "blockers": [
+        "The static boundary inspector identifies but does not close child-process, runtime import, arbitrary plugin, or reflection boundaries.",
+        "Historical real-change replay, a production-quality evidence adapter, and independent qualifying replication remain missing.",
+        "Affected Verification remains OBSERVE/SHADOW; no TRUSTED_BOUNDED class is authorized."
+      ],
+      "lifecycle_impact": "REMAIN_VERIFIED: the run repairs and measures one defect under SHADOW but is explicitly capped below lifecycle or trust promotion.",
+      "next_task": "Preregister a bounded child-process import-tracing evidence-provider experiment to test whether selected opaque checks can regain precision without weakening the fail-closed rule."
     },
     {
       "id": "LEGACY-001",
