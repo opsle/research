@@ -80,6 +80,15 @@ Agent Discovery Control should wait for a portable ledger and supervisor fixture
 so duplicate convergence and already-satisfied proofs are durable rather than
 conversation-local.
 
+## Workstream 6: affected verification
+
+Affected Verification is independently prototyped for normalized synthetic
+evidence and remains outside Gearbox. Its next evidence gate is not another
+selector implementation: freeze one real public repository's full-verification
+baseline, complete catalog, native-selector adapter output, and relevance oracle,
+then run only in `OBSERVE`/`SHADOW` without replacing authoritative CI. Correctness
+and relevant selection misses precede workload reduction.
+
 ## Exact next execution
 
 In `opsle/research`, independently review and release the provider-free exact

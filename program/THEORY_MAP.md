@@ -1,13 +1,13 @@
 # Canonical Opsle theory map
 
 Status: authoritative conceptual reconciliation plus the 2026-08-29 public
-Gearbox extraction. Consolidation and disposition operations remain
-recommendations only.
+Gearbox extraction and 2026-08-31 Affected Verification project creation.
+Consolidation and disposition operations remain recommendations only.
 
 Machine source: [`theory-registry.json`](theory-registry.json).
 
 Theory registry canonical SHA-256:
-`67b7529c195b501a810a3689f2074b1ed893541a15016ea4a8be83cb34437491`.
+`d3a5f6e03f28d0ae8911763e6cb15c1a3f7306559f1801a2647219563159cb79`.
 
 This map corrects an extraction-boundary error. The original 16 concept
 repositories were useful hypotheses isolated from one production system, but
@@ -38,6 +38,7 @@ OPSLE
 ├── Independent Opsle tools
 │   ├── Context Firewall
 │   ├── Agent Trajectory Profiler
+│   ├── Affected Verification
 │   └── Semantic Edit Protocol
 ├── Cross-cutting protocols
 │   ├── Decision Evidence Protocol
@@ -266,6 +267,7 @@ not an executed repository action.
 | Repository | Primary classification | Recommended disposition | Confidence | One-sentence rationale |
 |---|---|---|---|---|
 | `gearbox` | `GEARBOX_CORE` | `KEEP_STANDALONE` | `HIGH` | One bounded primary-developer transmission operation now has a narrow public home without absorbing durable orchestration or external policies and protocols. |
+| `affected-verification` | `INDEPENDENT_OPSLE_TOOL` | `KEEP_STANDALONE` | `HIGH` | Minimum-defensible verification planning composes native impact evidence, catalogs, and risk policy without owning check execution or model-context reduction. |
 | `agent-trajectory-profiler` | `INDEPENDENT_OPSLE_TOOL` | `KEEP_STANDALONE` | `HIGH` | Reusable correctness-gated telemetry is external to both Gearbox and durable orchestration, although generic Visible Value scope needs ownership cleanup. |
 | `semantic-edit-protocol` | `INDEPENDENT_OPSLE_TOOL` | `KEEP_STANDALONE` | `HIGH` | Bounded structural editing is independently useful and can be selected as a deterministic Gearbox tool without becoming Gearbox core. |
 | `durable-supervisor` | `DURABLE_ORCHESTRATION` | `KEEP_AS_RESEARCH` | `HIGH` | Durable objective ownership and reconstruction form a distinct autonomous-orchestration hypothesis whose package boundary remains unproven. |
@@ -354,6 +356,22 @@ profile, but it must not evolve into a competing reduction policy. Profiler must
 not become the normative owner of every receipt protocol merely because it
 aggregates them.
 
+### Affected Verification versus selectors, Gearbox, and Context Firewall
+
+Native affected/related systems remain authoritative evidence providers for
+their own graphs and test frameworks. Affected Verification composes that
+evidence with a complete verification catalog and explicit risk policy to
+produce selected checks, explained skips, and a sufficiency or uncertainty
+state. It does not reimplement those selectors, execute CI, or claim global
+mathematical minimality.
+
+Gearbox may consume a plan and choose an execution gear, but does not own the
+verification theory or planner. After checks execute, Context Firewall decides
+which results enter model context; Affected Verification decides only what
+verification should execute. Decision Evidence may validate plan provenance,
+and Agent Trajectory Profiler may measure planned versus actual or shadow work,
+without initial package coupling.
+
 ## Restored home and remaining gaps
 
 `opsle/gearbox` now coherently owns deterministic task admission, requested-gear
@@ -390,6 +408,11 @@ repositories.
 - Verifiable Agent Handoff is prototyped only for HMAC manifest binding and
   caller-supplied destruction state; publication, transport, destruction proof,
   reconstruction, and independent verification are not implemented.
+- Affected Verification is prototyped for normalized synthetic evidence,
+  deterministic catalog/policy planning, fail-closed escalation, skip reasons,
+  Visible Value receipts, and fixture-level shadow classification. No production
+  adapter, check execution, real-repository benchmark, or trusted selective
+  verification class exists.
 - The remaining theory repositories contain coherent falsifiable narratives,
   but their `SPEC.md` files are generic templates and their source/tests are
   placeholders. Their current lifecycle remains `THEORY`.
@@ -482,6 +505,7 @@ Minimum requirements:
 
 ## Repository anti-forgetting invariant
 
-The authoritative program registry tracks exactly 20 repositories: 17 concept
-repositories, `research`, `site`, and `.github`. Agent Gearbox is mapped exactly
-once to `opsle/gearbox`. Concept tracking does not replace repository tracking.
+The authoritative program registry tracks exactly 21 repositories: 18 concept
+repositories, `research`, `site`, and `.github`. Agent Gearbox and Affected
+Verification are each mapped exactly once to their public repositories. Concept
+tracking does not replace repository tracking.
