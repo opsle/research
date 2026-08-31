@@ -27,6 +27,24 @@ PRICING_PROTOCOL = "opsle.exp001.pricing-preflight/v1"
 REPORT_PROTOCOL = "opsle.exp001.live-preflight-qualification/v1"
 LIVE_AUTHORIZATION = "LIVE_PROVIDER_RUN"
 FIXTURE_AUTHORIZATION = "PROVIDER_FREE_FIXTURE"
+PUBLIC_EVIDENCE_NAMES = (
+    "model-catalogue.json",
+    "pricing-preflight.json",
+    "qualification-report.json",
+    "value-receipt.json",
+)
+FORBIDDEN_PUBLIC_EVIDENCE_FIELDS = (
+    "allocation_seed",
+    "arm_id",
+    "authorization_id",
+    "authorization_token",
+    "block_id",
+    "subject_label",
+)
+FROZEN_PRICE_FIELDS = {
+    "input_price_usd": "frozen_input_price_usd_per_million_tokens",
+    "output_price_usd": "frozen_output_price_usd_per_million_tokens",
+}
 
 
 class PreflightError(RuntimeError):
@@ -52,6 +70,28 @@ def sha256_bytes(value: bytes) -> str:
 def object_identity(value: dict[str, Any]) -> str:
     payload = {key: item for key, item in value.items() if key != "identity"}
     return sha256_bytes(canonical_bytes(payload))
+
+
+def assert_public_evidence_privacy(
+    evidence: dict[str, bytes],
+    *,
+    forbidden_values: tuple[str, ...],
+) -> None:
+    if set(evidence) != set(PUBLIC_EVIDENCE_NAMES):
+        raise PreflightError("public evidence set is incomplete or unexpected")
+    forbidden_fields = tuple(
+        f'"{field}"'.encode()
+        for field in FORBIDDEN_PUBLIC_EVIDENCE_FIELDS
+    )
+    private_values = tuple(
+        value.encode("utf-8") for value in forbidden_values if value
+    )
+    for name in PUBLIC_EVIDENCE_NAMES:
+        content = evidence[name]
+        if not isinstance(content, bytes):
+            raise PreflightError("public evidence output must be encoded bytes")
+        if any(marker in content for marker in forbidden_fields + private_values):
+            raise PreflightError("public evidence leaks private set detail")
 
 
 def load_json(path: Path) -> dict[str, Any]:
@@ -392,6 +432,22 @@ def validate_authorization_set(
     }
 
 
+def price_drift_from_frozen_configuration(
+    candidate: dict[str, Any],
+    configuration: dict[str, Any],
+) -> bool:
+    limits = configuration.get("subject_limits")
+    if not isinstance(limits, dict):
+        raise PreflightError("subject pricing configuration is malformed")
+    for catalogue_field, configuration_field in FROZEN_PRICE_FIELDS.items():
+        frozen_value = limits.get(configuration_field)
+        if not isinstance(frozen_value, (int, float)):
+            raise PreflightError("frozen subject pricing is malformed")
+        if candidate.get(catalogue_field) != frozen_value:
+            return True
+    return False
+
+
 def validate_catalogue(catalogue: dict[str, Any]) -> dict[str, Any]:
     if catalogue.get("protocol_version") != CATALOGUE_PROTOCOL:
         raise PreflightError("model catalogue protocol is malformed")
@@ -409,14 +465,16 @@ def validate_catalogue(catalogue: dict[str, Any]) -> dict[str, Any]:
         "wire_api": model["wire_api"],
         "availability": "DOCUMENTED_API_MODEL_ACCOUNT_ACCESS_UNVERIFIED",
         "pricing_basis": "USD_PER_1M_TEXT_TOKENS_STANDARD_SHORT_CONTEXT",
-        "input_price_usd": 4.0,
         "cached_input_price_usd": 0.4,
-        "output_price_usd": 20.0,
         "context_window_tokens": 1_050_000,
         "max_output_tokens": 128_000,
     }
     if any(candidate.get(key) != value for key, value in required.items()):
         raise PreflightError("catalogue candidate drifted from current documentation")
+    if price_drift_from_frozen_configuration(candidate, configuration):
+        raise PreflightError(
+            "catalogue price drifted from frozen subject configuration"
+        )
     if candidate.get("subscription_api_distinction") != (
         "Direct API usage pricing; ChatGPT or Codex subscription access is not "
         "used and does not authorize this experiment."
@@ -433,6 +491,14 @@ def pricing_preflight(catalogue: dict[str, Any]) -> dict[str, Any]:
     candidate = validate_catalogue(catalogue)
     configuration = load_json(PREREG_ROOT / "subject-config.json")
     limits = configuration["subject_limits"]
+    price_drift = price_drift_from_frozen_configuration(
+        candidate,
+        configuration,
+    )
+    if price_drift:
+        raise PreflightError(
+            "catalogue price drifted from frozen subject configuration"
+        )
     input_ceiling = limits["max_api_calls"] * limits["max_request_body_bytes"]
     output_ceiling = limits["max_api_calls"] * limits["max_output_tokens_per_response"]
     spend_ceiling = (
@@ -458,7 +524,7 @@ def pricing_preflight(catalogue: dict[str, Any]) -> dict[str, Any]:
         "registered_spend_ceiling_usd": limits["maximum_spend_usd_per_subject"],
         "long_context_threshold_tokens": 272_000,
         "long_context_multiplier_applies": False,
-        "price_drift_from_frozen_configuration": False,
+        "price_drift_from_frozen_configuration": price_drift,
         "account_access_verified": False,
         "provider_call_count": 0,
         "admission": "PASS_PROVIDER_FREE_CURRENT_DOCUMENTATION",
@@ -863,20 +929,29 @@ def qualify(
             "No token, cost, latency, correctness, savings, or causal-benefit claim is made.",
         ],
     }
-    public_bytes = canonical_bytes(report)
-    forbidden = (
-        b'"subject_label"',
-        b'"authorization_id"',
-        manifest["block_id"].encode("utf-8"),
-    )
-    if any(value in public_bytes for value in forbidden):
-        raise PreflightError("public qualification evidence leaks private set detail")
-    return {
+    evidence = {
         "model-catalogue.json": canonical_bytes(catalogue),
         "pricing-preflight.json": canonical_bytes(pricing),
-        "qualification-report.json": public_bytes,
+        "qualification-report.json": canonical_bytes(report),
         "value-receipt.json": canonical_bytes(receipt),
     }
+    manifest_records = manifest.get("authorizations")
+    if not isinstance(manifest_records, list):
+        raise PreflightError("authorization manifest privacy inputs are malformed")
+    forbidden_values = [manifest.get("block_id")]
+    for record in manifest_records:
+        if not isinstance(record, dict):
+            raise PreflightError("authorization manifest privacy inputs are malformed")
+        forbidden_values.extend(
+            (record.get("subject_label"), record.get("authorization_id"))
+        )
+    if any(not isinstance(value, str) or not value for value in forbidden_values):
+        raise PreflightError("authorization manifest privacy inputs are malformed")
+    assert_public_evidence_privacy(
+        evidence,
+        forbidden_values=tuple(forbidden_values),
+    )
+    return evidence
 
 
 def write_evidence(destination: Path, evidence: dict[str, bytes]) -> None:
