@@ -36,9 +36,105 @@
     "provider_model_runs": 0,
     "repository_consolidations": 0
   },
-  "current_highest_priority_workstream": "Independently review and release the provider-free EXP-001 live-authorization and current catalogue/pricing preflight; do not consume authorization or launch any provider/model subject.",
-  "recommended_next_execution": "In opsle/research, create and provider-free validate one exact four-label LIVE_PROVIDER_RUN authorization set plus a model catalogue/pricing preflight artifact; do not consume authorization or launch a provider/model subject.",
-  "last_verified_at": "2026-08-31T16:17:40Z",
+  "program_control": {
+    "schema_version": 1,
+    "priority_order": ["NOW", "NEXT", "THEN", "LATER", "PARKED"],
+    "current_lane": "NOW",
+    "operating_question": "What prevents Durable Supervisor from successfully finishing Opsle Tasks with less intelligence, less context, less human involvement, and defensible evidence?",
+    "exact_next_execution": "In opsle/durable-supervisor, make the selected Gearbox route, routing rationale, and Context Firewall raw-versus-retained accounting operator-visible in each child receipt without broadening Durable Supervisor v0.1.",
+    "work_item_admission": {
+      "rule": "Do not create a work item solely because an implementation can be improved.",
+      "qualifying_reasons": ["violated invariant", "demonstrated defect", "measured inefficiency", "missing capability blocking the current program objective", "experiment requirement", "security or safety issue", "externally required release condition"],
+      "parked_by_default": ["cosmetic cleanup", "architectural taste", "hypothetical robustness", "speculative future requirement"]
+    },
+    "lanes": [
+      {
+        "name": "NOW",
+        "objective": "Finish Durable Supervisor v0.1 as a bounded measured system, then freeze feature work.",
+        "repositories": ["durable-supervisor", "research"],
+        "entry_condition": "Current program lane.",
+        "exit_condition": "Every Durable Supervisor v0.1 stopping criterion is satisfied and the release is explicitly declared and frozen."
+      },
+      {
+        "name": "NEXT",
+        "objective": "Use Opsle Tasks as the primary real-world workload and collect integrated measurements without performing the deferred Taslos-to-Opsle migration.",
+        "repositories": ["gearbox", "context-firewall", "decision-evidence-protocol", "agent-trajectory-profiler", "affected-verification"],
+        "entry_condition": "Durable Supervisor v0.1 is declared and feature-frozen.",
+        "exit_condition": "Durable Supervisor has driven the remaining authorized Opsle Tasks readiness work and produced defensible integrated measurements."
+      },
+      {
+        "name": "THEN",
+        "objective": "Advance an individual concept only when Durable Supervisor or Opsle Tasks evidence demonstrates a concrete need.",
+        "repositories": ["semantic-edit-protocol", "event-driven-agent-wakeup", "agent-state-ledger", "agent-scheduler-runtime", "verifiable-agent-handoff", "agent-routing-policy", "agent-resource-claims", "agent-discovery-control", "agent-execution-authorization", "controlled-agent-acceptance", "agent-recovery-policy", "ephemeral-agent-workers"],
+        "entry_condition": "A qualifying work-item reason and real workload evidence identify the smallest relevant concept boundary.",
+        "exit_condition": "The demonstrated deficiency is resolved or falsified at its narrowest justified boundary; do not march mechanically through the portfolio."
+      },
+      {
+        "name": "LATER",
+        "objective": "Run controlled experiments, freeze a real-workload benchmark corpus, seek independent replication, and only then consider public product and research-site releases.",
+        "repositories": ["site"],
+        "entry_condition": "NOW, NEXT, and evidence-triggered THEN work establish a defensible need and release prerequisites are separately authorized.",
+        "exit_condition": "Applicable evidence and separate release authorization exist."
+      },
+      {
+        "name": "PARKED",
+        "objective": "Retain useful non-priority ideas without turning them into active work.",
+        "repositories": [".github"],
+        "entry_condition": "The idea is useful but lacks a qualifying reason to compete with the current objective.",
+        "exit_condition": "New evidence supplies a qualifying work-item reason."
+      }
+    ],
+    "durable_supervisor_v0_1": {
+      "status": "IN_PROGRESS",
+      "durability_foundation": "VERIFIED_ENOUGH_TO_STOP_NITPICKING_UNLESS_REAL_WORKLOAD_EXPOSES_A_DEFECT",
+      "verified_main_sha": "1b5ab7631ba651a32592bbbdab8001865a3baf3d",
+      "verified_runtime_state": "PAUSED_NO_ACTIVE_TASK_OR_ATTEMPT",
+      "runtime_state_recorded_at": "2026-09-05T12:20:01.551Z",
+      "runtime_state_source": "Read-only .opsle/state.json authority showed supervisor_state PAUSED with null active_task_id and active_attempt_id; .opsle/supervisor.json showed AUTHORITATIVE authority.",
+      "stopping_criteria": [
+        {"id": "DS-V0.1-01", "status": "OPEN", "criterion": "Expose the selected Gearbox route, routing rationale, and Context Firewall accounting in an operator-visible per-child receipt."},
+        {"id": "DS-V0.1-02", "status": "OPEN", "criterion": "Expose each child's model and reasoning effort."},
+        {"id": "DS-V0.1-03", "status": "OPEN", "criterion": "Record actual tokens and cost when provider evidence supplies them, and clearly labeled estimates otherwise."},
+        {"id": "DS-V0.1-04", "status": "OPEN", "criterion": "Measure raw evidence or context versus Context Firewall retained context and report the reduction."},
+        {"id": "DS-V0.1-05", "status": "OPEN", "criterion": "Report first-pass success rate."},
+        {"id": "DS-V0.1-06", "status": "OPEN", "criterion": "Report repair-child or retry rate and the token cost of retries."},
+        {"id": "DS-V0.1-07", "status": "OPEN", "criterion": "Estimate avoidable intelligence consumption by identifying failures whose needed facts were discoverable through deterministic preflight before model execution."},
+        {"id": "DS-V0.1-08", "status": "OPEN", "criterion": "Implement only the smallest useful deterministic preflight or reconnaissance mechanism shown necessary by the avoidable-failure evidence."},
+        {"id": "DS-V0.1-09", "status": "OPEN", "criterion": "Complete another real foreign-repository workload that exercises and preserves the new measurements."},
+        {"id": "DS-V0.1-10", "status": "OPEN", "criterion": "Declare Durable Supervisor v0.1 and freeze feature work except for defects exposed by real workloads."}
+      ]
+    },
+    "opsle_tasks": {
+      "current_repository": "sneakocom/taslos-tasks",
+      "future_name": "Opsle Tasks",
+      "role": "NEXT primary real-world workload after Durable Supervisor v0.1",
+      "measurements": ["Gearbox", "Context Firewall", "Decision Evidence Protocol", "Agent Trajectory Profiler", "Affected Verification"],
+      "prohibited_without_separate_authorization": ["move apps/taslos-tasks", "transfer sneakocom/taslos-tasks", "rename production services", "change schemas merely for rebranding", "public release", "DNS or TLS changes", "launch provider work"]
+    },
+    "concept_activation": [
+      {"deficiency": "routing", "repositories": ["agent-routing-policy"]},
+      {"deficiency": "durable state", "repositories": ["agent-state-ledger"]},
+      {"deficiency": "retry or deterministic preflight", "repositories": ["gearbox"]},
+      {"deficiency": "context overload", "repositories": ["context-firewall"]},
+      {"deficiency": "verification selection", "repositories": ["affected-verification"]},
+      {"deficiency": "recovery", "repositories": ["agent-recovery-policy"]}
+    ],
+    "later_items": ["controlled empirical experiments", "frozen real-workload benchmark corpus", "independent replication", "Opsle Tasks public and self-hosted release", "opsle.com research and public site", "hosted Opsle offering"],
+    "parked_items": ["Durable Supervisor src/cli.js is 1,570 lines at the verified main SHA and may eventually warrant decomposition; this is a maintenance smell, not a current objective, unless measured work shows material reliability or efficiency harm.", "Background projection repair or reconciliation is not justified merely because explicit retry exists.", "Historical pre-fix cleanup or migration requires evidence of need.", "General architectural polishing remains parked unless a real workload exposes a concrete defect."]
+  },
+  "visible_value": {
+    "baseline": "The configured primary supervisor model and reasoning effort performs all child work itself and receives raw unfiltered evidence.",
+    "baseline_rule": "Savings require an inspectable same-work baseline or a clearly labeled estimate derived from that baseline; marketing counterfactuals are prohibited.",
+    "value_kinds": [
+      {"name": "MEASURED", "definition": "The value comes directly from deterministic artifacts or provider usage records and still carries the applicable Visible Value evidence class, normally EXACT or OBSERVED."},
+      {"name": "DERIVED", "definition": "The value is a reproducible calculation over identified measured inputs and records its method and applicable Visible Value evidence class."},
+      {"name": "ESTIMATED", "definition": "The value carries the ESTIMATED evidence class and names its method, assumptions, pricing source, and uncertainty."},
+      {"name": "UNAVAILABLE", "definition": "The value is not currently supported and must remain absent rather than being rendered as zero."}
+    ],
+    "per_child_receipt_fields": ["child/task identity", "model", "reasoning effort", "Gearbox route", "routing rationale", "input tokens", "output tokens", "raw evidence/context size", "Context Firewall retained size", "reduction percentage", "estimated tokens avoided", "estimated cost avoided", "duration", "attempt number", "success/failure", "escalation/retry reason", "retry potentially avoidable through deterministic preflight"],
+    "supervisor_summary_fields": ["total children", "model/effort distribution", "total model tokens consumed", "work completed deterministically without model use", "Context Firewall reduction", "estimated token/cost savings", "first-pass success rate", "repair-child rate", "tokens spent on retries", "avoidable-intelligence estimate"]
+  },
+  "last_verified_at": "2026-09-05T15:28:58Z",
   "repositories": [
     {
       "name": "agent-trajectory-profiler",
@@ -62,13 +158,13 @@
       "dependents": ["context-firewall", "gearbox", "semantic-edit-protocol"],
       "active_experiment_ids": ["EXP-001"],
       "blockers": ["EXP-001 exact budgeted authorization, catalogue/pricing preflight, measured experiment, and independent replication remain missing; the one-block coordinator is provider-free qualified and zero model/provider subjects have run."],
-      "next_task": "Provider-free validate one exact four-label live authorization set and catalogue/pricing preflight without launching a subject.",
+      "next_task": "Wait for a Durable Supervisor or Opsle Tasks workload to require trajectory measurement; do not advance the profiler merely to polish it.",
       "evidence": ["https://github.com/opsle/agent-trajectory-profiler/blob/0a89661640721d6a39f127514b993d29bd728d47/src/value-summary.js", "https://github.com/opsle/agent-trajectory-profiler/blob/0a89661640721d6a39f127514b993d29bd728d47/src/run-record.js", "https://github.com/opsle/agent-trajectory-profiler/blob/0a89661640721d6a39f127514b993d29bd728d47/tests/value-summary.test.js", "https://github.com/opsle/agent-trajectory-profiler/blob/0a89661640721d6a39f127514b993d29bd728d47/tools/verify-context-firewall-interop.js", "https://github.com/opsle/agent-trajectory-profiler/pull/2", "https://github.com/opsle/research/blob/04234a65bf36192d63f1dd173c440d45a6604d2b/program/evidence/exp-001-offline-freeze/profile.json", "https://github.com/opsle/research/blob/31848c3f25ff9371055932657e8e2f8ad54cc8c7/program/evidence/exp-001-preregistration/verification-report.json", "https://github.com/opsle/research/blob/9ee43197880c18d4e185cf7e29e02a151d22a12e/program/evidence/exp-001-block-coordinator/qualification-report.json", "https://github.com/opsle/research/pull/11", "https://github.com/opsle/research/pull/13"],
       "completion_criteria": ["Publish metric semantics and executable profiler.", "Run correctness-gated benchmarks across multiple trajectories.", "Replicate predictive-value claims and document failure modes."],
       "completion_evidence": [],
       "completion_status": "INCOMPLETE",
-      "program_state": "active",
-      "last_verified_at": "2026-08-29T11:24:05Z"
+      "program_state": "waiting",
+      "last_verified_at": "2026-09-05T15:28:58Z"
     },
     {
       "name": "semantic-edit-protocol",
@@ -92,43 +188,43 @@
       "dependents": [],
       "active_experiment_ids": [],
       "blockers": ["No executable semantic operation, validator, tests, or benchmark fixtures."],
-      "next_task": "Specify one JavaScript symbol-replacement operation with preconditions, rollback behavior, and conformance cases.",
+      "next_task": "Wait until a real Durable Supervisor or Opsle Tasks workload demonstrates a semantic-edit deficiency that simpler bounded edits cannot satisfy.",
       "evidence": ["https://github.com/opsle/semantic-edit-protocol/blob/29caad5c03827cde17aabd71c38bc25899413a33/THEORY.md", "https://github.com/opsle/semantic-edit-protocol/blob/29caad5c03827cde17aabd71c38bc25899413a33/SPEC.md"],
       "completion_criteria": ["Publish a precise operation contract and executable reference adapter.", "Benchmark against patch and whole-file baselines under identical correctness gates.", "Replicate results and document conflicts and unsupported syntax."],
       "completion_evidence": [],
       "completion_status": "INCOMPLETE",
       "program_state": "waiting",
-      "last_verified_at": "2026-08-25T05:14:23Z"
+      "last_verified_at": "2026-09-05T15:28:58Z"
     },
     {
       "name": "durable-supervisor",
       "github_url": "https://github.com/opsle/durable-supervisor",
       "default_branch": "main",
-      "last_verified_head_sha": "555ebedb992ac74236bb7da8230b4d6b0489830b",
+      "last_verified_head_sha": "1b5ab7631ba651a32592bbbdab8001865a3baf3d",
       "project_type": "concept",
-      "purpose": "Separate supervisor decisions from child lifecycle and reconstruct work from durable state after inactivity.",
-      "lifecycle_stage": "THEORY",
-      "implementation_status": "none; placeholder source directory only",
+      "purpose": "Own autonomous objective progress through durable authority, bounded child execution, evidence reduction, evaluation, pause, wake, and reconstruction across model activations.",
+      "lifecycle_stage": "VERIFIED",
+      "implementation_status": "dependency-free Node.js Durable Supervisor v0.1 with persistent supervisor authority, task handoff, discovery, exact Gearbox routing, claims and fencing, detached Runner ownership, Context Firewall packets, acceptance and immutable evaluation, opsled wake delivery, bounded reconstruction, policy controls, and runtime-release fencing",
       "implementation_requirement": "A durable supervisor/runner reference implementation is required.",
-      "specification_status": "experimental theory contract; reconstruction and delegation semantics remain incomplete",
-      "test_status": "placeholder only; no automated tests",
-      "benchmark_status": "prose plan only; no runnable harness or frozen fixtures",
-      "measured_experiment_status": "none",
-      "reproducibility_status": "not available",
-      "documentation_status": "public theory, preliminary specification, architecture, and benchmark plan present",
+      "specification_status": "public v0.1 contract defines durable authority, immutable history, task and attempt state, exact routes, claims and fencing, Runner ownership, Context Firewall and acceptance boundaries, evaluation, wake, reconstruction, pause, and runtime compatibility",
+      "test_status": "PR #2 recorded 141 full-suite tests and canonical validation passing; PR #3 recorded 176 passing with 1 intentional skip; D5 PR #4 passed 6 focused atomicity, operator, and wake checks; projection-reconciliation PR #5 passed 76 focused evaluation, invariant, operator, recovery, and wake checks plus syntax, release-manifest, and canonical validation at the exact head whose tree is main",
+      "benchmark_status": "bounded self-hosting evidence records meaningful child work, exact route and acceptance artifacts, and measured Context Firewall byte reduction; PR #2 additionally records disposable and real foreign-repository portability plus a live automatic wake, but no frozen comparative baseline or controlled token/cost benchmark exists",
+      "measured_experiment_status": "operational self-hosting and foreign-repository observations only; no controlled comparative experiment",
+      "reproducibility_status": "provider-free tests, schema and release checks, reconstruction, portability fixtures, concurrency campaigns, and explicit evaluation replay are reproducible from the public source; latest PRs used focused affected verification rather than a new full-suite run, and no independent replication exists",
+      "documentation_status": "public v0.1 README, normative specification, architecture, operations guidance, and bounded self-hosting proof document supported behavior and explicit claim limits",
       "site_publication_status": "GitHub documentation only; no evidence-backed site publication",
-      "known_limitations": ["Controlled long-horizon experiments, reconstruction thresholds, delegation policy, and continuous-session comparison are missing."],
+      "known_limitations": ["Operator receipts do not yet expose the full Gearbox route/rationale, child model/effort, actual token/cost, retry cost, or avoidable-intelligence accounting required for v0.1 completion; existing Context Firewall evidence is byte-level, the latest repairs used focused rather than full-suite verification, and comparative benefit and independent replication remain unproven."],
       "dependencies": ["agent-state-ledger", "agent-scheduler-runtime", "event-driven-agent-wakeup", "decision-evidence-protocol"],
       "dependents": [],
       "active_experiment_ids": [],
-      "blockers": ["Portable ledger, scheduler, and wakeup fixtures do not yet exist."],
-      "next_task": "After ledger and wakeup fixtures exist, specify the minimum reconstruction envelope and failure behavior.",
-      "evidence": ["https://github.com/opsle/durable-supervisor/blob/555ebedb992ac74236bb7da8230b4d6b0489830b/THEORY.md", "https://github.com/opsle/durable-supervisor/blob/555ebedb992ac74236bb7da8230b4d6b0489830b/ARCHITECTURE.md"],
-      "completion_criteria": ["Implement a runner-independent durable supervisor.", "Measure correctness and inference use against a continuous-session baseline.", "Replicate restart and reconstruction behavior."],
+      "blockers": ["Durable Supervisor v0.1 still lacks the operator-visible measurement surface, avoidable-intelligence classification, smallest evidence-driven preflight, and another measured foreign-repository workload required by the program stopping criteria."],
+      "next_task": "Make the selected Gearbox route, routing rationale, and Context Firewall raw-versus-retained accounting operator-visible in each child receipt without broadening v0.1.",
+      "evidence": ["https://github.com/opsle/durable-supervisor/blob/1b5ab7631ba651a32592bbbdab8001865a3baf3d/README.md", "https://github.com/opsle/durable-supervisor/blob/1b5ab7631ba651a32592bbbdab8001865a3baf3d/SPEC.md", "https://github.com/opsle/durable-supervisor/blob/1b5ab7631ba651a32592bbbdab8001865a3baf3d/ARCHITECTURE.md", "https://github.com/opsle/durable-supervisor/blob/1b5ab7631ba651a32592bbbdab8001865a3baf3d/docs/SELF_HOSTING_PROOF.md", "https://github.com/opsle/durable-supervisor/pull/2", "https://github.com/opsle/durable-supervisor/pull/3", "https://github.com/opsle/durable-supervisor/pull/4", "https://github.com/opsle/durable-supervisor/pull/5"],
+      "completion_criteria": ["Satisfy the ten bounded Durable Supervisor v0.1 stopping criteria in the program-control registry.", "Prove the measurement surface on another real foreign-repository workload.", "Declare v0.1 and freeze feature work except for workload-exposed defects."],
       "completion_evidence": [],
       "completion_status": "INCOMPLETE",
-      "program_state": "waiting",
-      "last_verified_at": "2026-08-25T05:14:23Z"
+      "program_state": "active",
+      "last_verified_at": "2026-09-05T15:28:58Z"
     },
     {
       "name": "event-driven-agent-wakeup",
@@ -152,13 +248,13 @@
       "dependents": ["durable-supervisor"],
       "active_experiment_ids": [],
       "blockers": ["Current prototype is in-memory and has no restart or durable-store harness."],
-      "next_task": "Add a deterministic persisted-event fixture covering restart, duplicate delivery, wrong-wait, and timeout cases.",
+      "next_task": "Wait for a real Durable Supervisor or Opsle Tasks wake deficiency; advance the standalone concept only if the integrated runtime exposes one.",
       "evidence": ["https://github.com/opsle/event-driven-agent-wakeup/blob/a6209860c2151450cc28ed648bc8c2631c8db7ef/src/runtime.js", "https://github.com/opsle/event-driven-agent-wakeup/blob/a6209860c2151450cc28ed648bc8c2631c8db7ef/tests/runtime.test.js"],
       "completion_criteria": ["Implement restart-safe durable wait registration and wakeup.", "Benchmark polling and model-turn baselines.", "Replicate event-loss and duplicate-delivery correctness."],
       "completion_evidence": [],
       "completion_status": "INCOMPLETE",
       "program_state": "waiting",
-      "last_verified_at": "2026-08-25T05:14:23Z"
+      "last_verified_at": "2026-09-05T15:28:58Z"
     },
     {
       "name": "context-firewall",
@@ -182,13 +278,13 @@
       "dependents": ["gearbox"],
       "active_experiment_ids": ["EXP-001"],
       "blockers": ["EXP-001 exact budgeted authorization, catalogue/pricing preflight, measured correctness experiment, and replication remain missing; the one-block coordinator is provider-free qualified and zero model/provider subjects have run."],
-      "next_task": "Provider-free validate one exact four-label live authorization set and catalogue/pricing preflight without launching a subject.",
+      "next_task": "Wait for Durable Supervisor or Opsle Tasks evidence of context overload, unsafe omission, or unsupported input before advancing the standalone reducer.",
       "evidence": ["https://github.com/opsle/context-firewall/blob/953c48f1cfd154d6b7ed10b51b87fe54e4df45f2/src/value-receipt.js", "https://github.com/opsle/context-firewall/blob/953c48f1cfd154d6b7ed10b51b87fe54e4df45f2/tests/reducer.test.js", "https://github.com/opsle/context-firewall/blob/953c48f1cfd154d6b7ed10b51b87fe54e4df45f2/fixtures/corpus.js", "https://github.com/opsle/context-firewall/pull/2", "https://github.com/opsle/research/blob/04234a65bf36192d63f1dd173c440d45a6604d2b/program/evidence/exp-001-offline-freeze/context-firewall-value-receipt.json", "https://github.com/opsle/research/blob/31848c3f25ff9371055932657e8e2f8ad54cc8c7/program/evidence/exp-001-preregistration/verification-report.json", "https://github.com/opsle/research/blob/9ee43197880c18d4e185cf7e29e02a151d22a12e/program/evidence/exp-001-block-coordinator/qualification-report.json", "https://github.com/opsle/research/pull/11", "https://github.com/opsle/research/pull/13"],
       "completion_criteria": ["Publish reducer policy and executable conformance validator.", "Run correctness-gated measured context-reduction experiments.", "Replicate the safe frontier and publish omission failure modes."],
       "completion_evidence": [],
       "completion_status": "INCOMPLETE",
-      "program_state": "active",
-      "last_verified_at": "2026-08-29T11:24:05Z"
+      "program_state": "waiting",
+      "last_verified_at": "2026-09-05T15:28:58Z"
     },
     {
       "name": "decision-evidence-protocol",
@@ -212,13 +308,13 @@
       "dependents": ["agent-recovery-policy", "context-firewall", "durable-supervisor", "gearbox", "verifiable-agent-handoff"],
       "active_experiment_ids": ["EXP-001"],
       "blockers": ["Additional real tool classes, measured subject decision adequacy, EXP-001 exact budgeted authorization and catalogue/pricing preflight, a controlled comparative result, and independent replication are missing."],
-      "next_task": "Provider-free validate one exact four-label live authorization set and catalogue/pricing preflight without launching a subject.",
+      "next_task": "Wait for an integrated Durable Supervisor or Opsle Tasks receipt to expose a decision-evidence gap that blocks a defensible decision.",
       "evidence": ["https://github.com/opsle/decision-evidence-protocol/blob/b17ae3b41cea7cb0b9e0befe43e885b5aa0e4a09/src/context-firewall-value.js", "https://github.com/opsle/decision-evidence-protocol/blob/b17ae3b41cea7cb0b9e0befe43e885b5aa0e4a09/src/value-receipt-v1.js", "https://github.com/opsle/decision-evidence-protocol/blob/b17ae3b41cea7cb0b9e0befe43e885b5aa0e4a09/tests/value-receipt.test.js", "https://github.com/opsle/decision-evidence-protocol/blob/b17ae3b41cea7cb0b9e0befe43e885b5aa0e4a09/docs/value-receipt-v1.md", "https://github.com/opsle/decision-evidence-protocol/pull/2", "https://github.com/opsle/research/blob/04234a65bf36192d63f1dd173c440d45a6604d2b/program/evidence/exp-001-offline-freeze/decision-evidence-validation.json", "https://github.com/opsle/research/blob/31848c3f25ff9371055932657e8e2f8ad54cc8c7/program/evidence/exp-001-preregistration/verification-report.json", "https://github.com/opsle/research/blob/9ee43197880c18d4e185cf7e29e02a151d22a12e/program/evidence/exp-001-block-coordinator/qualification-report.json", "https://github.com/opsle/research/pull/11", "https://github.com/opsle/research/pull/13"],
       "completion_criteria": ["Publish a versioned protocol and comprehensive executable conformance suite.", "Measure adequacy across multiple real tool classes.", "Replicate interoperability and document loss/escalation failure modes."],
       "completion_evidence": [],
       "completion_status": "INCOMPLETE",
-      "program_state": "active",
-      "last_verified_at": "2026-08-29T11:24:05Z"
+      "program_state": "waiting",
+      "last_verified_at": "2026-09-05T15:28:58Z"
     },
     {
       "name": "agent-state-ledger",
@@ -242,13 +338,13 @@
       "dependents": ["agent-discovery-control", "agent-execution-authorization", "agent-recovery-policy", "agent-scheduler-runtime", "durable-supervisor", "event-driven-agent-wakeup"],
       "active_experiment_ids": [],
       "blockers": ["No portable schema, implementation, projection oracle, or replay fixtures."],
-      "next_task": "Specify a minimal append-only event schema and deterministic projection with contradiction fixtures.",
+      "next_task": "Wait for a real Durable Supervisor or Opsle Tasks workload to expose a portable durable-state deficiency before advancing this repository.",
       "evidence": ["https://github.com/opsle/agent-state-ledger/blob/acab03b1ff7168222552050e21e7553b07d00e7c/THEORY.md", "https://github.com/opsle/agent-state-ledger/blob/acab03b1ff7168222552050e21e7553b07d00e7c/SPEC.md"],
       "completion_criteria": ["Implement append-only storage and deterministic projection.", "Prove replay/reconstruction against failure fixtures.", "Measure and replicate reconstruction size and correctness."],
       "completion_evidence": [],
       "completion_status": "INCOMPLETE",
       "program_state": "waiting",
-      "last_verified_at": "2026-08-25T05:14:23Z"
+      "last_verified_at": "2026-09-05T15:28:58Z"
     },
     {
       "name": "agent-scheduler-runtime",
@@ -272,13 +368,13 @@
       "dependents": ["controlled-agent-acceptance", "durable-supervisor"],
       "active_experiment_ids": [],
       "blockers": ["Ledger and claim interfaces are not portable or executable in these repositories."],
-      "next_task": "After ledger schema exists, specify deterministic readiness and lease transitions with a fake-clock harness.",
+      "next_task": "Wait for a real workload to expose a scheduler-runtime deficiency not already satisfied by Durable Supervisor's local implementation.",
       "evidence": ["https://github.com/opsle/agent-scheduler-runtime/blob/d97cd3c218b20e0b2b0e09873f6a3d15c396b3a0/THEORY.md", "https://github.com/opsle/agent-scheduler-runtime/blob/d97cd3c218b20e0b2b0e09873f6a3d15c396b3a0/BENCHMARK.md"],
       "completion_criteria": ["Implement the portable deterministic core and store contract.", "Pass restart, lease, pause, cancellation, duplicate, and fairness campaigns.", "Benchmark and replicate latency and correctness."],
       "completion_evidence": [],
       "completion_status": "INCOMPLETE",
       "program_state": "waiting",
-      "last_verified_at": "2026-08-25T05:14:23Z"
+      "last_verified_at": "2026-09-05T15:28:58Z"
     },
     {
       "name": "verifiable-agent-handoff",
@@ -302,13 +398,13 @@
       "dependents": ["controlled-agent-acceptance", "ephemeral-agent-workers"],
       "active_experiment_ids": ["EXP-001"],
       "blockers": ["Prototype authenticates a manifest but does not build, transport, or reconstruct artifacts."],
-      "next_task": "Build a synthetic artifact round-trip harness with tamper, missing-object, and source-destruction cases.",
+      "next_task": "Wait for a real workload to require evidence survival across an isolation or source-destruction boundary before advancing this protocol.",
       "evidence": ["https://github.com/opsle/verifiable-agent-handoff/blob/399e5cfae94345affa3f087f0f6eb9e77669d33c/src/seal.js", "https://github.com/opsle/verifiable-agent-handoff/blob/399e5cfae94345affa3f087f0f6eb9e77669d33c/tests/seal.test.js"],
       "completion_criteria": ["Publish a versioned seal/reconstruction contract and executable conformance suite.", "Benchmark full artifact handoff and failure cases.", "Replicate with an independent implementation and environment."],
       "completion_evidence": [],
       "completion_status": "INCOMPLETE",
       "program_state": "waiting",
-      "last_verified_at": "2026-08-25T05:14:23Z"
+      "last_verified_at": "2026-09-05T15:28:58Z"
     },
     {
       "name": "agent-routing-policy",
@@ -332,13 +428,13 @@
       "dependents": ["agent-recovery-policy", "controlled-agent-acceptance", "gearbox"],
       "active_experiment_ids": [],
       "blockers": ["No normative route schema, evaluator, fixtures, or provider-independent quality evidence."],
-      "next_task": "Specify strict immutable route envelopes and deterministic rejection reasons using synthetic profiles.",
+      "next_task": "Wait for measured Durable Supervisor routing deficiencies before advancing a standalone routing policy.",
       "evidence": ["https://github.com/opsle/agent-routing-policy/blob/43fc2a72d2c8494b2dcdca7b5a209de61d8fe2d8/THEORY.md", "https://github.com/opsle/agent-routing-policy/blob/43fc2a72d2c8494b2dcdca7b5a209de61d8fe2d8/SPEC.md"],
       "completion_criteria": ["Publish route schema and executable policy evaluator.", "Measure strict and adaptive routing against real baselines.", "Replicate quality/cost claims and document unstable routes."],
       "completion_evidence": [],
       "completion_status": "INCOMPLETE",
       "program_state": "waiting",
-      "last_verified_at": "2026-08-25T05:14:23Z"
+      "last_verified_at": "2026-09-05T15:28:58Z"
     },
     {
       "name": "agent-resource-claims",
@@ -362,13 +458,13 @@
       "dependents": ["agent-execution-authorization", "agent-scheduler-runtime", "ephemeral-agent-workers", "semantic-edit-protocol"],
       "active_experiment_ids": [],
       "blockers": ["No portable resource catalog, claim-set state machine, concurrency tests, or fairness fixtures."],
-      "next_task": "Specify canonical resource identities and atomic claim-set transitions with stale-fence fixtures.",
+      "next_task": "Wait for a workload-exposed resource-claim or fencing deficiency not already covered by Durable Supervisor's local claims.",
       "evidence": ["https://github.com/opsle/agent-resource-claims/blob/dfe0fbc90c67ce5ef4256354bb62f1d511b1304c/THEORY.md", "https://github.com/opsle/agent-resource-claims/blob/dfe0fbc90c67ce5ef4256354bb62f1d511b1304c/ARCHITECTURE.md"],
       "completion_criteria": ["Implement atomic claims, expiry, renewal, takeover, and fencing.", "Pass deadlock, crash, stale-actor, and fairness campaigns.", "Replicate across at least two store/runtime adapters."],
       "completion_evidence": [],
       "completion_status": "INCOMPLETE",
       "program_state": "waiting",
-      "last_verified_at": "2026-08-25T05:14:23Z"
+      "last_verified_at": "2026-09-05T15:28:58Z"
     },
     {
       "name": "agent-discovery-control",
@@ -392,13 +488,13 @@
       "dependents": [],
       "active_experiment_ids": [],
       "blockers": ["No durable proposal dataset, similarity oracle, policy evaluator, or convergence harness."],
-      "next_task": "After the ledger schema exists, freeze duplicate/already-satisfied proposal fixtures and expected dispositions.",
+      "next_task": "Wait for real duplicate-discovery or already-satisfied work evidence before advancing this repository.",
       "evidence": ["https://github.com/opsle/agent-discovery-control/blob/926547dd9fd713990b1d6f1f2e650aa6c0883564/THEORY.md", "https://github.com/opsle/agent-discovery-control/blob/926547dd9fd713990b1d6f1f2e650aa6c0883564/BENCHMARK.md"],
       "completion_criteria": ["Implement deterministic proposal admission and convergence.", "Benchmark duplicates, storms, and already-satisfied proofs.", "Replicate calibrated policies across objective sizes."],
       "completion_evidence": [],
       "completion_status": "INCOMPLETE",
       "program_state": "waiting",
-      "last_verified_at": "2026-08-25T05:14:23Z"
+      "last_verified_at": "2026-09-05T15:28:58Z"
     },
     {
       "name": "agent-execution-authorization",
@@ -422,13 +518,13 @@
       "dependents": ["controlled-agent-acceptance", "ephemeral-agent-workers", "gearbox"],
       "active_experiment_ids": [],
       "blockers": ["No grant schema, current-authority oracle, revocation model, or adversarial fixtures."],
-      "next_task": "Define a versioned grant binding source authority, current fence, target revision, stage, purpose, and expiry.",
+      "next_task": "Wait for a real execution-authorization gap that blocks the current Durable Supervisor or Opsle Tasks objective.",
       "evidence": ["https://github.com/opsle/agent-execution-authorization/blob/8fb02e943c83fae121c63185d2f0d0dde8c4260a/THEORY.md", "https://github.com/opsle/agent-execution-authorization/blob/8fb02e943c83fae121c63185d2f0d0dde8c4260a/SPEC.md"],
       "completion_criteria": ["Publish a portable grant schema and executable validator.", "Pass stale, revoked, drifted, replayed, and composed-authority cases.", "Measure and replicate revocation and interoperability behavior."],
       "completion_evidence": [],
       "completion_status": "INCOMPLETE",
       "program_state": "waiting",
-      "last_verified_at": "2026-08-25T05:14:23Z"
+      "last_verified_at": "2026-09-05T15:28:58Z"
     },
     {
       "name": "controlled-agent-acceptance",
@@ -452,13 +548,13 @@
       "dependents": [],
       "active_experiment_ids": [],
       "blockers": ["Authorization, routing, scheduling, and handoff contracts are not yet executable together."],
-      "next_task": "Wait for prerequisite contracts, then specify an offline one-shot manifest state machine before any provider run.",
+      "next_task": "Wait for real acceptance evidence to show a missing portable capability before advancing the standalone concept.",
       "evidence": ["https://github.com/opsle/controlled-agent-acceptance/blob/2d652adf56e53953327d09b1ba9c4a9c3445f052/THEORY.md", "https://github.com/opsle/controlled-agent-acceptance/blob/2d652adf56e53953327d09b1ba9c4a9c3445f052/ARCHITECTURE.md"],
       "completion_criteria": ["Implement and verify a one-shot fail-closed acceptance controller.", "Run bounded acceptance experiments only under separately authorized exact manifests.", "Replicate interruption, restoration, and residue reconciliation behavior."],
       "completion_evidence": [],
       "completion_status": "INCOMPLETE",
       "program_state": "waiting",
-      "last_verified_at": "2026-08-25T05:14:23Z"
+      "last_verified_at": "2026-09-05T15:28:58Z"
     },
     {
       "name": "agent-recovery-policy",
@@ -482,13 +578,13 @@
       "dependents": [],
       "active_experiment_ids": [],
       "blockers": ["No shared failure schema, attempt ledger, route evaluator, or comparative fixture set."],
-      "next_task": "After decision evidence and route schemas stabilize, define same-failure convergence on synthetic failures.",
+      "next_task": "Wait for repeated real recovery failures to demonstrate a policy deficiency; do not create speculative recovery work.",
       "evidence": ["https://github.com/opsle/agent-recovery-policy/blob/1b733a111e26e0a409fee3b96f627048531daefe/THEORY.md", "https://github.com/opsle/agent-recovery-policy/blob/1b733a111e26e0a409fee3b96f627048531daefe/BENCHMARK.md"],
       "completion_criteria": ["Publish a typed failure schema and executable bounded policy.", "Compare retry, consultation, alternate route, and terminal baselines.", "Replicate outcome and convergence claims across failure classes."],
       "completion_evidence": [],
       "completion_status": "INCOMPLETE",
       "program_state": "waiting",
-      "last_verified_at": "2026-08-25T05:14:23Z"
+      "last_verified_at": "2026-09-05T15:28:58Z"
     },
     {
       "name": "ephemeral-agent-workers",
@@ -512,13 +608,13 @@
       "dependents": [],
       "active_experiment_ids": [],
       "blockers": ["Portable authority, claim, and handoff contracts are not ready; no safe synthetic containment harness exists."],
-      "next_task": "Wait for prerequisite contracts, then define a fake worker adapter and destruction receipt without infrastructure changes.",
+      "next_task": "Wait for a real workload to require an ephemeral-worker boundary before advancing this repository.",
       "evidence": ["https://github.com/opsle/ephemeral-agent-workers/blob/ad96fcfdfac06d340b5e96d369634980cee78ef4/THEORY.md", "https://github.com/opsle/ephemeral-agent-workers/blob/ad96fcfdfac06d340b5e96d369634980cee78ef4/ARCHITECTURE.md"],
       "completion_criteria": ["Implement a portable bounded broker/worker adapter and destruction proof.", "Pass containment, credential, process, network, seal, and cleanup campaigns.", "Replicate across isolation technologies with a published threat model."],
       "completion_evidence": [],
       "completion_status": "INCOMPLETE",
       "program_state": "waiting",
-      "last_verified_at": "2026-08-25T05:14:23Z"
+      "last_verified_at": "2026-09-05T15:28:58Z"
     },
     {
       "name": "gearbox",
@@ -542,13 +638,13 @@
       "dependents": [],
       "active_experiment_ids": [],
       "blockers": ["A production-quality bounded helper transport, independently verified isolation and termination, full Context Firewall integration, and a frozen comparative benchmark remain missing."],
-      "next_task": "Freeze a provider-free deterministic-versus-direct baseline and helper-transport conformance corpus before considering any live model/provider run.",
+      "next_task": "Support Durable Supervisor receipt visibility and Opsle Tasks workload measurement; advance the standalone Gearbox only if integrated evidence exposes a routing or preflight deficiency.",
       "evidence": ["https://github.com/opsle/gearbox/blob/f3fab9f292cf4eabd7200615d444f98881f57d55/src/opsle_gearbox/core.py", "https://github.com/opsle/gearbox/blob/f3fab9f292cf4eabd7200615d444f98881f57d55/tests/test_core.py", "https://github.com/opsle/gearbox/blob/f3fab9f292cf4eabd7200615d444f98881f57d55/evidence/release-001/verification.json", "https://github.com/opsle/gearbox/blob/f3fab9f292cf4eabd7200615d444f98881f57d55/PROVENANCE.md", "program/evidence/gearbox-publication/README.md", "https://github.com/opsle/gearbox/pull/1", "https://github.com/opsle/gearbox/actions/runs/33229696388"],
       "completion_criteria": ["Publish and verify a production-quality bounded helper transport without absorbing durable orchestration.", "Benchmark deterministic and bounded-cognitive gears against real direct-execution baselines under equal correctness gates.", "Replicate bounded value claims and document transport, isolation, cleanup, escalation, and unsupported-task failure modes."],
       "completion_evidence": [],
       "completion_status": "INCOMPLETE",
       "program_state": "waiting",
-      "last_verified_at": "2026-08-29T02:53:08Z"
+      "last_verified_at": "2026-09-05T15:28:58Z"
     },
     {
       "name": "affected-verification",
@@ -572,43 +668,43 @@
       "dependents": [],
       "active_experiment_ids": ["AV-EXP-001", "AV-EXP-002", "AV-EXP-003"],
       "blockers": ["The bounded repair does not close opaque boundaries or constitute dynamic analysis; historical real-change replay, a production-quality evidence adapter, and independent qualifying replication remain missing. AV remains OBSERVE/SHADOW and no TRUSTED_BOUNDED change class is authorized."],
-      "next_task": "Preregister a bounded child-process import-tracing evidence-provider experiment to test whether selected opaque checks can regain precision without weakening the fail-closed rule.",
+      "next_task": "Remain OBSERVE/SHADOW and wait for Durable Supervisor-driven Opsle Tasks work to expose a concrete verification-selection deficiency before adding another experiment.",
       "evidence": ["https://github.com/opsle/affected-verification/blob/97f490a67337552fee25757266f3dc034660dca0/benchmark/av-exp-003/REPORT.md", "https://github.com/opsle/affected-verification/blob/7aa4d13e42d6a547973d7f2a6b330821145cedc2/benchmark/av-exp-003/preregistration-v1/preregistration.json", "https://github.com/opsle/affected-verification/blob/97f490a67337552fee25757266f3dc034660dca0/benchmark/av-exp-003/results-v1/summary.json", "https://github.com/opsle/affected-verification/blob/97f490a67337552fee25757266f3dc034660dca0/benchmark/av-exp-003/results-v1/repair-regression-matrix.json", "https://github.com/opsle/affected-verification/blob/97f490a67337552fee25757266f3dc034660dca0/benchmark/av-exp-003/results-v1/evidence-manifest.json", "https://github.com/opsle/affected-verification/blob/3ff41688dded6e96e65da7cc44fe2608cf86d073/benchmark/av-exp-002/REPORT.md", "https://github.com/opsle/affected-verification/pull/4", "https://github.com/opsle/affected-verification/actions/runs/33412942072"],
       "completion_criteria": ["Publish production evidence adapters and independently validate their completeness boundaries.", "Run correctness-first comparisons against full verification and native selectors with durable shadow miss evidence.", "Replicate bounded workload and safety claims on independent repositories or environments."],
       "completion_evidence": [],
       "completion_status": "INCOMPLETE",
-      "program_state": "active",
-      "last_verified_at": "2026-08-31T16:17:40Z"
+      "program_state": "waiting",
+      "last_verified_at": "2026-09-05T15:28:58Z"
     },
     {
       "name": "research",
       "github_url": "https://github.com/opsle/research",
       "default_branch": "main",
-      "last_verified_head_sha": "9ee43197880c18d4e185cf7e29e02a151d22a12e",
+      "last_verified_head_sha": "e8a2c36678ac4d4f72a79a56e03e9f896811be02",
       "project_type": "program infrastructure",
       "purpose": "Own public research methodology, portfolio reconciliation, experiment records, and the authoritative program ledger.",
       "lifecycle_stage": "PROTOTYPED",
-      "implementation_status": "authoritative 21-repository ledger, machine-readable 18-concept theory registry including Affected Verification, canonical theory map, normative Visible Value controls, and provider-free EXP-001 benchmark, launch, one-block coordinator, external four-label LIVE_PROVIDER_RUN authorization, and current catalogue/pricing preflight artifacts with six content-addressed tasks, deterministic oracle, four arm contracts, sealed blinded allocation, exact subject configuration and adapter, exact authorization admission, private boundaries, receipts, mutation tests, and integrity CI",
+      "implementation_status": "authoritative 21-repository portfolio and priority ledger, machine-readable 18-concept theory registry, five-experiment registry, lifecycle and anti-nitpick controls, normative Visible Value target, deterministic generated status and priority views, provider-free EXP-001 preparation, and recorded AV-EXP-001/002/003 shadow evidence with integrity CI",
       "implementation_requirement": "Program infrastructure requires a validated registry, generated dashboard, experiment ledger, operating rules, and CI.",
-      "specification_status": "canonical lifecycle, theory classifications and dispositions, Gearbox and Context Firewall definitions, Gearbox-versus-Durable boundary, Visible Value receipt and measurement classes, operator/model channels, observational corpus, shadow/replay attachment, operating, priority, registry, experiment, and generated-status controls are specified",
-      "test_status": "88 of 88 repository tests pass locally after deliberate migration to the 21-repository, 18-concept anti-forgetting set, including 13 authorization validations and two byte-identical replays; generated status and registry validation pass",
-      "benchmark_status": "the EXP-001 provider-free components are frozen at 04234a65bf36192d63f1dd173c440d45a6604d2b, launch controls are preregistered at 31848c3f25ff9371055932657e8e2f8ad54cc8c7, and the one-block coordinator is qualified at 9ee43197880c18d4e185cf7e29e02a151d22a12e; the unreleased branch adds one external exact four-label LIVE_PROVIDER_RUN set and current gpt-5.6-sol catalogue/pricing evidence with zero consumptions, provider/model launches, experiment runs, or results; no causal experiment",
-      "measured_experiment_status": "one legacy integration observation; no canonical measured concept experiment",
-      "reproducibility_status": "program and receipt validation, status generation, public dogfood artifacts, exact-revision EXP-001 offline qualification, public allocation checks, adapter self-test, structural preregistration verification, coordinator unit checks, and live-authorization reconstruction from frozen private inputs are reproducible; the live set replay is byte-identical twice, full secret-backed coordinator replay still requires the external seed, and no subject result exists",
-      "documentation_status": "public canonical theory map, project reconciliation, registered Gearbox boundary and prototype scope, Context Firewall adapter scope, consolidation provenance policy, program documentation, Visible Value semantics, machine controls, evidence, and generated portfolio status are present",
+      "specification_status": "canonical lifecycle, theory classifications and dispositions, Gearbox and Context Firewall definitions, Gearbox-versus-Durable boundary, Visible Value receipt and measurement classes, operator/model channels, observational corpus, shadow/replay attachment, NOW/NEXT/THEN/LATER/PARKED lanes, work-item admission, registry, experiment, and deterministic generated-view controls are specified",
+      "test_status": "90 of 90 repository tests passed locally at the verified default-branch HEAD; the 21-repository and 18-concept registries, five experiment records, generated dashboard, and deterministic experiment evidence checks passed",
+      "benchmark_status": "EXP-001 provider-free components remain frozen and unconsumed; AV-EXP-001/002/003 are recorded correctness-first shadow calibrations, including the preserved AV-EXP-002 miss and bounded AV-EXP-003 repair evidence; no provider/model subject ran",
+      "measured_experiment_status": "AV-EXP-001, AV-EXP-002, and AV-EXP-003 are recorded shadow experiments; EXP-001 remains planned and unconsumed; no provider/model experiment run exists",
+      "reproducibility_status": "program and receipt validation, both generated views, public dogfood artifacts, exact-revision EXP-001 provider-free qualification, and AV-EXP-001/002/003 deterministic shadow evidence are reproducible; full secret-backed coordinator replay still requires the external seed, and no provider/model subject result exists",
+      "documentation_status": "public canonical theory map, project reconciliation, generated priority and portfolio views, registered Gearbox boundary and prototype scope, Context Firewall adapter scope, consolidation provenance policy, program documentation, Visible Value semantics, machine controls, and evidence are present",
       "site_publication_status": "GitHub research hub only",
-      "known_limitations": ["The registry cannot self-reference the commit that contains its own SHA, default-branch HEAD verification remains operator-driven, the frozen EXP-001 corpus is Python-only, the exact live authorization set is external and unconsumed, account-specific API entitlement is unverified, the public model ID is not an immutable dated snapshot, site content is not registry-derived, Gearbox comparative evidence is absent, and no canonical concept experiment has run."],
+      "known_limitations": ["The registry cannot self-reference the commit that contains its own SHA, default-branch HEAD verification remains operator-driven, EXP-001 is still unconsumed, AV remains OBSERVE/SHADOW, the site is not registry-derived, and integrated Durable Supervisor/Opsle Tasks token, cost, first-pass, retry, and avoidable-intelligence measurements do not yet exist."],
       "dependencies": [],
       "dependents": [".github", "site"],
-      "active_experiment_ids": ["EXP-001", "LEGACY-001"],
-      "blockers": ["The exact live authorization set remains unconsumed and unreleased, account-specific API entitlement is unverified under the zero-provider-call policy, no immutable dated model snapshot is documented, and the program has no canonical measured concept experiment."],
-      "next_task": "Independently review and release the provider-free live-authorization and catalogue/pricing preflight; do not consume authorization or launch a provider/model subject.",
-      "evidence": ["program/THEORY_MAP.md", "program/theory-registry.json", "program/evidence/gearbox-publication/README.md", "program/evidence/exp-001-offline-freeze/README.md", "program/evidence/exp-001-preregistration/README.md", "program/evidence/exp-001-block-coordinator/README.md", "program/evidence/exp-001-live-preflight/README.md", "program/evidence/exp-001-live-preflight/model-catalogue.json", "program/evidence/exp-001-live-preflight/pricing-preflight.json", "program/evidence/exp-001-live-preflight/qualification-report.json", "program/evidence/exp-001-live-preflight/value-receipt.json", "https://github.com/opsle/research/blob/04234a65bf36192d63f1dd173c440d45a6604d2b/experiments/exp-001/benchmark.json", "https://github.com/opsle/research/blob/04234a65bf36192d63f1dd173c440d45a6604d2b/program/evidence/exp-001-offline-freeze/qualification-report.json", "https://github.com/opsle/research/blob/31848c3f25ff9371055932657e8e2f8ad54cc8c7/experiments/exp-001/preregistration-v1/preregistration.json", "https://github.com/opsle/research/blob/31848c3f25ff9371055932657e8e2f8ad54cc8c7/program/evidence/exp-001-preregistration/verification-report.json", "https://github.com/opsle/research/blob/9ee43197880c18d4e185cf7e29e02a151d22a12e/experiments/exp-001/coordinator-v1/coordinator.py", "https://github.com/opsle/research/blob/9ee43197880c18d4e185cf7e29e02a151d22a12e/program/evidence/exp-001-block-coordinator/qualification-report.json", "https://github.com/opsle/research/blob/72f9e4a0326d68d3870e2e79ce4e351acb1d8ffa/program/VISIBLE_VALUE_CONTRACT.md", "https://github.com/opsle/research/pull/9", "https://github.com/opsle/research/pull/11", "https://github.com/opsle/research/pull/13"],
+      "active_experiment_ids": ["EXP-001", "AV-EXP-001", "AV-EXP-002", "AV-EXP-003", "LEGACY-001"],
+      "blockers": ["Durable Supervisor v0.1 measurement and foreign-workload stopping criteria remain open; Opsle Tasks cannot become the primary workload until v0.1 is declared and frozen."],
+      "next_task": "Keep the authoritative priority and portfolio views current while Durable Supervisor completes its ten bounded v0.1 stopping criteria.",
+      "evidence": ["program/registry.json", "PROGRAM_STATUS.md", "program/PRIORITY.md", "program/THEORY_MAP.md", "program/theory-registry.json", "program/evidence/gearbox-publication/README.md", "program/evidence/exp-001-offline-freeze/README.md", "program/evidence/exp-001-preregistration/README.md", "program/evidence/exp-001-block-coordinator/README.md", "program/evidence/exp-001-live-preflight/README.md", "https://github.com/opsle/research/pull/19", "https://github.com/opsle/research/pull/20", "https://github.com/opsle/research/pull/21", "https://github.com/opsle/research/blob/04234a65bf36192d63f1dd173c440d45a6604d2b/experiments/exp-001/benchmark.json", "https://github.com/opsle/research/blob/31848c3f25ff9371055932657e8e2f8ad54cc8c7/experiments/exp-001/preregistration-v1/preregistration.json", "https://github.com/opsle/research/blob/9ee43197880c18d4e185cf7e29e02a151d22a12e/experiments/exp-001/coordinator-v1/coordinator.py", "https://github.com/opsle/research/blob/72f9e4a0326d68d3870e2e79ce4e351acb1d8ffa/program/VISIBLE_VALUE_CONTRACT.md"],
       "completion_criteria": ["Keep the 21-repository ledger and dashboard mechanically consistent.", "Retain immutable experiment evidence and lifecycle promotion proof.", "Publish program documentation without stale or unsupported claims."],
       "completion_evidence": [],
       "completion_status": "INCOMPLETE",
       "program_state": "active",
-      "last_verified_at": "2026-08-31T01:29:54Z"
+      "last_verified_at": "2026-09-05T15:28:58Z"
     },
     {
       "name": "site",
@@ -632,13 +728,13 @@
       "dependents": [],
       "active_experiment_ids": [],
       "blockers": ["Wait for validated registry data and measured research; deployment requires separate authorization."],
-      "next_task": "After registry merge, add a read-only registry ingestion design without deploying the site.",
+      "next_task": "Remain later until measured research and separate site-release authorization justify registry-derived public content.",
       "evidence": ["https://github.com/opsle/site/blob/28ad65be4750dc849976fbf5c9eae9501c6bbb25/README.md", "https://github.com/opsle/site/blob/28ad65be4750dc849976fbf5c9eae9501c6bbb25/tests/rendered-html.test.mjs"],
       "completion_criteria": ["Render registry-derived public state without unsupported claims.", "Pass build, render, accessibility, and content-consistency checks.", "Publish only under a separate authorized release with exact revision evidence."],
       "completion_evidence": [],
       "completion_status": "INCOMPLETE",
       "program_state": "waiting",
-      "last_verified_at": "2026-08-25T05:14:23Z"
+      "last_verified_at": "2026-09-05T15:28:58Z"
     },
     {
       "name": ".github",
@@ -662,13 +758,13 @@
       "dependents": [],
       "active_experiment_ids": [],
       "blockers": ["No mechanical registry consistency check exists in this repository."],
-      "next_task": "After registry merge, design a read-only consistency check for organization-profile repository links.",
+      "next_task": "Remain parked until a broken organization-profile link or external release condition creates a concrete need.",
       "evidence": ["https://github.com/opsle/.github/blob/01c38e726db7c3e45059d25fccce55e071e35938/profile/README.md"],
       "completion_criteria": ["Keep organization identity and repository links consistent with the authoritative registry.", "Automate or verify consistency at exact revisions.", "Document ownership and update workflow."],
       "completion_evidence": [],
       "completion_status": "INCOMPLETE",
       "program_state": "waiting",
-      "last_verified_at": "2026-08-25T05:14:23Z"
+      "last_verified_at": "2026-09-05T15:28:58Z"
     }
   ]
 }

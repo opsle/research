@@ -2,6 +2,12 @@
 
 > **NOT AUTHORIZED FOR EXECUTION DURING THIS RUN. PLANNING ONLY.**
 
+Opsle Tasks is the NEXT primary real-world workload after Durable Supervisor
+v0.1 is declared and feature-frozen. That workload role does not authorize any
+identity, repository, runtime, schema, service, DNS, TLS, provider, or release
+migration. The machine-readable program priority remains
+`program/registry.json`.
+
 ## Intended future identities
 
 - repository: `sneakocom/taslos-tasks` → `opsle/tasks`;
