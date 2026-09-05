@@ -30,8 +30,9 @@ Important mechanisms should remain understandable, falsifiable, benchmarkable, r
 
 ## Start here
 
-- [PROGRAM_STATUS.md](PROGRAM_STATUS.md) — generated 20-repository dashboard.
-- [program/registry.json](program/registry.json) — authoritative machine-readable ledger.
+- [PROGRAM_STATUS.md](PROGRAM_STATUS.md) — generated 21-repository dashboard.
+- [program/registry.json](program/registry.json) — authoritative machine-readable portfolio and priority ledger.
+- [program/PRIORITY.md](program/PRIORITY.md) — generated NOW / NEXT / THEN / LATER / PARKED view.
 - [program/THEORY_MAP.md](program/THEORY_MAP.md) — canonical conceptual topology and Gearbox boundary.
 - [program/theory-registry.json](program/theory-registry.json) — machine-readable concept classifications and dispositions.
 - [program/experiments.json](program/experiments.json) — canonical experiment registry.
@@ -49,7 +50,7 @@ Important mechanisms should remain understandable, falsifiable, benchmarkable, r
 - [OPSLE_SITE_PLAN.md](OPSLE_SITE_PLAN.md) — future opsle.com content architecture.
 
 Validate ledger integrity with `python3 tools/validate_program.py`. Regenerate the
-dashboard with `python3 tools/render_program_status.py`.
+dashboard and priority view with `python3 tools/render_program_status.py`.
 
 ## Product relationship
 

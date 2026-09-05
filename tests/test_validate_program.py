@@ -8,7 +8,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
 
-from render_program_status import render  # noqa: E402
+from render_program_status import render, render_priority  # noqa: E402
 from validate_program import (  # noqa: E402
     COMPLETION_GATES,
     DEFAULT_EXPERIMENTS,
@@ -127,6 +127,62 @@ class ProgramRegistryValidationTests(unittest.TestCase):
         errors = self.errors_for(registry=registry)
         self.assertTrue(any("duplicate repositories" in error for error in errors))
 
+    def test_priority_lanes_cover_each_repository_exactly_once(self):
+        lanes = self.registry["program_control"]["lanes"]
+        repositories = [name for lane in lanes for name in lane["repositories"]]
+        self.assertEqual(len(repositories), 21)
+        self.assertEqual(len(set(repositories)), 21)
+
+    def test_duplicate_priority_repository_fails(self):
+        registry = copy.deepcopy(self.registry)
+        registry["program_control"]["lanes"][1]["repositories"].append(
+            "durable-supervisor"
+        )
+        errors = self.errors_for(registry=registry)
+        self.assertTrue(
+            any("duplicate priority repositories" in error for error in errors)
+        )
+
+    def test_priority_order_drift_fails(self):
+        registry = copy.deepcopy(self.registry)
+        registry["program_control"]["priority_order"] = [
+            "NOW", "THEN", "NEXT", "LATER", "PARKED"
+        ]
+        errors = self.errors_for(registry=registry)
+        self.assertTrue(any("priority_order" in error for error in errors))
+
+    def test_active_repositories_match_now_lane(self):
+        registry = copy.deepcopy(self.registry)
+        project = next(
+            item for item in registry["repositories"]
+            if item["name"] == "affected-verification"
+        )
+        project["program_state"] = "active"
+        errors = self.errors_for(registry=registry)
+        self.assertTrue(any("current priority lane" in error for error in errors))
+
+    def test_durable_supervisor_stopping_criteria_are_fenced(self):
+        registry = copy.deepcopy(self.registry)
+        registry["program_control"]["durable_supervisor_v0_1"][
+            "stopping_criteria"
+        ].pop()
+        errors = self.errors_for(registry=registry)
+        self.assertTrue(any("ten ordered stopping criteria" in error for error in errors))
+
+    def test_anti_nitpick_reasons_are_fenced(self):
+        registry = copy.deepcopy(self.registry)
+        registry["program_control"]["work_item_admission"][
+            "qualifying_reasons"
+        ].pop()
+        errors = self.errors_for(registry=registry)
+        self.assertTrue(any("qualifying reasons drifted" in error for error in errors))
+
+    def test_visible_value_fields_are_fenced(self):
+        registry = copy.deepcopy(self.registry)
+        registry["visible_value"]["per_child_receipt_fields"].pop()
+        errors = self.errors_for(registry=registry)
+        self.assertTrue(any("per-child receipt fields drifted" in error for error in errors))
+
     def test_malformed_repository_name_reports_error(self):
         registry = copy.deepcopy(self.registry)
         registry["repositories"][0]["name"] = ["not", "a", "string"]
@@ -209,6 +265,15 @@ class ProgramRegistryValidationTests(unittest.TestCase):
         experiments["experiments"][0]["participating_repositories"].append("forgotten-project")
         errors = self.errors_for(experiments=experiments)
         self.assertTrue(any("references nonexistent project" in error for error in errors))
+
+    def test_experiment_participation_must_be_reciprocal(self):
+        registry = copy.deepcopy(self.registry)
+        research = next(
+            item for item in registry["repositories"] if item["name"] == "research"
+        )
+        research["active_experiment_ids"].remove("AV-EXP-003")
+        errors = self.errors_for(registry=registry)
+        self.assertTrue(any("does not reciprocally list" in error for error in errors))
 
     def test_malformed_experiment_id_reports_error(self):
         experiments = copy.deepcopy(self.experiments)
@@ -308,8 +373,24 @@ class ProgramRegistryValidationTests(unittest.TestCase):
         ] = "0" * 40
         errors = self.errors_for(experiments=experiments)
         self.assertTrue(
-            any("release SHA must match research" in error for error in errors)
+            any(
+                "block coordinator research_release_sha must be" in error
+                for error in errors
+            )
         )
+
+    def test_block_coordinator_release_is_historical_not_current_head(self):
+        coordinator = self.experiments["experiments"][0][
+            "block_coordinator_qualification"
+        ]
+        research = next(
+            item for item in self.registry["repositories"]
+            if item["name"] == "research"
+        )
+        self.assertNotEqual(
+            coordinator["research_release_sha"], research["last_verified_head_sha"]
+        )
+        self.assertEqual(self.errors_for(), [])
 
     def test_exp001_block_coordinator_evidence_hash_cannot_drift(self):
         experiments = copy.deepcopy(self.experiments)
@@ -385,6 +466,10 @@ class ProgramRegistryValidationTests(unittest.TestCase):
     def test_dashboard_is_current(self):
         expected = (ROOT / "PROGRAM_STATUS.md").read_text(encoding="utf-8")
         self.assertEqual(render(self.registry, self.experiments), expected)
+
+    def test_priority_view_is_current(self):
+        expected = (ROOT / "program" / "PRIORITY.md").read_text(encoding="utf-8")
+        self.assertEqual(render_priority(self.registry, self.experiments), expected)
 
 
 if __name__ == "__main__":

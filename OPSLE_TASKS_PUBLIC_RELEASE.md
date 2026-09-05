@@ -2,6 +2,10 @@
 
 > Planning only. Taslos Tasks remains private in its existing location. Publication was not executed.
 
+This release is LATER program work. It does not begin merely because Opsle Tasks
+becomes the NEXT Durable Supervisor workload; it requires separate explicit
+release authority and the eligibility evidence below.
+
 ## Full-history audit
 
 Audit every reachable commit, tag, branch, release asset, PR artifact, LFS object, submodule reference, and archive for credentials, tokens, private keys, connection strings, private addresses, environment secrets, database data, backups, logs, sensitive screenshots, and accidental artifacts. Removing a value from HEAD is insufficient if reachable history retains it.

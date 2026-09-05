@@ -1,10 +1,15 @@
 # Program operating rules
 
+`program/registry.json` is authoritative for both portfolio state and the
+NOW / NEXT / THEN / LATER / PARKED priority state. Generated Markdown is never
+an independent planning authority.
+
 Every Opsle execution must:
 
 1. Read `program/registry.json` before selecting or performing work.
 2. Verify the relevant repository default branch and HEAD before relying on recorded state.
-3. Work against an explicit repository or experiment objective.
+3. Start from the current program lane and operating question before selecting
+   an explicit repository or experiment objective.
 4. Preserve immutable or content-addressed evidence for every material claim.
 5. Promote lifecycle state only after satisfying the canonical gate in `program/LIFECYCLE.md`.
 6. Update the registry when verified state changes.
@@ -22,10 +27,18 @@ Every Opsle execution must:
 13. Classify everyday telemetry as observational. Do not relabel an accumulated
     production corpus as causal or `EXPERIMENTAL` evidence without the controlled
     method required by `program/VISIBLE_VALUE_CONTRACT.md`.
+14. Do not create a work item solely because an implementation can be improved.
+    New work normally requires a violated invariant, demonstrated defect,
+    measured inefficiency, missing capability blocking the current program
+    objective, experiment requirement, security or safety issue, or externally
+    required release condition.
+15. Park cosmetic cleanup, architectural taste, hypothetical robustness, and
+    speculative future requirements unless qualifying evidence appears.
 
 Run `python3 tools/validate_program.py` and
 `python3 tools/render_program_status.py --check` before committing a registry
-change.
+change. The renderer checks both `PROGRAM_STATUS.md` and
+`program/PRIORITY.md`.
 
 ## Portfolio discipline
 

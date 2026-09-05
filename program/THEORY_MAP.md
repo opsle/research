@@ -438,18 +438,17 @@ Three layers must remain separate:
 3. **Experimental hypothesis:** reduced context preserves task correctness under
    equal fixtures, models, prompts, and correctness gates.
 
-The existing conformance corpora and Prompt 005 dogfood evidence validate
-implementation behavior; they are not the EXP-001 dataset or result. The
-content-addressed task corpus, correctness oracle, baseline/arms, offline
-harness, exact model/provider configuration, and blinded/randomized allocation
-remain unfrozen. `EXP-001` stays `PLANNED` with zero run identities and zero
-result artifacts.
+The conformance corpora and Prompt 005 dogfood evidence validate implementation
+behavior; they are not an EXP-001 result. The content-addressed task corpus,
+correctness oracle, baseline and arms, offline harness, exact model/provider
+configuration, blinded allocation, coordinator, and provider-free live
+preflight are frozen or qualified at their recorded revisions. `EXP-001` stays
+`PLANNED` with zero run identities and zero result artifacts.
 
-The offline benchmark-freeze work remains technically correct and needs no
-experiment redesign. The independent public Gearbox publication is complete,
-so the provider-free EXP-001 freeze is now the immediate next execution.
 EXP-001 has no technical dependency on Gearbox, and no provider/model subject is
-authorized by the freeze.
+authorized by the provider-free preparation. Controlled experiments are now
+LATER program work rather than the immediate execution; the authoritative
+current priority is the machine state in `program/registry.json`.
 
 ## Public Opsle and Taslos Tasks boundary
 

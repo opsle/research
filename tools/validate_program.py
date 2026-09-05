@@ -55,6 +55,90 @@ LIFECYCLE_STAGES = (
     "COMPLETE",
 )
 
+PRIORITY_LANES = ("NOW", "NEXT", "THEN", "LATER", "PARKED")
+
+WORK_ITEM_QUALIFYING_REASONS = frozenset(
+    {
+        "violated invariant",
+        "demonstrated defect",
+        "measured inefficiency",
+        "missing capability blocking the current program objective",
+        "experiment requirement",
+        "security or safety issue",
+        "externally required release condition",
+    }
+)
+
+PER_CHILD_VALUE_FIELDS = frozenset(
+    {
+        "child/task identity",
+        "model",
+        "reasoning effort",
+        "Gearbox route",
+        "routing rationale",
+        "input tokens",
+        "output tokens",
+        "raw evidence/context size",
+        "Context Firewall retained size",
+        "reduction percentage",
+        "estimated tokens avoided",
+        "estimated cost avoided",
+        "duration",
+        "attempt number",
+        "success/failure",
+        "escalation/retry reason",
+        "retry potentially avoidable through deterministic preflight",
+    }
+)
+
+SUPERVISOR_VALUE_FIELDS = frozenset(
+    {
+        "total children",
+        "model/effort distribution",
+        "total model tokens consumed",
+        "work completed deterministically without model use",
+        "Context Firewall reduction",
+        "estimated token/cost savings",
+        "first-pass success rate",
+        "repair-child rate",
+        "tokens spent on retries",
+        "avoidable-intelligence estimate",
+    }
+)
+
+OPSLE_TASKS_MEASUREMENTS = frozenset(
+    {
+        "Gearbox",
+        "Context Firewall",
+        "Decision Evidence Protocol",
+        "Agent Trajectory Profiler",
+        "Affected Verification",
+    }
+)
+
+OPSLE_TASKS_PROHIBITIONS = frozenset(
+    {
+        "move apps/taslos-tasks",
+        "transfer sneakocom/taslos-tasks",
+        "rename production services",
+        "change schemas merely for rebranding",
+        "public release",
+        "DNS or TLS changes",
+        "launch provider work",
+    }
+)
+
+LATER_ITEMS = frozenset(
+    {
+        "controlled empirical experiments",
+        "frozen real-workload benchmark corpus",
+        "independent replication",
+        "Opsle Tasks public and self-hosted release",
+        "opsle.com research and public site",
+        "hosted Opsle offering",
+    }
+)
+
 THEORY_CLASSIFICATIONS = frozenset(
     {
         "INDEPENDENT_OPSLE_TOOL",
@@ -362,8 +446,8 @@ def validate(
         "theory_registry",
         "theory_map",
         "theory_reconciliation",
-        "current_highest_priority_workstream",
-        "recommended_next_execution",
+        "program_control",
+        "visible_value",
         "last_verified_at",
     ):
         if not registry.get(field):
@@ -392,6 +476,208 @@ def validate(
         for repo in repositories
         if isinstance(repo, dict) and isinstance(repo.get("name"), str)
     }
+
+    control = registry.get("program_control")
+    if not isinstance(control, dict):
+        errors.append("registry.program_control must be an object")
+    else:
+        if control.get("schema_version") != 1:
+            errors.append("program_control.schema_version must be 1")
+        if control.get("priority_order") != list(PRIORITY_LANES):
+            errors.append("program_control.priority_order must be NOW, NEXT, THEN, LATER, PARKED")
+        if control.get("current_lane") != "NOW":
+            errors.append("program_control.current_lane must be NOW")
+        for field in ("operating_question", "exact_next_execution"):
+            if not _nonempty_string(control.get(field)):
+                errors.append(f"program_control.{field} must be a nonempty string")
+
+        admission = control.get("work_item_admission")
+        if not isinstance(admission, dict):
+            errors.append("program_control.work_item_admission must be an object")
+        else:
+            if not _nonempty_string(admission.get("rule")):
+                errors.append("program_control.work_item_admission.rule must be nonempty")
+            reasons = admission.get("qualifying_reasons")
+            if (
+                not _string_list(reasons, allow_empty=False)
+                or set(reasons) != WORK_ITEM_QUALIFYING_REASONS
+            ):
+                errors.append("program_control work-item qualifying reasons drifted")
+            if not _string_list(admission.get("parked_by_default"), allow_empty=False):
+                errors.append("program_control parked_by_default must be a nonempty string array")
+
+        lanes = control.get("lanes")
+        if not isinstance(lanes, list):
+            errors.append("program_control.lanes must be an array")
+            lanes = []
+        lane_names = [lane.get("name") for lane in lanes if isinstance(lane, dict)]
+        if lane_names != list(PRIORITY_LANES):
+            errors.append("program_control lanes must appear once in canonical priority order")
+        priority_repositories: list[str] = []
+        current_lane_repositories: list[str] = []
+        for lane in lanes:
+            if not isinstance(lane, dict):
+                errors.append("program_control lane entries must be objects")
+                continue
+            name = lane.get("name")
+            for field in ("objective", "entry_condition", "exit_condition"):
+                if not _nonempty_string(lane.get(field)):
+                    errors.append(f"program_control lane {name}: {field} must be nonempty")
+            lane_repositories = lane.get("repositories")
+            if not _string_list(lane_repositories, allow_empty=False):
+                errors.append(f"program_control lane {name}: repositories must be nonempty strings")
+                continue
+            priority_repositories.extend(lane_repositories)
+            if name == control.get("current_lane"):
+                current_lane_repositories = lane_repositories
+        priority_counts = Counter(priority_repositories)
+        duplicate_priority_repositories = sorted(
+            name for name, count in priority_counts.items() if count > 1
+        )
+        if duplicate_priority_repositories:
+            errors.append(
+                "program_control duplicate priority repositories: "
+                + ", ".join(duplicate_priority_repositories)
+            )
+        missing_priority_repositories = sorted(expected - set(priority_repositories))
+        unexpected_priority_repositories = sorted(set(priority_repositories) - expected)
+        if missing_priority_repositories:
+            errors.append(
+                "program_control missing priority repositories: "
+                + ", ".join(missing_priority_repositories)
+            )
+        if unexpected_priority_repositories:
+            errors.append(
+                "program_control unexpected priority repositories: "
+                + ", ".join(unexpected_priority_repositories)
+            )
+        active_repositories = sorted(
+            name for name, repo in repo_by_name.items() if repo.get("program_state") == "active"
+        )
+        if active_repositories != sorted(current_lane_repositories):
+            errors.append("active repositories must exactly match the current priority lane")
+
+        ds = control.get("durable_supervisor_v0_1")
+        if not isinstance(ds, dict):
+            errors.append("program_control.durable_supervisor_v0_1 must be an object")
+        else:
+            if ds.get("status") not in {"IN_PROGRESS", "DECLARED_FROZEN"}:
+                errors.append("durable_supervisor_v0_1 has invalid status")
+            if ds.get("verified_runtime_state") != "PAUSED_NO_ACTIVE_TASK_OR_ATTEMPT":
+                errors.append("durable_supervisor_v0_1 runtime state drifted")
+            if not _valid_timestamp(ds.get("runtime_state_recorded_at")):
+                errors.append("durable_supervisor_v0_1 runtime state needs a recorded timestamp")
+            if not _nonempty_string(ds.get("runtime_state_source")):
+                errors.append("durable_supervisor_v0_1 runtime observation needs a source")
+            durable_repository = repo_by_name.get("durable-supervisor", {})
+            if ds.get("verified_main_sha") != durable_repository.get("last_verified_head_sha"):
+                errors.append("durable_supervisor_v0_1 SHA must match the repository ledger")
+            criteria = ds.get("stopping_criteria")
+            if not isinstance(criteria, list):
+                errors.append("durable_supervisor_v0_1.stopping_criteria must be an array")
+                criteria = []
+            expected_ids = [f"DS-V0.1-{index:02d}" for index in range(1, 11)]
+            if [item.get("id") for item in criteria if isinstance(item, dict)] != expected_ids:
+                errors.append("durable_supervisor_v0_1 must retain ten ordered stopping criteria")
+            for item in criteria:
+                if not isinstance(item, dict):
+                    errors.append("durable_supervisor_v0_1 criteria must be objects")
+                    continue
+                if item.get("status") not in {"OPEN", "SATISFIED"}:
+                    errors.append(f"{item.get('id')}: invalid stopping-criterion status")
+                if not _nonempty_string(item.get("criterion")):
+                    errors.append(f"{item.get('id')}: criterion must be nonempty")
+
+        opsle_tasks = control.get("opsle_tasks")
+        if not isinstance(opsle_tasks, dict):
+            errors.append("program_control.opsle_tasks must be an object")
+        else:
+            if opsle_tasks.get("current_repository") != "sneakocom/taslos-tasks":
+                errors.append("Opsle Tasks current repository identity drifted")
+            if "NEXT primary real-world workload" not in str(opsle_tasks.get("role")):
+                errors.append("Opsle Tasks must remain the NEXT primary real-world workload")
+            measurements = opsle_tasks.get("measurements")
+            if (
+                not _string_list(measurements, allow_empty=False)
+                or set(measurements) != OPSLE_TASKS_MEASUREMENTS
+            ):
+                errors.append("Opsle Tasks integrated measurements drifted")
+            prohibitions = opsle_tasks.get("prohibited_without_separate_authorization")
+            if (
+                not _string_list(prohibitions, allow_empty=False)
+                or set(prohibitions) != OPSLE_TASKS_PROHIBITIONS
+            ):
+                errors.append("Opsle Tasks prohibitions drifted")
+        for field in ("concept_activation", "later_items", "parked_items"):
+            value = control.get(field)
+            if not isinstance(value, list) or not value:
+                errors.append(f"program_control.{field} must be a nonempty array")
+        activations = control.get("concept_activation")
+        if isinstance(activations, list):
+            for index, activation in enumerate(activations):
+                if not isinstance(activation, dict):
+                    errors.append(f"concept_activation index {index} must be an object")
+                    continue
+                if not _nonempty_string(activation.get("deficiency")):
+                    errors.append(f"concept_activation index {index} needs a deficiency")
+                activation_repositories = activation.get("repositories")
+                if not _string_list(activation_repositories, allow_empty=False):
+                    errors.append(
+                        f"concept_activation index {index} repositories must be nonempty strings"
+                    )
+                elif not set(activation_repositories).issubset(expected):
+                    errors.append(
+                        f"concept_activation index {index} references an unknown repository"
+                    )
+        later_items = control.get("later_items")
+        if (
+            not _string_list(later_items, allow_empty=False)
+            or set(later_items) != LATER_ITEMS
+        ):
+            errors.append("program_control later items drifted")
+        parked_items = control.get("parked_items")
+        if _string_list(parked_items, allow_empty=False):
+            required_parked_fragments = (
+                "src/cli.js",
+                "Background projection",
+                "Historical pre-fix",
+                "architectural polishing",
+            )
+            for fragment in required_parked_fragments:
+                if not any(fragment in item for item in parked_items):
+                    errors.append(f"program_control parked item missing {fragment}")
+
+    visible_value = registry.get("visible_value")
+    if not isinstance(visible_value, dict):
+        errors.append("registry.visible_value must be an object")
+    else:
+        for field in ("baseline", "baseline_rule"):
+            if not _nonempty_string(visible_value.get(field)):
+                errors.append(f"visible_value.{field} must be a nonempty string")
+        value_kinds = visible_value.get("value_kinds")
+        if not isinstance(value_kinds, list):
+            errors.append("visible_value.value_kinds must be an array")
+            value_kinds = []
+        class_names = [
+            item.get("name") for item in value_kinds if isinstance(item, dict)
+        ]
+        if class_names != ["MEASURED", "DERIVED", "ESTIMATED", "UNAVAILABLE"]:
+            errors.append("visible_value value kinds drifted")
+        for item in value_kinds:
+            if not isinstance(item, dict) or not _nonempty_string(item.get("definition")):
+                errors.append("visible_value value kinds require definitions")
+        child_fields = visible_value.get("per_child_receipt_fields")
+        if (
+            not _string_list(child_fields, allow_empty=False)
+            or set(child_fields) != PER_CHILD_VALUE_FIELDS
+        ):
+            errors.append("visible_value per-child receipt fields drifted")
+        summary_fields = visible_value.get("supervisor_summary_fields")
+        if (
+            not _string_list(summary_fields, allow_empty=False)
+            or set(summary_fields) != SUPERVISOR_VALUE_FIELDS
+        ):
+            errors.append("visible_value supervisor summary fields drifted")
 
     for index, repo in enumerate(repositories):
         label = (
@@ -534,6 +820,11 @@ def validate(
                 continue
             if project not in expected:
                 errors.append(f"experiment {label}: references nonexistent project {project}")
+            elif label not in repo_by_name.get(project, {}).get("active_experiment_ids", []):
+                errors.append(
+                    f"experiment {label}: participating repository {project} "
+                    "does not reciprocally list the experiment"
+                )
         roles = experiment.get("roles", {})
         role_projects: list[Any] = []
         if isinstance(roles, dict):
@@ -731,13 +1022,6 @@ def validate(
                         f"EXP-001 block coordinator {field} must be "
                         f"{expected_value!r}"
                     )
-            research_repository = repo_by_name.get("research", {})
-            if coordinator.get("research_release_sha") != research_repository.get(
-                "last_verified_head_sha"
-            ):
-                errors.append(
-                    "EXP-001 block coordinator release SHA must match research"
-                )
             artifacts = (
                 (
                     "qualification_artifact",
