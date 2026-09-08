@@ -450,26 +450,25 @@ authorized by the provider-free preparation. Controlled experiments are now
 LATER program work rather than the immediate execution; the authoritative
 current priority is the machine state in `program/registry.json`.
 
-## Public Opsle and Taslos Tasks boundary
+## Public Opsle and predecessor boundary
 
 The 2026-08-25 extraction snapshot is historical provenance, not a dependency
-direction. Taslos Tasks remains private/active and unchanged. Production
-complexity demonstrated that several mechanisms were possible, but does not
-establish their general primitives, repository boundaries, or comparative
-benefit.
+direction. The retired predecessor demonstrated that several mechanisms were
+possible, but does not establish their general primitives, repository
+boundaries, or comparative benefit.
 
 The long-term direction is:
 
 ```text
 public Opsle mechanisms and protocols
                 ↓
-future public Opsle Tasks and other products consume pinned versions/adapters
+Opsle Tasks and other products consume pinned versions/adapters
 ```
 
 It is not:
 
 ```text
-private Taslos Tasks remains the canonical implementation
+the retired predecessor remains the canonical implementation
                 ↓
 public concepts are repeatedly rediscovered after production coupling
 ```
