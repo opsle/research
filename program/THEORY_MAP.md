@@ -7,7 +7,7 @@ Consolidation and disposition operations remain recommendations only.
 Machine source: [`theory-registry.json`](theory-registry.json).
 
 Theory registry canonical SHA-256:
-`7cdc866ada723f24fd16af005bb54b9a60873e0623effb70df691a7a58fcdc47`.
+`2538ad9b59ebb0cbd34735df8ae3e49ae2f24a1cc98d8f55ac7ee426e6c69e6d`.
 
 This map corrects an extraction-boundary error. The original 16 concept
 repositories were useful hypotheses isolated from one production system, but

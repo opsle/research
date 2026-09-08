@@ -118,10 +118,6 @@ OPSLE_TASKS_MEASUREMENTS = frozenset(
 
 OPSLE_TASKS_PROHIBITIONS = frozenset(
     {
-        "move apps/taslos-tasks",
-        "transfer sneakocom/taslos-tasks",
-        "rename production services",
-        "change schemas merely for rebranding",
         "public release",
         "DNS or TLS changes",
         "launch provider work",
@@ -592,7 +588,7 @@ def validate(
         if not isinstance(opsle_tasks, dict):
             errors.append("program_control.opsle_tasks must be an object")
         else:
-            if opsle_tasks.get("current_repository") != "sneakocom/taslos-tasks":
+            if opsle_tasks.get("current_repository") != "opsle/tasks":
                 errors.append("Opsle Tasks current repository identity drifted")
             if "NEXT primary real-world workload" not in str(opsle_tasks.get("role")):
                 errors.append("Opsle Tasks must remain the NEXT primary real-world workload")
@@ -1360,9 +1356,6 @@ def validate_theory(
         errors.append("registry must record no executed existing-repository dispositions")
     if reconciliation.get("model_provider_runs_added") != 0:
         errors.append("registry must record zero model/provider runs for Gearbox publication")
-    if reconciliation.get("taslos_tasks_source_modified") is not False:
-        errors.append("registry must record Taslos Tasks as unmodified")
-
     publication = registry.get("gearbox_publication")
     if not isinstance(publication, dict):
         errors.append("registry.gearbox_publication must be an object")
@@ -1393,15 +1386,11 @@ def validate_theory(
             errors.append("registry Gearbox publication SHA must match repository HEAD")
         if gearbox_repository.get("lifecycle_stage") != "PROTOTYPED":
             errors.append("registered Gearbox lifecycle stage must be PROTOTYPED")
-        for field in ("final_main_sha", "implementation_revision", "source_revision"):
+        for field in ("final_main_sha", "implementation_revision"):
             if not isinstance(publication.get(field), str) or not SHA_RE.fullmatch(
                 publication[field]
             ):
                 errors.append(f"registry Gearbox publication {field} must be a Git SHA")
-        if publication.get("source_repository") != "sneakocom/taslos-tasks":
-            errors.append("registry Gearbox publication source repository is invalid")
-        if publication.get("source_modified") is not False:
-            errors.append("registry Gearbox publication must record an unchanged source")
         if publication.get("provider_model_runs") != 0:
             errors.append("registry Gearbox publication must record zero provider/model runs")
         if publication.get("repository_consolidations") != 0:

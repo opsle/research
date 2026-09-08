@@ -596,13 +596,10 @@
         "same-endpoint collapse",
         "provider failure"
       ],
-      "dataset_fixture_identity": "Taslos Tasks read-only snapshot at e2b061dd4ee1404ef59b27a9a76bf97a8fbbde1c, as already documented publicly in OPSLE_EXTRACTION_MAP.md.",
+      "dataset_fixture_identity": "Retired predecessor read-only snapshot at e2b061dd4ee1404ef59b27a9a76bf97a8fbbde1c.",
       "model_provider_configuration": "Antigravity subscription CLI; exact model identity and configuration were not recorded and remain UNVERIFIED.",
       "run_identities": [],
-      "result_artifacts": [
-        "experiments/graphify-antigravity/README.md",
-        "OPSLE_EXTRACTION_MAP.md"
-      ],
+      "result_artifacts": ["experiments/graphify-antigravity/README.md"],
       "replication_status": "NOT_REPLICATED",
       "verdict": "An integration path was observed; completeness and comparative benefit were not established.",
       "blockers": [

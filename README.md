@@ -45,7 +45,6 @@ Important mechanisms should remain understandable, falsifiable, benchmarkable, r
 - [METHODOLOGY.md](METHODOLOGY.md) — evidence and experiment rules.
 - [MATURITY.md](MATURITY.md) — legacy bootstrap maturity labels.
 - [ARCHITECTURE.md](ARCHITECTURE.md) — cross-repository system map.
-- [OPSLE_EXTRACTION_MAP.md](OPSLE_EXTRACTION_MAP.md) — read-only source audit and provenance.
 - [OPEN_QUESTIONS.md](OPEN_QUESTIONS.md) — what remains unanswered.
 - [OPSLE_SITE_PLAN.md](OPSLE_SITE_PLAN.md) — future opsle.com content architecture.
 
@@ -54,10 +53,9 @@ dashboard and priority view with `python3 tools/render_program_status.py`.
 
 ## Product relationship
 
-Opsle Tasks is the future public name of the integrated reference implementation currently under active development as Taslos Tasks. Its repository transfer, runtime rename, publication, and hosting migration are intentionally deferred.
-
-The public Gearbox core was adapted with exact provenance from Taslos Tasks, but
-the active product has no runtime dependency edge on the public repositories.
+Opsle Tasks is the current integrated reference implementation in
+`opsle/tasks`. Its control plane and project execution targets are independently
+deployed and do not depend on this research repository at runtime.
 
 ## Integrity
 

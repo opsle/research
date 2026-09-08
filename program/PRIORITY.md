@@ -34,7 +34,7 @@ Park by default:
 | Lane | Objective | Repositories | Entry gate |
 |---|---|---|---|
 | **NOW** | Finish Durable Supervisor v0.1 as a bounded measured system, then freeze feature work. | `durable-supervisor`, `research` | Current program lane. |
-| **NEXT** | Use Opsle Tasks as the primary real-world workload and collect integrated measurements without performing the deferred Taslos-to-Opsle migration. | `gearbox`, `context-firewall`, `decision-evidence-protocol`, `agent-trajectory-profiler`, `affected-verification` | Durable Supervisor v0.1 is declared and feature-frozen. |
+| **NEXT** | Use Opsle Tasks as the primary real-world workload and collect integrated measurements from the current implementation. | `gearbox`, `context-firewall`, `decision-evidence-protocol`, `agent-trajectory-profiler`, `affected-verification` | Durable Supervisor v0.1 is declared and feature-frozen. |
 | **THEN** | Advance an individual concept only when Durable Supervisor or Opsle Tasks evidence demonstrates a concrete need. | `semantic-edit-protocol`, `event-driven-agent-wakeup`, `agent-state-ledger`, `agent-scheduler-runtime`, `verifiable-agent-handoff`, `agent-routing-policy`, `agent-resource-claims`, `agent-discovery-control`, `agent-execution-authorization`, `controlled-agent-acceptance`, `agent-recovery-policy`, `ephemeral-agent-workers` | A qualifying work-item reason and real workload evidence identify the smallest relevant concept boundary. |
 | **LATER** | Run controlled experiments, freeze a real-workload benchmark corpus, seek independent replication, and only then consider public product and research-site releases. | `site` | NOW, NEXT, and evidence-triggered THEN work establish a defensible need and release prerequisites are separately authorized. |
 | **PARKED** | Retain useful non-priority ideas without turning them into active work. | `.github` | The idea is useful but lacks a qualifying reason to compete with the current objective. |
@@ -45,7 +45,7 @@ Entry: Current program lane.
 
 Exit: Every Durable Supervisor v0.1 stopping criterion is satisfied and the release is explicitly declared and frozen.
 
-### NEXT — Use Opsle Tasks as the primary real-world workload and collect integrated measurements without performing the deferred Taslos-to-Opsle migration.
+### NEXT — Use Opsle Tasks as the primary real-world workload and collect integrated measurements from the current implementation.
 
 Entry: Durable Supervisor v0.1 is declared and feature-frozen.
 
@@ -88,16 +88,12 @@ Verified main: `1b5ab7631ba651a32592bbbdab8001865a3baf3d`. Runtime: `PAUSED_NO_A
 
 ## Opsle Tasks boundary
 
-Opsle Tasks is the NEXT primary real-world workload after Durable Supervisor v0.1. Its current repository remains `sneakocom/taslos-tasks`.
+Opsle Tasks is the NEXT primary real-world workload after Durable Supervisor v0.1. Its current repository remains `opsle/tasks`.
 
 Measure: Gearbox, Context Firewall, Decision Evidence Protocol, Agent Trajectory Profiler, Affected Verification.
 
 Without separate authorization, do not:
 
-- move apps/taslos-tasks
-- transfer sneakocom/taslos-tasks
-- rename production services
-- change schemas merely for rebranding
 - public release
 - DNS or TLS changes
 - launch provider work
