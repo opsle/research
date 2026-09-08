@@ -417,8 +417,7 @@
       "current_name_accuracy": "Accurate for the theory; current code is a seal subcomponent.",
       "evidence_references": [
         "https://github.com/opsle/verifiable-agent-handoff/blob/399e5cfae94345affa3f087f0f6eb9e77669d33c/README.md",
-        "https://github.com/opsle/verifiable-agent-handoff/blob/399e5cfae94345affa3f087f0f6eb9e77669d33c/src/seal.js",
-        "OPSLE_EXTRACTION_MAP.md"
+        "https://github.com/opsle/verifiable-agent-handoff/blob/399e5cfae94345affa3f087f0f6eb9e77669d33c/src/seal.js"
       ],
       "confidence": "HIGH",
       "unresolved_questions": [
@@ -495,8 +494,7 @@
       "current_name_accuracy": "Substantially accurate; the mechanism is generic concurrency authority rather than intrinsically agent-specific.",
       "evidence_references": [
         "https://github.com/opsle/agent-resource-claims/blob/dfe0fbc90c67ce5ef4256354bb62f1d511b1304c/README.md",
-        "https://github.com/opsle/agent-resource-claims/blob/dfe0fbc90c67ce5ef4256354bb62f1d511b1304c/THEORY.md",
-        "OPSLE_EXTRACTION_MAP.md"
+        "https://github.com/opsle/agent-resource-claims/blob/dfe0fbc90c67ce5ef4256354bb62f1d511b1304c/THEORY.md"
       ],
       "confidence": "MEDIUM",
       "unresolved_questions": [
@@ -575,8 +573,7 @@
       "current_name_accuracy": "Accurate.",
       "evidence_references": [
         "https://github.com/opsle/agent-execution-authorization/blob/8fb02e943c83fae121c63185d2f0d0dde8c4260a/README.md",
-        "https://github.com/opsle/agent-execution-authorization/blob/8fb02e943c83fae121c63185d2f0d0dde8c4260a/THEORY.md",
-        "OPSLE_EXTRACTION_MAP.md"
+        "https://github.com/opsle/agent-execution-authorization/blob/8fb02e943c83fae121c63185d2f0d0dde8c4260a/THEORY.md"
       ],
       "confidence": "HIGH",
       "unresolved_questions": [
@@ -693,8 +690,7 @@
       "current_name_accuracy": "Reasonably accurate, though the isolation primitive is not inherently agent-specific.",
       "evidence_references": [
         "https://github.com/opsle/ephemeral-agent-workers/blob/ad96fcfdfac06d340b5e96d369634980cee78ef4/README.md",
-        "https://github.com/opsle/ephemeral-agent-workers/blob/ad96fcfdfac06d340b5e96d369634980cee78ef4/ARCHITECTURE.md",
-        "OPSLE_EXTRACTION_MAP.md"
+        "https://github.com/opsle/ephemeral-agent-workers/blob/ad96fcfdfac06d340b5e96d369634980cee78ef4/ARCHITECTURE.md"
       ],
       "confidence": "HIGH",
       "unresolved_questions": [

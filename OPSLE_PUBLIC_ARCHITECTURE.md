@@ -18,21 +18,18 @@ github.com/opsle
 │
 ├── research
 ├── concept repositories
-├── gearbox          ← CURRENT public narrow prototype
+├── gearbox          ← public narrow prototype
 ├── site
-└── tasks            ← FUTURE migration, not current
+└── tasks            ← current integrated reference implementation
        │
        ▼
-tasks.opsle.com      ← FUTURE canonical host, not current
+tasks.opsle.com      ← current operator host
 ```
 
-The active repository remains `sneakocom/taslos-tasks`; the active path remains
-`apps/taslos-tasks`. Gearbox provenance points to that source, but the active
-product does not depend on the public research runtime.
+The active repository is `opsle/tasks`. The product does not depend on the
+public research runtime.
 
 Opsle Research → independent primitives/experiments → future integration where supported → Opsle Tasks → working integrated reference implementation. The product should prove ideas together, not be their only home.
 
 The intended dependency direction is public Opsle mechanisms and protocols →
-future Opsle Tasks and other products through versioned adapters. Private Taslos
-Tasks implementation complexity is historical provenance and feasibility
-evidence, not the canonical home for general mechanisms.
+Opsle Tasks and other products through versioned adapters.

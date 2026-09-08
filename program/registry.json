@@ -17,8 +17,7 @@
     "lifecycle_changes_executed": true,
     "existing_repository_lifecycle_changes_executed": false,
     "existing_repository_dispositions_executed": false,
-    "model_provider_runs_added": 0,
-    "taslos_tasks_source_modified": false
+    "model_provider_runs_added": 0
   },
   "gearbox_publication": {
     "status": "RELEASED",
@@ -30,9 +29,6 @@
     "ci_status": "SUCCESS",
     "final_main_sha": "f3fab9f292cf4eabd7200615d444f98881f57d55",
     "implementation_revision": "6005b340a6f6fb3f8683439d6b5fd154e1fd253f",
-    "source_repository": "sneakocom/taslos-tasks",
-    "source_revision": "7734caf208366a0515cf4d78efc17a86363f2238",
-    "source_modified": false,
     "provider_model_runs": 0,
     "repository_consolidations": 0
   },
@@ -57,7 +53,7 @@
       },
       {
         "name": "NEXT",
-        "objective": "Use Opsle Tasks as the primary real-world workload and collect integrated measurements without performing the deferred Taslos-to-Opsle migration.",
+        "objective": "Use Opsle Tasks as the primary real-world workload and collect integrated measurements from the current implementation.",
         "repositories": ["gearbox", "context-firewall", "decision-evidence-protocol", "agent-trajectory-profiler", "affected-verification"],
         "entry_condition": "Durable Supervisor v0.1 is declared and feature-frozen.",
         "exit_condition": "Durable Supervisor has driven the remaining authorized Opsle Tasks readiness work and produced defensible integrated measurements."
@@ -105,11 +101,11 @@
       ]
     },
     "opsle_tasks": {
-      "current_repository": "sneakocom/taslos-tasks",
+      "current_repository": "opsle/tasks",
       "future_name": "Opsle Tasks",
       "role": "NEXT primary real-world workload after Durable Supervisor v0.1",
       "measurements": ["Gearbox", "Context Firewall", "Decision Evidence Protocol", "Agent Trajectory Profiler", "Affected Verification"],
-      "prohibited_without_separate_authorization": ["move apps/taslos-tasks", "transfer sneakocom/taslos-tasks", "rename production services", "change schemas merely for rebranding", "public release", "DNS or TLS changes", "launch provider work"]
+      "prohibited_without_separate_authorization": ["public release", "DNS or TLS changes", "launch provider work"]
     },
     "concept_activation": [
       {"deficiency": "routing", "repositories": ["agent-routing-policy"]},
