@@ -1,0 +1,449 @@
+{
+  "observedAt": "2026-09-07T20:32:15.587232+00:00",
+  "overall": "complete",
+  "sources": [
+    {
+      "source": "agent-discovery-control",
+      "destination": "tasks",
+      "preserved": "926547dd9fd713990b1d6f1f2e650aa6c0883564",
+      "branch": "retire-consolidation-20260907",
+      "noticeHead": "b6db7271dbbdc525ba58c29478d35d27ea8628ed",
+      "pr": "https://github.com/opsle/agent-discovery-control/pull/1",
+      "worktree": "/home/deploy/worktrees/retire-agent-discovery-control-20260907",
+      "backup": "/home/deploy/apps/opsle-bootstrap/archive/20260907-consolidation/before-notices/agent-discovery-control.tgz",
+      "noticeMerge": "09c11f8a8ffd57521110a7696ab4f6a5181c0218",
+      "githubStatus": "archived",
+      "destinationPath": "docs/contracts/agent-discovery-control",
+      "directoryStatus": {
+        "host": "moved",
+        "opsle-dev": "moved",
+        "rollbackPath": "/home/deploy/apps/opsle-bootstrap/archive/20260907-consolidation/repos/agent-discovery-control"
+      },
+      "projectStatus": {
+        "id": 5,
+        "retiredAt": "2026-09-07T20:28:00.910Z",
+        "enabled": false,
+        "hidden": true,
+        "historicalRecordsPreserved": true
+      }
+    },
+    {
+      "source": "agent-execution-authorization",
+      "destination": "tasks",
+      "preserved": "8fb02e943c83fae121c63185d2f0d0dde8c4260a",
+      "branch": "retire-consolidation-20260907",
+      "noticeHead": "b3fa7402ac844bb78a3915c4be47f9a1a6563f17",
+      "pr": "https://github.com/opsle/agent-execution-authorization/pull/1",
+      "worktree": "/home/deploy/worktrees/retire-agent-execution-authorization-20260907",
+      "backup": "/home/deploy/apps/opsle-bootstrap/archive/20260907-consolidation/before-notices/agent-execution-authorization.tgz",
+      "noticeMerge": "6babce3929e0284cdbb530ed5ebfb29a36388bf7",
+      "githubStatus": "archived",
+      "destinationPath": "docs/contracts/agent-execution-authorization",
+      "directoryStatus": {
+        "host": "moved",
+        "opsle-dev": "moved",
+        "rollbackPath": "/home/deploy/apps/opsle-bootstrap/archive/20260907-consolidation/repos/agent-execution-authorization"
+      },
+      "projectStatus": {
+        "id": 6,
+        "retiredAt": "2026-09-07T20:28:00.928Z",
+        "enabled": false,
+        "hidden": true,
+        "historicalRecordsPreserved": true
+      }
+    },
+    {
+      "source": "agent-recovery-policy",
+      "destination": "tasks",
+      "preserved": "1b733a111e26e0a409fee3b96f627048531daefe",
+      "branch": "retire-consolidation-20260907",
+      "noticeHead": "03ce5c63fc47aa86ebd7c40050d1bccdefda2b03",
+      "pr": "https://github.com/opsle/agent-recovery-policy/pull/1",
+      "worktree": "/home/deploy/worktrees/retire-agent-recovery-policy-20260907",
+      "backup": "/home/deploy/apps/opsle-bootstrap/archive/20260907-consolidation/before-notices/agent-recovery-policy.tgz",
+      "noticeMerge": "a529954c784a7763fec452c23e143e96ccb97a72",
+      "githubStatus": "archived",
+      "destinationPath": "docs/contracts/agent-recovery-policy",
+      "directoryStatus": {
+        "host": "moved",
+        "opsle-dev": "moved",
+        "rollbackPath": "/home/deploy/apps/opsle-bootstrap/archive/20260907-consolidation/repos/agent-recovery-policy"
+      },
+      "projectStatus": {
+        "id": 7,
+        "retiredAt": "2026-09-07T20:28:00.960Z",
+        "enabled": false,
+        "hidden": true,
+        "historicalRecordsPreserved": true
+      }
+    },
+    {
+      "source": "agent-resource-claims",
+      "destination": "tasks",
+      "preserved": "dfe0fbc90c67ce5ef4256354bb62f1d511b1304c",
+      "branch": "retire-consolidation-20260907",
+      "noticeHead": "ad64f79a7b1147963ec77cf38c6423bc6eeb7755",
+      "pr": "https://github.com/opsle/agent-resource-claims/pull/1",
+      "worktree": "/home/deploy/worktrees/retire-agent-resource-claims-20260907",
+      "backup": "/home/deploy/apps/opsle-bootstrap/archive/20260907-consolidation/before-notices/agent-resource-claims.tgz",
+      "noticeMerge": "f80f82e79ed07915feaea6a3b873d9af4aed144c",
+      "githubStatus": "archived",
+      "destinationPath": "docs/contracts/agent-resource-claims",
+      "directoryStatus": {
+        "host": "moved",
+        "opsle-dev": "moved",
+        "rollbackPath": "/home/deploy/apps/opsle-bootstrap/archive/20260907-consolidation/repos/agent-resource-claims"
+      },
+      "projectStatus": {
+        "id": 8,
+        "retiredAt": "2026-09-07T20:28:00.979Z",
+        "enabled": false,
+        "hidden": true,
+        "historicalRecordsPreserved": true
+      }
+    },
+    {
+      "source": "agent-routing-policy",
+      "destination": "gearbox",
+      "preserved": "43fc2a72d2c8494b2dcdca7b5a209de61d8fe2d8",
+      "branch": "retire-consolidation-20260907",
+      "noticeHead": "cef2246412ee0073c8015102751eaed9f0c7d78a",
+      "pr": "https://github.com/opsle/agent-routing-policy/pull/1",
+      "worktree": "/home/deploy/worktrees/retire-agent-routing-policy-20260907",
+      "backup": "/home/deploy/apps/opsle-bootstrap/archive/20260907-consolidation/before-notices/agent-routing-policy.tgz",
+      "noticeMerge": "179fb15add41f338813bc04cc77c308563942a93",
+      "githubStatus": "archived",
+      "destinationPath": "docs/agent-routing-policy",
+      "directoryStatus": {
+        "host": "moved",
+        "opsle-dev": "moved",
+        "rollbackPath": "/home/deploy/apps/opsle-bootstrap/archive/20260907-consolidation/repos/agent-routing-policy"
+      },
+      "projectStatus": {
+        "id": 9,
+        "retiredAt": "2026-09-07T20:28:00.989Z",
+        "enabled": false,
+        "hidden": true,
+        "historicalRecordsPreserved": true
+      }
+    },
+    {
+      "source": "agent-scheduler-runtime",
+      "destination": "tasks",
+      "preserved": "d97cd3c218b20e0b2b0e09873f6a3d15c396b3a0",
+      "branch": "retire-consolidation-20260907",
+      "noticeHead": "4d3d9de7e6efa09cc9a4f24068cea65456a5e871",
+      "pr": "https://github.com/opsle/agent-scheduler-runtime/pull/1",
+      "worktree": "/home/deploy/worktrees/retire-agent-scheduler-runtime-20260907",
+      "backup": "/home/deploy/apps/opsle-bootstrap/archive/20260907-consolidation/before-notices/agent-scheduler-runtime.tgz",
+      "noticeMerge": "261adff7792b12257e57b408a84699479d2b992d",
+      "githubStatus": "archived",
+      "destinationPath": "docs/contracts/agent-scheduler-runtime",
+      "directoryStatus": {
+        "host": "moved",
+        "opsle-dev": "moved",
+        "rollbackPath": "/home/deploy/apps/opsle-bootstrap/archive/20260907-consolidation/repos/agent-scheduler-runtime"
+      },
+      "projectStatus": {
+        "id": 10,
+        "retiredAt": "2026-09-07T20:28:01.005Z",
+        "enabled": false,
+        "hidden": true,
+        "historicalRecordsPreserved": true
+      }
+    },
+    {
+      "source": "agent-state-ledger",
+      "destination": "tasks",
+      "preserved": "acab03b1ff7168222552050e21e7553b07d00e7c",
+      "branch": "retire-consolidation-20260907",
+      "noticeHead": "20916de029ba4cd53e0b05c57fc44be096b1ff86",
+      "pr": "https://github.com/opsle/agent-state-ledger/pull/1",
+      "worktree": "/home/deploy/worktrees/retire-agent-state-ledger-20260907",
+      "backup": "/home/deploy/apps/opsle-bootstrap/archive/20260907-consolidation/before-notices/agent-state-ledger.tgz",
+      "noticeMerge": "509a2a55066fd30ca67ceca14eaf640772b84c31",
+      "githubStatus": "archived",
+      "destinationPath": "docs/contracts/agent-state-ledger",
+      "directoryStatus": {
+        "host": "moved",
+        "opsle-dev": "moved",
+        "rollbackPath": "/home/deploy/apps/opsle-bootstrap/archive/20260907-consolidation/repos/agent-state-ledger"
+      },
+      "projectStatus": {
+        "id": 11,
+        "retiredAt": "2026-09-07T20:28:01.023Z",
+        "enabled": false,
+        "hidden": true,
+        "historicalRecordsPreserved": true
+      }
+    },
+    {
+      "source": "controlled-agent-acceptance",
+      "destination": "tasks",
+      "preserved": "2d652adf56e53953327d09b1ba9c4a9c3445f052",
+      "branch": "retire-consolidation-20260907",
+      "noticeHead": "8ad116afe8e441c41da70ed492cdb1680e690e1d",
+      "pr": "https://github.com/opsle/controlled-agent-acceptance/pull/1",
+      "worktree": "/home/deploy/worktrees/retire-controlled-agent-acceptance-20260907",
+      "backup": "/home/deploy/apps/opsle-bootstrap/archive/20260907-consolidation/before-notices/controlled-agent-acceptance.tgz",
+      "noticeMerge": "258325416c852be719c545a622e8a9d175447512",
+      "githubStatus": "archived",
+      "destinationPath": "docs/contracts/controlled-agent-acceptance",
+      "directoryStatus": {
+        "host": "moved",
+        "opsle-dev": "moved",
+        "rollbackPath": "/home/deploy/apps/opsle-bootstrap/archive/20260907-consolidation/repos/controlled-agent-acceptance"
+      },
+      "projectStatus": {
+        "id": 14,
+        "retiredAt": "2026-09-07T20:28:01.062Z",
+        "enabled": false,
+        "hidden": true,
+        "historicalRecordsPreserved": true
+      }
+    },
+    {
+      "source": "ephemeral-agent-workers",
+      "destination": "tasks",
+      "preserved": "ad96fcfdfac06d340b5e96d369634980cee78ef4",
+      "branch": "retire-consolidation-20260907",
+      "noticeHead": "c9431770f05f25903674033cb2a860aa2b415420",
+      "pr": "https://github.com/opsle/ephemeral-agent-workers/pull/1",
+      "worktree": "/home/deploy/worktrees/retire-ephemeral-agent-workers-20260907",
+      "backup": "/home/deploy/apps/opsle-bootstrap/archive/20260907-consolidation/before-notices/ephemeral-agent-workers.tgz",
+      "noticeMerge": "e758697528e71290bec55391a6b4e6c5bae83422",
+      "githubStatus": "archived",
+      "destinationPath": "docs/contracts/ephemeral-agent-workers",
+      "directoryStatus": {
+        "host": "moved",
+        "opsle-dev": "moved",
+        "rollbackPath": "/home/deploy/apps/opsle-bootstrap/archive/20260907-consolidation/repos/ephemeral-agent-workers"
+      },
+      "projectStatus": {
+        "id": 17,
+        "retiredAt": "2026-09-07T20:28:01.091Z",
+        "enabled": false,
+        "hidden": true,
+        "historicalRecordsPreserved": true
+      }
+    },
+    {
+      "source": "event-driven-agent-wakeup",
+      "destination": "tasks",
+      "preserved": "a6209860c2151450cc28ed648bc8c2631c8db7ef",
+      "branch": "retire-consolidation-20260907",
+      "noticeHead": "79868d8dfd91eabc9fd9c097025ad61b37ec7400",
+      "pr": "https://github.com/opsle/event-driven-agent-wakeup/pull/1",
+      "worktree": "/home/deploy/worktrees/retire-event-driven-agent-wakeup-20260907",
+      "backup": "/home/deploy/apps/opsle-bootstrap/archive/20260907-consolidation/before-notices/event-driven-agent-wakeup.tgz",
+      "noticeMerge": "8278bfb064eba50ce05aeaf9c1b7cc54a748c210",
+      "githubStatus": "archived",
+      "destinationPath": "docs/contracts/event-driven-agent-wakeup",
+      "directoryStatus": {
+        "host": "moved",
+        "opsle-dev": "moved",
+        "rollbackPath": "/home/deploy/apps/opsle-bootstrap/archive/20260907-consolidation/repos/event-driven-agent-wakeup"
+      },
+      "projectStatus": {
+        "id": 18,
+        "retiredAt": "2026-09-07T20:28:01.097Z",
+        "enabled": false,
+        "hidden": true,
+        "historicalRecordsPreserved": true
+      }
+    },
+    {
+      "source": "verifiable-agent-handoff",
+      "destination": "tasks",
+      "preserved": "399e5cfae94345affa3f087f0f6eb9e77669d33c",
+      "branch": "retire-consolidation-20260907",
+      "noticeHead": "2cfb6d72d132326bb9cc5c59f628ee6ec08adb7b",
+      "pr": "https://github.com/opsle/verifiable-agent-handoff/pull/1",
+      "worktree": "/home/deploy/worktrees/retire-verifiable-agent-handoff-20260907",
+      "backup": "/home/deploy/apps/opsle-bootstrap/archive/20260907-consolidation/before-notices/verifiable-agent-handoff.tgz",
+      "noticeMerge": "b832c770d9965b6060fc21af4f8826812c80b0a9",
+      "githubStatus": "archived",
+      "destinationPath": "docs/contracts/verifiable-agent-handoff",
+      "directoryStatus": {
+        "host": "moved",
+        "opsle-dev": "moved",
+        "rollbackPath": "/home/deploy/apps/opsle-bootstrap/archive/20260907-consolidation/repos/verifiable-agent-handoff"
+      },
+      "projectStatus": {
+        "id": 24,
+        "retiredAt": "2026-09-07T20:28:01.107Z",
+        "enabled": false,
+        "hidden": true,
+        "historicalRecordsPreserved": true
+      }
+    }
+  ],
+  "tasks": {
+    "pr": "https://github.com/opsle/tasks/pull/15",
+    "deployedCommit": "f40cade3ad961f66feff794f70516caf6306e2e0",
+    "previousCommit": "63bd1e7187c3d79698fab69058119bec4daa7802",
+    "testsPassed": 85,
+    "container": "opsle-tasks",
+    "unit": "deploy user opsle-tasks.service",
+    "databaseBackup": "/home/deploy/.local/share/opsle-tasks/backups/consolidation-20260907/before.sqlite",
+    "integrity": "ok",
+    "foreignKeyViolations": 0,
+    "preexistingTasksUnchanged": 12,
+    "excludedAndUnlistedProjectsUnchanged": true
+  },
+  "gearbox": {
+    "pr": "https://github.com/opsle/gearbox/pull/3",
+    "commit": "12112c3a04d72b768f3252a6d0f6ea455816c9a1",
+    "testsPassed": 25,
+    "ci": "SUCCESS"
+  },
+  "normalTaskProof": {
+    "taskId": 13,
+    "projectId": 38,
+    "status": "DONE",
+    "host": "opsle-dev.incus",
+    "resultCommit": "41710de356a518845c1bc43f6cc9e39f7b7fb9e3",
+    "selected": [
+      "docs.proof"
+    ],
+    "skipped": [
+      "unrelated.proof"
+    ],
+    "deployed": true,
+    "worktreeRemoved": true,
+    "providers": [
+      {
+        "phase": "PLAN",
+        "provider": "codex",
+        "model": "gpt-6-astra",
+        "effort": "none",
+        "modelSource": "provider reported",
+        "effortSource": "provider reported"
+      },
+      {
+        "phase": "BUILD",
+        "provider": "codex",
+        "model": "gpt-6-astra",
+        "effort": "none",
+        "modelSource": "provider reported",
+        "effortSource": "provider reported"
+      }
+    ],
+    "visibleValueStatus": "validated",
+    "evidenceDirectory": "/home/deploy/.local/share/opsle-tasks/backups/consolidation-20260907/proof",
+    "visibleValueReport": "/home/deploy/.local/share/opsle-tasks/logs/9c9f01f3b576e855-task-13-attempt-280.visible-value.json"
+  },
+  "retained": {
+    "decision-evidence-protocol": "Independent Agent Trajectory Profiler CI and interoperability tools pin b17ae3b41cea7cb0b9e0befe43e885b5aa0e4a09; preserve standalone contract packaging.",
+    ".github": "GitHub and directories retained; project #3 retired from execution choices only."
+  },
+  "deferred": {},
+  "archive": "/home/deploy/apps/opsle-bootstrap/archive/20260907-consolidation",
+  "followup": {
+    "observedAt": "2026-09-07T21:47:41.431180+00:00",
+    "pr": "https://github.com/opsle/tasks/pull/17",
+    "deployedRevision": "8c63aedec81f343d0ba2f15a41006aa36fbb4ebe",
+    "tests": 90,
+    "retiredFixtures": [
+      {
+        "projectId": 32,
+        "name": "SMOKE · Context Firewall release 2026-09-07",
+        "path": "/home/deploy/.local/share/opsle-tasks/test-projects/context-firewall-release-smoke-20260907/project",
+        "host": "",
+        "retiredAt": "2026-09-07T21:41:33.380Z",
+        "historicalTaskIds": [
+          5,
+          6
+        ],
+        "historyPreserved": true
+      },
+      {
+        "projectId": 34,
+        "name": "SSH proof 1788799827123",
+        "path": "/home/deploy/apps/ssh-proof-20260907",
+        "host": "opsle-dev.incus",
+        "retiredAt": "2026-09-07T21:41:33.395Z",
+        "historicalTaskIds": [
+          9,
+          8
+        ],
+        "historyPreserved": true
+      },
+      {
+        "projectId": 35,
+        "name": "SSH proof 1788800868896",
+        "path": "/home/deploy/apps/ssh-proof-final-20260907",
+        "host": "opsle-dev.incus",
+        "retiredAt": "2026-09-07T21:41:33.410Z",
+        "historicalTaskIds": [
+          10
+        ],
+        "historyPreserved": true
+      },
+      {
+        "projectId": 36,
+        "name": "SSH proof 1788801236782",
+        "path": "/home/family/apps/ssh-proof-authority-20260907",
+        "host": "dearestellie.incus",
+        "retiredAt": "2026-09-07T21:41:33.421Z",
+        "historicalTaskIds": [
+          11
+        ],
+        "historyPreserved": true
+      },
+      {
+        "projectId": 37,
+        "name": "SSH proof 1788803044138",
+        "path": "/home/family/apps/ssh-proof-release-20260907",
+        "host": "dearestellie.incus",
+        "retiredAt": "2026-09-07T21:41:33.431Z",
+        "historicalTaskIds": [
+          12
+        ],
+        "historyPreserved": true
+      }
+    ],
+    "proof": {
+      "taskId": 14,
+      "projectId": 39,
+      "status": "DONE",
+      "projectRetired": true,
+      "deployedCommit": "5c4f6970527dd15ee12f90bb707f83e1aec2e06e"
+    },
+    "ui": {
+      "desktop": "1280x720",
+      "mobile": "390x844",
+      "hiddenTransitions": "passed",
+      "togglePersistence": "passed",
+      "retiredExcludedWithEitherToggle": "passed",
+      "historicalTask12": "timeline and receipts accessible"
+    },
+    "durableSupervisor": "deferred: verified live Claude 3857676 started 2026-09-04T15:17:24Z still uses checkout; PR #6 reviewed and preserved",
+    "archive": "/home/deploy/apps/opsle-bootstrap/archive/20260907-consolidation/followup-20260907"
+  },
+  "completedAt": "2026-09-07T22:42:38.676251+00:00",
+  "completedDurableSupervisor": {
+    "reason": "All scoped retirement actions completed; no live checkout consumers remained.",
+    "githubStatus": "archived",
+    "directoryStatus": {
+      "host": "moved to dated consolidation archive",
+      "opsle-dev": "moved to dated consolidation archive"
+    },
+    "projectStatus": "#16 retired; no history deleted",
+    "exclusiveDaemon": "Native opsled stop returned stopped=true; empty registry; PID 681198 no longer running.",
+    "runtimeBackup": "/home/deploy/apps/opsle-bootstrap/archive/20260907-consolidation/opsled-before.tgz",
+    "noticePr": "https://github.com/opsle/durable-supervisor/pull/7",
+    "noticeMerge": "a69f3b1ce523912a1f840cea305db008bab8e03f",
+    "proposalPr6": "closed as superseded; branch and patch preserved",
+    "finalBundle": "followup-20260907/durable-supervisor-final.bundle",
+    "verifiedAt": "2026-09-07T22:03:03.404765+00:00",
+    "hostMoveReceipt": {
+      "completedAt": "2026-09-07T22:42:38.676251+00:00",
+      "source": "/home/deploy/apps/opsle-bootstrap/repos/durable-supervisor",
+      "archive": "/home/deploy/apps/opsle-bootstrap/archive/20260907-consolidation/repos/durable-supervisor",
+      "head": "b3974f7468c19f4dd6b666409badbdcade25f0c9",
+      "status": "moved; clean; history and external worktree repaired and preserved",
+      "applicationRecordsUnchanged": true
+    }
+  }
+}

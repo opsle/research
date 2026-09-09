@@ -18,4 +18,4 @@ Only these exact states are valid:
 | REJECTED | Evidence does not support the hypothesis or the cost/risk defeats it. |
 | SUPERSEDED | A later concept/version replaces it while preserving history. |
 
-Existence inside Taslos Tasks never qualifies a concept as PROVEN. Maturity can move backward when evidence or scope changes.
+Historical existence inside the retired Taslos Tasks never qualifies a concept as PROVEN. Maturity can move backward when evidence or scope changes.

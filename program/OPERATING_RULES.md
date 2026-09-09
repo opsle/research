@@ -1,21 +1,18 @@
 # Program operating rules
 
-`program/registry.json` is authoritative for both portfolio state and the
-NOW / NEXT / THEN / LATER / PARKED priority state. Generated Markdown is never
-an independent planning authority.
+`program/registry.json` is authoritative for research portfolio state and evidence-driven priority lanes. Opsle Tasks (`opsle/tasks`) is authoritative for current workload, task management and execution. Lanes describe research priorities; they do not create a parallel queue. Generated Markdown is never an independent planning authority.
 
 Every Opsle execution must:
 
-1. Read `program/registry.json` before selecting or performing work.
+1. Use the authorized Opsle Tasks record to select work; consult `program/registry.json` for research evidence and scope.
 2. Verify the relevant repository default branch and HEAD before relying on recorded state.
-3. Start from the current program lane and operating question before selecting
-   an explicit repository or experiment objective.
+3. Reconcile the authorized task with the operating question and current repository membership; historical sources are not activation candidates.
 4. Preserve immutable or content-addressed evidence for every material claim.
 5. Promote lifecycle state only after satisfying the canonical gate in `program/LIFECYCLE.md`.
 6. Update the registry when verified state changes.
 7. Update the experiment registry when an experiment is planned, run, failed, replicated, or judged.
 8. Record blockers and unknowns instead of silently bypassing them.
-9. Identify one exact next meaningful task for every touched repository.
+9. Record a justified next action for current repositories; historical sources have no active next task.
 10. Return a bounded outcome summary rather than raw execution transcripts.
 11. When any Opsle mechanism runs, preserve its machine-readable Visible Value
     receipt and keep its named operator indicator outside canonical model
@@ -35,10 +32,7 @@ Every Opsle execution must:
 15. Park cosmetic cleanup, architectural taste, hypothetical robustness, and
     speculative future requirements unless qualifying evidence appears.
 
-Run `python3 tools/validate_program.py` and
-`python3 tools/render_program_status.py --check` before committing a registry
-change. The renderer checks both `PROGRAM_STATUS.md` and
-`program/PRIORITY.md`.
+Registry changes require the CI integrity checks: `python3 tools/validate_program.py`, `python3 tools/render_program_status.py --check`, the research unittest suite, and existing offline-freeze and receipt checks with pinned dependencies. The renderer updates `PROGRAM_STATUS.md`, `program/PRIORITY.md`, and `program/THEORY_MAP.md` together. Task-specific execution instructions may leave final verification to the pipeline.
 
 ## Portfolio discipline
 
@@ -59,3 +53,9 @@ meaningful transition or completion point. A full machine value receipt may use
 a caller-requested deterministic sidecar when embedding it would inflate compact
 model context. Display timestamps, ambient repository state, and other
 nondeterministic fields must not contaminate deterministic semantic output.
+
+## Retirement and current ownership
+
+Durable Supervisor, Taslos Tasks, Paperclip and historical agent-run are retired. Their archived controls, migration rollback notes and experiments authorize no current work. Completed consolidation receipts supersede dated partial observations. Graphify is an optional standalone CLI, not a Tasks capability. Do not recreate retired repositories or execution systems from stale references.
+
+Repository activity, Tasks project visibility and research maturity are independent. `.github` is retained for housekeeping but excluded from workload eligibility. Consolidated concepts share active homes; historical source records retain evidence without becoming active dependencies. Release and data-safety requirements remain separate from task authorization.

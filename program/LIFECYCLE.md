@@ -71,3 +71,29 @@ or tooling plus automated checks. Later gates require correctness evidence,
 reproducible operations, and accurate public documentation appropriate to that
 repository. Infrastructure is not `COMPLETE` merely because it renders or because
 one control document exists.
+
+## Repository disposition and concept homes
+
+`repository_disposition` is independent of `lifecycle_stage`: ACTIVE repositories
+belong to current membership; CONSOLIDATED and RETIRED sources belong to historical
+membership and cannot own active work. Retirement records SUPERSEDED completion
+status and preserves the highest evidenced stage; it does not mean COMPLETE.
+`consolidated_into` must name a current repository. Tasks project visibility and
+`workload_eligible` do not imply research maturity; `.github` remains current but
+is ineligible for workload execution.
+
+Concept identity remains stable in the theory registry. `source_repository`
+preserves origin; `current_repository` can be shared by several consolidated
+concepts or null for a retired concept. `highest_evidenced_stage` preserves source
+research evidence without inheriting the destination's maturity. Tasks is program
+infrastructure, and Visible Value is an independently recorded concept.
+
+Integration milestones (including remote execution and Task 15) use completed-work
+records, not research COMPLETE promotions. Current and historical repository counts,
+concept dispositions, homes and workload authority validate independently.
+
+Frozen experiment participants and roles remain historical source identities.
+`historical_experiment_ids` preserves reciprocal participation for retired sources
+without activation. A future authorized experiment must resolve support through
+the concept's current home; historical potential support is not a dependency to
+revive. Experiment next-task proposals do not bypass current Tasks admission.
