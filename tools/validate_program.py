@@ -19,29 +19,21 @@ DEFAULT_EXPERIMENTS = ROOT / "program" / "experiments.json"
 DEFAULT_THEORY_REGISTRY = ROOT / "program" / "theory-registry.json"
 DEFAULT_THEORY_MAP = ROOT / "program" / "THEORY_MAP.md"
 
-EXPECTED_REPOSITORIES = (
-    "agent-trajectory-profiler",
-    "semantic-edit-protocol",
-    "durable-supervisor",
-    "event-driven-agent-wakeup",
-    "context-firewall",
-    "decision-evidence-protocol",
-    "agent-state-ledger",
-    "agent-scheduler-runtime",
-    "verifiable-agent-handoff",
-    "agent-routing-policy",
-    "agent-resource-claims",
-    "agent-discovery-control",
-    "agent-execution-authorization",
-    "controlled-agent-acceptance",
-    "agent-recovery-policy",
-    "ephemeral-agent-workers",
-    "gearbox",
-    "affected-verification",
-    "research",
-    "site",
-    ".github",
-)
+DEFAULT_INVENTORY = ROOT / "program/evidence/post-consolidation/inventory.json"
+REPOSITORY_DISPOSITIONS = {"ACTIVE", "CONSOLIDATED", "RETIRED"}
+RETIRED_SYSTEMS = ("durable-supervisor", "durable supervisor", "taslos tasks", "paperclip", "agent-run")
+
+
+def retired_reference(value: Any) -> bool:
+    text = json.dumps(value, ensure_ascii=False).lower()
+    return any(name in text for name in RETIRED_SYSTEMS)
+
+
+def membership(registry: dict, kind: str) -> set[str]:
+    value = registry.get("membership", {})
+    values = value.get(kind, []) if isinstance(value, dict) else []
+    return {v for v in values if isinstance(v, str)} if isinstance(values, list) else set()
+
 
 LIFECYCLE_STAGES = (
     "THEORY",
@@ -91,7 +83,7 @@ PER_CHILD_VALUE_FIELDS = frozenset(
     }
 )
 
-SUPERVISOR_VALUE_FIELDS = frozenset(
+RUN_VALUE_FIELDS = frozenset(
     {
         "total children",
         "model/effort distribution",
@@ -110,8 +102,7 @@ OPSLE_TASKS_MEASUREMENTS = frozenset(
     {
         "Gearbox",
         "Context Firewall",
-        "Decision Evidence Protocol",
-        "Agent Trajectory Profiler",
+        "Visible Value",
         "Affected Verification",
     }
 )
@@ -157,12 +148,17 @@ THEORY_DISPOSITIONS = frozenset(
         "CONSOLIDATE_WITH_OTHER",
         "RENAME",
         "DEPRECATE_AFTER_PROVENANCE_PRESERVATION",
+        "CONSOLIDATED",
+        "RETIRED",
     }
 )
 
 THEORY_CONFIDENCE_LEVELS = frozenset({"HIGH", "MEDIUM_HIGH", "MEDIUM", "LOW"})
 
 REQUIRED_THEORY_CONCEPT_FIELDS = (
+    "source_repository",
+    "concept_disposition",
+    "highest_evidenced_stage",
     "id",
     "canonical_concept_name",
     "one_sentence_definition",
@@ -196,12 +192,6 @@ CANONICAL_CONTEXT_FIREWALL_DEFINITION = (
     "Context Firewall is a deterministic boundary that keeps operational noise out "
     "of an AI agent's context while preserving the compact evidence, provenance, "
     "and escalation path the agent needs to make correct decisions."
-)
-
-GEARBOX_VS_DURABLE_SUPERVISOR = (
-    "Gearbox enhances a primary developer; durable orchestration owns autonomous "
-    "objective progress across durable state and multiple activations without "
-    "requiring that developer to remain continuously active."
 )
 
 EXP001_CONTEXT_FIREWALL_SCOPE = (
@@ -269,6 +259,10 @@ EXP001_PRICING_PREFLIGHT_IDENTITY = (
 )
 
 REQUIRED_REPOSITORY_FIELDS = (
+    "repository_disposition",
+    "consolidated_into",
+    "workload_eligible",
+    "historical_experiment_ids",
     "name",
     "github_url",
     "default_branch",
@@ -405,7 +399,59 @@ def validate(
     if not isinstance(experiment_entries, list):
         return ["experiments.experiments must be an array"]
 
-    expected = set(EXPECTED_REPOSITORIES)
+    if registry.get("schema_version") != 2:
+        errors.append("registry.schema_version must be 2")
+    if registry.get("inventory_evidence") != "program/evidence/post-consolidation/inventory.json":
+        errors.append("verified inventory path drift")
+    if registry.get("inventory_evidence_sha256") != "sha256:" + hashlib.sha256(DEFAULT_INVENTORY.read_bytes()).hexdigest():
+        errors.append("verified inventory hash drift")
+    consolidation_path = ROOT / "program/evidence/post-consolidation/consolidation.json"
+    if registry.get("consolidation_evidence") != {
+        "path": "program/evidence/post-consolidation/consolidation.json",
+        "sha256": "sha256:" + hashlib.sha256(consolidation_path.read_bytes()).hexdigest(),
+    }:
+        errors.append("final consolidation receipt identity drift")
+    receipt = load_json(consolidation_path)
+    if receipt.get("overall") != "complete" or not receipt.get("completedAt"):
+        errors.append("final consolidation receipt must be complete")
+    historical_snapshot = load_json(ROOT / "program/history/pre-consolidation/registry.json")
+    historical_repos = {r["name"]: r for r in historical_snapshot["repositories"]}
+    milestones = registry.get("completed_work", [])
+    required_milestones = {"taslos-tasks-retirement", "paperclip-retirement", "repository-consolidation", "remote-incus-execution", "task-15-capability-contract"}
+    if (not isinstance(milestones, list) or
+        {m.get("id") for m in milestones if isinstance(m, dict) and isinstance(m.get("id"), str)} != required_milestones
+        or len(milestones) != len(required_milestones)):
+        errors.append("completed integration and retirement milestones drifted")
+    elif any(not isinstance(m, dict) or m.get("status") != "COMPLETED"
+             or not _string_list(m.get("evidence"), allow_empty=False)
+             or not _nonempty_string(m.get("scope")) for m in milestones):
+        errors.append("completed milestones require status, scope and evidence")
+    current = membership(registry, "current")
+    historical = membership(registry, "historical")
+    expected = current | historical
+    inventory = load_json(DEFAULT_INVENTORY)
+    if inventory["consolidation_destinations"] != {item["source"]: item["destination"] for item in receipt["sources"]}:
+        errors.append("inventory consolidation destinations differ from final receipt")
+    membership_record = registry.get("membership")
+    if not isinstance(membership_record, dict):
+        errors.append("registry.membership must be an object")
+        membership_record = {}
+    for kind, recorded in (("current", current), ("historical", historical)):
+        pinned = inventory["active_repositories" if kind == "current" else "historical_repositories"]
+        raw = membership_record.get(kind, [])
+        if not _string_list(raw, allow_empty=False) or len(raw) != len(recorded) or recorded != set(pinned):
+            errors.append(f"{kind} membership differs from verified inventory")
+    if current & historical:
+        errors.append("current and historical membership must be disjoint")
+    if registry.get("repository_counts") != {
+        "current": len(current), "historical": len(historical),
+        "workload_eligible": len(current - set(inventory["workload_ineligible"])),
+    }:
+        errors.append("repository count drift")
+    optional_tools = registry.get("optional_tools")
+    if not isinstance(optional_tools, dict) or optional_tools.get("graphify") != inventory["graphify"]:
+        errors.append("Graphify must remain an optional standalone CLI, never a Tasks capability")
+
     names: list[str] = []
     for index, repo in enumerate(repositories):
         if not isinstance(repo, dict):
@@ -420,13 +466,13 @@ def validate(
     missing = sorted(expected - set(names))
     unexpected = sorted(set(names) - expected, key=str)
 
-    if len(repositories) != len(EXPECTED_REPOSITORIES):
+    if len(repositories) != len(expected):
         errors.append(
-            f"expected {len(EXPECTED_REPOSITORIES)} repositories, found {len(repositories)}"
+            f"expected {len(expected)} repositories, found {len(repositories)}"
         )
-    if registry.get("authoritative_repository_count") != len(EXPECTED_REPOSITORIES):
+    if registry.get("authoritative_repository_count") != len(expected):
         errors.append(
-            f"authoritative_repository_count must be {len(EXPECTED_REPOSITORIES)}"
+            f"authoritative_repository_count must be {len(expected)}"
         )
     if duplicates:
         errors.append(f"duplicate repositories: {', '.join(duplicates)}")
@@ -477,8 +523,8 @@ def validate(
     if not isinstance(control, dict):
         errors.append("registry.program_control must be an object")
     else:
-        if control.get("schema_version") != 1:
-            errors.append("program_control.schema_version must be 1")
+        if control.get("schema_version") != 2:
+            errors.append("program_control.schema_version must be 2")
         if control.get("priority_order") != list(PRIORITY_LANES):
             errors.append("program_control.priority_order must be NOW, NEXT, THEN, LATER, PARKED")
         if control.get("current_lane") != "NOW":
@@ -535,8 +581,8 @@ def validate(
                 "program_control duplicate priority repositories: "
                 + ", ".join(duplicate_priority_repositories)
             )
-        missing_priority_repositories = sorted(expected - set(priority_repositories))
-        unexpected_priority_repositories = sorted(set(priority_repositories) - expected)
+        missing_priority_repositories = sorted(current - set(priority_repositories))
+        unexpected_priority_repositories = sorted(set(priority_repositories) - current)
         if missing_priority_repositories:
             errors.append(
                 "program_control missing priority repositories: "
@@ -553,36 +599,10 @@ def validate(
         if active_repositories != sorted(current_lane_repositories):
             errors.append("active repositories must exactly match the current priority lane")
 
-        ds = control.get("durable_supervisor_v0_1")
-        if not isinstance(ds, dict):
-            errors.append("program_control.durable_supervisor_v0_1 must be an object")
-        else:
-            if ds.get("status") not in {"IN_PROGRESS", "DECLARED_FROZEN"}:
-                errors.append("durable_supervisor_v0_1 has invalid status")
-            if ds.get("verified_runtime_state") != "PAUSED_NO_ACTIVE_TASK_OR_ATTEMPT":
-                errors.append("durable_supervisor_v0_1 runtime state drifted")
-            if not _valid_timestamp(ds.get("runtime_state_recorded_at")):
-                errors.append("durable_supervisor_v0_1 runtime state needs a recorded timestamp")
-            if not _nonempty_string(ds.get("runtime_state_source")):
-                errors.append("durable_supervisor_v0_1 runtime observation needs a source")
-            durable_repository = repo_by_name.get("durable-supervisor", {})
-            if ds.get("verified_main_sha") != durable_repository.get("last_verified_head_sha"):
-                errors.append("durable_supervisor_v0_1 SHA must match the repository ledger")
-            criteria = ds.get("stopping_criteria")
-            if not isinstance(criteria, list):
-                errors.append("durable_supervisor_v0_1.stopping_criteria must be an array")
-                criteria = []
-            expected_ids = [f"DS-V0.1-{index:02d}" for index in range(1, 11)]
-            if [item.get("id") for item in criteria if isinstance(item, dict)] != expected_ids:
-                errors.append("durable_supervisor_v0_1 must retain ten ordered stopping criteria")
-            for item in criteria:
-                if not isinstance(item, dict):
-                    errors.append("durable_supervisor_v0_1 criteria must be objects")
-                    continue
-                if item.get("status") not in {"OPEN", "SATISFIED"}:
-                    errors.append(f"{item.get('id')}: invalid stopping-criterion status")
-                if not _nonempty_string(item.get("criterion")):
-                    errors.append(f"{item.get('id')}: criterion must be nonempty")
+        if "durable_supervisor_v0_1" in control or retired_reference(control):
+            errors.append("retired system in current program control")
+        if control.get("workload_authority") != "opsle/tasks":
+            errors.append("Opsle Tasks must be the current workload authority")
 
         opsle_tasks = control.get("opsle_tasks")
         if not isinstance(opsle_tasks, dict):
@@ -590,8 +610,14 @@ def validate(
         else:
             if opsle_tasks.get("current_repository") != "opsle/tasks":
                 errors.append("Opsle Tasks current repository identity drifted")
-            if "NEXT primary real-world workload" not in str(opsle_tasks.get("role")):
-                errors.append("Opsle Tasks must remain the NEXT primary real-world workload")
+            if opsle_tasks.get("role") != "current workload and task-management authority":
+                errors.append("Opsle Tasks must be the current workload and task-management authority")
+            expected_capabilities = {"opsle.gearbox", "opsle.context-firewall", "opsle.affected-verification", "opsle.visible-value"}
+            capability_ids = opsle_tasks.get("capability_ids")
+            if (not _string_list(capability_ids, allow_empty=False)
+                or set(capability_ids) != expected_capabilities
+                or len(capability_ids) != len(expected_capabilities)):
+                errors.append("Tasks capability inventory drift; Graphify is standalone only")
             measurements = opsle_tasks.get("measurements")
             if (
                 not _string_list(measurements, allow_empty=False)
@@ -621,7 +647,7 @@ def validate(
                     errors.append(
                         f"concept_activation index {index} repositories must be nonempty strings"
                     )
-                elif not set(activation_repositories).issubset(expected):
+                elif not set(activation_repositories).issubset(current):
                     errors.append(
                         f"concept_activation index {index} references an unknown repository"
                     )
@@ -631,17 +657,6 @@ def validate(
             or set(later_items) != LATER_ITEMS
         ):
             errors.append("program_control later items drifted")
-        parked_items = control.get("parked_items")
-        if _string_list(parked_items, allow_empty=False):
-            required_parked_fragments = (
-                "src/cli.js",
-                "Background projection",
-                "Historical pre-fix",
-                "architectural polishing",
-            )
-            for fragment in required_parked_fragments:
-                if not any(fragment in item for item in parked_items):
-                    errors.append(f"program_control parked item missing {fragment}")
 
     visible_value = registry.get("visible_value")
     if not isinstance(visible_value, dict):
@@ -668,12 +683,12 @@ def validate(
             or set(child_fields) != PER_CHILD_VALUE_FIELDS
         ):
             errors.append("visible_value per-child receipt fields drifted")
-        summary_fields = visible_value.get("supervisor_summary_fields")
+        summary_fields = visible_value.get("run_summary_fields")
         if (
             not _string_list(summary_fields, allow_empty=False)
-            or set(summary_fields) != SUPERVISOR_VALUE_FIELDS
+            or set(summary_fields) != RUN_VALUE_FIELDS
         ):
-            errors.append("visible_value supervisor summary fields drifted")
+            errors.append("visible_value run summary fields drifted")
 
     for index, repo in enumerate(repositories):
         label = (
@@ -690,7 +705,7 @@ def validate(
             errors.append(f"{label}: invalid lifecycle stage {repo.get('lifecycle_stage')!r}")
         if repo.get("project_type") not in {"concept", "program infrastructure"}:
             errors.append(f"{label}: invalid project_type {repo.get('project_type')!r}")
-        if repo.get("program_state") not in {"active", "waiting", "complete"}:
+        if repo.get("program_state") not in {"active", "waiting", "complete", "historical"}:
             errors.append(f"{label}: invalid program_state {repo.get('program_state')!r}")
         if repo.get("completion_status") not in {
             "INCOMPLETE",
@@ -711,6 +726,7 @@ def validate(
             "dependencies",
             "dependents",
             "active_experiment_ids",
+            "historical_experiment_ids",
             "blockers",
             "evidence",
             "completion_criteria",
@@ -753,6 +769,46 @@ def validate(
                 continue
             if experiment_id not in experiment_id_set:
                 errors.append(f"{label}: references nonexistent experiment {experiment_id}")
+
+        disposition = repo.get("repository_disposition")
+        if disposition not in REPOSITORY_DISPOSITIONS:
+            errors.append(f"{label}: invalid repository disposition")
+        is_current = label in current
+        if (disposition == "ACTIVE") != is_current:
+            errors.append(f"{label}: disposition and membership disagree")
+        if (repo.get("program_state") == "historical") != (label in historical):
+            errors.append(f"{label}: historical state and membership disagree")
+        eligible = is_current and label not in inventory["workload_ineligible"]
+        if repo.get("workload_eligible") is not eligible:
+            errors.append(f"{label}: workload eligibility drift")
+        destination = repo.get("consolidated_into")
+        if destination != inventory["consolidation_destinations"].get(label):
+            errors.append(f"{label}: consolidation destination differs from final receipt")
+        if disposition == "CONSOLIDATED" and (not isinstance(destination, str) or destination not in current):
+            errors.append(f"{label}: dangling consolidation destination")
+        if disposition != "CONSOLIDATED" and destination is not None:
+            errors.append(f"{label}: unexpected consolidation destination")
+        if is_current:
+            if repo.get("last_verified_head_sha") != inventory["heads"].get(label):
+                errors.append(f"{label}: current HEAD differs from verified inventory")
+            if retired_reference({k: repo.get(k) for k in ("next_task", "blockers", "dependencies", "dependents")}):
+                errors.append(f"{label}: retired active-work reference")
+            if any(n in historical for n in dependencies + dependents if isinstance(n, str)):
+                errors.append(f"{label}: current relationship targets historical repository")
+        elif (dependencies or dependents or repo.get("active_experiment_ids")
+              or repo.get("next_task") != "None; historical source is retired from workload selection."):
+            errors.append(f"{label}: retired repository has active work")
+
+        if label in historical:
+            if repo.get("completion_status") != "SUPERSEDED":
+                errors.append(f"{label}: retired source completion must be SUPERSEDED")
+            origin = historical_repos.get(label, {})
+            if repo.get("lifecycle_stage") != origin.get("lifecycle_stage"):
+                errors.append(f"{label}: retirement must preserve highest evidenced maturity")
+            if repo.get("historical_experiment_ids") != origin.get("active_experiment_ids"):
+                errors.append(f"{label}: historical experiment membership drift")
+        elif repo.get("historical_experiment_ids") != []:
+            errors.append(f"{label}: current experiment links belong in active_experiment_ids")
 
         complete = repo.get("completion_status") == "COMPLETE"
         complete_stage = repo.get("lifecycle_stage") == "COMPLETE"
@@ -816,7 +872,7 @@ def validate(
                 continue
             if project not in expected:
                 errors.append(f"experiment {label}: references nonexistent project {project}")
-            elif label not in repo_by_name.get(project, {}).get("active_experiment_ids", []):
+            elif label not in repo_by_name.get(project, {}).get("historical_experiment_ids" if project in historical else "active_experiment_ids", []):
                 errors.append(
                     f"experiment {label}: participating repository {project} "
                     "does not reciprocally list the experiment"
@@ -881,9 +937,7 @@ def validate(
             ):
                 errors.append("EXP-001 must record the completed independent Gearbox publication")
             gearbox_repository = repo_by_name.get("gearbox", {})
-            if reconciliation.get("gearbox_repository_head_sha") != gearbox_repository.get(
-                "last_verified_head_sha"
-            ):
+            if reconciliation.get("gearbox_repository_head_sha") != registry.get("gearbox_publication", {}).get("final_main_sha"):
                 errors.append("EXP-001 Gearbox publication SHA must match the registry")
         freeze = exp001.get("offline_benchmark_freeze")
         if not isinstance(freeze, dict):
@@ -1156,16 +1210,19 @@ def validate_theory(
     if not isinstance(repositories, list):
         return ["registry.repositories must be an array before theory validation"]
 
-    if theory.get("registry_id") != "opsle.theory-registry.v1":
-        errors.append("theory.registry_id must be opsle.theory-registry.v1")
-    if theory.get("schema_version") != 1:
-        errors.append("theory.schema_version must be 1")
-    if theory.get("source_repository_count") != len(EXPECTED_REPOSITORIES):
-        errors.append(
-            f"theory.source_repository_count must be {len(EXPECTED_REPOSITORIES)}"
-        )
-    if theory.get("current_concept_repository_count") != 18:
-        errors.append("theory.current_concept_repository_count must be 18")
+    if theory.get("registry_id") != "opsle.theory-registry.v2":
+        errors.append("theory.registry_id must be opsle.theory-registry.v2")
+    if theory.get("schema_version") != 2:
+        errors.append("theory.schema_version must be 2")
+    expected = membership(registry, "current") | membership(registry, "historical")
+    current_repositories = membership(registry, "current")
+    if theory.get("source_repository_count") != len(expected):
+        errors.append("theory source repository count drift")
+    if theory.get("concept_count") != len(concepts):
+        errors.append("theory concept count drift")
+    actual_counts = Counter(x.get("concept_disposition") for x in concepts if isinstance(x, dict))
+    if theory.get("concept_counts") != dict(actual_counts):
+        errors.append("theory disposition count drift")
     if not _valid_timestamp(theory.get("verified_at")):
         errors.append("theory.verified_at must be an ISO-8601 UTC timestamp")
 
@@ -1190,10 +1247,14 @@ def validate_theory(
     duplicate_ids = sorted(item for item, count in Counter(ids).items() if count > 1)
     if duplicate_ids:
         errors.append(f"duplicate theory concept IDs: {', '.join(duplicate_ids)}")
-    if len(concepts) != 18:
-        errors.append(f"expected 18 theory concepts, found {len(concepts)}")
-
-    current_concept_repositories = set(EXPECTED_REPOSITORIES[:18])
+    # Concepts can share a consolidated home. Identity coverage uses source concepts.
+    current_concept_repositories = {
+        r.get("name") for r in repositories
+        if isinstance(r, dict) and r.get("project_type") == "concept"
+        and isinstance(r.get("name"), str)
+    }
+    if set(ids) != current_concept_repositories:
+        errors.append("theory concept identity coverage differs from repository concepts")
     current_mappings: list[str] = []
     concept_ids = set(ids)
     concept_by_id = {
@@ -1244,7 +1305,7 @@ def validate_theory(
                 current_mappings.append(current_repository)
             if (
                 isinstance(current_repository, str)
-                and current_repository not in current_concept_repositories
+                and current_repository not in current_repositories
             ):
                 errors.append(
                     f"theory concept {label}: invalid current repository {current_repository!r}"
@@ -1276,15 +1337,31 @@ def validate_theory(
                 f"theory concept {label}: current_implementation_fidelity requires status and assessment"
             )
 
-    mapping_counts = Counter(current_mappings)
-    duplicate_mappings = sorted(name for name, count in mapping_counts.items() if count > 1)
-    missing_mappings = sorted(current_concept_repositories - set(current_mappings))
-    if duplicate_mappings:
-        errors.append(f"duplicate current concept repository mappings: {', '.join(duplicate_mappings)}")
-    if missing_mappings:
-        errors.append(f"missing current concept repository mappings: {', '.join(missing_mappings)}")
-    if len(current_mappings) != 18:
-        errors.append(f"expected 18 current concept repository mappings, found {len(current_mappings)}")
+    if theory.get("current_concept_repository_count") != len(set(current_mappings)):
+        errors.append("theory current concept repository count drift")
+    repo_by_name = {r.get("name"): r for r in repositories if isinstance(r, dict) and isinstance(r.get("name"), str)}
+    for concept in concepts:
+        if not isinstance(concept, dict) or not isinstance(concept.get("id"), str):
+            continue
+        label = concept["id"]
+        repo = repo_by_name.get(label, {})
+        expected_disposition = {"ACTIVE": "ACTIVE", "CONSOLIDATED": "CONSOLIDATED", "RETIRED": "RETIRED"}.get(repo.get("repository_disposition"))
+        expected_home = repo.get("consolidated_into") if expected_disposition == "CONSOLIDATED" else (label if expected_disposition == "ACTIVE" else None)
+        if concept.get("concept_disposition") != expected_disposition or concept.get("current_repository") != expected_home:
+            errors.append(f"{label}: concept disposition or current home drift")
+        if concept.get("source_repository") != label:
+            errors.append(f"{label}: concept source provenance drift")
+        if concept.get("highest_evidenced_stage") != repo.get("lifecycle_stage"):
+            errors.append(f"{label}: concept research maturity drift")
+        if expected_disposition != "ACTIVE" and concept.get("recommended_disposition") != expected_disposition:
+            errors.append(f"{label}: executed disposition must supersede recommendation")
+        for field in ("dependencies", "consumers"):
+            relations = concept.get(field, [])
+            if not isinstance(relations, list):
+                continue
+            for target in relations:
+                if isinstance(target, str) and concept_by_id.get(target, {}).get("concept_disposition") == "RETIRED":
+                    errors.append(f"{label}: current concept relationship targets retired concept")
 
     gearbox = concept_by_id.get("gearbox")
     if gearbox is None:
@@ -1336,26 +1413,12 @@ def validate_theory(
         errors.append("registry Gearbox reconciliation definition drifted")
     if reconciliation.get("canonical_context_firewall_definition") != CANONICAL_CONTEXT_FIREWALL_DEFINITION:
         errors.append("registry Context Firewall reconciliation definition drifted")
-    if reconciliation.get("status") != "IMPLEMENTED_HOME_REGISTERED":
-        errors.append(
-            "registry theory reconciliation status must record the implemented home"
-        )
+    if reconciliation.get("status") != "POST_CONSOLIDATION_RECONCILED":
+        errors.append("registry theory reconciliation must record post-consolidation state")
     if not _valid_timestamp(reconciliation.get("verified_at")):
-        errors.append("registry theory reconciliation verified_at must be an ISO-8601 UTC timestamp")
-    if reconciliation.get("gearbox_vs_durable_supervisor") != GEARBOX_VS_DURABLE_SUPERVISOR:
-        errors.append("registry Gearbox versus Durable Supervisor distinction drifted")
-    if reconciliation.get("gearbox_repository_status") != "CREATED_PROTOTYPED":
-        errors.append("registry must record Gearbox as created and prototyped")
-    if reconciliation.get("repository_topology_operations_executed") is not True:
-        errors.append("registry must record the authorized Gearbox repository creation")
-    if reconciliation.get("lifecycle_changes_executed") is not True:
-        errors.append("registry must record the evidence-backed Gearbox lifecycle assignment")
-    if reconciliation.get("existing_repository_lifecycle_changes_executed") is not False:
-        errors.append("registry must record no existing-repository lifecycle changes")
-    if reconciliation.get("existing_repository_dispositions_executed") is not False:
-        errors.append("registry must record no executed existing-repository dispositions")
+        errors.append("registry theory reconciliation needs a verified timestamp")
     if reconciliation.get("model_provider_runs_added") != 0:
-        errors.append("registry must record zero model/provider runs for Gearbox publication")
+        errors.append("ledger reconciliation must add zero provider runs")
     publication = registry.get("gearbox_publication")
     if not isinstance(publication, dict):
         errors.append("registry.gearbox_publication must be an object")
@@ -1380,10 +1443,9 @@ def validate_theory(
             errors.append("registry Gearbox publication CI must be successful")
         if not _nonempty_string(publication.get("ci_run")):
             errors.append("registry Gearbox publication CI run is required")
-        if publication.get("final_main_sha") != gearbox_repository.get(
-            "last_verified_head_sha"
-        ):
-            errors.append("registry Gearbox publication SHA must match repository HEAD")
+        historical = load_json(ROOT / "program/history/pre-consolidation/registry.json")
+        if publication.get("final_main_sha") != historical["gearbox_publication"]["final_main_sha"]:
+            errors.append("registry Gearbox publication SHA must match historical publication")
         if gearbox_repository.get("lifecycle_stage") != "PROTOTYPED":
             errors.append("registered Gearbox lifecycle stage must be PROTOTYPED")
         for field in ("final_main_sha", "implementation_revision"):
@@ -1416,7 +1478,7 @@ def validate_theory(
                 item
                 for item in concepts
                 if isinstance(item, dict)
-                and item.get("current_repository") == repository
+                and item.get("id") == repository
             ),
             None,
         )
@@ -1461,7 +1523,7 @@ def main(argv: list[str] | None = None) -> int:
             print(f"- {error}", file=sys.stderr)
         return 1
     print(
-        f"PASS: {len(EXPECTED_REPOSITORIES)} repositories, "
+        f"PASS: {len(registry['repositories'])} repositories, "
         f"{len(theory['concepts'])} concepts, and "
         f"{len(experiments['experiments'])} experiments validated"
     )

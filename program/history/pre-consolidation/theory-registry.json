@@ -1,9 +1,9 @@
 {
-  "schema_version": 2,
-  "registry_id": "opsle.theory-registry.v2",
-  "verified_at": "2026-09-09T00:00:00Z",
-  "source_repository_count": 23,
-  "current_concept_repository_count": 8,
+  "schema_version": 1,
+  "registry_id": "opsle.theory-registry.v1",
+  "verified_at": "2026-08-31T02:59:01Z",
+  "source_repository_count": 21,
+  "current_concept_repository_count": 18,
   "canonical_definitions": {
     "gearbox": "Agent Gearbox lets a powerful primary developer delegate routine operations and bounded work to deterministic software or less expensive models, then receive only the compact result needed to continue.",
     "context_firewall": "Context Firewall is a deterministic boundary that keeps operational noise out of an AI agent's context while preserving the compact evidence, provenance, and escalation path the agent needs to make correct decisions.",
@@ -42,8 +42,8 @@
       ],
       "consumers": [],
       "current_implementation_fidelity": {
-        "status": "PROTOTYPED",
-        "assessment": "Provider-free bounded core, deterministic Tasks phase routing and consolidated Routing Policy contract. Tasks uses an execution-scoped capability model gateway; no comparative savings established."
+        "status": "NARROW_PROTOTYPE",
+        "assessment": "The public provider-free core implements strict request and policy admission, exact deterministic execution, content-addressed staged helper context, one injected helper transport, blocking wait, literal budgets, raw-artifact locators, compact results, termination checks, and Visible Value receipts. No production provider transport, Context Firewall integration, comparative benchmark, or autonomous orchestration exists."
       },
       "drift_status": "RESTORED_PUBLIC_HOME",
       "current_name_accuracy": "Canonical name and repository boundary now match the restored primary-developer theory.",
@@ -54,19 +54,14 @@
         "https://github.com/opsle/gearbox/blob/f3fab9f292cf4eabd7200615d444f98881f57d55/src/opsle_gearbox/core.py",
         "https://github.com/opsle/gearbox/blob/f3fab9f292cf4eabd7200615d444f98881f57d55/evidence/release-001/verification.json",
         "program/evidence/gearbox-publication/README.md",
-        "https://github.com/opsle/gearbox/pull/1",
-        "https://github.com/opsle/gearbox/blob/12112c3a04d72b768f3252a6d0f6ea455816c9a1/README.md"
+        "https://github.com/opsle/gearbox/pull/1"
       ],
       "confidence": "HIGH",
       "unresolved_questions": [
         "Which production helper transport can independently prove filesystem, credential, network, provider, and termination bounds?",
         "Which external routing and authorization profiles should receive formal Gearbox adapters without moving their ownership into this repository?",
         "What comparative provider-session, correctness, and primary-context effects survive a controlled benchmark without inventing counterfactual savings?"
-      ],
-      "source_repository": "gearbox",
-      "highest_evidenced_stage": "PROTOTYPED",
-      "concept_disposition": "ACTIVE",
-      "historical_analysis": "program/history/pre-consolidation/theory-registry.json"
+      ]
     },
     {
       "id": "agent-trajectory-profiler",
@@ -98,19 +93,14 @@
       "evidence_references": [
         "https://github.com/opsle/agent-trajectory-profiler/blob/0a89661640721d6a39f127514b993d29bd728d47/README.md",
         "https://github.com/opsle/agent-trajectory-profiler/blob/0a89661640721d6a39f127514b993d29bd728d47/src/metrics.js",
-        "https://github.com/opsle/agent-trajectory-profiler/blob/0a89661640721d6a39f127514b993d29bd728d47/src/value-summary.js",
-        "https://github.com/opsle/agent-trajectory-profiler/blob/0a89661640721d6a39f127514b993d29bd728d47/README.md"
+        "https://github.com/opsle/agent-trajectory-profiler/blob/0a89661640721d6a39f127514b993d29bd728d47/src/value-summary.js"
       ],
       "confidence": "HIGH",
       "unresolved_questions": [
-        "How should independent pinned profiler validation stay conformant with the reusable Visible Value contract and reporting layer?",
+        "Should generic Visible Value receipt validation remain in this repository?",
         "Which metrics predict useful agent outcomes across models and tasks?",
         "How should semantic-region ground truth be established?"
-      ],
-      "source_repository": "agent-trajectory-profiler",
-      "highest_evidenced_stage": "VERIFIED",
-      "concept_disposition": "ACTIVE",
-      "historical_analysis": "program/history/pre-consolidation/theory-registry.json"
+      ]
     },
     {
       "id": "semantic-edit-protocol",
@@ -141,55 +131,52 @@
       "current_name_accuracy": "Accurate.",
       "evidence_references": [
         "https://github.com/opsle/semantic-edit-protocol/blob/29caad5c03827cde17aabd71c38bc25899413a33/README.md",
-        "https://github.com/opsle/semantic-edit-protocol/blob/29caad5c03827cde17aabd71c38bc25899413a33/SPEC.md",
-        "https://github.com/opsle/semantic-edit-protocol/blob/29caad5c03827cde17aabd71c38bc25899413a33/README.md"
+        "https://github.com/opsle/semantic-edit-protocol/blob/29caad5c03827cde17aabd71c38bc25899413a33/SPEC.md"
       ],
       "confidence": "HIGH",
       "unresolved_questions": [
         "What is the first concrete operation and language adapter?",
         "Can anchors, transactions, and rollback be made portable?",
         "Does the protocol outperform ordinary patching under equal correctness gates?"
-      ],
-      "source_repository": "semantic-edit-protocol",
-      "highest_evidenced_stage": "THEORY",
-      "concept_disposition": "ACTIVE",
-      "historical_analysis": "program/history/pre-consolidation/theory-registry.json"
+      ]
     },
     {
       "id": "durable-supervisor",
       "canonical_concept_name": "Durable Supervisor",
-      "one_sentence_definition": "Historical autonomous objective-progress hypothesis; its runtime and repository are retired and impose no current authority or prerequisite.",
+      "one_sentence_definition": "Durable Supervisor owns autonomous objective progress, reconstructs durable state, and resumes decision-making across activations while a non-reasoning runner handles lifecycle mechanics.",
       "original_problem": "Long-horizon autonomous work loses state across interruptions and wastes cognition on waiting, lifecycle mechanics, and reconstruction.",
       "primary_classification": "DURABLE_ORCHESTRATION",
-      "current_repository": null,
-      "recommended_disposition": "RETIRED",
-      "disposition_rationale": "Final consolidation receipt executed this disposition; prior recommendations remain historical.",
-      "disposition_gain": "Current home and source history are explicit; no retired source is eligible for new workload.",
-      "disposition_risk": "Consolidation or retirement does not establish general correctness, independent reuse or comparative benefit.",
-      "provenance_concerns": "Final migration preserves source revisions, licenses, attribution, archived repository history and Tasks project history. Original analysis remains in historical_analysis.",
-      "relationship_to_gearbox": "Routing belongs to Gearbox; task lifecycle belongs to Tasks. Historical family analysis is preserved separately.",
-      "relationship_to_context_firewall": "Evidence reduction belongs to Context Firewall; historical contracts retain their provenance.",
-      "dependencies": [],
+      "current_repository": "durable-supervisor",
+      "recommended_disposition": "KEEP_AS_RESEARCH",
+      "disposition_rationale": "The autonomous cross-activation hypothesis is distinct from Gearbox, but the installable boundary and family packaging are not yet proven.",
+      "disposition_gain": "The separate research home prevents durable objective ownership and reconstruction from being conflated with bounded primary-developer delegation.",
+      "disposition_risk": "Remaining an umbrella research repository may defer decisions about ledger, scheduler, and wakeup module ownership.",
+      "provenance_concerns": "Retain the extraction commit and explicitly attribute any future consolidation of ledger, scheduler, wakeup, discovery, or recovery research.",
+      "relationship_to_gearbox": "Formally separate: it may operate across activations without a continuously active primary developer; Gearbox remains subordinate to one primary developer's bounded call.",
+      "relationship_to_context_firewall": "May consume compact evidence packets from child or runner activity, but Context Firewall provides no persistence, scheduling, or objective ownership.",
+      "dependencies": [
+        "agent-state-ledger",
+        "agent-scheduler-runtime",
+        "event-driven-agent-wakeup",
+        "decision-evidence-protocol"
+      ],
       "consumers": [],
       "current_implementation_fidelity": {
-        "status": "HISTORICAL_EVIDENCE_PRESERVED",
-        "assessment": "Source maturity preserved independently of current home. Consolidation does not promote the concept."
+        "status": "THEORY_ONLY",
+        "assessment": "The theory is coherent, but no ledger, runner, reconstruction envelope, fixture, or automated test exists. Shared fresh-child and passive-wait language caused external conflation with Gearbox."
       },
-      "drift_status": "Final retirement/consolidation receipt supersedes prior proposed disposition.",
-      "current_name_accuracy": "Historical concept identity retained; current repository home is recorded independently.",
+      "drift_status": "BOUNDARY_CONFLATION",
+      "current_name_accuracy": "Accurate when durable objective ownership and cross-activation reconstruction remain explicit.",
       "evidence_references": [
         "https://github.com/opsle/durable-supervisor/blob/555ebedb992ac74236bb7da8230b4d6b0489830b/README.md",
-        "https://github.com/opsle/durable-supervisor/blob/555ebedb992ac74236bb7da8230b4d6b0489830b/ARCHITECTURE.md",
-        "https://github.com/opsle/tasks/blob/e1207c5264c59e14efe9838bba3a33ba504665d2/docs/migrations/20260907-consolidation.json"
+        "https://github.com/opsle/durable-supervisor/blob/555ebedb992ac74236bb7da8230b4d6b0489830b/ARCHITECTURE.md"
       ],
       "confidence": "HIGH",
       "unresolved_questions": [
-        "Highest evidenced research maturity is preserved; this historical source has no active work or activation requirement."
-      ],
-      "source_repository": "durable-supervisor",
-      "highest_evidenced_stage": "VERIFIED",
-      "concept_disposition": "RETIRED",
-      "historical_analysis": "program/history/pre-consolidation/theory-registry.json"
+        "What is the minimum durable reconstruction envelope?",
+        "Which family mechanisms should share one implementation repository?",
+        "Can correctness match a continuously active supervisor under restart and duplicate-event faults?"
+      ]
     },
     {
       "id": "event-driven-agent-wakeup",
@@ -197,39 +184,38 @@
       "one_sentence_definition": "Event-Driven Agent Wakeup durably registers a wait, suspends model activity, and reactivates an orchestrator exactly once on a decision-relevant event.",
       "original_problem": "Polling and waiting were implemented as repeated model turns even though they are runtime concerns.",
       "primary_classification": "DURABLE_ORCHESTRATION",
-      "current_repository": "tasks",
-      "recommended_disposition": "CONSOLIDATED",
-      "disposition_rationale": "Final consolidation receipt executed this disposition; prior recommendations remain historical.",
-      "disposition_gain": "Current home and source history are explicit; no retired source is eligible for new workload.",
-      "disposition_risk": "Consolidation or retirement does not establish general correctness, independent reuse or comparative benefit.",
-      "provenance_concerns": "Final migration preserves source revisions, licenses, attribution, archived repository history and Tasks project history. Original analysis remains in historical_analysis.",
-      "relationship_to_gearbox": "Routing belongs to Gearbox; task lifecycle belongs to Tasks. Historical family analysis is preserved separately.",
-      "relationship_to_context_firewall": "Evidence reduction belongs to Context Firewall; historical contracts retain their provenance.",
+      "current_repository": "event-driven-agent-wakeup",
+      "recommended_disposition": "CONSOLIDATE_WITH_OTHER",
+      "disposition_rationale": "Durable wait registration, event delivery, scheduling, and reconstruction share one state boundary with the Durable Supervisor family.",
+      "disposition_gain": "One durable event and scheduling contract avoids duplicate persistence and wakeup semantics.",
+      "disposition_risk": "Independent polling-versus-wakeup benchmarks and reusable adapters could become less visible.",
+      "provenance_concerns": "Preserve the repository commit, two prototype tests, lifecycle record, citations, and a future redirect before consolidation.",
+      "relationship_to_gearbox": "Not Gearbox's passive wait: Gearbox blocks synchronously at the OS or transport layer inside one bounded call; this concept persists a wait and reactivates an orchestrator.",
+      "relationship_to_context_firewall": "May use adapters for event/process chatter, but wake identity, timeout, failure, approval, and loss signals are unsafe to hide.",
       "dependencies": [
         "agent-state-ledger",
         "agent-scheduler-runtime"
       ],
-      "consumers": [],
+      "consumers": [
+        "durable-supervisor"
+      ],
       "current_implementation_fidelity": {
-        "status": "HISTORICAL_EVIDENCE_PRESERVED",
-        "assessment": "Contracts and source provenance now reside in tasks; migration does not establish new research maturity."
+        "status": "NARROW_PROTOTYPE",
+        "assessment": "The eight-line in-memory transition function exercises duplicate and wrong-wait behavior only; it does not implement durable registration, restart recovery, event delivery, or timeouts."
       },
-      "drift_status": "Final retirement/consolidation receipt supersedes prior proposed disposition.",
-      "current_name_accuracy": "Historical concept identity retained; current repository home is recorded independently.",
+      "drift_status": "PROTOTYPE_SCOPE_OVERSTATED",
+      "current_name_accuracy": "Accurate for the theory; the current implementation is not durable.",
       "evidence_references": [
         "https://github.com/opsle/event-driven-agent-wakeup/blob/a6209860c2151450cc28ed648bc8c2631c8db7ef/README.md",
         "https://github.com/opsle/event-driven-agent-wakeup/blob/a6209860c2151450cc28ed648bc8c2631c8db7ef/src/runtime.js",
-        "https://github.com/opsle/event-driven-agent-wakeup/blob/a6209860c2151450cc28ed648bc8c2631c8db7ef/tests/runtime.test.js",
-        "https://github.com/opsle/tasks/blob/e1207c5264c59e14efe9838bba3a33ba504665d2/docs/migrations/20260907-consolidation.json"
+        "https://github.com/opsle/event-driven-agent-wakeup/blob/a6209860c2151450cc28ed648bc8c2631c8db7ef/tests/runtime.test.js"
       ],
       "confidence": "MEDIUM_HIGH",
       "unresolved_questions": [
-        "Highest evidenced research maturity is preserved; this historical source has no active work or activation requirement."
-      ],
-      "source_repository": "event-driven-agent-wakeup",
-      "highest_evidenced_stage": "PROTOTYPED",
-      "concept_disposition": "CONSOLIDATED",
-      "historical_analysis": "program/history/pre-consolidation/theory-registry.json"
+        "Who owns timeout production and late-event retention?",
+        "What proves exactly-once decision activation across restart?",
+        "Do reusable wait adapters justify independent packaging?"
+      ]
     },
     {
       "id": "context-firewall",
@@ -249,7 +235,8 @@
       "consumers": [
         "gearbox",
         "decision-evidence-protocol",
-        "agent-trajectory-profiler"
+        "agent-trajectory-profiler",
+        "durable-supervisor"
       ],
       "intended_adapter_families": [
         "tests",
@@ -261,27 +248,22 @@
         "helper_agent_result"
       ],
       "current_implementation_fidelity": {
-        "status": "PROTOTYPED",
-        "assessment": "Flat TAP and Node spec/dot reporter reducer with semantic-only projection; Tasks command-evidence adapter integrated. Actual downstream delivery is separate from canonical packet telemetry."
+        "status": "ADAPTER_PROTOTYPED",
+        "assessment": "The strict TAP-compatible reducer faithfully implements one deterministic adapter and packet profile. Other adapter families and the safe correctness frontier do not exist."
       },
       "drift_status": "PARTIAL_ADAPTER_SCOPE",
       "current_name_accuracy": "Accurate for the concept; implementation maturity must remain adapter-scoped.",
       "evidence_references": [
         "https://github.com/opsle/context-firewall/blob/953c48f1cfd154d6b7ed10b51b87fe54e4df45f2/README.md",
         "https://github.com/opsle/context-firewall/blob/953c48f1cfd154d6b7ed10b51b87fe54e4df45f2/SPEC.md",
-        "https://github.com/opsle/context-firewall/blob/953c48f1cfd154d6b7ed10b51b87fe54e4df45f2/src/reducer.js",
-        "https://github.com/opsle/context-firewall/blob/6dd6e5fdf21f28dc5ebfa07954aaa9bed2dbcc32/README.md"
+        "https://github.com/opsle/context-firewall/blob/953c48f1cfd154d6b7ed10b51b87fe54e4df45f2/src/reducer.js"
       ],
       "confidence": "HIGH",
       "unresolved_questions": [
         "What common adapter interface preserves tool-specific safety?",
         "How are raw artifact availability and hash validity independently proven?",
         "Where is the experimentally safe reduction frontier by task and adapter family?"
-      ],
-      "source_repository": "context-firewall",
-      "highest_evidenced_stage": "PROTOTYPED",
-      "concept_disposition": "ACTIVE",
-      "historical_analysis": "program/history/pre-consolidation/theory-registry.json"
+      ]
     },
     {
       "id": "decision-evidence-protocol",
@@ -303,6 +285,7 @@
         "context-firewall",
         "agent-trajectory-profiler",
         "verifiable-agent-handoff",
+        "durable-supervisor",
         "agent-recovery-policy"
       ],
       "current_implementation_fidelity": {
@@ -314,19 +297,14 @@
       "evidence_references": [
         "https://github.com/opsle/decision-evidence-protocol/blob/b17ae3b41cea7cb0b9e0befe43e885b5aa0e4a09/README.md",
         "https://github.com/opsle/decision-evidence-protocol/blob/b17ae3b41cea7cb0b9e0befe43e885b5aa0e4a09/src/context-firewall-v1.js",
-        "https://github.com/opsle/decision-evidence-protocol/blob/b17ae3b41cea7cb0b9e0befe43e885b5aa0e4a09/src/validate.js",
-        "https://github.com/opsle/decision-evidence-protocol/blob/b17ae3b41cea7cb0b9e0befe43e885b5aa0e4a09/README.md"
+        "https://github.com/opsle/decision-evidence-protocol/blob/b17ae3b41cea7cb0b9e0befe43e885b5aa0e4a09/src/validate.js"
       ],
       "confidence": "HIGH",
       "unresolved_questions": [
         "What is the canonical generic envelope independent of one producer profile?",
-        "How should independent Decision Evidence conformance checks stay compatible with the reusable Visible Value validator without disturbing pinned experiment evidence?",
+        "Should Decision Evidence be the sole normative Visible Value validator?",
         "Which tool-class profiles demonstrate adequate decision coverage?"
-      ],
-      "source_repository": "decision-evidence-protocol",
-      "highest_evidenced_stage": "VERIFIED",
-      "concept_disposition": "ACTIVE",
-      "historical_analysis": "program/history/pre-consolidation/theory-registry.json"
+      ]
     },
     {
       "id": "agent-state-ledger",
@@ -334,42 +312,40 @@
       "one_sentence_definition": "Agent State Ledger records immutable orchestration facts and derives a deterministic stale-aware projection of current work, evidence, authority, contradictions, and uncertainty.",
       "original_problem": "Conversation history could not reliably reconstruct what autonomous work was done, verified, failed, authorized, uncertain, or next after interruption.",
       "primary_classification": "DURABLE_ORCHESTRATION",
-      "current_repository": "tasks",
-      "recommended_disposition": "CONSOLIDATED",
-      "disposition_rationale": "Final consolidation receipt executed this disposition; prior recommendations remain historical.",
-      "disposition_gain": "Current home and source history are explicit; no retired source is eligible for new workload.",
-      "disposition_risk": "Consolidation or retirement does not establish general correctness, independent reuse or comparative benefit.",
-      "provenance_concerns": "Final migration preserves source revisions, licenses, attribution, archived repository history and Tasks project history. Original analysis remains in historical_analysis.",
-      "relationship_to_gearbox": "Routing belongs to Gearbox; task lifecycle belongs to Tasks. Historical family analysis is preserved separately.",
-      "relationship_to_context_firewall": "Evidence reduction belongs to Context Firewall; historical contracts retain their provenance.",
+      "current_repository": "agent-state-ledger",
+      "recommended_disposition": "CONSOLIDATE_WITH_OTHER",
+      "disposition_rationale": "The ledger is the authoritative history and projection module of the Durable Supervisor family, not a second independent state owner.",
+      "disposition_gain": "One durable state contract prevents supervisor, scheduler, discovery, and recovery from maintaining competing histories.",
+      "disposition_risk": "Potential reuse as a generic audit/projection library may be obscured.",
+      "provenance_concerns": "Preserve the current repository, extraction commit, benchmark theory, and future negative evidence through an attributable module and redirect.",
+      "relationship_to_gearbox": "Normally unnecessary for one bounded Gearbox call; absorbing it would pull Gearbox toward persistent supervision.",
+      "relationship_to_context_firewall": "May record packet hashes, raw locators, and escalation facts, but compact packets are not a replacement for authoritative history.",
       "dependencies": [
         "decision-evidence-protocol"
       ],
       "consumers": [
+        "durable-supervisor",
         "event-driven-agent-wakeup",
         "agent-scheduler-runtime",
         "agent-discovery-control",
         "agent-recovery-policy"
       ],
       "current_implementation_fidelity": {
-        "status": "HISTORICAL_EVIDENCE_PRESERVED",
-        "assessment": "Contracts and source provenance now reside in tasks; migration does not establish new research maturity."
+        "status": "THEORY_ONLY",
+        "assessment": "The theory is coherent, but the generic specification defines no event schema, projection contract, contradiction rules, fixture, implementation, or test."
       },
-      "drift_status": "Final retirement/consolidation receipt supersedes prior proposed disposition.",
-      "current_name_accuracy": "Historical concept identity retained; current repository home is recorded independently.",
+      "drift_status": "OVER_EXTRACTED_REPOSITORY_BOUNDARY",
+      "current_name_accuracy": "Accurate, though the mechanism is not intrinsically agent-specific.",
       "evidence_references": [
         "https://github.com/opsle/agent-state-ledger/blob/acab03b1ff7168222552050e21e7553b07d00e7c/README.md",
-        "https://github.com/opsle/agent-state-ledger/blob/acab03b1ff7168222552050e21e7553b07d00e7c/SPEC.md",
-        "https://github.com/opsle/tasks/blob/e1207c5264c59e14efe9838bba3a33ba504665d2/docs/migrations/20260907-consolidation.json"
+        "https://github.com/opsle/agent-state-ledger/blob/acab03b1ff7168222552050e21e7553b07d00e7c/SPEC.md"
       ],
       "confidence": "MEDIUM_HIGH",
       "unresolved_questions": [
-        "Highest evidenced research maturity is preserved; this historical source has no active work or activation requirement."
-      ],
-      "source_repository": "agent-state-ledger",
-      "highest_evidenced_stage": "THEORY",
-      "concept_disposition": "CONSOLIDATED",
-      "historical_analysis": "program/history/pre-consolidation/theory-registry.json"
+        "Do non-orchestration consumers justify independent packaging?",
+        "What event and projection schemas preserve contradictions and uncertainty?",
+        "What compaction is safe without losing reconstructability?"
+      ]
     },
     {
       "id": "agent-scheduler-runtime",
@@ -377,41 +353,39 @@
       "one_sentence_definition": "Agent Scheduler Runtime performs deterministic readiness, queue, time, cancellation, pause, and bounded-concurrency transitions over durable execution identities.",
       "original_problem": "Queues, dependency readiness, retry timing, timeouts, and schedules were mechanical decisions left inside model loops.",
       "primary_classification": "DURABLE_ORCHESTRATION",
-      "current_repository": "tasks",
-      "recommended_disposition": "CONSOLIDATED",
-      "disposition_rationale": "Final consolidation receipt executed this disposition; prior recommendations remain historical.",
-      "disposition_gain": "Current home and source history are explicit; no retired source is eligible for new workload.",
-      "disposition_risk": "Consolidation or retirement does not establish general correctness, independent reuse or comparative benefit.",
-      "provenance_concerns": "Final migration preserves source revisions, licenses, attribution, archived repository history and Tasks project history. Original analysis remains in historical_analysis.",
-      "relationship_to_gearbox": "Routing belongs to Gearbox; task lifecycle belongs to Tasks. Historical family analysis is preserved separately.",
-      "relationship_to_context_firewall": "Evidence reduction belongs to Context Firewall; historical contracts retain their provenance.",
+      "current_repository": "agent-scheduler-runtime",
+      "recommended_disposition": "CONSOLIDATE_WITH_OTHER",
+      "disposition_rationale": "Scheduling is the deterministic runtime module of Durable Supervisor and shares persistence and event boundaries with the ledger and wakeup mechanism.",
+      "disposition_gain": "One orchestration family can own readiness, time, pause, durable event, and reconstruction semantics without duplicating state.",
+      "disposition_risk": "Independent scheduler reuse may be lost and the Durable Supervisor family could become too monolithic.",
+      "provenance_concerns": "Retain the existing theory and benchmark plan as a named module with attributable history if folded.",
+      "relationship_to_gearbox": "Not Gearbox core: a bounded Gearbox call does not require queues, schedules, Global Pause, autonomous retries, or restart recovery.",
+      "relationship_to_context_firewall": "May expose scheduler and process evidence through adapters, but Context Firewall cannot decide readiness or mutate schedules.",
       "dependencies": [
         "agent-state-ledger",
         "agent-resource-claims"
       ],
       "consumers": [
+        "durable-supervisor",
         "event-driven-agent-wakeup",
         "controlled-agent-acceptance"
       ],
       "current_implementation_fidelity": {
-        "status": "HISTORICAL_EVIDENCE_PRESERVED",
-        "assessment": "Contracts and source provenance now reside in tasks; migration does not establish new research maturity."
+        "status": "THEORY_ONLY",
+        "assessment": "No queue state machine, store, fake clock, pause contract, fixture, implementation, or automated test exists; the initial theory also overlaps claims, recovery, and routing."
       },
-      "drift_status": "Final retirement/consolidation receipt supersedes prior proposed disposition.",
-      "current_name_accuracy": "Historical concept identity retained; current repository home is recorded independently.",
+      "drift_status": "OVER_BROAD_INITIAL_SCOPE",
+      "current_name_accuracy": "Accurate if claims, routing, and recovery remain external.",
       "evidence_references": [
         "https://github.com/opsle/agent-scheduler-runtime/blob/d97cd3c218b20e0b2b0e09873f6a3d15c396b3a0/README.md",
-        "https://github.com/opsle/agent-scheduler-runtime/blob/d97cd3c218b20e0b2b0e09873f6a3d15c396b3a0/THEORY.md",
-        "https://github.com/opsle/tasks/blob/e1207c5264c59e14efe9838bba3a33ba504665d2/docs/migrations/20260907-consolidation.json"
+        "https://github.com/opsle/agent-scheduler-runtime/blob/d97cd3c218b20e0b2b0e09873f6a3d15c396b3a0/THEORY.md"
       ],
       "confidence": "HIGH",
       "unresolved_questions": [
-        "Highest evidenced research maturity is preserved; this historical source has no active work or activation requirement."
-      ],
-      "source_repository": "agent-scheduler-runtime",
-      "highest_evidenced_stage": "THEORY",
-      "concept_disposition": "CONSOLIDATED",
-      "historical_analysis": "program/history/pre-consolidation/theory-registry.json"
+        "What exact transitions belong to scheduler versus claims and recovery?",
+        "Who owns timeout and provider-availability events?",
+        "Can the scheduler remain a reusable module inside a consolidated repository?"
+      ]
     },
     {
       "id": "verifiable-agent-handoff",
@@ -419,14 +393,14 @@
       "one_sentence_definition": "Verifiable Agent Handoff seals exact source, result, artifact, and authority identities before source cleanup so a fresh verifier can reconstruct and validate without fallback.",
       "original_problem": "A verifier could not establish an executor's exact result when evidence remained only in the executor's mutable or disposable environment.",
       "primary_classification": "CROSS_CUTTING_PROTOCOL",
-      "current_repository": "tasks",
-      "recommended_disposition": "CONSOLIDATED",
-      "disposition_rationale": "Final consolidation receipt executed this disposition; prior recommendations remain historical.",
-      "disposition_gain": "Current home and source history are explicit; no retired source is eligible for new workload.",
-      "disposition_risk": "Consolidation or retirement does not establish general correctness, independent reuse or comparative benefit.",
-      "provenance_concerns": "Final migration preserves source revisions, licenses, attribution, archived repository history and Tasks project history. Original analysis remains in historical_analysis.",
-      "relationship_to_gearbox": "Routing belongs to Gearbox; task lifecycle belongs to Tasks. Historical family analysis is preserved separately.",
-      "relationship_to_context_firewall": "Evidence reduction belongs to Context Firewall; historical contracts retain their provenance.",
+      "current_repository": "verifiable-agent-handoff",
+      "recommended_disposition": "KEEP_AS_PROTOCOL",
+      "disposition_rationale": "The durable result-transfer and independent-verification boundary is reusable across Gearbox, durable orchestration, CI, and isolation systems.",
+      "disposition_gain": "Artifact identity, publication-before-destruction, and reconstruction semantics remain independently conformable.",
+      "disposition_risk": "Another evidence envelope may duplicate Decision Evidence unless layering is explicit.",
+      "provenance_concerns": "Preserve the result-loss failure narrative and scope the current HMAC prototype to manifest authentication rather than claiming full handoff.",
+      "relationship_to_gearbox": "Optional external protocol when a bounded helper's source environment will be destroyed; not gear selection, admission, or lifecycle ownership.",
+      "relationship_to_context_firewall": "Handoff preserves exact durable artifacts; Context Firewall decides which verified facts enter model context and must escalate rather than hide required handoff evidence.",
       "dependencies": [
         "decision-evidence-protocol"
       ],
@@ -436,24 +410,21 @@
         "controlled-agent-acceptance"
       ],
       "current_implementation_fidelity": {
-        "status": "HISTORICAL_EVIDENCE_PRESERVED",
-        "assessment": "Contracts and source provenance now reside in tasks; migration does not establish new research maturity."
+        "status": "SUBCOMPONENT_PROTOTYPED",
+        "assessment": "The HMAC manifest prototype validates required bindings and a caller-supplied destruction assertion; it does not publish, transport, prove destruction, reconstruct, or independently verify artifacts."
       },
-      "drift_status": "Final retirement/consolidation receipt supersedes prior proposed disposition.",
-      "current_name_accuracy": "Historical concept identity retained; current repository home is recorded independently.",
+      "drift_status": "PROTOTYPE_SCOPE_OVERSTATED",
+      "current_name_accuracy": "Accurate for the theory; current code is a seal subcomponent.",
       "evidence_references": [
         "https://github.com/opsle/verifiable-agent-handoff/blob/399e5cfae94345affa3f087f0f6eb9e77669d33c/README.md",
-        "https://github.com/opsle/verifiable-agent-handoff/blob/399e5cfae94345affa3f087f0f6eb9e77669d33c/src/seal.js",
-        "https://github.com/opsle/tasks/blob/e1207c5264c59e14efe9838bba3a33ba504665d2/docs/migrations/20260907-consolidation.json"
+        "https://github.com/opsle/verifiable-agent-handoff/blob/399e5cfae94345affa3f087f0f6eb9e77669d33c/src/seal.js"
       ],
       "confidence": "HIGH",
       "unresolved_questions": [
-        "Highest evidenced research maturity is preserved; this historical source has no active work or activation requirement."
-      ],
-      "source_repository": "verifiable-agent-handoff",
-      "highest_evidenced_stage": "PROTOTYPED",
-      "concept_disposition": "CONSOLIDATED",
-      "historical_analysis": "program/history/pre-consolidation/theory-registry.json"
+        "How does the handoff profile layer over Decision Evidence?",
+        "What independently proves source destruction and publication durability?",
+        "Which non-Git artifact formats are supported?"
+      ]
     },
     {
       "id": "agent-routing-policy",
@@ -461,14 +432,14 @@
       "one_sentence_definition": "Agent Routing Policy filters and selects a purpose-bound model, provider, profile, or executor route under exact capability, access, availability, independence, and budget constraints with a durable reason.",
       "original_problem": "Opaque routing violated provider budgets, access boundaries, exact model or profile constraints, and reviewer independence.",
       "primary_classification": "GEARBOX_SUPPORTING_POLICY",
-      "current_repository": "gearbox",
-      "recommended_disposition": "CONSOLIDATED",
-      "disposition_rationale": "Final consolidation receipt executed this disposition; prior recommendations remain historical.",
-      "disposition_gain": "Current home and source history are explicit; no retired source is eligible for new workload.",
-      "disposition_risk": "Consolidation or retirement does not establish general correctness, independent reuse or comparative benefit.",
-      "provenance_concerns": "Final migration preserves source revisions, licenses, attribution, archived repository history and Tasks project history. Original analysis remains in historical_analysis.",
-      "relationship_to_gearbox": "Routing belongs to Gearbox; task lifecycle belongs to Tasks. Historical family analysis is preserved separately.",
-      "relationship_to_context_firewall": "Evidence reduction belongs to Context Firewall; historical contracts retain their provenance.",
+      "current_repository": "agent-routing-policy",
+      "recommended_disposition": "FUTURE_GEARBOX_POLICY",
+      "disposition_rationale": "Gearbox needs bounded model, effort, and provider route selection after deterministic-versus-cognitive admission, while broader review and recovery routing must remain explicit extensions.",
+      "disposition_gain": "A versioned Gearbox-facing selection policy would replace ad hoc model and cost choice.",
+      "disposition_risk": "Absorption could erase reviewer-independence or autonomous routing research and accidentally authorize fallback retries.",
+      "provenance_concerns": "Migrate only the Gearbox-facing route profile; retain the original general routing theory, commit, and later experiments with attribution.",
+      "relationship_to_gearbox": "Supporting policy: Gearbox first admits deterministic versus cognitive work; routing then selects one allowed cognitive route and never autonomously retries or falls back.",
+      "relationship_to_context_firewall": "May consume compact availability or performance evidence, but incomplete or uncertain packets must make selection fail closed.",
       "dependencies": [
         "decision-evidence-protocol"
       ],
@@ -478,24 +449,21 @@
         "controlled-agent-acceptance"
       ],
       "current_implementation_fidelity": {
-        "status": "HISTORICAL_EVIDENCE_PRESERVED",
-        "assessment": "Contracts and source provenance now reside in gearbox; migration does not establish new research maturity."
+        "status": "THEORY_ONLY",
+        "assessment": "The initial theory mixes gear/model selection, provider routing, authorization inputs, reviewer independence, and fallback eligibility; no evaluator or normative precedence exists."
       },
-      "drift_status": "Final retirement/consolidation receipt supersedes prior proposed disposition.",
-      "current_name_accuracy": "Historical concept identity retained; current repository home is recorded independently.",
+      "drift_status": "MIXED_DECISION_OWNERSHIP",
+      "current_name_accuracy": "Accurate for broad routing; not a substitute name for Gearbox.",
       "evidence_references": [
         "https://github.com/opsle/agent-routing-policy/blob/43fc2a72d2c8494b2dcdca7b5a209de61d8fe2d8/README.md",
-        "https://github.com/opsle/agent-routing-policy/blob/43fc2a72d2c8494b2dcdca7b5a209de61d8fe2d8/THEORY.md",
-        "https://github.com/opsle/tasks/blob/e1207c5264c59e14efe9838bba3a33ba504665d2/docs/migrations/20260907-consolidation.json"
+        "https://github.com/opsle/agent-routing-policy/blob/43fc2a72d2c8494b2dcdca7b5a209de61d8fe2d8/THEORY.md"
       ],
       "confidence": "MEDIUM_HIGH",
       "unresolved_questions": [
-        "Highest evidenced research maturity is preserved; this historical source has no active work or activation requirement."
-      ],
-      "source_repository": "agent-routing-policy",
-      "highest_evidenced_stage": "THEORY",
-      "concept_disposition": "CONSOLIDATED",
-      "historical_analysis": "program/history/pre-consolidation/theory-registry.json"
+        "Where exactly does gear selection stop and route selection begin?",
+        "Who owns fallback eligibility and reviewer routing?",
+        "What deterministic precedence applies to price, quality, access, and availability?"
+      ]
     },
     {
       "id": "agent-resource-claims",
@@ -503,14 +471,14 @@
       "one_sentence_definition": "Agent Resource Claims establishes current concurrent ownership through canonical resource identities, atomic shared or exclusive claim sets, expiring leases, and fencing tokens.",
       "original_problem": "A process could remain alive after losing authority, while independent locks could deadlock or admit partially conflicting work.",
       "primary_classification": "GEARBOX_SUPPORTING_POLICY",
-      "current_repository": "tasks",
-      "recommended_disposition": "CONSOLIDATED",
-      "disposition_rationale": "Final consolidation receipt executed this disposition; prior recommendations remain historical.",
-      "disposition_gain": "Current home and source history are explicit; no retired source is eligible for new workload.",
-      "disposition_risk": "Consolidation or retirement does not establish general correctness, independent reuse or comparative benefit.",
-      "provenance_concerns": "Final migration preserves source revisions, licenses, attribution, archived repository history and Tasks project history. Original analysis remains in historical_analysis.",
-      "relationship_to_gearbox": "Routing belongs to Gearbox; task lifecycle belongs to Tasks. Historical family analysis is preserved separately.",
-      "relationship_to_context_firewall": "Evidence reduction belongs to Context Firewall; historical contracts retain their provenance.",
+      "current_repository": "agent-resource-claims",
+      "recommended_disposition": "KEEP_AS_RESEARCH",
+      "disposition_rationale": "The policy can support Gearbox writes, durable orchestration, semantic editing, and isolation, but a portable state machine and independent packaging value are not yet proven.",
+      "disposition_gain": "Research remains broadly reusable and avoids prematurely coupling lease and fence semantics to Gearbox.",
+      "disposition_risk": "Repository granularity and overlap with scheduler and authorization remain unresolved.",
+      "provenance_concerns": "Preserve the fenced-claim failure narrative and original extraction before any later module migration.",
+      "relationship_to_gearbox": "Optional policy for bounded shared-resource or write authority; unnecessary when a Gearbox task touches no shared mutable resource.",
+      "relationship_to_context_firewall": "Claim observations may be compacted, but fence mismatch, expiry, and takeover evidence are unsafe to hide and reduction never grants authority.",
       "dependencies": [],
       "consumers": [
         "semantic-edit-protocol",
@@ -519,24 +487,21 @@
         "ephemeral-agent-workers"
       ],
       "current_implementation_fidelity": {
-        "status": "HISTORICAL_EVIDENCE_PRESERVED",
-        "assessment": "Contracts and source provenance now reside in tasks; migration does not establish new research maturity."
+        "status": "THEORY_ONLY",
+        "assessment": "The useful invariants are present, but no catalog schema, conflict lattice, lease state machine, store adapter, concurrency fixture, or automated test exists."
       },
-      "drift_status": "Final retirement/consolidation receipt supersedes prior proposed disposition.",
-      "current_name_accuracy": "Historical concept identity retained; current repository home is recorded independently.",
+      "drift_status": "BOUNDARY_OVERLAP",
+      "current_name_accuracy": "Substantially accurate; the mechanism is generic concurrency authority rather than intrinsically agent-specific.",
       "evidence_references": [
         "https://github.com/opsle/agent-resource-claims/blob/dfe0fbc90c67ce5ef4256354bb62f1d511b1304c/README.md",
-        "https://github.com/opsle/agent-resource-claims/blob/dfe0fbc90c67ce5ef4256354bb62f1d511b1304c/THEORY.md",
-        "https://github.com/opsle/tasks/blob/e1207c5264c59e14efe9838bba3a33ba504665d2/docs/migrations/20260907-consolidation.json"
+        "https://github.com/opsle/agent-resource-claims/blob/dfe0fbc90c67ce5ef4256354bb62f1d511b1304c/THEORY.md"
       ],
       "confidence": "MEDIUM",
       "unresolved_questions": [
-        "Highest evidenced research maturity is preserved; this historical source has no active work or activation requirement."
-      ],
-      "source_repository": "agent-resource-claims",
-      "highest_evidenced_stage": "THEORY",
-      "concept_disposition": "CONSOLIDATED",
-      "historical_analysis": "program/history/pre-consolidation/theory-registry.json"
+        "Does a portable resource identity and conflict lattice justify a standalone package?",
+        "Which time, fairness, and takeover semantics are required?",
+        "Where does resource authority stop and execution authorization begin?"
+      ]
     },
     {
       "id": "agent-discovery-control",
@@ -544,38 +509,37 @@
       "one_sentence_definition": "Agent Discovery Control admits, merges, ignores, or escalates provenance-bearing discovered-work proposals under similarity, depth, existing-work, and storm-budget constraints.",
       "original_problem": "Autonomous discovery created duplicate proposals, recursive work trees, and churn for already-satisfied work.",
       "primary_classification": "DURABLE_ORCHESTRATION",
-      "current_repository": "tasks",
-      "recommended_disposition": "CONSOLIDATED",
-      "disposition_rationale": "Final consolidation receipt executed this disposition; prior recommendations remain historical.",
-      "disposition_gain": "Current home and source history are explicit; no retired source is eligible for new workload.",
-      "disposition_risk": "Consolidation or retirement does not establish general correctness, independent reuse or comparative benefit.",
-      "provenance_concerns": "Final migration preserves source revisions, licenses, attribution, archived repository history and Tasks project history. Original analysis remains in historical_analysis.",
-      "relationship_to_gearbox": "Routing belongs to Gearbox; task lifecycle belongs to Tasks. Historical family analysis is preserved separately.",
-      "relationship_to_context_firewall": "Evidence reduction belongs to Context Firewall; historical contracts retain their provenance.",
+      "current_repository": "agent-discovery-control",
+      "recommended_disposition": "CONSOLIDATE_WITH_OTHER",
+      "disposition_rationale": "Autonomous discovered-work admission depends on the Durable Supervisor family's objective graph, ledger, and shared budgets.",
+      "disposition_gain": "One durable proposal and convergence model avoids a standalone shell with duplicate state.",
+      "disposition_risk": "Independent admission-policy research and non-agent issue-triage reuse could become less visible.",
+      "provenance_concerns": "Preserve the repository commit, benchmark plan, extraction citation, and future fixtures through an attributable module and redirect.",
+      "relationship_to_gearbox": "Outside Gearbox: canonical Gearbox starts from an explicit primary-developer task and must not create recursive autonomous work.",
+      "relationship_to_context_firewall": "May receive compact proposal evidence, but Context Firewall cannot decide semantic duplication or replace proposal provenance.",
       "dependencies": [
         "agent-state-ledger",
         "decision-evidence-protocol"
       ],
-      "consumers": [],
+      "consumers": [
+        "durable-supervisor"
+      ],
       "current_implementation_fidelity": {
-        "status": "HISTORICAL_EVIDENCE_PRESERVED",
-        "assessment": "Contracts and source provenance now reside in tasks; migration does not establish new research maturity."
+        "status": "THEORY_ONLY",
+        "assessment": "The theory is coherent, but the generic spec does not define proposal dispositions, similarity evidence, budgets, convergence, or already-satisfied proofs; no implementation exists."
       },
-      "drift_status": "Final retirement/consolidation receipt supersedes prior proposed disposition.",
-      "current_name_accuracy": "Historical concept identity retained; current repository home is recorded independently.",
+      "drift_status": "OVER_EXTRACTED_REPOSITORY_BOUNDARY",
+      "current_name_accuracy": "Accurate for an orchestration admission policy, not a standalone agent product.",
       "evidence_references": [
         "https://github.com/opsle/agent-discovery-control/blob/926547dd9fd713990b1d6f1f2e650aa6c0883564/README.md",
-        "https://github.com/opsle/agent-discovery-control/blob/926547dd9fd713990b1d6f1f2e650aa6c0883564/THEORY.md",
-        "https://github.com/opsle/tasks/blob/e1207c5264c59e14efe9838bba3a33ba504665d2/docs/migrations/20260907-consolidation.json"
+        "https://github.com/opsle/agent-discovery-control/blob/926547dd9fd713990b1d6f1f2e650aa6c0883564/THEORY.md"
       ],
       "confidence": "HIGH",
       "unresolved_questions": [
-        "Highest evidenced research maturity is preserved; this historical source has no active work or activation requirement."
-      ],
-      "source_repository": "agent-discovery-control",
-      "highest_evidenced_stage": "THEORY",
-      "concept_disposition": "CONSOLIDATED",
-      "historical_analysis": "program/history/pre-consolidation/theory-registry.json"
+        "What semantic duplicate oracle is safe?",
+        "How do storm budgets scale with objective complexity?",
+        "Does a reusable admission library exist independently of a supervisor?"
+      ]
     },
     {
       "id": "agent-execution-authorization",
@@ -583,14 +547,14 @@
       "one_sentence_definition": "Agent Execution Authorization validates capability-style grants that bind immutable source authority and current execution authority to one exact task, target, purpose, resource, route, and expiry.",
       "original_problem": "Machine actors received broad or caller-asserted authority instead of server-derived grants bound to exact work and current state.",
       "primary_classification": "GEARBOX_SUPPORTING_POLICY",
-      "current_repository": "tasks",
-      "recommended_disposition": "CONSOLIDATED",
-      "disposition_rationale": "Final consolidation receipt executed this disposition; prior recommendations remain historical.",
-      "disposition_gain": "Current home and source history are explicit; no retired source is eligible for new workload.",
-      "disposition_risk": "Consolidation or retirement does not establish general correctness, independent reuse or comparative benefit.",
-      "provenance_concerns": "Final migration preserves source revisions, licenses, attribution, archived repository history and Tasks project history. Original analysis remains in historical_analysis.",
-      "relationship_to_gearbox": "Routing belongs to Gearbox; task lifecycle belongs to Tasks. Historical family analysis is preserved separately.",
-      "relationship_to_context_firewall": "Evidence reduction belongs to Context Firewall; historical contracts retain their provenance.",
+      "current_repository": "agent-execution-authorization",
+      "recommended_disposition": "FUTURE_GEARBOX_POLICY",
+      "disposition_rationale": "Gearbox must fail closed before deterministic or cognitive execution, while the grant contract should remain reusable by durable orchestration and isolation infrastructure.",
+      "disposition_gain": "Gearbox obtains an exact authority envelope instead of ad hoc caller assertions.",
+      "disposition_risk": "Narrow absorption could discard cross-orchestrator composition or duplicate claim, routing, and handoff state.",
+      "provenance_concerns": "Preserve a separately versioned grant schema and conformance history, plus the immutable-source/current-continuation failure narrative.",
+      "relationship_to_gearbox": "Supporting policy that supplies and validates authority; Gearbox owns applying the result to its requested gear, context, model, budget, and task.",
+      "relationship_to_context_firewall": "Independent: reduced or redacted evidence is never authorization; a firewall may compact an authorization receipt only after authoritative validation.",
       "dependencies": [
         "agent-resource-claims",
         "decision-evidence-protocol",
@@ -602,24 +566,21 @@
         "controlled-agent-acceptance"
       ],
       "current_implementation_fidelity": {
-        "status": "HISTORICAL_EVIDENCE_PRESERVED",
-        "assessment": "Contracts and source provenance now reside in tasks; migration does not establish new research maturity."
+        "status": "THEORY_ONLY",
+        "assessment": "The source/current authority distinction is preserved, but no portable grant, issuance, revocation, replay, composition, validator, or conformance suite exists."
       },
-      "drift_status": "Final retirement/consolidation receipt supersedes prior proposed disposition.",
-      "current_name_accuracy": "Historical concept identity retained; current repository home is recorded independently.",
+      "drift_status": "BOUNDARY_OVERLAP",
+      "current_name_accuracy": "Accurate.",
       "evidence_references": [
         "https://github.com/opsle/agent-execution-authorization/blob/8fb02e943c83fae121c63185d2f0d0dde8c4260a/README.md",
-        "https://github.com/opsle/agent-execution-authorization/blob/8fb02e943c83fae121c63185d2f0d0dde8c4260a/THEORY.md",
-        "https://github.com/opsle/tasks/blob/e1207c5264c59e14efe9838bba3a33ba504665d2/docs/migrations/20260907-consolidation.json"
+        "https://github.com/opsle/agent-execution-authorization/blob/8fb02e943c83fae121c63185d2f0d0dde8c4260a/THEORY.md"
       ],
       "confidence": "HIGH",
       "unresolved_questions": [
-        "Highest evidenced research maturity is preserved; this historical source has no active work or activation requirement."
-      ],
-      "source_repository": "agent-execution-authorization",
-      "highest_evidenced_stage": "THEORY",
-      "concept_disposition": "CONSOLIDATED",
-      "historical_analysis": "program/history/pre-consolidation/theory-registry.json"
+        "What is the portable grant schema and revocation oracle?",
+        "Are claims and routes embedded or content-addressed references?",
+        "How are source and continuation authority composed without replay?"
+      ]
     },
     {
       "id": "controlled-agent-acceptance",
@@ -627,14 +588,14 @@
       "one_sentence_definition": "Controlled Agent Acceptance is an experiment-control method for one-shot real-agent runs under an immutable manifest, literal budgets, fail-closed activation, restoration, evidence retention, and residue reconciliation.",
       "original_problem": "Real-agent acceptance could exceed provider budgets, target the wrong revision, conflict with active work, leave reusable authority, fail to restore pause state, or leave residue.",
       "primary_classification": "RESEARCH_ONLY_HYPOTHESIS",
-      "current_repository": "tasks",
-      "recommended_disposition": "CONSOLIDATED",
-      "disposition_rationale": "Final consolidation receipt executed this disposition; prior recommendations remain historical.",
-      "disposition_gain": "Current home and source history are explicit; no retired source is eligible for new workload.",
-      "disposition_risk": "Consolidation or retirement does not establish general correctness, independent reuse or comparative benefit.",
-      "provenance_concerns": "Final migration preserves source revisions, licenses, attribution, archived repository history and Tasks project history. Original analysis remains in historical_analysis.",
-      "relationship_to_gearbox": "Routing belongs to Gearbox; task lifecycle belongs to Tasks. Historical family analysis is preserved separately.",
-      "relationship_to_context_firewall": "Evidence reduction belongs to Context Firewall; historical contracts retain their provenance.",
+      "current_repository": "controlled-agent-acceptance",
+      "recommended_disposition": "KEEP_AS_RESEARCH",
+      "disposition_rationale": "This is a provider-independent acceptance methodology for testing autonomous systems, not a production runtime primitive or Gearbox component.",
+      "disposition_gain": "Harness and system-under-test verdicts, first-failure behavior, budgets, and restoration remain independently testable.",
+      "disposition_risk": "A separate repository may be excessive if the eventual controller belongs beside each system under test.",
+      "provenance_concerns": "Retain predecessor run citations and future immutable manifests without promoting private operational evidence into generalized proof.",
+      "relationship_to_gearbox": "May later test one-shot Gearbox budget and cleanup behavior, but does not define or implement Gearbox.",
+      "relationship_to_context_firewall": "Can use adapters for captured logs; preflight defects, first failures, budget use, restoration failures, residue, and dual verdicts are unsafe to hide.",
       "dependencies": [
         "agent-execution-authorization",
         "agent-routing-policy",
@@ -643,24 +604,21 @@
       ],
       "consumers": [],
       "current_implementation_fidelity": {
-        "status": "HISTORICAL_EVIDENCE_PRESERVED",
-        "assessment": "Contracts and source provenance now reside in tasks; migration does not establish new research maturity."
+        "status": "THEORY_ONLY",
+        "assessment": "The theory is coherent, but no manifest schema, state machine, CAS semantics, restoration protocol, residue model, controller, fixture, or test exists."
       },
-      "drift_status": "Final retirement/consolidation receipt supersedes prior proposed disposition.",
-      "current_name_accuracy": "Historical concept identity retained; current repository home is recorded independently.",
+      "drift_status": "REPOSITORY_BOUNDARY_OVERSTATED",
+      "current_name_accuracy": "Accurate for a methodology or harness.",
       "evidence_references": [
         "https://github.com/opsle/controlled-agent-acceptance/blob/2d652adf56e53953327d09b1ba9c4a9c3445f052/README.md",
-        "https://github.com/opsle/controlled-agent-acceptance/blob/2d652adf56e53953327d09b1ba9c4a9c3445f052/ARCHITECTURE.md",
-        "https://github.com/opsle/tasks/blob/e1207c5264c59e14efe9838bba3a33ba504665d2/docs/migrations/20260907-consolidation.json"
+        "https://github.com/opsle/controlled-agent-acceptance/blob/2d652adf56e53953327d09b1ba9c4a9c3445f052/ARCHITECTURE.md"
       ],
       "confidence": "MEDIUM_HIGH",
       "unresolved_questions": [
-        "Highest evidenced research maturity is preserved; this historical source has no active work or activation requirement."
-      ],
-      "source_repository": "controlled-agent-acceptance",
-      "highest_evidenced_stage": "THEORY",
-      "concept_disposition": "CONSOLIDATED",
-      "historical_analysis": "program/history/pre-consolidation/theory-registry.json"
+        "Which manifest and interruption semantics generalize beyond the predecessor?",
+        "Where should the eventual harness implementation live?",
+        "How are non-reusable grants and residue proved across runtimes?"
+      ]
     },
     {
       "id": "agent-recovery-policy",
@@ -668,39 +626,38 @@
       "one_sentence_definition": "Agent Recovery Policy permits bounded recovery only when typed failure evidence shows that another authorized attempt can add information or change conditions, otherwise converging to a terminal or human-input state.",
       "original_problem": "Retries, consultations, fallbacks, and verification failures bypassed shared budgets or repeated the same failure indefinitely.",
       "primary_classification": "DURABLE_ORCHESTRATION",
-      "current_repository": "tasks",
-      "recommended_disposition": "CONSOLIDATED",
-      "disposition_rationale": "Final consolidation receipt executed this disposition; prior recommendations remain historical.",
-      "disposition_gain": "Current home and source history are explicit; no retired source is eligible for new workload.",
-      "disposition_risk": "Consolidation or retirement does not establish general correctness, independent reuse or comparative benefit.",
-      "provenance_concerns": "Final migration preserves source revisions, licenses, attribution, archived repository history and Tasks project history. Original analysis remains in historical_analysis.",
-      "relationship_to_gearbox": "Routing belongs to Gearbox; task lifecycle belongs to Tasks. Historical family analysis is preserved separately.",
-      "relationship_to_context_firewall": "Evidence reduction belongs to Context Firewall; historical contracts retain their provenance.",
+      "current_repository": "agent-recovery-policy",
+      "recommended_disposition": "CONSOLIDATE_WITH_OTHER",
+      "disposition_rationale": "Recovery permission depends on the Durable Supervisor family's attempt ledger, global budgets, scheduling, and terminal-state model.",
+      "disposition_gain": "One authoritative attempt and budget model prevents recovery paths from bypassing orchestration limits.",
+      "disposition_risk": "Independent deterministic failure-policy testing and reuse could become less visible.",
+      "provenance_concerns": "Retain extraction history, failure narratives, benchmark plan, and future policy fixtures as an attributable module.",
+      "relationship_to_gearbox": "Outside canonical Gearbox: a Gearbox run returns one failed or indeterminate result and does not autonomously retry, consult, route, or fall back.",
+      "relationship_to_context_firewall": "May consume typed failure packets, but incomplete, truncated, hash-invalid, or unavailable raw evidence must terminate or escalate rather than authorize recovery.",
       "dependencies": [
         "agent-state-ledger",
         "agent-routing-policy",
         "decision-evidence-protocol"
       ],
-      "consumers": [],
+      "consumers": [
+        "durable-supervisor"
+      ],
       "current_implementation_fidelity": {
-        "status": "HISTORICAL_EVIDENCE_PRESERVED",
-        "assessment": "Contracts and source provenance now reside in tasks; migration does not establish new research maturity."
+        "status": "THEORY_ONLY",
+        "assessment": "No failure taxonomy, attempt ledger, information-gain rule, budget transition, evaluator, fixture, or automated test exists; alternate-route ownership overlaps routing."
       },
-      "drift_status": "Final retirement/consolidation receipt supersedes prior proposed disposition.",
-      "current_name_accuracy": "Historical concept identity retained; current repository home is recorded independently.",
+      "drift_status": "BOUNDARY_OVERLAP",
+      "current_name_accuracy": "Accurate, with routing and scheduling boundaries made explicit.",
       "evidence_references": [
         "https://github.com/opsle/agent-recovery-policy/blob/1b733a111e26e0a409fee3b96f627048531daefe/README.md",
-        "https://github.com/opsle/agent-recovery-policy/blob/1b733a111e26e0a409fee3b96f627048531daefe/THEORY.md",
-        "https://github.com/opsle/tasks/blob/e1207c5264c59e14efe9838bba3a33ba504665d2/docs/migrations/20260907-consolidation.json"
+        "https://github.com/opsle/agent-recovery-policy/blob/1b733a111e26e0a409fee3b96f627048531daefe/THEORY.md"
       ],
       "confidence": "HIGH",
       "unresolved_questions": [
-        "Highest evidenced research maturity is preserved; this historical source has no active work or activation requirement."
-      ],
-      "source_repository": "agent-recovery-policy",
-      "highest_evidenced_stage": "THEORY",
-      "concept_disposition": "CONSOLIDATED",
-      "historical_analysis": "program/history/pre-consolidation/theory-registry.json"
+        "What portable failure taxonomy and information-gain rule are adequate?",
+        "Does recovery choose an alternate-route class while routing chooses the exact route?",
+        "Which retry timing decisions belong to the scheduler?"
+      ]
     },
     {
       "id": "ephemeral-agent-workers",
@@ -708,41 +665,39 @@
       "one_sentence_definition": "Ephemeral Agent Workers provides restricted-broker execution in disposable bounded environments with scoped resources, sealed result capture, termination, destruction, and independent destruction verification.",
       "original_problem": "Autonomous execution exposed host mounts, production secrets, broad network access, lingering processes, and ambiguous cleanup.",
       "primary_classification": "EXECUTION_ISOLATION_INFRASTRUCTURE",
-      "current_repository": "tasks",
-      "recommended_disposition": "CONSOLIDATED",
-      "disposition_rationale": "Final consolidation receipt executed this disposition; prior recommendations remain historical.",
-      "disposition_gain": "Current home and source history are explicit; no retired source is eligible for new workload.",
-      "disposition_risk": "Consolidation or retirement does not establish general correctness, independent reuse or comparative benefit.",
-      "provenance_concerns": "Final migration preserves source revisions, licenses, attribution, archived repository history and Tasks project history. Original analysis remains in historical_analysis.",
-      "relationship_to_gearbox": "Routing belongs to Gearbox; task lifecycle belongs to Tasks. Historical family analysis is preserved separately.",
-      "relationship_to_context_firewall": "Evidence reduction belongs to Context Firewall; historical contracts retain their provenance.",
+      "current_repository": "ephemeral-agent-workers",
+      "recommended_disposition": "KEEP_STANDALONE",
+      "disposition_rationale": "Isolation, containment, worker lifecycle, and destruction proof have independent use for Gearbox, durable orchestration, CI, and other untrusted workloads.",
+      "disposition_gain": "A separate threat model, broker contract, portability layer, and containment harness can mature independently.",
+      "disposition_risk": "The implementation may duplicate authorization, claims, or handoff schemas unless those remain explicit external contracts.",
+      "provenance_concerns": "Preserve the Incus-derived predecessor evidence while keeping Incus an optional adapter and not copying private infrastructure.",
+      "relationship_to_gearbox": "Optional external executor for bounded cognitive helpers; deterministic local gears need not use it, and it never selects a gear.",
+      "relationship_to_context_firewall": "May expose helper logs and results through adapters, but Context Firewall proves neither containment, result sealing, nor destruction.",
       "dependencies": [
         "agent-execution-authorization",
         "agent-resource-claims",
         "verifiable-agent-handoff"
       ],
       "consumers": [
-        "gearbox"
+        "gearbox",
+        "durable-supervisor"
       ],
       "current_implementation_fidelity": {
-        "status": "HISTORICAL_EVIDENCE_PRESERVED",
-        "assessment": "Contracts and source provenance now reside in tasks; migration does not establish new research maturity."
+        "status": "THEORY_ONLY",
+        "assessment": "No portable broker or worker adapter, resource profile, threat model, containment harness, destruction receipt, fixture, or test exists."
       },
-      "drift_status": "Final retirement/consolidation receipt supersedes prior proposed disposition.",
-      "current_name_accuracy": "Historical concept identity retained; current repository home is recorded independently.",
+      "drift_status": "ALIGNED_THEORY_ONLY",
+      "current_name_accuracy": "Reasonably accurate, though the isolation primitive is not inherently agent-specific.",
       "evidence_references": [
         "https://github.com/opsle/ephemeral-agent-workers/blob/ad96fcfdfac06d340b5e96d369634980cee78ef4/README.md",
-        "https://github.com/opsle/ephemeral-agent-workers/blob/ad96fcfdfac06d340b5e96d369634980cee78ef4/ARCHITECTURE.md",
-        "https://github.com/opsle/tasks/blob/e1207c5264c59e14efe9838bba3a33ba504665d2/docs/migrations/20260907-consolidation.json"
+        "https://github.com/opsle/ephemeral-agent-workers/blob/ad96fcfdfac06d340b5e96d369634980cee78ef4/ARCHITECTURE.md"
       ],
       "confidence": "HIGH",
       "unresolved_questions": [
-        "Highest evidenced research maturity is preserved; this historical source has no active work or activation requirement."
-      ],
-      "source_repository": "ephemeral-agent-workers",
-      "highest_evidenced_stage": "THEORY",
-      "concept_disposition": "CONSOLIDATED",
-      "historical_analysis": "program/history/pre-consolidation/theory-registry.json"
+        "What portable isolation and destruction-proof contracts work across technologies?",
+        "What kernel and broker threat model is in scope?",
+        "How much result sealing belongs solely to Verifiable Handoff?"
+      ]
     },
     {
       "id": "affected-verification",
@@ -765,10 +720,10 @@
         "agent-trajectory-profiler"
       ],
       "current_implementation_fidelity": {
-        "status": "VERIFIED",
-        "assessment": "Tasks verification contract integrated. Research remains OBSERVE/SHADOW; permanent AV-EXP-002 failure and bounded AV-EXP-003 repair remain intact. Manifest-backed selection does not establish general trust."
+        "status": "VERIFIED_NARROW_PROTOTYPE",
+        "assessment": "The public dependency-free Node.js core validates normalized evidence/catalog/policy input, computes reverse impact, selects and explains checks, fails closed on uncertainty, emits canonical plans and Visible Value receipts, and validates identity-bound SHADOW results. AV-EXP-001 adds one benchmark-only Zustand/Vitest adapter and a frozen full-catalog oracle: both AV arms selected all 8 relevant checks observed across ten scenarios, while the uncertainty case forced full verification. It has no production adapter, independent qualifying replication, or trusted selective-verification class."
       },
-      "drift_status": "TASKS_CONTRACT_INTEGRATED_RESEARCH_LIMITS_RETAINED",
+      "drift_status": "NEW_ALIGNED_PUBLIC_HOME",
       "current_name_accuracy": "Accurate for the implemented verification-planning boundary and explicitly broader than affected-test selection.",
       "evidence_references": [
         "https://github.com/opsle/affected-verification/blob/641aee9d29a89e2a8819f00817ccee8e5d234dcb/SPEC.md",
@@ -776,60 +731,14 @@
         "https://github.com/opsle/affected-verification/blob/0544362d7659093b7f0b4f89ee8f68023fd269c3/benchmark/av-exp-001/preregistration-v1/preregistration.json",
         "https://github.com/opsle/affected-verification/blob/641aee9d29a89e2a8819f00817ccee8e5d234dcb/benchmark/av-exp-001/REPORT.md",
         "https://github.com/opsle/affected-verification/blob/641aee9d29a89e2a8819f00817ccee8e5d234dcb/benchmark/av-exp-001/results-v2/summary.json",
-        "https://github.com/opsle/affected-verification/pull/2",
-        "https://github.com/opsle/affected-verification/blob/792c4bb7881f6f430b2b1ba238ba05be43f50d38/README.md"
+        "https://github.com/opsle/affected-verification/pull/2"
       ],
       "confidence": "HIGH",
       "unresolved_questions": [
-        "Which independent evidence could justify a bounded trust promotion beyond OBSERVE/SHADOW without erasing the permanent AV-EXP-002 failure?",
-        "Can opaque-boundary verification regain precision while preserving fail-closed selection and complete check evidence?",
-        "How generalizable is the bounded AV-EXP-003 repair beyond its frozen replay and adversarial corpora?"
-      ],
-      "source_repository": "affected-verification",
-      "highest_evidenced_stage": "VERIFIED",
-      "concept_disposition": "ACTIVE",
-      "historical_analysis": "program/history/pre-consolidation/theory-registry.json"
-    },
-    {
-      "id": "visible-value",
-      "canonical_concept_name": "Visible Value",
-      "one_sentence_definition": "Validate mechanism receipts and summarize operator evidence without inventing benefit.",
-      "original_problem": "Mechanism activity needs inspectable evidence and honest measurement classes.",
-      "primary_classification": "INDEPENDENT_OPSLE_TOOL",
-      "current_repository": "visible-value",
-      "recommended_disposition": "KEEP_STANDALONE",
-      "disposition_rationale": "Independent reusable receipt validator and reporting CLI.",
-      "disposition_gain": "Shared validation and honest compatible totals.",
-      "disposition_risk": "Producer claims are not independent attestations.",
-      "provenance_concerns": "Preserve research Visible Value Contract attribution and Apache-2.0 license.",
-      "relationship_to_gearbox": "Consumes receipts without choosing routes.",
-      "relationship_to_context_firewall": "Consumes byte receipts without inferring downstream delivery or savings.",
-      "dependencies": [],
-      "consumers": [],
-      "current_implementation_fidelity": {
-        "status": "IMPLEMENTED",
-        "assessment": "Installable library and CLI with Tasks receipt observer integration."
-      },
-      "drift_status": "Reconciled to current standalone implementation.",
-      "current_name_accuracy": "Accurate receipt-validation and presentation role.",
-      "evidence_references": [
-        "https://github.com/opsle/visible-value/blob/f011395cae86a7a736b424d658bbe3afe65ba870/README.md"
-      ],
-      "confidence": "HIGH",
-      "unresolved_questions": [
-        "Controlled comparative benefit and independent artifact authentication are not established."
-      ],
-      "source_repository": "visible-value",
-      "highest_evidenced_stage": "PROTOTYPED",
-      "concept_disposition": "ACTIVE",
-      "historical_analysis": null
+        "Does the zero-observed-miss result persist in a second public repository and different ecosystem?",
+        "Which benchmark-only evidence adapter is valuable enough to harden into a production-quality adapter?",
+        "Which evidence-based promotion criteria justify TRUSTED_BOUNDED authority for a narrowly defined change class?"
+      ]
     }
-  ],
-  "historical_state": "program/history/pre-consolidation/theory-registry.json",
-  "concept_counts": {
-    "ACTIVE": 7,
-    "CONSOLIDATED": 11,
-    "RETIRED": 1
-  },
-  "concept_count": 19
+  ]
 }

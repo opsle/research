@@ -34,12 +34,15 @@ class TheoryRegistryValidationTests(unittest.TestCase):
     def test_authoritative_theory_registry_is_valid(self):
         self.assertEqual(self.errors_for(), [])
 
-    def test_every_current_concept_repository_is_mapped_once(self):
+    def test_consolidated_concepts_share_a_home(self):
+        concepts = [c for c in self.theory["concepts"] if c["current_repository"] == "tasks"]
+        self.assertGreater(len(concepts), 1)
+        self.assertEqual(self.errors_for(), [])
+
+    def test_wrong_current_home_fails(self):
         theory = copy.deepcopy(self.theory)
         theory["concepts"][-1]["current_repository"] = "context-firewall"
-        errors = self.errors_for(theory=theory)
-        self.assertTrue(any("duplicate current concept repository mappings" in error for error in errors))
-        self.assertTrue(any("missing current concept repository mappings" in error for error in errors))
+        self.assertTrue(any("current home drift" in e for e in self.errors_for(theory=theory)))
 
     def test_gearbox_must_claim_its_current_repository(self):
         theory = copy.deepcopy(self.theory)
@@ -77,39 +80,24 @@ class TheoryRegistryValidationTests(unittest.TestCase):
         errors = self.errors_for(theory=theory)
         self.assertTrue(any("original_problem must be a nonempty string" in error for error in errors))
 
-    def test_registry_reconciliation_distinction_is_required(self):
+    def test_post_consolidation_reconciliation_is_required(self):
         registry = copy.deepcopy(self.registry)
-        del registry["theory_reconciliation"]["gearbox_vs_durable_supervisor"]
-        errors = self.errors_for(registry=registry)
-        self.assertTrue(
-            any("Gearbox versus Durable Supervisor distinction" in error for error in errors)
-        )
-
-    def test_registry_gearbox_repository_status_is_required(self):
-        registry = copy.deepcopy(self.registry)
-        del registry["theory_reconciliation"]["gearbox_repository_status"]
-        errors = self.errors_for(registry=registry)
-        self.assertTrue(
-            any("created and prototyped" in error for error in errors)
-        )
+        registry["theory_reconciliation"]["status"] = "IMPLEMENTED_HOME_REGISTERED"
+        self.assertTrue(any("post-consolidation state" in e for e in self.errors_for(registry=registry)))
 
     def test_gearbox_publication_head_must_match_registry(self):
         registry = copy.deepcopy(self.registry)
         registry["gearbox_publication"]["final_main_sha"] = "0" * 40
         errors = self.errors_for(registry=registry)
         self.assertTrue(
-            any("publication SHA must match repository HEAD" in error for error in errors)
+            any("publication SHA must match historical publication" in error for error in errors)
         )
 
-    def test_existing_repository_lifecycle_changes_are_forbidden(self):
-        registry = copy.deepcopy(self.registry)
-        registry["theory_reconciliation"][
-            "existing_repository_lifecycle_changes_executed"
-        ] = True
-        errors = self.errors_for(registry=registry)
-        self.assertTrue(
-            any("no existing-repository lifecycle changes" in error for error in errors)
-        )
+    def test_consolidation_does_not_promote_concept_maturity(self):
+        theory = copy.deepcopy(self.theory)
+        concept = next(c for c in theory["concepts"] if c["id"] == "agent-state-ledger")
+        concept["highest_evidenced_stage"] = "COMPLETE"
+        self.assertTrue(any("research maturity drift" in e for e in self.errors_for(theory=theory)))
 
     def test_theory_map_classification_drift_fails(self):
         drifted = self.theory_map.replace(

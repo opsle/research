@@ -1,73 +1,37 @@
 # Cross-project architecture
 
-The authoritative conceptual topology is
-[`program/THEORY_MAP.md`](program/THEORY_MAP.md). The machine-readable mapping is
-[`program/theory-registry.json`](program/theory-registry.json).
+Opsle Tasks (`opsle/tasks`) owns current workload, task lifecycle and remote
+execution. Its control plane and Incus execution targets are independently
+deployed. This research repository records evidence and program state; it has no
+runtime task-management authority.
 
-```text
-                         PRIMARY DEVELOPER
-                                |
-                                v
-                         AGENT GEARBOX
-                    chooses WHERE work executes
-                     /          |            \
-        deterministic tool  bounded helper  optional isolated worker
-                     \          |            /
-                                v
-                        raw result/evidence
-                                |
-                                v
-                        CONTEXT FIREWALL
-                  chooses WHAT evidence returns
-                                |
-                                v
-                     compact decision evidence
-                                |
-               Decision Evidence conformance
-                                |
-               Trajectory / Visible Value telemetry
-                                |
-                                v
-                         PRIMARY DEVELOPER
-```
+Tasks calls the versioned capability contract implemented for Task 15. Trusted
+installed manifests declare hooks; operator grants bound repository selection at
+the immutable task base. Capabilities supply independent public interfaces:
 
-Gearbox is a public narrow prototype with deterministic execution and an
-injected bounded-helper transport contract. Context Firewall, Decision Evidence
-Protocol, Agent Trajectory Profiler, Verifiable Agent Handoff, and Ephemeral
-Agent Workers remain external, independently reusable mechanisms.
+- Gearbox chooses deterministic or cognitive routes; model-backed capability work
+  requires an execution-scoped, single-use gateway authorization.
+- Context Firewall reduces command evidence, retaining canonical audit packets
+  separately from semantic model evidence and actual delivery measurements.
+- Affected Verification supplies verification plans and exact change capture.
+  Incomplete evidence broadens verification or stops; bounded manifest-backed
+  integration does not promote research beyond OBSERVE/SHADOW.
+- Visible Value validates receipts and produces operator summaries without
+  inventing missing values or causal savings.
 
-Durable orchestration is a separate family:
+Decision Evidence Protocol remains standalone because independent consumers pin
+its contract. Agent Trajectory Profiler and Semantic Edit Protocol retain their
+independent evidence and research boundaries. Graphify is an optional standalone
+CLI, not a Tasks capability.
 
-```text
-Durable Supervisor (objective owner)
-        |
-        +-- Agent State Ledger (history/projection)
-        +-- Agent Scheduler Runtime (readiness/time/pause)
-        +-- Event-Driven Agent Wakeup (durable activation)
-        +-- Agent Discovery Control (new-work admission)
-        +-- Agent Recovery Policy (bounded recovery permission)
-```
+The final consolidation places ten source concepts under Tasks contracts and
+Routing Policy under Gearbox. Source repositories are historical and cannot be
+active dependencies. Durable Supervisor, Taslos Tasks, Paperclip and historical
+agent-run are retired. Findings, source attribution, licenses and experiment
+artifacts remain evidence; none supplies a current execution prerequisite.
 
-It can own autonomous progress across multiple activations without a
-continuously active primary developer. Gearbox performs one bounded delegation
-for a primary developer and returns one terminal result.
-
-Supporting boundaries:
-
-- Affected Verification independently decides which verification checks are
-  defensible for a change; humans, CI, or Gearbox may execute the plan, and
-  Context Firewall may subsequently reduce the resulting evidence.
-- Gearbox admits deterministic versus cognitive work; Routing Policy selects an
-  eligible cognitive route after admission.
-- Resource Claims establishes current concurrent ownership; Execution
-  Authorization validates permission for one exact action.
-- Scheduler decides when durable work is ready; Routing decides where it may
-  run; Recovery decides whether another attempt is justified.
-- Verifiable Handoff preserves exact result artifacts across source destruction;
-  Context Firewall determines which verified facts enter model context.
-- Semantic Edit Protocol owns mutation semantics; Agent Trajectory Profiler
-  measures the resulting trajectory.
-
-No core primitive depends on a Taslos Tasks database, worker, scheduler,
-package, path, or service. Future host-specific adapters remain optional and
-versioned.
+The [generated theory map](program/THEORY_MAP.md) maps each concept and records
+its current home. The [historical architecture](program/history/pre-consolidation/ARCHITECTURE.md)
+preserves the earlier hypotheses without reviving their repository boundaries.
+`.github` housekeeping remains separate from workload eligibility. Deployment and
+release authorization remain separate from implementation and research maturity.

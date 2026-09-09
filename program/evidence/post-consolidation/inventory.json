@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "observed_at": "2026-09-09T00:00:00Z",
+  "source_revision": "e1207c5264c59e14efe9838bba3a33ba504665d2",
+  "source": "https://github.com/opsle/tasks/blob/e1207c5264c59e14efe9838bba3a33ba504665d2/docs/migrations/20260907-consolidation.json",
+  "active_repositories": [
+    "agent-trajectory-profiler",
+    "semantic-edit-protocol",
+    "context-firewall",
+    "decision-evidence-protocol",
+    "gearbox",
+    "affected-verification",
+    "research",
+    "site",
+    ".github",
+    "tasks",
+    "visible-value"
+  ],
+  "historical_repositories": [
+    "agent-discovery-control",
+    "agent-execution-authorization",
+    "agent-recovery-policy",
+    "agent-resource-claims",
+    "agent-routing-policy",
+    "agent-scheduler-runtime",
+    "agent-state-ledger",
+    "controlled-agent-acceptance",
+    "ephemeral-agent-workers",
+    "event-driven-agent-wakeup",
+    "verifiable-agent-handoff",
+    "durable-supervisor"
+  ],
+  "heads": {
+    "agent-trajectory-profiler": "0a89661640721d6a39f127514b993d29bd728d47",
+    "semantic-edit-protocol": "29caad5c03827cde17aabd71c38bc25899413a33",
+    "context-firewall": "6dd6e5fdf21f28dc5ebfa07954aaa9bed2dbcc32",
+    "decision-evidence-protocol": "b17ae3b41cea7cb0b9e0befe43e885b5aa0e4a09",
+    "gearbox": "12112c3a04d72b768f3252a6d0f6ea455816c9a1",
+    "affected-verification": "792c4bb7881f6f430b2b1ba238ba05be43f50d38",
+    "research": "840c79c04199762acdd59e89e807ca9086f3e45e",
+    "site": "29c94e6440ec91f5e09aded959fe7144187af6d7",
+    ".github": "01c38e726db7c3e45059d25fccce55e071e35938",
+    "tasks": "e1207c5264c59e14efe9838bba3a33ba504665d2",
+    "visible-value": "f011395cae86a7a736b424d658bbe3afe65ba870"
+  },
+  "consolidation_destinations": {
+    "agent-discovery-control": "tasks",
+    "agent-execution-authorization": "tasks",
+    "agent-recovery-policy": "tasks",
+    "agent-resource-claims": "tasks",
+    "agent-routing-policy": "gearbox",
+    "agent-scheduler-runtime": "tasks",
+    "agent-state-ledger": "tasks",
+    "controlled-agent-acceptance": "tasks",
+    "ephemeral-agent-workers": "tasks",
+    "event-driven-agent-wakeup": "tasks",
+    "verifiable-agent-handoff": "tasks"
+  },
+  "workload_ineligible": [
+    ".github"
+  ],
+  "graphify": {
+    "role": "OPTIONAL_STANDALONE_CLI",
+    "tasks_capability": false,
+    "basis": "Task 21 approved scope fixes the final policy; the historical external-capability acceptance in Tasks commit 00d2bac is superseded. Current bundled manifests contain only Gearbox, Context Firewall, Affected Verification and Visible Value."
+  }
+}

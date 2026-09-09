@@ -29,7 +29,7 @@ class GearboxPublicationEvidenceTests(unittest.TestCase):
         self.assertEqual(self.decision["input"], self.trajectory["input"])
         self.assertRegex(self.decision["input"]["sha256"], r"^[0-9a-f]{64}$")
         self.assertIn(
-            self.repositories["gearbox"]["last_verified_head_sha"],
+            self.registry["gearbox_publication"]["final_main_sha"],
             self.decision["input"]["locator"],
         )
 

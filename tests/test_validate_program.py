@@ -29,14 +29,14 @@ class ProgramRegistryValidationTests(unittest.TestCase):
     def test_authoritative_registries_are_valid(self):
         self.assertEqual(self.errors_for(), [])
 
-    def test_affected_verification_is_the_twenty_first_repository(self):
-        self.assertEqual(len(self.registry["repositories"]), 21)
+    def test_current_inventory_preserves_affected_verification_experiments(self):
+        self.assertEqual(len(self.registry["repositories"]), self.registry["authoritative_repository_count"])
         gearbox = next(
             item for item in self.registry["repositories"]
             if item["name"] == "gearbox"
         )
         self.assertEqual(gearbox["lifecycle_stage"], "PROTOTYPED")
-        self.assertEqual(
+        self.assertNotEqual(
             gearbox["last_verified_head_sha"],
             self.registry["gearbox_publication"]["final_main_sha"],
         )
@@ -47,7 +47,7 @@ class ProgramRegistryValidationTests(unittest.TestCase):
         self.assertEqual(affected["lifecycle_stage"], "VERIFIED")
         self.assertEqual(
             affected["last_verified_head_sha"],
-            "97f490a67337552fee25757266f3dc034660dca0",
+            "792c4bb7881f6f430b2b1ba238ba05be43f50d38",
         )
         self.assertEqual(
             affected["active_experiment_ids"],
@@ -130,13 +130,13 @@ class ProgramRegistryValidationTests(unittest.TestCase):
     def test_priority_lanes_cover_each_repository_exactly_once(self):
         lanes = self.registry["program_control"]["lanes"]
         repositories = [name for lane in lanes for name in lane["repositories"]]
-        self.assertEqual(len(repositories), 21)
-        self.assertEqual(len(set(repositories)), 21)
+        self.assertEqual(len(repositories), len(self.registry["membership"]["current"]))
+        self.assertEqual(set(repositories), set(self.registry["membership"]["current"]))
 
     def test_duplicate_priority_repository_fails(self):
         registry = copy.deepcopy(self.registry)
         registry["program_control"]["lanes"][1]["repositories"].append(
-            "durable-supervisor"
+            "tasks"
         )
         errors = self.errors_for(registry=registry)
         self.assertTrue(
@@ -161,13 +161,10 @@ class ProgramRegistryValidationTests(unittest.TestCase):
         errors = self.errors_for(registry=registry)
         self.assertTrue(any("current priority lane" in error for error in errors))
 
-    def test_durable_supervisor_stopping_criteria_are_fenced(self):
+    def test_retired_supervisor_controls_cannot_return(self):
         registry = copy.deepcopy(self.registry)
-        registry["program_control"]["durable_supervisor_v0_1"][
-            "stopping_criteria"
-        ].pop()
-        errors = self.errors_for(registry=registry)
-        self.assertTrue(any("ten ordered stopping criteria" in error for error in errors))
+        registry["program_control"]["durable_supervisor_v0_1"] = {"status": "IN_PROGRESS"}
+        self.assertTrue(any("retired system" in e for e in self.errors_for(registry=registry)))
 
     def test_anti_nitpick_reasons_are_fenced(self):
         registry = copy.deepcopy(self.registry)

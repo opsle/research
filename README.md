@@ -30,8 +30,8 @@ Important mechanisms should remain understandable, falsifiable, benchmarkable, r
 
 ## Start here
 
-- [PROGRAM_STATUS.md](PROGRAM_STATUS.md) — generated 21-repository dashboard.
-- [program/registry.json](program/registry.json) — authoritative machine-readable portfolio and priority ledger.
+- [PROGRAM_STATUS.md](PROGRAM_STATUS.md) — generated current and historical repository dashboard.
+- [program/registry.json](program/registry.json) — authoritative machine-readable research ledger (Tasks owns workload management).
 - [program/PRIORITY.md](program/PRIORITY.md) — generated NOW / NEXT / THEN / LATER / PARKED view.
 - [program/THEORY_MAP.md](program/THEORY_MAP.md) — canonical conceptual topology and Gearbox boundary.
 - [program/theory-registry.json](program/theory-registry.json) — machine-readable concept classifications and dispositions.
@@ -53,7 +53,7 @@ dashboard and priority view with `python3 tools/render_program_status.py`.
 
 ## Product relationship
 
-Opsle Tasks is the current integrated reference implementation in
+Opsle Tasks is the authoritative current workload and task-management system and integrated reference implementation in
 `opsle/tasks`. Its control plane and project execution targets are independently
 deployed and do not depend on this research repository at runtime.
 
