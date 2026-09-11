@@ -33,19 +33,19 @@ Park by default:
 
 | Lane | Objective | Repositories | Entry gate |
 |---|---|---|---|
-| **NOW** | Maintain the current Tasks workload and evidence-backed program state. | `tasks`, `research` | An authorized Tasks work item and a qualifying evidence-backed reason are required. |
-| **NEXT** | Address demonstrated integration or measurement deficiencies from Tasks workloads. | `gearbox`, `context-firewall`, `visible-value`, `affected-verification`, `decision-evidence-protocol`, `agent-trajectory-profiler` | An authorized Tasks work item and a qualifying evidence-backed reason are required. |
+| **NOW** | Maintain current Tasks workload and reconcile demonstrated defects with shipped recovery evidence; Notebook implementation and production integration are complete. | `tasks`, `research` | An authorized Tasks work item and a qualifying evidence-backed reason are required. |
+| **NEXT** | Address demonstrated integration or measurement deficiencies; shipped capability packages alone do not establish current-runtime compatibility or research completion. | `gearbox`, `context-firewall`, `visible-value`, `affected-verification`, `decision-evidence-protocol`, `agent-trajectory-profiler` | An authorized Tasks work item and a qualifying evidence-backed reason are required. |
 | **THEN** | Investigate semantic edits only when workload evidence establishes a need. | `semantic-edit-protocol` | An authorized Tasks work item and a qualifying evidence-backed reason are required. |
 | **LATER** | Prepare controlled research and public material when evidence and separate release authority support it. | `site` | An authorized Tasks work item and a qualifying evidence-backed reason are required. |
 | **PARKED** | Retain organization housekeeping separately from workload eligibility. | `.github` | An authorized Tasks work item and a qualifying evidence-backed reason are required. |
 
-### NOW — Maintain the current Tasks workload and evidence-backed program state.
+### NOW — Maintain current Tasks workload and reconcile demonstrated defects with shipped recovery evidence; Notebook implementation and production integration are complete.
 
 Entry: An authorized Tasks work item and a qualifying evidence-backed reason are required.
 
 Exit: The scoped defect or question is resolved with bounded evidence; release requirements remain separate.
 
-### NEXT — Address demonstrated integration or measurement deficiencies from Tasks workloads.
+### NEXT — Address demonstrated integration or measurement deficiencies; shipped capability packages alone do not establish current-runtime compatibility or research completion.
 
 Entry: An authorized Tasks work item and a qualifying evidence-backed reason are required.
 
@@ -120,4 +120,4 @@ Task/run summary: total children; model/effort distribution; total model tokens 
 
 ## Exact next execution
 
-Select the next authorized task from Opsle Tasks; use its project scope and workload evidence to identify the smallest justified change. This ledger does not create a parallel queue.
+Select only authorized, evidence-backed work from Opsle Tasks. Notebook implementation and production integration are complete through PR #83; the pending #52 scope is superseded by that recovery and is not a retry candidate. Existing lane membership is unchanged; see reconciliation evidence in program/registry.json.

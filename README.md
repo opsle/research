@@ -54,8 +54,10 @@ dashboard and priority view with `python3 tools/render_program_status.py`.
 ## Product relationship
 
 Opsle Tasks is the authoritative current workload and task-management system and integrated reference implementation in
-`opsle/tasks`. Its control plane and project execution targets are independently
-deployed and do not depend on this research repository at runtime.
+`opsle/tasks`. Its current default combines the control plane and local execution
+in one Incus instance, with optional SSH targets and a separate release broker.
+It does not depend on this research repository at runtime. Exact architecture and
+Notebook recovery evidence are recorded in `program/registry.json`.
 
 ## Integrity
 

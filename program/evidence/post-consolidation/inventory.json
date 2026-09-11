@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "observed_at": "2026-09-09T00:00:00Z",
+  "observed_at": "2026-09-11T04:18:44Z",
   "source_revision": "e1207c5264c59e14efe9838bba3a33ba504665d2",
   "source": "https://github.com/opsle/tasks/blob/e1207c5264c59e14efe9838bba3a33ba504665d2/docs/migrations/20260907-consolidation.json",
   "active_repositories": [
@@ -33,14 +33,14 @@
   "heads": {
     "agent-trajectory-profiler": "0a89661640721d6a39f127514b993d29bd728d47",
     "semantic-edit-protocol": "29caad5c03827cde17aabd71c38bc25899413a33",
-    "context-firewall": "6dd6e5fdf21f28dc5ebfa07954aaa9bed2dbcc32",
+    "context-firewall": "0239003eb66af4902f6d53ceb04d32976bce21f7",
     "decision-evidence-protocol": "b17ae3b41cea7cb0b9e0befe43e885b5aa0e4a09",
-    "gearbox": "12112c3a04d72b768f3252a6d0f6ea455816c9a1",
-    "affected-verification": "792c4bb7881f6f430b2b1ba238ba05be43f50d38",
-    "research": "840c79c04199762acdd59e89e807ca9086f3e45e",
+    "gearbox": "a2fcbffd76f448fb799d33a242f69eb16d8ebbf4",
+    "affected-verification": "a9c7000e088b5db085e2449e04a83948b66916f1",
+    "research": "cd1ecf2cf28bf057f2ed683ea647d75fd6239e5f",
     "site": "29c94e6440ec91f5e09aded959fe7144187af6d7",
     ".github": "01c38e726db7c3e45059d25fccce55e071e35938",
-    "tasks": "e1207c5264c59e14efe9838bba3a33ba504665d2",
+    "tasks": "fc89649edcf80c7cb9399c025d481e79c8ce4eaa",
     "visible-value": "f011395cae86a7a736b424d658bbe3afe65ba870"
   },
   "consolidation_destinations": {
@@ -62,6 +62,8 @@
   "graphify": {
     "role": "OPTIONAL_STANDALONE_CLI",
     "tasks_capability": false,
-    "basis": "Task 21 approved scope fixes the final policy; the historical external-capability acceptance in Tasks commit 00d2bac is superseded. Current bundled manifests contain only Gearbox, Context Firewall, Affected Verification and Visible Value."
-  }
+    "basis": "Task 21 established the optional standalone CLI policy. The four research measurement capabilities remain Gearbox, Context Firewall, Affected Verification and Visible Value; current Tasks also bundles its product-specific Question Recommendation adapter. Graphify is not a Tasks capability."
+  },
+  "observation_scope": "GitHub repository metadata, default-branch revisions and exact-revision README inspection on 2026-09-11. source_revision/source remain the immutable consolidation receipt origin; this evidence inventory is subordinate to program/registry.json and contains no priority authority.",
+  "previous_observation": "https://github.com/opsle/research/blob/cd1ecf2cf28bf057f2ed683ea647d75fd6239e5f/program/evidence/post-consolidation/inventory.json"
 }
