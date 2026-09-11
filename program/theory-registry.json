@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "registry_id": "opsle.theory-registry.v2",
-  "verified_at": "2026-09-09T00:00:00Z",
+  "verified_at": "2026-09-11T04:18:44Z",
   "source_repository_count": 23,
   "current_concept_repository_count": 8,
   "canonical_definitions": {
@@ -43,7 +43,7 @@
       "consumers": [],
       "current_implementation_fidelity": {
         "status": "PROTOTYPED",
-        "assessment": "Provider-free bounded core, deterministic Tasks phase routing and consolidated Routing Policy contract. Tasks uses an execution-scoped capability model gateway; no comparative savings established."
+        "assessment": "Provider-free bounded execution core, consolidated Routing Policy, and route-request v2 selecting provider/model/effort with explicit overrides and deterministic TEST/DEPLOY routes (PR #4). Tasks capability gateway integration is operational evidence, not comparative savings or research completion."
       },
       "drift_status": "RESTORED_PUBLIC_HOME",
       "current_name_accuracy": "Canonical name and repository boundary now match the restored primary-developer theory.",
@@ -55,7 +55,10 @@
         "https://github.com/opsle/gearbox/blob/f3fab9f292cf4eabd7200615d444f98881f57d55/evidence/release-001/verification.json",
         "program/evidence/gearbox-publication/README.md",
         "https://github.com/opsle/gearbox/pull/1",
-        "https://github.com/opsle/gearbox/blob/12112c3a04d72b768f3252a6d0f6ea455816c9a1/README.md"
+        "https://github.com/opsle/gearbox/blob/12112c3a04d72b768f3252a6d0f6ea455816c9a1/README.md",
+        "https://github.com/opsle/gearbox/blob/a2fcbffd76f448fb799d33a242f69eb16d8ebbf4/README.md",
+        "https://github.com/opsle/gearbox/blob/a2fcbffd76f448fb799d33a242f69eb16d8ebbf4/tests/test_route.py",
+        "https://github.com/opsle/gearbox/pull/4"
       ],
       "confidence": "HIGH",
       "unresolved_questions": [
@@ -212,15 +215,16 @@
       "consumers": [],
       "current_implementation_fidelity": {
         "status": "HISTORICAL_EVIDENCE_PRESERVED",
-        "assessment": "Contracts and source provenance now reside in tasks; migration does not establish new research maturity."
+        "assessment": "Consolidation assigned Tasks as the concept home; copied contract files were later removed by 3baecd46b4e83e4a35bad1f670ae8c5459225d3d. Exact source/migration Git history preserves research provenance. Current Tasks behavior is not evidence of full contract fidelity or new maturity."
       },
-      "drift_status": "Final retirement/consolidation receipt supersedes prior proposed disposition.",
+      "drift_status": "Consolidation remains executed; present-branch contract archive claims are superseded by Tasks simplification.",
       "current_name_accuracy": "Historical concept identity retained; current repository home is recorded independently.",
       "evidence_references": [
         "https://github.com/opsle/event-driven-agent-wakeup/blob/a6209860c2151450cc28ed648bc8c2631c8db7ef/README.md",
         "https://github.com/opsle/event-driven-agent-wakeup/blob/a6209860c2151450cc28ed648bc8c2631c8db7ef/src/runtime.js",
         "https://github.com/opsle/event-driven-agent-wakeup/blob/a6209860c2151450cc28ed648bc8c2631c8db7ef/tests/runtime.test.js",
-        "https://github.com/opsle/tasks/blob/e1207c5264c59e14efe9838bba3a33ba504665d2/docs/migrations/20260907-consolidation.json"
+        "https://github.com/opsle/tasks/blob/e1207c5264c59e14efe9838bba3a33ba504665d2/docs/migrations/20260907-consolidation.json",
+        "https://github.com/opsle/tasks/blob/fc89649edcf80c7cb9399c025d481e79c8ce4eaa/docs/ARCHITECTURE.md"
       ],
       "confidence": "MEDIUM_HIGH",
       "unresolved_questions": [
@@ -262,7 +266,7 @@
       ],
       "current_implementation_fidelity": {
         "status": "PROTOTYPED",
-        "assessment": "Flat TAP and Node spec/dot reporter reducer with semantic-only projection; Tasks command-evidence adapter integrated. Actual downstream delivery is separate from canonical packet telemetry."
+        "assessment": "v0.5.0 flat TAP/Node spec/dot reducer and semantic projection; independent Tasks capability package v0.1.0 shipped by Task #36 / PR #5. Bundled Tasks adapter still exists; cross-repository extraction is not complete. External package compatibility pins Tasks 50f2666b2ddf3b95fc77c7e7bd8d64b6807e91f8. Production Tasks has advanced; package installation, grant state and compatibility with the deployed revision are not established by package tests. Canonical packet/constructed projection measurements do not prove provider delivery."
       },
       "drift_status": "PARTIAL_ADAPTER_SCOPE",
       "current_name_accuracy": "Accurate for the concept; implementation maturity must remain adapter-scoped.",
@@ -270,7 +274,10 @@
         "https://github.com/opsle/context-firewall/blob/953c48f1cfd154d6b7ed10b51b87fe54e4df45f2/README.md",
         "https://github.com/opsle/context-firewall/blob/953c48f1cfd154d6b7ed10b51b87fe54e4df45f2/SPEC.md",
         "https://github.com/opsle/context-firewall/blob/953c48f1cfd154d6b7ed10b51b87fe54e4df45f2/src/reducer.js",
-        "https://github.com/opsle/context-firewall/blob/6dd6e5fdf21f28dc5ebfa07954aaa9bed2dbcc32/README.md"
+        "https://github.com/opsle/context-firewall/blob/6dd6e5fdf21f28dc5ebfa07954aaa9bed2dbcc32/README.md",
+        "https://github.com/opsle/context-firewall/blob/0239003eb66af4902f6d53ceb04d32976bce21f7/README.md",
+        "https://github.com/opsle/context-firewall/blob/0239003eb66af4902f6d53ceb04d32976bce21f7/tests/tasks-capability.test.js",
+        "https://github.com/opsle/context-firewall/pull/5"
       ],
       "confidence": "HIGH",
       "unresolved_questions": [
@@ -353,14 +360,15 @@
       ],
       "current_implementation_fidelity": {
         "status": "HISTORICAL_EVIDENCE_PRESERVED",
-        "assessment": "Contracts and source provenance now reside in tasks; migration does not establish new research maturity."
+        "assessment": "Consolidation assigned Tasks as the concept home; copied contract files were later removed by 3baecd46b4e83e4a35bad1f670ae8c5459225d3d. Exact source/migration Git history preserves research provenance. Current Tasks behavior is not evidence of full contract fidelity or new maturity."
       },
-      "drift_status": "Final retirement/consolidation receipt supersedes prior proposed disposition.",
+      "drift_status": "Consolidation remains executed; present-branch contract archive claims are superseded by Tasks simplification.",
       "current_name_accuracy": "Historical concept identity retained; current repository home is recorded independently.",
       "evidence_references": [
         "https://github.com/opsle/agent-state-ledger/blob/acab03b1ff7168222552050e21e7553b07d00e7c/README.md",
         "https://github.com/opsle/agent-state-ledger/blob/acab03b1ff7168222552050e21e7553b07d00e7c/SPEC.md",
-        "https://github.com/opsle/tasks/blob/e1207c5264c59e14efe9838bba3a33ba504665d2/docs/migrations/20260907-consolidation.json"
+        "https://github.com/opsle/tasks/blob/e1207c5264c59e14efe9838bba3a33ba504665d2/docs/migrations/20260907-consolidation.json",
+        "https://github.com/opsle/tasks/blob/fc89649edcf80c7cb9399c025d481e79c8ce4eaa/docs/ARCHITECTURE.md"
       ],
       "confidence": "MEDIUM_HIGH",
       "unresolved_questions": [
@@ -395,14 +403,15 @@
       ],
       "current_implementation_fidelity": {
         "status": "HISTORICAL_EVIDENCE_PRESERVED",
-        "assessment": "Contracts and source provenance now reside in tasks; migration does not establish new research maturity."
+        "assessment": "Consolidation assigned Tasks as the concept home; copied contract files were later removed by 3baecd46b4e83e4a35bad1f670ae8c5459225d3d. Exact source/migration Git history preserves research provenance. Current Tasks behavior is not evidence of full contract fidelity or new maturity."
       },
-      "drift_status": "Final retirement/consolidation receipt supersedes prior proposed disposition.",
+      "drift_status": "Consolidation remains executed; present-branch contract archive claims are superseded by Tasks simplification.",
       "current_name_accuracy": "Historical concept identity retained; current repository home is recorded independently.",
       "evidence_references": [
         "https://github.com/opsle/agent-scheduler-runtime/blob/d97cd3c218b20e0b2b0e09873f6a3d15c396b3a0/README.md",
         "https://github.com/opsle/agent-scheduler-runtime/blob/d97cd3c218b20e0b2b0e09873f6a3d15c396b3a0/THEORY.md",
-        "https://github.com/opsle/tasks/blob/e1207c5264c59e14efe9838bba3a33ba504665d2/docs/migrations/20260907-consolidation.json"
+        "https://github.com/opsle/tasks/blob/e1207c5264c59e14efe9838bba3a33ba504665d2/docs/migrations/20260907-consolidation.json",
+        "https://github.com/opsle/tasks/blob/fc89649edcf80c7cb9399c025d481e79c8ce4eaa/docs/ARCHITECTURE.md"
       ],
       "confidence": "HIGH",
       "unresolved_questions": [
@@ -437,14 +446,15 @@
       ],
       "current_implementation_fidelity": {
         "status": "HISTORICAL_EVIDENCE_PRESERVED",
-        "assessment": "Contracts and source provenance now reside in tasks; migration does not establish new research maturity."
+        "assessment": "Consolidation assigned Tasks as the concept home; copied contract files were later removed by 3baecd46b4e83e4a35bad1f670ae8c5459225d3d. Exact source/migration Git history preserves research provenance. Current Tasks behavior is not evidence of full contract fidelity or new maturity."
       },
-      "drift_status": "Final retirement/consolidation receipt supersedes prior proposed disposition.",
+      "drift_status": "Consolidation remains executed; present-branch contract archive claims are superseded by Tasks simplification.",
       "current_name_accuracy": "Historical concept identity retained; current repository home is recorded independently.",
       "evidence_references": [
         "https://github.com/opsle/verifiable-agent-handoff/blob/399e5cfae94345affa3f087f0f6eb9e77669d33c/README.md",
         "https://github.com/opsle/verifiable-agent-handoff/blob/399e5cfae94345affa3f087f0f6eb9e77669d33c/src/seal.js",
-        "https://github.com/opsle/tasks/blob/e1207c5264c59e14efe9838bba3a33ba504665d2/docs/migrations/20260907-consolidation.json"
+        "https://github.com/opsle/tasks/blob/e1207c5264c59e14efe9838bba3a33ba504665d2/docs/migrations/20260907-consolidation.json",
+        "https://github.com/opsle/tasks/blob/fc89649edcf80c7cb9399c025d481e79c8ce4eaa/docs/ARCHITECTURE.md"
       ],
       "confidence": "HIGH",
       "unresolved_questions": [
@@ -520,14 +530,15 @@
       ],
       "current_implementation_fidelity": {
         "status": "HISTORICAL_EVIDENCE_PRESERVED",
-        "assessment": "Contracts and source provenance now reside in tasks; migration does not establish new research maturity."
+        "assessment": "Consolidation assigned Tasks as the concept home; copied contract files were later removed by 3baecd46b4e83e4a35bad1f670ae8c5459225d3d. Exact source/migration Git history preserves research provenance. Current Tasks behavior is not evidence of full contract fidelity or new maturity."
       },
-      "drift_status": "Final retirement/consolidation receipt supersedes prior proposed disposition.",
+      "drift_status": "Consolidation remains executed; present-branch contract archive claims are superseded by Tasks simplification.",
       "current_name_accuracy": "Historical concept identity retained; current repository home is recorded independently.",
       "evidence_references": [
         "https://github.com/opsle/agent-resource-claims/blob/dfe0fbc90c67ce5ef4256354bb62f1d511b1304c/README.md",
         "https://github.com/opsle/agent-resource-claims/blob/dfe0fbc90c67ce5ef4256354bb62f1d511b1304c/THEORY.md",
-        "https://github.com/opsle/tasks/blob/e1207c5264c59e14efe9838bba3a33ba504665d2/docs/migrations/20260907-consolidation.json"
+        "https://github.com/opsle/tasks/blob/e1207c5264c59e14efe9838bba3a33ba504665d2/docs/migrations/20260907-consolidation.json",
+        "https://github.com/opsle/tasks/blob/fc89649edcf80c7cb9399c025d481e79c8ce4eaa/docs/ARCHITECTURE.md"
       ],
       "confidence": "MEDIUM",
       "unresolved_questions": [
@@ -559,14 +570,15 @@
       "consumers": [],
       "current_implementation_fidelity": {
         "status": "HISTORICAL_EVIDENCE_PRESERVED",
-        "assessment": "Contracts and source provenance now reside in tasks; migration does not establish new research maturity."
+        "assessment": "Consolidation assigned Tasks as the concept home; copied contract files were later removed by 3baecd46b4e83e4a35bad1f670ae8c5459225d3d. Exact source/migration Git history preserves research provenance. Current Tasks behavior is not evidence of full contract fidelity or new maturity."
       },
-      "drift_status": "Final retirement/consolidation receipt supersedes prior proposed disposition.",
+      "drift_status": "Consolidation remains executed; present-branch contract archive claims are superseded by Tasks simplification.",
       "current_name_accuracy": "Historical concept identity retained; current repository home is recorded independently.",
       "evidence_references": [
         "https://github.com/opsle/agent-discovery-control/blob/926547dd9fd713990b1d6f1f2e650aa6c0883564/README.md",
         "https://github.com/opsle/agent-discovery-control/blob/926547dd9fd713990b1d6f1f2e650aa6c0883564/THEORY.md",
-        "https://github.com/opsle/tasks/blob/e1207c5264c59e14efe9838bba3a33ba504665d2/docs/migrations/20260907-consolidation.json"
+        "https://github.com/opsle/tasks/blob/e1207c5264c59e14efe9838bba3a33ba504665d2/docs/migrations/20260907-consolidation.json",
+        "https://github.com/opsle/tasks/blob/fc89649edcf80c7cb9399c025d481e79c8ce4eaa/docs/ARCHITECTURE.md"
       ],
       "confidence": "HIGH",
       "unresolved_questions": [
@@ -603,14 +615,15 @@
       ],
       "current_implementation_fidelity": {
         "status": "HISTORICAL_EVIDENCE_PRESERVED",
-        "assessment": "Contracts and source provenance now reside in tasks; migration does not establish new research maturity."
+        "assessment": "Consolidation assigned Tasks as the concept home; copied contract files were later removed by 3baecd46b4e83e4a35bad1f670ae8c5459225d3d. Exact source/migration Git history preserves research provenance. Current Tasks behavior is not evidence of full contract fidelity or new maturity."
       },
-      "drift_status": "Final retirement/consolidation receipt supersedes prior proposed disposition.",
+      "drift_status": "Consolidation remains executed; present-branch contract archive claims are superseded by Tasks simplification.",
       "current_name_accuracy": "Historical concept identity retained; current repository home is recorded independently.",
       "evidence_references": [
         "https://github.com/opsle/agent-execution-authorization/blob/8fb02e943c83fae121c63185d2f0d0dde8c4260a/README.md",
         "https://github.com/opsle/agent-execution-authorization/blob/8fb02e943c83fae121c63185d2f0d0dde8c4260a/THEORY.md",
-        "https://github.com/opsle/tasks/blob/e1207c5264c59e14efe9838bba3a33ba504665d2/docs/migrations/20260907-consolidation.json"
+        "https://github.com/opsle/tasks/blob/e1207c5264c59e14efe9838bba3a33ba504665d2/docs/migrations/20260907-consolidation.json",
+        "https://github.com/opsle/tasks/blob/fc89649edcf80c7cb9399c025d481e79c8ce4eaa/docs/ARCHITECTURE.md"
       ],
       "confidence": "HIGH",
       "unresolved_questions": [
@@ -644,14 +657,15 @@
       "consumers": [],
       "current_implementation_fidelity": {
         "status": "HISTORICAL_EVIDENCE_PRESERVED",
-        "assessment": "Contracts and source provenance now reside in tasks; migration does not establish new research maturity."
+        "assessment": "Consolidation assigned Tasks as the concept home; copied contract files were later removed by 3baecd46b4e83e4a35bad1f670ae8c5459225d3d. Exact source/migration Git history preserves research provenance. Current Tasks behavior is not evidence of full contract fidelity or new maturity."
       },
-      "drift_status": "Final retirement/consolidation receipt supersedes prior proposed disposition.",
+      "drift_status": "Consolidation remains executed; present-branch contract archive claims are superseded by Tasks simplification.",
       "current_name_accuracy": "Historical concept identity retained; current repository home is recorded independently.",
       "evidence_references": [
         "https://github.com/opsle/controlled-agent-acceptance/blob/2d652adf56e53953327d09b1ba9c4a9c3445f052/README.md",
         "https://github.com/opsle/controlled-agent-acceptance/blob/2d652adf56e53953327d09b1ba9c4a9c3445f052/ARCHITECTURE.md",
-        "https://github.com/opsle/tasks/blob/e1207c5264c59e14efe9838bba3a33ba504665d2/docs/migrations/20260907-consolidation.json"
+        "https://github.com/opsle/tasks/blob/e1207c5264c59e14efe9838bba3a33ba504665d2/docs/migrations/20260907-consolidation.json",
+        "https://github.com/opsle/tasks/blob/fc89649edcf80c7cb9399c025d481e79c8ce4eaa/docs/ARCHITECTURE.md"
       ],
       "confidence": "MEDIUM_HIGH",
       "unresolved_questions": [
@@ -684,14 +698,15 @@
       "consumers": [],
       "current_implementation_fidelity": {
         "status": "HISTORICAL_EVIDENCE_PRESERVED",
-        "assessment": "Contracts and source provenance now reside in tasks; migration does not establish new research maturity."
+        "assessment": "Consolidation assigned Tasks as the concept home; copied contract files were later removed by 3baecd46b4e83e4a35bad1f670ae8c5459225d3d. Exact source/migration Git history preserves research provenance. Current Tasks behavior is not evidence of full contract fidelity or new maturity."
       },
-      "drift_status": "Final retirement/consolidation receipt supersedes prior proposed disposition.",
+      "drift_status": "Consolidation remains executed; present-branch contract archive claims are superseded by Tasks simplification.",
       "current_name_accuracy": "Historical concept identity retained; current repository home is recorded independently.",
       "evidence_references": [
         "https://github.com/opsle/agent-recovery-policy/blob/1b733a111e26e0a409fee3b96f627048531daefe/README.md",
         "https://github.com/opsle/agent-recovery-policy/blob/1b733a111e26e0a409fee3b96f627048531daefe/THEORY.md",
-        "https://github.com/opsle/tasks/blob/e1207c5264c59e14efe9838bba3a33ba504665d2/docs/migrations/20260907-consolidation.json"
+        "https://github.com/opsle/tasks/blob/e1207c5264c59e14efe9838bba3a33ba504665d2/docs/migrations/20260907-consolidation.json",
+        "https://github.com/opsle/tasks/blob/fc89649edcf80c7cb9399c025d481e79c8ce4eaa/docs/ARCHITECTURE.md"
       ],
       "confidence": "HIGH",
       "unresolved_questions": [
@@ -726,14 +741,15 @@
       ],
       "current_implementation_fidelity": {
         "status": "HISTORICAL_EVIDENCE_PRESERVED",
-        "assessment": "Contracts and source provenance now reside in tasks; migration does not establish new research maturity."
+        "assessment": "Consolidation assigned Tasks as the concept home; copied contract files were later removed by 3baecd46b4e83e4a35bad1f670ae8c5459225d3d. Exact source/migration Git history preserves research provenance. Current Tasks behavior is not evidence of full contract fidelity or new maturity."
       },
-      "drift_status": "Final retirement/consolidation receipt supersedes prior proposed disposition.",
+      "drift_status": "Consolidation remains executed; present-branch contract archive claims are superseded by Tasks simplification.",
       "current_name_accuracy": "Historical concept identity retained; current repository home is recorded independently.",
       "evidence_references": [
         "https://github.com/opsle/ephemeral-agent-workers/blob/ad96fcfdfac06d340b5e96d369634980cee78ef4/README.md",
         "https://github.com/opsle/ephemeral-agent-workers/blob/ad96fcfdfac06d340b5e96d369634980cee78ef4/ARCHITECTURE.md",
-        "https://github.com/opsle/tasks/blob/e1207c5264c59e14efe9838bba3a33ba504665d2/docs/migrations/20260907-consolidation.json"
+        "https://github.com/opsle/tasks/blob/e1207c5264c59e14efe9838bba3a33ba504665d2/docs/migrations/20260907-consolidation.json",
+        "https://github.com/opsle/tasks/blob/fc89649edcf80c7cb9399c025d481e79c8ce4eaa/docs/ARCHITECTURE.md"
       ],
       "confidence": "HIGH",
       "unresolved_questions": [
@@ -766,7 +782,7 @@
       ],
       "current_implementation_fidelity": {
         "status": "VERIFIED",
-        "assessment": "Tasks verification contract integrated. Research remains OBSERVE/SHADOW; permanent AV-EXP-002 failure and bounded AV-EXP-003 repair remain intact. Manifest-backed selection does not establish general trust."
+        "assessment": "dependency-free Node.js deterministic plan-v2 planner with check-level dependency-completeness states, mechanism and boundary evidence, check-local fail-closed forced selection, explainable skips, bounded deterministic Python boundary inspection, identity-bound SHADOW validation, frozen-oracle repair/replay harnesses, and opsle.value-receipt.v1 safety-cost telemetry; Tasks verification planning and capture contract integrated. Independent Tasks capability package v0.1.0 shipped by Task #23 / PR #6; research remains OBSERVE/SHADOW. Package compatibility receipt records 13 passing development checks against Tasks e1207c5264c59e14efe9838bba3a33ba504665d2, with final pipeline checks pending in that receipt. It does not establish installed-package compatibility with current production or authorize trusted execution."
       },
       "drift_status": "TASKS_CONTRACT_INTEGRATED_RESEARCH_LIMITS_RETAINED",
       "current_name_accuracy": "Accurate for the implemented verification-planning boundary and explicitly broader than affected-test selection.",
@@ -777,7 +793,10 @@
         "https://github.com/opsle/affected-verification/blob/641aee9d29a89e2a8819f00817ccee8e5d234dcb/benchmark/av-exp-001/REPORT.md",
         "https://github.com/opsle/affected-verification/blob/641aee9d29a89e2a8819f00817ccee8e5d234dcb/benchmark/av-exp-001/results-v2/summary.json",
         "https://github.com/opsle/affected-verification/pull/2",
-        "https://github.com/opsle/affected-verification/blob/792c4bb7881f6f430b2b1ba238ba05be43f50d38/README.md"
+        "https://github.com/opsle/affected-verification/blob/792c4bb7881f6f430b2b1ba238ba05be43f50d38/README.md",
+        "https://github.com/opsle/affected-verification/blob/a9c7000e088b5db085e2449e04a83948b66916f1/README.md",
+        "https://github.com/opsle/affected-verification/blob/a9c7000e088b5db085e2449e04a83948b66916f1/docs/tasks-capability-compatibility.json",
+        "https://github.com/opsle/affected-verification/pull/6"
       ],
       "confidence": "HIGH",
       "unresolved_questions": [
@@ -808,12 +827,15 @@
       "consumers": [],
       "current_implementation_fidelity": {
         "status": "IMPLEMENTED",
-        "assessment": "Installable library and CLI with Tasks receipt observer integration."
+        "assessment": "Independent receipt library/CLI unchanged; Tasks receipt presentation and post-broker reconciliation repaired by #24 and #40. Missing measurements remain absent; no causal benefit inferred. Validates producer-supplied claims; does not authenticate external artifacts. Only compatible EXACT/OBSERVED numeric SUM values aggregate; missing values remain absent."
       },
       "drift_status": "Reconciled to current standalone implementation.",
       "current_name_accuracy": "Accurate receipt-validation and presentation role.",
       "evidence_references": [
-        "https://github.com/opsle/visible-value/blob/f011395cae86a7a736b424d658bbe3afe65ba870/README.md"
+        "https://github.com/opsle/visible-value/blob/f011395cae86a7a736b424d658bbe3afe65ba870/README.md",
+        "https://github.com/opsle/visible-value/blob/f011395cae86a7a736b424d658bbe3afe65ba870/README.md",
+        "https://github.com/opsle/tasks/pull/59",
+        "https://github.com/opsle/tasks/blob/fc89649edcf80c7cb9399c025d481e79c8ce4eaa/src/task-value.js"
       ],
       "confidence": "HIGH",
       "unresolved_questions": [

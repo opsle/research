@@ -56,6 +56,13 @@ nondeterministic fields must not contaminate deterministic semantic output.
 
 ## Retirement and current ownership
 
-Durable Supervisor, Taslos Tasks, Paperclip and historical agent-run are retired. Their archived controls, migration rollback notes and experiments authorize no current work. Completed consolidation receipts supersede dated partial observations. Graphify is an optional standalone CLI, not a Tasks capability. Do not recreate retired repositories or execution systems from stale references.
+Durable Supervisor, Taslos Tasks and historical agent-run are retired. Their archived controls, migration rollback notes and experiments authorize no current work. Paperclip is intentionally retained contingency infrastructure, outside the research portfolio and backlog; removal from active Tasks orchestration did not establish contingency decommissioning. Completed consolidation receipts supersede dated partial observations. Graphify is an optional standalone CLI, not a Tasks capability. Do not recreate retired repositories or execution systems from stale references.
 
 Repository activity, Tasks project visibility and research maturity are independent. `.github` is retained for housekeeping but excluded from workload eligibility. Consolidated concepts share active homes; historical source records retain evidence without becoming active dependencies. Release and data-safety requirements remain separate from task authorization.
+
+Recovery can complete an implementation and its production integration while the
+original execution remains failed. Notebook recovery through Tasks PR #83 does
+not rewrite #51/#60, activate the overlapping pending #52, or complete a research
+lifecycle. Use the revision-linked recovery and dated history in `registry.json`
+when judging whether work is already implemented. Do not create retry or
+replacement work from a failed status alone.

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_verified_at": "2026-08-31T16:17:40Z",
+  "last_verified_at": "2026-09-11T04:18:44Z",
   "experiments": [
     {
       "id": "EXP-001",
@@ -247,7 +247,18 @@
         "gearbox_repository_head_sha": "f3fab9f292cf4eabd7200615d444f98881f57d55",
         "model_provider_runs_added": 0
       },
-  "next_task": "Independently review and release the provider-free live-authorization preflight branch; do not consume authorization or launch a provider/model subject."
+  "next_task": "Provider-free live-preflight publication is already merged through PR #15 and hardening PR #16. Keep EXP-001 PLANNED; any subject run requires new durable execution authority and a fresh fail-closed preflight, not repetition of the published preparation.",
+      "current_evidence_review": {
+        "observed_at": "2026-09-11T04:18:44Z",
+        "evidence": "program/registry.json#/reconciliation",
+        "decision": "PLANNED retained: no authorized subject run or result found in current Research source or inspected durable Tasks history; provider-free qualification is not experiment consumption.",
+        "superseded_recommendation": "Independently review and release the provider-free live-authorization preflight branch; do not consume authorization or launch a provider/model subject.",
+        "supporting_evidence": [
+          "https://github.com/opsle/research/commit/2ca23904f122583f2808f729b6ea9642f0ddba0b",
+          "https://github.com/opsle/research/commit/9b9b5ca0fffdbf18713da7ffd339f8fe8f77818c"
+        ],
+        "qualification_status_scope": "live_authorization_preflight.status is the frozen pre-release qualification label required by the existing validator. PR #15/#16 establish subsequent publication, not experiment consumption."
+      }
     },
     {
       "id": "AV-EXP-001",
@@ -341,7 +352,16 @@
         "Affected Verification remains OBSERVE/SHADOW; no TRUSTED_BOUNDED class is authorized."
       ],
       "lifecycle_impact": "PROMOTE_TO_VERIFIED_ONLY: the narrow scoped correctness and safety claims pass meaningful automated and revision-bound benchmark checks, but this run is explicitly capped below BENCHMARK_READY and does not authorize trusted execution.",
-      "next_task": "Preregister and run a second public-repository shadow calibration in a different ecosystem with a meaningful native selector and the same full-catalog oracle discipline."
+      "next_task": "The proposed second calibration was completed as AV-EXP-002. Preserve this first calibration and the subsequent miss; admit further work only through current Tasks authority and evidence-backed program priorities.",
+      "current_evidence_review": {
+        "observed_at": "2026-09-11T04:18:44Z",
+        "evidence": "program/registry.json#/reconciliation",
+        "decision": "Existing experiment status, immutable identities, artifacts and verdict retained; package/product integration does not satisfy an experiment or lifecycle gate.",
+        "superseded_recommendation": "Preregister and run a second public-repository shadow calibration in a different ecosystem with a meaningful native selector and the same full-catalog oracle discipline.",
+        "supporting_evidence": [
+          "https://github.com/opsle/research/commit/f1dca5ed07ec1e2d558d90387c750743b3dec962"
+        ]
+      }
     },
     {
       "id": "AV-EXP-002",
@@ -454,7 +474,16 @@
         "Affected Verification remains OBSERVE/SHADOW; no TRUSTED_BOUNDED class is authorized."
       ],
       "lifecycle_impact": "REMAIN_VERIFIED: the run adds revision-bound falsification evidence and failure modes, but the observed selection miss and explicit run cap do not establish BENCHMARK_READY or EXPERIMENTED lifecycle promotion for the repository.",
-      "next_task": "Preregister and execute a selection-miss repair for AV2-006 that represents runtime/subprocess import uncertainty without changing the preserved AV-EXP-002 result."
+      "next_task": "The proposed AV2-006 repair was completed as bounded AV-EXP-003 evidence. Preserve this historical FAIL; do not repeat the superseded repair recommendation or infer general selector safety.",
+      "current_evidence_review": {
+        "observed_at": "2026-09-11T04:18:44Z",
+        "evidence": "program/registry.json#/reconciliation",
+        "decision": "Existing experiment status, immutable identities, artifacts and verdict retained; package/product integration does not satisfy an experiment or lifecycle gate.",
+        "superseded_recommendation": "Preregister and execute a selection-miss repair for AV2-006 that represents runtime/subprocess import uncertainty without changing the preserved AV-EXP-002 result.",
+        "supporting_evidence": [
+          "https://github.com/opsle/research/commit/e8a2c36678ac4d4f72a79a56e03e9f896811be02"
+        ]
+      }
     },
     {
       "id": "AV-EXP-003",
@@ -563,7 +592,16 @@
         "Affected Verification remains OBSERVE/SHADOW; no TRUSTED_BOUNDED class is authorized."
       ],
       "lifecycle_impact": "REMAIN_VERIFIED: the run repairs and measures one defect under SHADOW but is explicitly capped below lifecycle or trust promotion.",
-      "next_task": "Preregister a bounded child-process import-tracing evidence-provider experiment to test whether selected opaque checks can regain precision without weakening the fail-closed rule."
+      "next_task": "Child-process import tracing remains an evidence-gated research proposal, not an authorized workload item. Require current Tasks admission and preregistration before any new bounded OBSERVE/SHADOW experiment.",
+      "current_evidence_review": {
+        "observed_at": "2026-09-11T04:18:44Z",
+        "evidence": "program/registry.json#/reconciliation",
+        "decision": "Existing experiment status, immutable identities, artifacts and verdict retained; package/product integration does not satisfy an experiment or lifecycle gate.",
+        "superseded_recommendation": "Preregister a bounded child-process import-tracing evidence-provider experiment to test whether selected opaque checks can regain precision without weakening the fail-closed rule.",
+        "supporting_evidence": [
+          "program/registry.json#/program_control"
+        ]
+      }
     },
     {
       "id": "LEGACY-001",
@@ -605,7 +643,12 @@
       "blockers": [
         "Exact run identities, model configuration, fixtures, and independent replication were not recorded."
       ],
-      "next_task": "Retain as legacy evidence; do not promote a concept stage from this observation alone."
+      "next_task": "Retain as legacy evidence; do not promote a concept stage from this observation alone.",
+      "current_evidence_review": {
+        "observed_at": "2026-09-11T04:18:44Z",
+        "evidence": "program/registry.json#/reconciliation",
+        "decision": "Existing experiment status, immutable identities, artifacts and verdict retained; package/product integration does not satisfy an experiment or lifecycle gate."
+      }
     }
   ]
 }

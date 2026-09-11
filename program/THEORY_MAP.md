@@ -15,7 +15,7 @@ Historical definitions, extraction analysis, initial SHAs, licenses, negative ev
 Coverage: 19 concepts; active 7; consolidated 11; retired 1; 8 distinct current homes.
 
 Theory registry canonical SHA-256:
-`f079b141834b738d9df6dbd2f39c2ae063e4c4186e39477130beb3dc9db7cf7b`.
+`d67661c34b1c252aa9288626a88a4c3424d1b842e9ee908ce88145caf77c2c0a`.
 
 | Concept identity | Classification | Executed / retained disposition | Confidence | Current home and maturity |
 |---|---|---|---|---|
