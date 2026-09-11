@@ -47,7 +47,7 @@ class ProgramRegistryValidationTests(unittest.TestCase):
         self.assertEqual(affected["lifecycle_stage"], "VERIFIED")
         self.assertEqual(
             affected["last_verified_head_sha"],
-            "792c4bb7881f6f430b2b1ba238ba05be43f50d38",
+            "a9c7000e088b5db085e2449e04a83948b66916f1",
         )
         self.assertEqual(
             affected["active_experiment_ids"],
