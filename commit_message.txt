@@ -1,0 +1,5 @@
+🧪 Add tests for timestamp validation edge cases
+
+🎯 **What:** The testing gap for timestamp validation is now addressed.
+📊 **Coverage:** The tests cover the happy path, missing Z timezone string, invalid object types, and exceptions when passed malformed ISO strings.
+✨ **Result:** Improved test coverage across error conditions and guarantees deterministic check behaviour.
