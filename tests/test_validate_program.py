@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import copy
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -25,6 +26,23 @@ class ProgramRegistryValidationTests(unittest.TestCase):
 
     def errors_for(self, registry=None, experiments=None):
         return validate(registry or self.registry, experiments or self.experiments)
+
+
+    def test_load_json_raises_value_error_on_non_object(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            path = Path(tmpdir) / "test.json"
+
+            # Test with list
+            path.write_text('["array"]')
+            with self.assertRaises(ValueError) as context:
+                load_json(path)
+            self.assertIn("top-level value must be an object", str(context.exception))
+
+            # Test with string
+            path.write_text('"string"')
+            with self.assertRaises(ValueError) as context:
+                load_json(path)
+            self.assertIn("top-level value must be an object", str(context.exception))
 
     def test_authoritative_registries_are_valid(self):
         self.assertEqual(self.errors_for(), [])
