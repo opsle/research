@@ -174,6 +174,8 @@ def request_body(
 def call_openai(
     endpoint: str, api_key: str, body: dict[str, Any], timeout: int
 ) -> dict[str, Any]:
+    if not endpoint.startswith("https://"):
+        raise ValueError(f"Endpoint must use HTTPS: {endpoint}")
     request = urllib.request.Request(
         endpoint,
         data=canonical_bytes(body),
