@@ -190,6 +190,8 @@ def call_openai(
         raise SubjectAdapterError(
             "provider request failed; no retry was attempted"
         ) from error
+    if len(payload) > 240000 * 10:
+        raise SubjectAdapterError("provider response exceeded the conservative byte ceiling")
     try:
         value = json.loads(payload)
     except json.JSONDecodeError as error:
@@ -210,8 +212,13 @@ def execute_tool(
     call_id = call.get("call_id")
     if not isinstance(call_id, str) or not call_id:
         raise SubjectAdapterError("function call lacks call_id")
+    arguments_str = call.get("arguments", "")
+    if not isinstance(arguments_str, str):
+        raise SubjectAdapterError("function call arguments must be a string")
+    if len(arguments_str) > max_file_bytes * 10:
+        raise SubjectAdapterError("function call arguments exceeded the configured byte ceiling")
     try:
-        arguments = json.loads(call.get("arguments", ""))
+        arguments = json.loads(arguments_str)
     except json.JSONDecodeError as error:
         raise SubjectAdapterError("function call arguments are invalid JSON") from error
     if not isinstance(arguments, dict) or arguments.get("path") != "task.py":
