@@ -16,6 +16,7 @@ from validate_program import (  # noqa: E402
     DEFAULT_REGISTRY,
     load_json,
     validate,
+    _valid_timestamp,
 )
 
 
@@ -489,3 +490,25 @@ class ProgramRegistryValidationTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+class TimestampValidationTests(unittest.TestCase):
+    def test_valid_timestamp(self):
+        self.assertTrue(_valid_timestamp("2023-10-10T10:10:10Z"))
+        self.assertTrue(_valid_timestamp("2023-10-10T10:10:10.123Z"))
+        self.assertTrue(_valid_timestamp("2023-10-10T10:10:10.123456Z"))
+
+    def test_invalid_type(self):
+        self.assertFalse(_valid_timestamp(None))
+        self.assertFalse(_valid_timestamp(123))
+        self.assertFalse(_valid_timestamp({}))
+        self.assertFalse(_valid_timestamp([]))
+
+    def test_missing_z(self):
+        self.assertFalse(_valid_timestamp("2023-10-10T10:10:10"))
+        self.assertFalse(_valid_timestamp("2023-10-10T10:10:10+00:00"))
+
+    def test_malformed_string_with_z(self):
+        self.assertFalse(_valid_timestamp("invalid-timeZ"))
+        self.assertFalse(_valid_timestamp("2023-13-10T10:10:10Z"))
+        self.assertFalse(_valid_timestamp("Z"))
+        self.assertFalse(_valid_timestamp("not-a-timestampZ"))
