@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+# Canonical TEST stage for opsle/research. GitHub Actions and agents run this same command.
+#   ops/ci/test
+set -Eeuo pipefail
+cd "$(dirname "${BASH_SOURCE[0]}")/../.."
+
+step() { printf '\n==> %s\n' "$*"; }
+
+step "Ensure pinned dependencies"
+mkdir -p .deps
+if [[ ! -d .deps/context-firewall ]]; then
+  git clone --depth 1 https://github.com/opsle/context-firewall.git .deps/context-firewall 2>/dev/null || true
+  git -C .deps/context-firewall fetch --depth 1 origin 953c48f1cfd154d6b7ed10b51b87fe54e4df45f2 2>/dev/null || true
+  git -C .deps/context-firewall checkout -q 953c48f1cfd154d6b7ed10b51b87fe54e4df45f2 2>/dev/null || true
+fi
+if [[ ! -d .deps/decision-evidence-protocol ]]; then
+  git clone --depth 1 https://github.com/opsle/decision-evidence-protocol.git .deps/decision-evidence-protocol 2>/dev/null || true
+  git -C .deps/decision-evidence-protocol fetch --depth 1 origin b17ae3b41cea7cb0b9e0befe43e885b5aa0e4a09 2>/dev/null || true
+  git -C .deps/decision-evidence-protocol checkout -q b17ae3b41cea7cb0b9e0befe43e885b5aa0e4a09 2>/dev/null || true
+fi
+if [[ ! -d .deps/agent-trajectory-profiler ]]; then
+  git clone --depth 1 https://github.com/opsle/agent-trajectory-profiler.git .deps/agent-trajectory-profiler 2>/dev/null || true
+  git -C .deps/agent-trajectory-profiler fetch --depth 1 origin 0a89661640721d6a39f127514b993d29bd728d47 2>/dev/null || true
+  git -C .deps/agent-trajectory-profiler checkout -q 0a89661640721d6a39f127514b993d29bd728d47 2>/dev/null || true
+fi
+
+step "Validate program registry"
+python3 tools/validate_program.py
+
+step "Run unit tests"
+python3 -m unittest discover -s tests -p 'test_*.py'
+
+step "Qualify EXP-001 offline freeze"
+python3 experiments/exp-001/harness.py verify \
+  --context-firewall .deps/context-firewall \
+  --decision-evidence .deps/decision-evidence-protocol \
+  --trajectory-profiler .deps/agent-trajectory-profiler
+
+step "Validate value receipts"
+python3 tools/validate_value_receipt.py program/evidence/prompt-005/context-value-receipt.json
+python3 tools/validate_value_receipt.py program/evidence/prompt-005/decision-value-receipt.json
+python3 tools/validate_value_receipt.py program/evidence/exp-001-offline-freeze/context-firewall-value-receipt.json
+python3 tools/validate_value_receipt.py program/evidence/exp-001-offline-freeze/decision-evidence-value-receipt.json
+python3 tools/validate_value_receipt.py program/evidence/exp-001-block-coordinator/value-receipt.json
+
+step "Check generated dashboard"
+python3 tools/render_program_status.py --check
